@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Danilo Morelli — UX Designer</title>
+<meta name="description" content="UX Designer com 7+ anos transformando complexidade em produtos digitais claros — IA, mercado financeiro e indústria." />
+<meta name="theme-color" content="#69458D" />
+<link rel="icon" type="image/svg+xml" href="assets/logo-dm.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Palette derived from logo: deep purple + chartreuse */
+    --bg:#F4F1EA;            /* warm off-white */
+    --bg-deep:#1A1426;        /* near-black with purple undertone */
+    --bg-purple:#69458D;      /* logo deep purple */
+    --bg-purple-soft:#9D85B5; /* logo light purple */
+    --bg-soft:#EBE6DA;        /* panel */
+    --paper:#FFFFFF;
+    --ink:#1A1426;            /* deep purple-black */
+    --ink-2:#3F344D;
+    --muted:#7A7186;
+    --line:#D6CFC0;
+    --line-dark:rgba(245,239,224,.14);
+    --accent:#69458D;          /* primary accent — logo purple */
+    --accent-light:#9D85B5;
+    --accent-deep:#4A2F66;
+    --lime:#C6DE64;            /* logo chartreuse */
+    --lime-deep:#A9C247;
+    --lime-soft:#EDF2D2;
+    --maxw:1320px;
+    --pad:clamp(1.25rem, 4vw, 3rem);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter Tight',-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    font-feature-settings:"ss01","cv11";
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--lime);color:var(--accent-deep)}
+  img{max-width:100%;display:block;height:auto}
+  a{color:inherit;text-decoration:none}
+
+  /* Typography */
+  .serif-it{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+  h1,h2,h3,h4{font-family:'Inter Tight',sans-serif;font-weight:600;letter-spacing:-.035em;line-height:.96;color:var(--ink)}
+  h1{font-size:clamp(3.2rem, 11vw, 11rem);font-weight:700;letter-spacing:-.05em}
+  h2{font-size:clamp(2.2rem, 5.5vw, 4.6rem);letter-spacing:-.04em;line-height:.98}
+  h3{font-size:clamp(1.4rem, 2.2vw, 2rem);letter-spacing:-.025em}
+  .eyebrow{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500;display:inline-flex;align-items:center;gap:.5rem}
+  .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px rgba(198,222,100,.25)}
+
+  /* Layout */
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+  section{padding:clamp(4rem, 10vw, 9rem) 0;position:relative}
+
+  /* Nav */
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:color-mix(in oklab, var(--bg) 85%, transparent);
+    backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
+    border-bottom:1px solid var(--line);
+  }
+  nav .container{display:flex;align-items:center;justify-content:space-between;padding-top:.9rem;padding-bottom:.9rem}
+  .brand{font-weight:600;font-size:.95rem;letter-spacing:-.02em;display:inline-flex;align-items:center;gap:.7rem;color:var(--ink)}
+  .brand .logo{width:28px;height:28px;display:inline-block}
+  .nav-links{display:flex;gap:1.6rem;font-size:.86rem;align-items:center}
+  .nav-links a{color:var(--ink-2);transition:color .15s ease;font-weight:500}
+  .nav-links a:hover{color:var(--accent)}
+  .nav-cta{background:var(--ink);color:var(--bg) !important;padding:.55rem 1.1rem;border-radius:99px;font-size:.82rem;font-weight:500;transition:all .2s ease}
+  .nav-cta:hover{background:var(--accent);color:var(--lime) !important;transform:translateY(-1px)}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ink);padding:.4rem}
+
+  /* HERO */
+  .hero{padding-top:clamp(2rem,6vw,5rem);padding-bottom:clamp(2rem,5vw,4rem);position:relative}
+  .hero-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:clamp(2rem,5vw,4rem);gap:2rem;flex-wrap:wrap}
+  .availability{display:inline-flex;align-items:center;gap:.6rem;font-size:.84rem;color:var(--ink-2);font-weight:500}
+  .availability .blob{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px rgba(198,222,100,.28);animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(198,222,100,.28)}50%{box-shadow:0 0 0 8px rgba(198,222,100,.1)}}
+  .hero-title h1{display:flex;flex-direction:column;text-wrap:balance}
+  .hero-title h1 .row{display:flex;align-items:center;gap:clamp(.4rem,1.5vw,1.5rem);flex-wrap:nowrap}
+  .hero-title h1 .serif-it{font-size:.92em;color:var(--accent);font-weight:400;line-height:1}
+  .hero-portrait{display:inline-flex;width:clamp(80px,12vw,170px);aspect-ratio:1/1;border-radius:99px;overflow:hidden;background:var(--accent);vertical-align:middle;flex-shrink:0;position:relative}
+  .hero-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 20%;mix-blend-mode:luminosity;opacity:.92;filter:contrast(1.05)}
+  .hero-portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(105,69,141,.2),transparent 50%,rgba(198,222,100,.2));pointer-events:none}
+  .hero-meta{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem;margin-top:clamp(2.5rem,6vw,5rem);padding-top:2.5rem;border-top:1px solid var(--line);align-items:end}
+  .hero-meta .lede{font-size:clamp(1.1rem,1.6vw,1.45rem);line-height:1.35;color:var(--ink);font-weight:400;max-width:34ch;letter-spacing:-.015em}
+  .hero-meta .lede em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent)}
+  .stat .num{font-size:clamp(1.8rem,2.5vw,2.5rem);font-weight:600;letter-spacing:-.03em;line-height:1;display:block;color:var(--accent)}
+  .stat .lbl{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-top:.6rem;display:block;font-weight:500}
+
+  /* Marquee */
+  .marquee{padding:clamp(1.5rem,3vw,2.5rem) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;background:var(--accent);color:var(--lime)}
+  .marquee-track{display:inline-flex;gap:3rem;animation:scroll 38s linear infinite}
+  .marquee-track span{font-size:clamp(1.4rem,2.6vw,2.2rem);font-weight:500;letter-spacing:-.03em;display:inline-flex;align-items:center;gap:3rem}
+  .marquee-track span::after{content:"●";color:var(--lime);font-size:.55em}
+  .marquee-track .it{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:#F4F1EA}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* SOBRE */
+  .about{padding-top:clamp(4rem,8vw,7rem)}
+  .about-grid{display:grid;grid-template-columns:1fr 1.8fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+  .about p{font-size:clamp(1.1rem,1.5vw,1.35rem);color:var(--ink);max-width:48ch;line-height:1.45;margin-bottom:1.3rem;letter-spacing:-.012em;text-wrap:pretty}
+  .about p:first-child{font-size:clamp(1.45rem,2.2vw,1.95rem);line-height:1.3;font-weight:500;max-width:24ch;letter-spacing:-.025em}
+  .about p .serif-it{color:var(--accent)}
+
+  /* SECTION HEADER */
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(3rem,6vw,5rem);padding-bottom:1.6rem;border-bottom:1px solid var(--line)}
+  .sec-head h2{max-width:18ch;text-wrap:balance}
+  .sec-head .index{font-size:.85rem;color:var(--muted);font-weight:500;letter-spacing:-.01em}
+  .sec-head .index strong{color:var(--ink);font-weight:600}
+
+  /* PROJECTS */
+  .projects{padding-top:clamp(4rem,8vw,7rem);padding-bottom:0}
+  .project{position:relative;padding:clamp(4rem,8vw,7rem) 0;border-top:1px solid var(--line)}
+  .project:first-of-type{border-top:none;padding-top:0}
+  .project-meta{display:grid;grid-template-columns:auto 1fr auto;gap:2rem;align-items:start;margin-bottom:2.5rem}
+  .pnum{font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;letter-spacing:-.04em;color:var(--accent);line-height:.9;font-family:'Inter Tight',sans-serif;display:inline-flex;align-items:baseline;gap:.4rem}
+  .pnum span{color:var(--ink);opacity:.18;font-size:.5em}
+  .pclient{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-top:1rem;display:inline-flex;align-items:center;gap:.6rem}
+  .pclient::before{content:"";width:8px;height:1px;background:var(--accent)}
+  .ptitle{margin-top:1.6rem;max-width:18ch;text-wrap:balance}
+  .ptitle .serif-it{color:var(--accent)}
+  .pdesc{margin-top:1.8rem;font-size:clamp(1.05rem,1.4vw,1.25rem);color:var(--ink-2);max-width:54ch;line-height:1.5;letter-spacing:-.012em}
+  .ptags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}
+  .ptag{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line);padding:.4rem .9rem;border-radius:99px;font-weight:500;background:var(--paper)}
+  .ptag.solid{background:var(--accent);color:var(--lime);border-color:var(--accent)}
+
+  /* Image treatments */
+  figure{margin:0;background:var(--bg-soft);overflow:hidden;border-radius:18px;position:relative}
+  figure img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  figure:hover img{transform:scale(1.025)}
+  figure.contain{background:var(--paper);padding:clamp(1rem,2.5vw,2.5rem);border:1px solid var(--line)}
+  figure.contain img{object-fit:contain;width:100%;height:100%}
+  figure.dark{background:var(--bg-deep)}
+  figure.purple{background:var(--accent);padding:clamp(1rem,2.5vw,2.5rem)}
+  figure.purple img{object-fit:contain}
+  figure.lime{background:var(--lime-soft)}
+
+  /* Project 01 — Torre */
+  .p1-hero{aspect-ratio:16/9;border-radius:clamp(12px,2vw,24px);margin:0 0 1.4rem 0}
+  .p1-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+  .p1-grid figure{aspect-ratio:4/3}
+
+  /* Project 02 — Brainiall */
+  .p2-row1{display:grid;grid-template-columns:1.6fr 1fr;gap:1.4rem;margin-bottom:1.4rem}
+  .p2-row1 .p2-hero{aspect-ratio:16/10}
+  .p2-row1 .p2-side{aspect-ratio:3/4}
+  .p2-row2{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+  .p2-row2 figure{aspect-ratio:1/1}
+
+  /* Project 03 — Aquisição */
+  .p3-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+  .p3-grid figure{aspect-ratio:4/3}
+
+  /* Process panel */
+  .pbody{display:grid;grid-template-columns:1fr 1.8fr;gap:clamp(2rem,5vw,5rem);margin-top:clamp(2.5rem,5vw,4rem)}
+  .pbody h4{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:1.6rem}
+  .pbody .pcol-side{position:sticky;top:6rem;align-self:start}
+  .pbody .pcol-side .label{font-size:1.4rem;font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);letter-spacing:-.01em;line-height:1.2}
+  .pbody p{color:var(--ink-2);margin-bottom:1.1rem;max-width:62ch;line-height:1.6;font-size:1.02rem}
+  .pbody p strong{color:var(--ink);font-weight:600}
+  .pbody ul{list-style:none;margin-top:1.2rem;counter-reset:item}
+  .pbody ul li{padding:1.2rem 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:start}
+  .pbody ul li:last-child{border-bottom:none}
+  .pbody ul li::before{content:counter(item,decimal-leading-zero);counter-increment:item;font-size:.78rem;color:var(--accent);font-weight:600;letter-spacing:.05em;font-variant-numeric:tabular-nums;padding-top:.15rem}
+  .pbody ul li strong{display:block;color:var(--ink);font-weight:600;margin-bottom:.3rem;font-size:1.05rem;letter-spacing:-.01em}
+  .pbody ul li span{color:var(--ink-2);font-size:.96rem;line-height:1.55}
+  .quote{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.25;color:var(--ink);max-width:24ch;border-left:3px solid var(--lime);padding-left:1.6rem;margin:2.5rem 0;letter-spacing:-.015em}
+  .results-card{margin-top:2.5rem;padding:2rem;background:var(--lime-soft);border-radius:18px;border:1px solid var(--lime)}
+  .results-card h4{color:var(--lime-deep);margin-bottom:1rem}
+  .results-card p{color:var(--ink);margin-bottom:0;max-width:none}
+  .results-card.purple{background:var(--accent);border-color:var(--accent-deep);color:#F4F1EA}
+  .results-card.purple h4{color:var(--lime)}
+  .results-card.purple p{color:rgba(244,241,234,.9)}
+  .results-card.purple p strong{color:var(--lime)}
+  .cta-link{display:inline-flex;align-items:center;gap:.6rem;margin-top:2rem;font-size:.88rem;font-weight:500;color:var(--accent);padding:.7rem 1.3rem;border:1px solid var(--accent);border-radius:99px;transition:all .2s ease}
+  .cta-link:hover{background:var(--accent);color:var(--lime);gap:.9rem}
+  .cta-link::after{content:"↗";font-size:1em}
+
+  /* EXP — dark inverted */
+  .experience{background:var(--bg-deep);color:#F4F1EA;border-radius:clamp(20px,3vw,36px);margin:0 clamp(.5rem,2vw,1.5rem);padding-left:clamp(1rem,3vw,3rem);padding-right:clamp(1rem,3vw,3rem);position:relative;overflow:hidden}
+  .experience::before{content:"";position:absolute;top:-200px;right:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(105,69,141,.4) 0%,transparent 60%);pointer-events:none}
+  .experience::after{content:"";position:absolute;bottom:-200px;left:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(198,222,100,.15) 0%,transparent 60%);pointer-events:none}
+  .experience .container{position:relative;z-index:1}
+  .experience h2,.experience h3,.experience h4{color:#F4F1EA}
+  .experience .eyebrow{color:rgba(244,241,234,.6)}
+  .experience .sec-head{border-bottom-color:var(--line-dark)}
+  .experience .sec-head .index{color:rgba(244,241,234,.5)}
+  .experience .sec-head .index strong{color:#F4F1EA}
+  .experience .serif-it{color:var(--lime)}
+  .timeline{display:grid;gap:0}
+  .tline{display:grid;grid-template-columns:130px 1fr auto;gap:clamp(1.5rem,3vw,3rem);padding:2.5rem 0;border-top:1px solid var(--line-dark);transition:all .3s ease}
+  .tline:first-child{border-top:1px solid var(--line-dark)}
+  .tline:hover{padding-left:1rem}
+  .tline:hover .arrow{color:var(--lime);transform:translate(4px,-4px)}
+  .tline .when{color:var(--lime);font-weight:500;font-size:.95rem;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .tline h3{font-size:clamp(1.5rem,2.4vw,2.1rem);letter-spacing:-.025em;margin-bottom:.4rem}
+  .tline .role{color:var(--bg-purple-soft);font-family:'Instrument Serif',serif;font-style:italic;font-size:1.15rem;margin-bottom:1rem}
+  .tline p{color:rgba(244,241,234,.78);font-size:.98rem;max-width:62ch;line-height:1.55}
+  .tline .arrow{font-size:2rem;color:rgba(244,241,234,.25);font-weight:300;transition:all .3s ease}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2.5vw,2rem)}
+  .skill-card{padding:clamp(1.5rem,2.5vw,2.5rem);border-radius:20px;background:var(--paper);border:1px solid var(--line);transition:all .3s ease}
+  .skill-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 16px 40px -20px rgba(105,69,141,.3)}
+  .skill-card:nth-child(2){background:var(--accent);color:#F4F1EA;border-color:var(--accent)}
+  .skill-card:nth-child(2) h3{color:var(--lime)}
+  .skill-card:nth-child(2) h3 .num{color:rgba(244,241,234,.5)}
+  .skill-card:nth-child(2) li{border-color:var(--line-dark);color:#F4F1EA}
+  .skill-card:nth-child(2) li .tag{color:var(--bg-purple-soft)}
+  .skill-card:nth-child(2) .sub{color:var(--bg-purple-soft)}
+  .skill-card:nth-child(2):hover{transform:translateY(-4px);box-shadow:0 16px 40px -20px rgba(105,69,141,.55)}
+  .skill-card h3{font-size:1.3rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem}
+  .skill-card h3 .num{font-size:.8rem;color:var(--muted);font-weight:500;letter-spacing:.05em}
+  .skill-card ul{list-style:none}
+  .skill-card li{padding:.9rem 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:1rem;color:var(--ink);font-weight:500}
+  .skill-card li:first-child{border-top:none}
+  .skill-card li .tag{color:var(--muted);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+  .skill-card li.block{flex-direction:column;align-items:flex-start;gap:.3rem}
+  .skill-card li .sub{color:var(--muted);font-size:.85rem;font-weight:400;font-style:italic;font-family:'Instrument Serif',serif}
+
+  /* CONTACT */
+  .contact{background:var(--bg-deep);color:#F4F1EA;border-radius:clamp(20px,3vw,36px);margin:0 clamp(.5rem,2vw,1.5rem) clamp(.5rem,2vw,1.5rem);padding:clamp(3rem,7vw,6rem) clamp(1rem,3vw,3rem);position:relative;overflow:hidden}
+  .contact::before{content:"";position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,var(--accent) 0%,transparent 60%);opacity:.4;pointer-events:none}
+  .contact .container{position:relative;z-index:1}
+  .contact .eyebrow{color:rgba(244,241,234,.6)}
+  .contact-display{font-size:clamp(2.8rem,10vw,10rem);font-weight:700;letter-spacing:-.05em;line-height:.92;color:#F4F1EA;margin:2.5rem 0 3rem;text-wrap:balance}
+  .contact-display .serif-it{color:var(--lime);font-weight:400}
+  .contact-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start;padding-top:3rem;border-top:1px solid var(--line-dark)}
+  .contact-grid p{color:rgba(244,241,234,.78);font-size:1.1rem;max-width:42ch;line-height:1.5}
+  .contact-links{display:grid;gap:0}
+  .contact-link{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;border-bottom:1px solid var(--line-dark);transition:all .2s ease;color:#F4F1EA}
+  .contact-link:first-child{border-top:1px solid var(--line-dark)}
+  .contact-link:hover{color:var(--lime);padding-left:.5rem}
+  .contact-link .lbl{font-size:.74rem;color:rgba(244,241,234,.5);letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+  .contact-link .val{font-size:1.1rem;font-weight:500;letter-spacing:-.015em;margin-top:.2rem}
+  .contact-link .arrow{font-size:1rem;color:rgba(244,241,234,.4)}
+  .contact-link:hover .arrow{color:var(--lime)}
+  .cv-download{display:inline-flex;align-items:center;gap:.6rem;margin-top:2rem;background:var(--lime);color:var(--accent-deep);padding:.95rem 1.7rem;border-radius:99px;font-weight:600;transition:all .2s ease;font-size:.95rem}
+  .cv-download:hover{background:#F4F1EA;color:var(--ink);transform:translateY(-2px)}
+  .cv-download::after{content:"↓";font-size:1.1em}
+  .logo-stamp{position:absolute;right:clamp(1rem,3vw,3rem);bottom:clamp(1rem,3vw,3rem);width:clamp(60px,8vw,100px);height:auto;opacity:.4;pointer-events:none}
+
+  footer{padding:clamp(2rem,4vw,3.5rem) 0;font-size:.82rem;color:var(--muted)}
+  footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+  footer .serif-it{color:var(--accent)}
+
+  /* Responsive */
+  @media (max-width: 900px){
+    .hero-meta{grid-template-columns:1fr 1fr;gap:1.5rem}
+    .hero-meta .lede{grid-column:1/-1}
+    .about-grid,.pbody,.contact-grid{grid-template-columns:1fr;gap:2rem}
+    .pbody .pcol-side{position:static}
+    .skills-grid{grid-template-columns:1fr}
+    .p1-grid,.p2-row1,.p3-grid{grid-template-columns:1fr}
+    .p2-row2{grid-template-columns:1fr 1fr}
+    .project-meta{grid-template-columns:1fr;gap:1rem}
+    .pnum{font-size:3rem}
+    .tline{grid-template-columns:1fr;gap:.6rem;padding:1.5rem 0}
+    .tline .arrow{display:none}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;padding:1.2rem 2rem;gap:1rem;align-items:flex-start}
+    .nav-links.open{display:flex}
+    .menu-toggle{display:block}
+    .hero-portrait{width:80px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="#top" class="brand">
+      <img src="assets/logo-dm.svg" alt="" class="logo" />
+      Danilo Morelli
+    </a>
+    <button class="menu-toggle" aria-label="Menu" id="menuToggle">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#habilidades">Repertório</a>
+      <a href="#contato" class="nav-cta">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top" class="hero">
+  <div class="container">
+    <div class="hero-top">
+      <span class="eyebrow">Portfólio · 2026</span>
+      <span class="availability"><span class="blob"></span>Disponível para novos projetos</span>
+    </div>
+
+    <div class="hero-title">
+      <h1>
+        <span class="row">Danilo</span>
+        <span class="row">
+          <span class="hero-portrait"><img src="assets/profile.jpg" alt="Retrato de Danilo Morelli" loading="eager"></span>
+          Morelli<span class="serif-it">,</span>
+        </span>
+        <span class="row serif-it">UX Designer.</span>
+      </h1>
+    </div>
+
+    <div class="hero-meta">
+      <p class="lede">
+        Sete anos transformando complexidade em <em>produtos digitais</em> claros e usáveis — entre IA, mercado financeiro e indústria.
+      </p>
+      <div class="stat">
+        <span class="num">7+</span>
+        <span class="lbl">Anos de prática</span>
+      </div>
+      <div class="stat">
+        <span class="num">12+</span>
+        <span class="lbl">Projetos entregues</span>
+      </div>
+      <div class="stat">
+        <span class="num">SP</span>
+        <span class="lbl">São Paulo · BR</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Marquee in brand purple -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>UX Design</span><span class="it">research</span><span>UI Systems</span><span class="it">prototype</span><span>Product Strategy</span><span class="it">discovery</span><span>Branding</span><span class="it">data viz</span>
+    <span>UX Design</span><span class="it">research</span><span>UI Systems</span><span class="it">prototype</span><span>Product Strategy</span><span class="it">discovery</span><span>Branding</span><span class="it">data viz</span>
+  </div>
+</div>
+
+<section id="sobre" class="about">
+  <div class="container">
+    <div class="sec-head">
+      <h2>Bom design é <span class="serif-it">conversa</span> contínua.</h2>
+      <span class="index">(01) <strong>Sobre</strong></span>
+    </div>
+    <div class="about-grid">
+      <p>
+        Acredito que produto bom nasce do encontro entre <span class="serif-it">negócio, tecnologia e pessoas</span>.
+      </p>
+      <div>
+        <p>Sou o Danilo — UX Designer com mais de sete anos no desenvolvimento de produtos e serviços. Atuo em projetos de tecnologia, principalmente nas áreas de inteligência artificial, mercado financeiro e setor industrial.</p>
+        <p>Meu trabalho é traduzir complexidade em interfaces claras, usáveis e fiéis ao propósito de quem as utiliza — equilibrando rigor analítico com sensibilidade visual.</p>
+        <p>Hoje atuo como consultor independente em UX/UI, branding e web design para empresas que buscam construir produtos consistentes e marcas com presença digital sólida.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projetos" class="projects">
+  <div class="container">
+    <div class="sec-head">
+      <h2>Casos <span class="serif-it">selecionados</span> em produto, dado &amp; operação.</h2>
+      <span class="index">(02) <strong>Projetos</strong> · Três cases</span>
+    </div>
+
+    <!-- PROJECT 01 — TORRE -->
+    <article class="project">
+      <div class="project-meta">
+        <div class="pnum">01<span>/03</span></div>
+        <div>
+          <p class="pclient">Chronus Performance AI · 2024—2025</p>
+          <h2 class="ptitle">Torre de Controle<span class="serif-it">,</span> dados e <span class="serif-it">IA</span> na logística.</h2>
+        </div>
+        <div></div>
+      </div>
+
+      <figure class="p1-hero"><img src="assets/projects/torre-tela.jpg" alt="Dashboard principal — Torre de Controle" loading="lazy"></figure>
+
+      <div class="p1-grid">
+        <figure class="contain"><img src="assets/projects/torre-kpis.png" alt="Mapeamento de KPIs da jornada comercial end-to-end" loading="lazy"></figure>
+        <figure class="contain"><img src="assets/projects/torre-niveis.png" alt="Refinamento de informação em três níveis: estratégico, tático e operacional" loading="lazy"></figure>
+      </div>
+
+      <div class="pbody">
+        <div class="pcol-side">
+          <h4>O caso</h4>
+          <p class="label">Processo &amp;<br>descobertas</p>
+        </div>
+        <div>
+          <p class="pdesc" style="margin-top:0">
+            Em parceria com a Chronus Performance AI, desenvolvi um produto de monitoramento operacional para gestores logísticos — C-Level, Diretoria e Gerência — apresentando informações complexas de forma clara e acionáveis, com IA embarcada para detecção de anomalias, previsões, recomendações e insights.
+          </p>
+          <div class="ptags">
+            <span class="ptag solid">Product Designer</span>
+            <span class="ptag">MVP</span>
+            <span class="ptag">UI Design</span>
+            <span class="ptag">UX Research</span>
+            <span class="ptag">Prototype</span>
+          </div>
+
+          <p style="margin-top:2.5rem"><strong>Problema —</strong> Parte dos dados era capturada, mas não havia fluxo bem estabelecido para consumo ou intercâmbio de informação. Resultado: dificuldades preditivas, ausência de dados cadastrais e contratuais, atrasos, retrabalho, conflito entre áreas e cultura reativa aos eventos.</p>
+          <p><strong>Solução —</strong> Melhor aproveitamento dos indicadores de performance, substituindo decisões "no feeling" por uma cultura baseada em dados confiáveis e atualizados.</p>
+
+          <ul>
+            <li>
+              <strong>Mapeamento de KPIs end-to-end</strong>
+              <span>Documentação da jornada comercial completa do cliente, identificando pontos críticos e oportunidades de medição.</span>
+            </li>
+            <li>
+              <strong>Pesquisa com Especialista em Excelência Operacional</strong>
+              <span>Descoberta do modelo SCOR (Supply Chain Operations Reference), estrutura padrão da indústria para medir e melhorar a cadeia de suprimentos.</span>
+            </li>
+            <li>
+              <strong>Validação com Diretor logístico</strong>
+              <span>Uso do raciocínio SCOR como base para a arquitetura da informação, validado em entrevista com diretor sênior do setor.</span>
+            </li>
+            <li>
+              <strong>Entrevistas in loco com usuários</strong>
+              <span>CEO, diretores de Operação, TI e Comercial — mapeando dores reais de cada nível: controle da operação, previsibilidade de demanda, integração de sistemas, ocupação de palete, fluxos financeiros.</span>
+            </li>
+            <li>
+              <strong>Refinamento de KPIs por nível</strong>
+              <span>Definição clara do que mostrar ao usuário em três camadas: estratégico, tático e operacional — cada uma com sua leitura específica.</span>
+            </li>
+          </ul>
+
+          <p class="quote">"Reduzir decisões no feeling e acelerar respostas a desvios."</p>
+
+          <div class="results-card purple">
+            <h4>Resultados</h4>
+            <p>Métricas organizadas por nível tornaram o monitoramento acionável — com melhoria em <strong>tempo de decisão</strong>, <strong>acurácia de previsões</strong>, <strong>redução de incidentes</strong> e <strong>NPS interno</strong>. O C-Level passou a acompanhar receita, ARR/MRR, churn e runway; a diretoria ganhou controle de execução; as áreas operacionais otimizaram vendas, finanças e operação — viabilizando ações rápidas de realocação, priorização e tratamento de exceções.</p>
+          </div>
+
+          <a href="https://www.figma.com/make/59cVDrp48nDIqQ04fdjJ7v/Torre-de-Controle?p=f&t=qvo7xxWzDcOIVW48-0&fullscreen=1" target="_blank" rel="noopener" class="cta-link">Ver protótipo no Figma</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 02 — DASHBOARD BRAINIALL -->
+    <article class="project">
+      <div class="project-meta">
+        <div class="pnum">02<span>/03</span></div>
+        <div>
+          <p class="pclient">Brainiall Inc. · 2021—2023</p>
+          <h2 class="ptitle">Dashboard <span class="serif-it">operacional,</span> dark &amp; light.</h2>
+        </div>
+        <div></div>
+      </div>
+
+      <div class="p2-row1">
+        <figure class="p2-hero"><img src="assets/projects/dashboard-ipad.jpg" alt="Dashboard no iPad Pro — versão refinada" loading="lazy"></figure>
+        <figure class="p2-side"><img src="assets/projects/dashboard-iphone-1.jpg" alt="Versão mobile do dashboard" loading="lazy"></figure>
+      </div>
+
+      <div class="p2-row2">
+        <figure class="contain"><img src="assets/projects/dashboard-discovery.jpg" alt="Discovery e análise da interface existente" loading="lazy"></figure>
+        <figure><img src="assets/projects/dashboard-ipad-2.jpg" alt="Dashboard em tablet — vista alternativa" loading="lazy"></figure>
+        <figure><img src="assets/projects/dashboard-iphone-2.jpg" alt="Versão mobile — segunda tela" loading="lazy"></figure>
+      </div>
+
+      <div class="pbody">
+        <div class="pcol-side">
+          <h4>O caso</h4>
+          <p class="label">Pequenos pontos,<br>grande impacto</p>
+        </div>
+        <div>
+          <p class="pdesc" style="margin-top:0">
+            Painel de monitoramento operacional em tempo real para uma startup de tecnologia. A arquitetura existente foi mantida — o foco foi elevar a experiência de visualização e interação com dados críticos em ambientes de sala de operação.
+          </p>
+          <div class="ptags">
+            <span class="ptag solid">UX/UI Designer</span>
+            <span class="ptag">Light &amp; Dark Mode</span>
+            <span class="ptag">Mobile</span>
+            <span class="ptag">Prototype</span>
+            <span class="ptag">UI Components</span>
+          </div>
+
+          <h3 style="margin-top:2.5rem">Responsabilidades</h3>
+          <ul>
+            <li>
+              <strong>Inspect &amp; Discovery</strong>
+              <span>Análise detalhada da interface existente, identificando pontos de melhoria em usabilidade e visualização de dados.</span>
+            </li>
+            <li>
+              <strong>Validação contínua</strong>
+              <span>Soluções validadas com usuários e time de desenvolvimento, garantindo aderência funcional e operacional.</span>
+            </li>
+            <li>
+              <strong>Protótipos interativos</strong>
+              <span>Testados com usuários finais antes da implementação — reduzindo retrabalho e ambiguidades.</span>
+            </li>
+            <li>
+              <strong>Versão mobile &amp; Light Mode</strong>
+              <span>Adaptação ao ambiente físico das salas de operação, com atenção à legibilidade em diferentes condições de iluminação.</span>
+            </li>
+          </ul>
+
+          <p class="quote">"Grande volume de dados, sem sobrecarga visual."</p>
+
+          <h3 style="margin-top:1.5rem">Soluções &amp; aprendizados</h3>
+          <p>Entrevistas com usuários revelaram a necessidade de um <strong>light mode</strong> considerando o ambiente físico da sala de operação. O redesenho focou em melhorias de contraste, ajuste de tamanho de fontes e gráficos, e posicionamento estratégico das informações mais críticas.</p>
+
+          <div class="results-card">
+            <h4>Impacto</h4>
+            <p>Dashboard redesenhado adaptado às necessidades reais dos operadores — melhoria significativa de usabilidade e experiência visual em ambientes de baixa luminosidade. Ganhos em eficiência operacional e melhor experiência em cenários críticos de análise de dados.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-meta">
+        <div class="pnum">03<span>/03</span></div>
+        <div>
+          <p class="pclient">Open Flow Labs · 2020—2021</p>
+          <h2 class="ptitle">Design para a <span class="serif-it">aquisição</span> de ativos.</h2>
+        </div>
+        <div></div>
+      </div>
+
+      <div class="p3-grid">
+        <figure class="contain lime"><img src="assets/projects/ativos-atores.png" alt="Mapa de atores envolvidos na jornada" loading="lazy"></figure>
+        <figure class="contain lime"><img src="assets/projects/ativos-personas.png" alt="Agrupamento de personas identificadas" loading="lazy"></figure>
+        <figure class="contain"><img src="assets/projects/ativos-matriz-1.png" alt="Matriz de Esforço x Impacto — primeira versão" loading="lazy"></figure>
+        <figure class="contain"><img src="assets/projects/ativos-matriz-2.png" alt="Matriz de Esforço x Impacto — versão refinada" loading="lazy"></figure>
+      </div>
+
+      <div class="pbody">
+        <div class="pcol-side">
+          <h4>O caso</h4>
+          <p class="label">Centrado no usuário,<br>do MVP ao ecossistema</p>
+        </div>
+        <div>
+          <p class="pdesc" style="margin-top:0">
+            Produto digital focado na aquisição de ativos para o mercado financeiro, desenvolvido por meio de uma abordagem centrada no usuário — partindo de um MVP enxuto para validar hipóteses e desbloquear escala.
+          </p>
+          <div class="ptags">
+            <span class="ptag solid">UX Researcher</span>
+            <span class="ptag">Lean Product</span>
+            <span class="ptag">Personas</span>
+            <span class="ptag">User Journey</span>
+            <span class="ptag">Userflow</span>
+          </div>
+
+          <h3 style="margin-top:2.5rem">Desafios</h3>
+          <p>Estabelecer uma nova proposta para as etapas de desenvolvimento — iniciando por um MVP. Descobrir e definir o escopo de personas, inicialmente voltado aos stakeholders internos, para solucionar dores dos <strong>originadores</strong>, agente crucial na geração de negócios para o cliente.</p>
+
+          <h3 style="margin-top:1.5rem">Responsabilidades</h3>
+          <ul>
+            <li>
+              <strong>Desenho da Jornada do Usuário</strong>
+              <span>Ponto focal junto ao Product Owner para mapear fluxos e desenhar jornadas que refletissem as interações ideais.</span>
+            </li>
+            <li>
+              <strong>Validação das Personas</strong>
+              <span>Análise crítica e validação de hipóteses que impactavam diretamente o desenvolvimento do produto.</span>
+            </li>
+          </ul>
+
+          <div class="results-card purple">
+            <h4>Resultado</h4>
+            <p>MVP ágil e eficiente desdobrado em <strong>ecossistema tecnológico</strong> — hoje oferecido na carteira de produtos do fundo de investimento que o adquiriu.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="experiencia" class="experience">
+  <div class="container">
+    <div class="sec-head">
+      <h2>Trajetória <span class="serif-it">profissional</span>.</h2>
+      <span class="index">(03) <strong>Experiência</strong></span>
+    </div>
+    <div class="timeline">
+      <div class="tline">
+        <div class="when">2025 — Presente</div>
+        <div>
+          <h3>Consultor independente</h3>
+          <p class="role">UX/UI · Branding · Graphic &amp; Web Design</p>
+          <p>Soluções de branding para pequenas e médias empresas, alinhando identidades visuais ao público-alvo e tendências de mercado. Sites modernos e responsivos com experiência fluida em múltiplos dispositivos. Criação de materiais gráficos para marketing e atuação na melhoria de visibilidade de marca por meio de estratégias de design coesas.</p>
+        </div>
+        <div class="arrow">↗</div>
+      </div>
+
+      <div class="tline">
+        <div class="when">2024 — 2025</div>
+        <div>
+          <h3>Product Designer</h3>
+          <p class="role">Chronus Performance AI</p>
+          <p>Projeto: Torre de Controle — Dados e IA na Logística. Produto digital de monitoramento operacional para gestores logísticos (C-Level, Diretoria e Gerência), com IA embarcada para detecção de anomalias, previsões, recomendações e insights. Mapeamento de KPIs end-to-end, adoção do modelo SCOR como base da arquitetura da informação, entrevistas in loco e refinamento por nível estratégico, tático e operacional.</p>
+        </div>
+        <div class="arrow">↗</div>
+      </div>
+
+      <div class="tline">
+        <div class="when">2021 — 2023</div>
+        <div>
+          <h3>UX/UI Designer</h3>
+          <p class="role">Brainiall Inc.</p>
+          <p>Projeto: Dashboard de Monitoramento Operacional. Clareza hierárquica para exibição de KPIs críticos com feedback em tempo real. Simplifiquei a visualização através de design modular, mantendo a experiência fluida e intuitiva. Desenvolvi protótipos interativos validados por stakeholders e usuários finais.</p>
+        </div>
+        <div class="arrow">↗</div>
+      </div>
+
+      <div class="tline">
+        <div class="when">2020 — 2021</div>
+        <div>
+          <h3>UX Researcher</h3>
+          <p class="role">Open Flow Labs</p>
+          <p>Projeto: Produto digital para aquisição de ativos. Ponto focal com o Product Owner, mapeando fluxos de tarefas e desenhando jornadas que refletissem as interações ideais. Análise crítica e validação de hipóteses. O MVP foi desdobrado em ecossistema tecnológico hoje ofertado por um fundo de investimento.</p>
+        </div>
+        <div class="arrow">↗</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="habilidades">
+  <div class="container">
+    <div class="sec-head">
+      <h2>Repertório <span class="serif-it">técnico</span> e formação.</h2>
+      <span class="index">(04) <strong>Habilidades</strong></span>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Habilidades <span class="num">06</span></h3>
+        <ul>
+          <li>UX/UI Design <span class="tag">Core</span></li>
+          <li>Design Thinking <span class="tag">Método</span></li>
+          <li>Content Design &amp; SEO <span class="tag">Conteúdo</span></li>
+          <li>Market Research <span class="tag">Pesquisa</span></li>
+          <li>Problem Solving <span class="tag">Estratégia</span></li>
+          <li>Lean Product <span class="tag">Produto</span></li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Formação <span class="num">02</span></h3>
+        <ul>
+          <li class="block">
+            Bacharelado em Publicidade e Propaganda
+            <span class="sub">Anhembi Morumbi · 2014—2018</span>
+          </li>
+          <li class="block">
+            Certificação em UX Design
+            <span class="sub">Digital House · 2021</span>
+          </li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Idiomas &amp; Certificações <span class="num">04</span></h3>
+        <ul>
+          <li>Português <span class="tag">Nativo</span></li>
+          <li>Inglês <span class="tag">Intermediário</span></li>
+          <li>Espanhol <span class="tag">Básico</span></li>
+          <li class="block">
+            IPETEC — Grandes Modelos<br>de Linguagem da IA (LLM)
+            <span class="sub">Registro 887ebac0-fd27-489b-b607-420293f9221</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="contact">
+  <img src="assets/logo-dm.svg" alt="" class="logo-stamp" />
+  <div class="container">
+    <div class="hero-top">
+      <span class="eyebrow">(05) Contato</span>
+      <span class="availability"><span class="blob"></span>Aceitando projetos para 2026</span>
+    </div>
+    <div class="contact-display">
+      Vamos<br>
+      <span class="serif-it">construir</span> algo<br>
+      bom juntos.
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p>Estou disponível para colaborações em produto digital, branding e identidade visual. Conte sobre o desafio — respondo em até dois dias úteis.</p>
+        <a href="assets/cv/CV_Danilo_Morelli.pdf" target="_blank" rel="noopener" class="cv-download">Baixar currículo (PDF)</a>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:danilommorelli@gmail.com">
+          <div><div class="lbl">E-mail</div><div class="val">danilommorelli@gmail.com</div></div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/danilomorelli/" target="_blank" rel="noopener">
+          <div><div class="lbl">LinkedIn</div><div class="val">/in/danilomorelli</div></div>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="contact-link" href="tel:+5511989749110">
+          <div><div class="lbl">Telefone</div><div class="val">+55 11 98974-9110</div></div>
+          <span class="arrow">→</span>
+        </a>
+        <a class="contact-link" href="#top">
+          <div><div class="lbl">Localização</div><div class="val">São Paulo · Brasil</div></div>
+          <span class="arrow">↑</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span>© <span id="yr"></span> Danilo Morelli</span>
+    <span class="serif-it">Identidade construída com tipografia, roxo e lima.</span>
+    <span>v2.0 · 2026</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle?.addEventListener('click', () => links.classList.toggle('open'));
+  links?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'translateY(0)'; } });
+    }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('section, .project, figure').forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(12px)';
+      el.style.transition = 'opacity .8s ease, transform .8s ease';
+      io.observe(el);
+    });
+  }
+</script>
+</body>
+</html>
