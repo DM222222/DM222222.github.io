@@ -147,12 +147,40 @@
   figure.purple img{object-fit:contain}
   figure.lime{background:var(--lime-soft)}
 
+  /* Números de abertura do case */
+  .case-stats{display:flex;flex-wrap:wrap;gap:2.2rem;margin:1.8rem 0 0;padding:1.2rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .case-stats div{display:flex;flex-direction:column;gap:.25rem}
+  .case-stats b{font-size:1.9rem;font-weight:600;letter-spacing:-.03em;color:var(--accent);line-height:1}
+  .case-stats span{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500}
+
+  /* Ponte entre as partes do mesmo case */
+  .case-bridge{margin-top:1.6rem;padding-top:1.2rem;border-top:1px dashed var(--line);font-family:'Instrument Serif',serif;font-style:italic;font-size:1.15rem;color:var(--ink-2);line-height:1.4}
+  .case-bridge a{color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:1px;font-style:normal;font-family:'Inter Tight',sans-serif;font-size:.9rem;font-weight:500;white-space:nowrap;margin-left:.3rem}
+  .case-bridge a::after{content:" ↓"}
+  .case-bridge a:hover{color:var(--ink)}
+  .case-from{display:inline-flex;align-items:center;gap:.45rem;font-family:'Inter Tight',sans-serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lime-deep);background:var(--lime-soft);border-radius:99px;padding:.3rem .8rem;margin-bottom:1rem;font-weight:500}
+  .case-from::before{content:"↑";font-size:.9em}
+
+  /* ===== Deck do estudo de caso (26 slides) ===== */
+  .case-deck{margin:0 0 2.5rem}
+  .case-deck-frame{position:relative;width:100%;aspect-ratio:16/10;border:1px solid var(--line);border-radius:clamp(12px,2vw,24px);overflow:hidden;background:var(--paper);box-shadow:0 18px 50px -32px rgba(26,20,38,.35)}
+  .case-deck-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+  .case-deck-bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.9rem;font-size:.85rem;color:var(--muted)}
+  .case-deck-bar b{color:var(--ink);font-weight:600}
+  .case-deck-bar a{display:inline-flex;align-items:center;gap:.45rem;color:var(--accent);font-weight:500;border:1px solid var(--accent);border-radius:99px;padding:.5rem 1.15rem;transition:all .2s ease;white-space:nowrap}
+  .case-deck-bar a:hover{background:var(--accent);color:var(--lime)}
+  .case-deck-bar a::after{content:"↗"}
+  @media (max-width:760px){
+    .case-deck-frame{display:none}
+    .case-deck-bar{flex-direction:column;align-items:flex-start;gap:.9rem;margin-top:0;padding:1.5rem;border:1px solid var(--line);border-radius:18px;background:var(--paper)}
+  }
+
   /* Project 01 — Torre */
   .p1-hero{aspect-ratio:16/9;border-radius:clamp(12px,2vw,24px);margin:0 0 1.4rem 0}
   .p1-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
   .p1-grid figure{aspect-ratio:4/3}
 
-  /* Project 02 — Brainiall */
+  /* Project 02 — Inspect legado */
   .p2-row1{display:grid;grid-template-columns:1.6fr 1fr;gap:1.4rem;margin-bottom:1.4rem}
   .p2-row1 .p2-hero{aspect-ratio:16/10}
   .p2-row1 .p2-side{aspect-ratio:3/4}
@@ -171,11 +199,11 @@
   .pbody p{color:var(--ink-2);margin-bottom:1.1rem;max-width:62ch;line-height:1.6;font-size:1.02rem}
   .pbody p strong{color:var(--ink);font-weight:600}
   .pbody ul{list-style:none;margin-top:1.2rem;counter-reset:item}
-  .pbody ul li{padding:1.2rem 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:start}
+  .pbody ul li{padding:1.2rem 0 1.2rem 3rem;border-bottom:1px solid var(--line);position:relative}
   .pbody ul li:last-child{border-bottom:none}
-  .pbody ul li::before{content:counter(item,decimal-leading-zero);counter-increment:item;font-size:.78rem;color:var(--accent);font-weight:600;letter-spacing:.05em;font-variant-numeric:tabular-nums;padding-top:.15rem}
-  .pbody ul li strong{display:block;color:var(--ink);font-weight:600;margin-bottom:.3rem;font-size:1.05rem;letter-spacing:-.01em}
-  .pbody ul li span{color:var(--ink-2);font-size:.96rem;line-height:1.55}
+  .pbody ul li::before{content:counter(item,decimal-leading-zero);counter-increment:item;position:absolute;left:0;top:1.35rem;font-size:.85rem;color:var(--accent);font-weight:600;letter-spacing:.05em;font-variant-numeric:tabular-nums}
+  .pbody ul li strong{display:block;color:var(--ink);font-weight:600;margin-bottom:.4rem;font-size:1.05rem;letter-spacing:-.01em}
+  .pbody ul li span{display:block;color:var(--ink-2);font-size:.96rem;line-height:1.55}
   .quote{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.25;color:var(--ink);max-width:24ch;border-left:3px solid var(--lime);padding-left:1.6rem;margin:2.5rem 0;letter-spacing:-.015em}
   .results-card{margin-top:2.5rem;padding:2rem;background:var(--lime-soft);border-radius:18px;border:1px solid var(--lime)}
   .results-card h4{color:var(--lime-deep);margin-bottom:1rem}
@@ -364,13 +392,13 @@
   <div class="container">
     <div class="sec-head">
       <h2>Casos <span class="serif-it">selecionados</span> em produto, dado &amp; operação.</h2>
-      <span class="index">(02) <strong>Projetos</strong> · Três cases</span>
+      <span class="index">(02) <strong>Projetos</strong> · Quatro cases</span>
     </div>
 
     <!-- PROJECT 01 — TORRE -->
     <article class="project">
       <div class="project-meta">
-        <div class="pnum">01<span>/03</span></div>
+        <div class="pnum">01<span>/04</span></div>
         <div>
           <p class="pclient">Chronus Performance AI · 2024—2025</p>
           <h2 class="ptitle">Torre de Controle<span class="serif-it">,</span> dados e <span class="serif-it">IA</span> na logística.</h2>
@@ -443,24 +471,15 @@
     <!-- PROJECT 02 — DASHBOARD BRAINIALL -->
     <article class="project">
       <div class="project-meta">
-        <div class="pnum">02<span>/03</span></div>
+        <div class="pnum">02<span>/04</span></div>
         <div>
-          <p class="pclient">Brainiall Inc. · 2021—2023</p>
-          <h2 class="ptitle">Dashboard <span class="serif-it">operacional,</span> dark &amp; light.</h2>
+          <p class="pclient">Startup de inteligência artificial (confidencial) · 2021—2023 · Parte 1</p>
+          <h2 class="ptitle">Inspect da interface <span class="serif-it">legada</span>.</h2>
         </div>
         <div></div>
       </div>
 
-      <div class="p2-row1">
-        <figure class="p2-hero"><img src="assets/projects/dashboard-ipad.jpg" alt="Dashboard no iPad Pro — versão refinada" loading="lazy"></figure>
-        <figure class="p2-side"><img src="assets/projects/dashboard-iphone-1.jpg" alt="Versão mobile do dashboard" loading="lazy"></figure>
-      </div>
-
-      <div class="p2-row2">
-        <figure class="contain"><img src="assets/projects/dashboard-discovery.jpg" alt="Discovery e análise da interface existente" loading="lazy"></figure>
-        <figure><img src="assets/projects/dashboard-ipad-2.jpg" alt="Dashboard em tablet — vista alternativa" loading="lazy"></figure>
-        <figure><img src="assets/projects/dashboard-iphone-2.jpg" alt="Versão mobile — segunda tela" loading="lazy"></figure>
-      </div>
+      <figure class="contain" style="margin-bottom:1.4rem"><img src="assets/projects/dashboard-discovery.jpg" alt="Inspect e discovery da interface legada — pontos de melhoria mapeados" loading="lazy"></figure>
 
       <div class="pbody">
         <div class="pcol-side">
@@ -469,12 +488,14 @@
         </div>
         <div>
           <p class="pdesc" style="margin-top:0">
-            Painel de monitoramento operacional em tempo real para uma startup de tecnologia. A arquitetura existente foi mantida — o foco foi elevar a experiência de visualização e interação com dados críticos em ambientes de sala de operação.
+            Painel de monitoramento operacional em tempo real para visualização de dados na <strong>indústria de mineração</strong>. Desenvolvido <strong>desktop first</strong>, priorizando a clareza na apresentação de informações complexas, e depois adaptado para tablet e mobile mantendo consistência e usabilidade. O escopo incluiu a tela de autenticação (SSO/Login), interface responsiva e uma versão <strong>light mode</strong> para uso em campo — tablet sob luz solar direta e videowall de sala de controle.
           </p>
           <div class="ptags">
             <span class="ptag solid">UX/UI Designer</span>
+            <span class="ptag">Desktop First</span>
             <span class="ptag">Light &amp; Dark Mode</span>
-            <span class="ptag">Mobile</span>
+            <span class="ptag">Responsivo</span>
+            <span class="ptag">SSO / Login</span>
             <span class="ptag">Prototype</span>
             <span class="ptag">UI Components</span>
           </div>
@@ -486,35 +507,182 @@
               <span>Análise detalhada da interface existente, identificando pontos de melhoria em usabilidade e visualização de dados.</span>
             </li>
             <li>
+              <strong>Tela de SSO / Login</strong>
+              <span>Autenticação desenhada com foco em usabilidade e acessibilidade — campos claros, fluxo simples e seguro, com recuperação de senha visível e acessível.</span>
+            </li>
+            <li>
+              <strong>UI Desktop First</strong>
+              <span>Apresentação intuitiva de KPIs em tempo real, reduzindo sobrecarga cognitiva ao exibir grandes volumes de dados de forma organizada e sem scroll excessivo.</span>
+            </li>
+            <li>
+              <strong>Versão mobile</strong>
+              <span>Adaptação para telas menores sem comprometer funcionalidades: simplificação de gráficos e reorganização de dados para acesso ao toque.</span>
+            </li>
+            <li>
               <strong>Validação contínua</strong>
-              <span>Soluções validadas com usuários e time de desenvolvimento, garantindo aderência funcional e operacional.</span>
+              <span>Soluções validadas com usuários e time de desenvolvimento; protótipos interativos testados antes da implementação, reduzindo retrabalho.</span>
+            </li>
+          </ul>
+
+          <h3 style="margin-top:2.5rem">Desafios</h3>
+          <ul>
+            <li>
+              <strong>Dados em tempo real</strong>
+              <span>A interface precisava se manter estável e fluida ao processar grandes volumes de informação atualizada continuamente.</span>
             </li>
             <li>
-              <strong>Protótipos interativos</strong>
-              <span>Testados com usuários finais antes da implementação — reduzindo retrabalho e ambiguidades.</span>
+              <strong>Muitos KPIs</strong>
+              <span>Apresentar uma grande quantidade de indicadores de forma clara e acessível, sem sobrecarregar o usuário com informação excessiva.</span>
             </li>
             <li>
-              <strong>Versão mobile &amp; Light Mode</strong>
-              <span>Adaptação ao ambiente físico das salas de operação, com atenção à legibilidade em diferentes condições de iluminação.</span>
+              <strong>Banco de dados complexo</strong>
+              <span>Garantir navegação eficaz mesmo alimentada por uma base densa — o que impactou diretamente a estrutura de navegação e o agrupamento dos dados.</span>
+            </li>
+          </ul>
+
+          <h3 style="margin-top:2.5rem">Auditoria de interface</h3>
+          <p>Antes de redesenhar, conduzi uma auditoria da interface existente tendo como usuário-alvo o <strong>operador de sala de controle</strong> — turno longo, monitoramento contínuo. Os achados críticos:</p>
+          <ul>
+            <li>
+              <strong>Ordem dos campos de login</strong>
+              <span>Senha aparecia antes de e-mail, quebrando a convenção esperada e o preenchimento automático.</span>
+            </li>
+            <li>
+              <strong>Contraste insuficiente</strong>
+              <span>Textos secundários abaixo do mínimo legível — crítico para leitura em tablet sob luz solar direta.</span>
+            </li>
+            <li>
+              <strong>Cor como único indicador de status</strong>
+              <span>Falha de acessibilidade: operadores com deficiência de visão de cores perderiam alertas críticos.</span>
+            </li>
+            <li>
+              <strong>Ausência de estados</strong>
+              <span>Sem tratamento de erro, carregamento ou estado vazio — em painel de tempo real, isso deixa o operador sem saber se o dado é atual ou travou.</span>
+            </li>
+            <li>
+              <strong>Ação destrutiva sem proteção</strong>
+              <span>O botão "TURN OFF AI" desligava a inteligência do sistema sem qualquer confirmação — risco operacional alto para um clique acidental.</span>
+            </li>
+            <li>
+              <strong>Legibilidade dos gráficos</strong>
+              <span>Eixos com valores cortados e rótulos ambíguos; tooltips permanentemente visíveis competindo com o dado.</span>
             </li>
           </ul>
 
           <p class="quote">"Grande volume de dados, sem sobrecarga visual."</p>
 
-          <h3 style="margin-top:1.5rem">Soluções &amp; aprendizados</h3>
-          <p>Entrevistas com usuários revelaram a necessidade de um <strong>light mode</strong> considerando o ambiente físico da sala de operação. O redesenho focou em melhorias de contraste, ajuste de tamanho de fontes e gráficos, e posicionamento estratégico das informações mais críticas.</p>
+          <h3 style="margin-top:1.5rem">Soluções</h3>
+          <p><strong>Simplificação da interface —</strong> adotei hierarquia visual clara com grid layouts e cards modulares. Os KPIs mais críticos ficaram imediatamente visíveis; os secundários, acessíveis sob demanda.</p>
+          <p><strong>Feedback em tempo real —</strong> indicadores de carregamento e animações sutis sinalizavam a atualização de dados, dando ao usuário sensação de controle mesmo com informação fluindo constantemente.</p>
+          <p><strong>Design responsivo —</strong> na versão mobile, priorizei elementos interativos com áreas de toque amplas e dispensei a necessidade de zoom. Gráficos e tabelas foram reorganizados em blocos empilháveis e expansíveis.</p>
+          <p><strong>Light mode —</strong> entrevistas revelaram a necessidade de um modo claro para o ambiente físico da sala de operação, com melhorias de contraste e ajuste de tamanho de fontes e gráficos.</p>
+
+          <div class="results-card purple">
+            <h4>Aprendizado-chave</h4>
+            <p>Este projeto me ensinou a pensar no <strong>mínimo utilizável</strong> — garantir que cada elemento apresentado seja funcional, acessível e relevante. Aprendi a equilibrar a complexidade da informação com a simplicidade do design, especialmente quando tempo de resposta e clareza dos dados são críticos para o usuário.</p>
+          </div>
 
           <div class="results-card">
             <h4>Impacto</h4>
-            <p>Dashboard redesenhado adaptado às necessidades reais dos operadores — melhoria significativa de usabilidade e experiência visual em ambientes de baixa luminosidade. Ganhos em eficiência operacional e melhor experiência em cenários críticos de análise de dados.</p>
+            <p><strong>Maior eficiência operacional —</strong> usuários passaram a acessar KPIs essenciais mais rapidamente, reduzindo o tempo gasto em tarefas de supervisão. <strong>Adesão dos usuários —</strong> a experiência otimizada em desktop e mobile elevou a satisfação, com elogios à simplicidade do design mesmo diante de informação complexa. <strong>Navegação fluida —</strong> a organização modular permitiu foco no que era crítico, com detalhes acessados conforme necessário — aumentando a confiança dos operadores para decidir rápido e com informação.</p>
           </div>
+
+          <p class="case-bridge">
+            Os achados deste inspect viraram a especificação do redesenho —
+            <a href="#case-redesenho">continua na Parte 2</a>
+          </p>
         </div>
       </div>
     </article>
 
+
+    <!-- PROJECT 03 — PAINEL DE MINERAÇÃO (REDESENHO) -->
+    <article class="project" id="case-redesenho">
+      <div class="project-meta">
+        <div class="pnum">03<span>/04</span></div>
+        <div>
+          <p class="pclient">Startup de inteligência artificial (confidencial) · Parte 2 — redesenho</p>
+          <h2 class="ptitle">Ler a planta em um <span class="serif-it">relance</span>.</h2>
+        </div>
+        <div></div>
+      </div>
+
+      <div class="case-deck">
+        <div class="case-deck-frame">
+          <iframe src="assets/case-study/painel-mineracao.html"
+                  title="Estudo de caso completo — Painel de Mineração · 26 slides"
+                  loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="case-deck-bar">
+          <span><b>26 slides</b> · clique dentro do quadro e use as setas ← → para navegar</span>
+          <a href="assets/case-study/painel-mineracao.html" target="_blank" rel="noopener">Abrir o deck em tela cheia</a>
+        </div>
+      </div>
+
+      <div class="pbody">
+        <div class="pcol-side">
+          <h4>O caso</h4>
+          <p class="label">Um modelo de<br>navegação,<br>quatro tarefas</p>
+        </div>
+        <div>
+          <p class="pdesc" style="margin-top:0">
+<span class="case-from">Continuação do case anterior</span>
+            Auditei uma tela de login e um painel de operação de usina. Depois construí o sistema de interface que faltava. Cada achado da Parte 1 virou decisão de projeto, e quatro telas novas passaram a atender quatro perguntas — <strong>onde está o problema</strong> (Circuits), <strong>o que mudar</strong> (Parameters), <strong>o que aconteceu</strong> (History) e <strong>o que reportar</strong> (Reports).
+          </p>
+          <div class="case-stats">
+            <div><b>13</b><span>Achados</span></div>
+            <div><b>3</b><span>Temas</span></div>
+            <div><b>9</b><span>Telas</span></div>
+            <div><b>26</b><span>Slides no deck</span></div>
+          </div>
+          <div class="ptags">
+            <span class="ptag solid">UI Design</span>
+            <span class="ptag">Design System</span>
+            <span class="ptag">Data Viz</span>
+            <span class="ptag">Multi-tema</span>
+            <span class="ptag">Responsivo</span>
+            <span class="ptag">Acessibilidade</span>
+          </div>
+
+          <h3 style="margin-top:2.5rem">Decisões de design</h3>
+          <ul>
+            <li>
+              <strong>A planta como fluxo, não como lista</strong>
+              <span>O material anda da esquerda para a direita na tela como anda na planta. O operador lê a linha inteira e enxerga onde o problema está antes de ler qualquer número.</span>
+            </li>
+            <li>
+              <strong>Status nunca só por cor</strong>
+              <span>Cada estado carrega ícone e rótulo — "▲ AT LIMIT", "✓ IN RANGE" — corrigindo a falha de acessibilidade em que a cor era o único indicador.</span>
+            </li>
+            <li>
+              <strong>A IA precisa mostrar o raciocínio</strong>
+              <span>Toda sugestão de setpoint vem acompanhada da justificativa e das entradas do modelo. O operador aprova sabendo por quê — e pode manter no manual.</span>
+            </li>
+            <li>
+              <strong>Provar o valor com o próprio dado</strong>
+              <span>A tela de histórico compara IA ligada e desligada lado a lado, com os eventos que explicam a diferença. Argumento de adoção construído na interface.</span>
+            </li>
+            <li>
+              <strong>Três temas, um sistema de tokens</strong>
+              <span>Light para escritório, <em>sunlight</em> de alto contraste para tablet em campo sob sol, e dark para o videowall da sala de controle no turno da noite.</span>
+            </li>
+          </ul>
+
+          <p class="quote">"Uma tela para cada pergunta que o operador faz."</p>
+
+          <h3 style="margin-top:1.5rem">Do inspect ao redesenho</h3>
+          <p>O redesenho respondeu ponto a ponto à auditoria da interface anterior: ordem dos campos de login corrigida, contraste elevado nos textos secundários, estados de erro, carregamento e vazio especificados, eixos de gráfico legíveis, e a ação destrutiva de desligar a IA passou a exigir confirmação — além de ficar registrada no histórico com autor e duração.</p>
+
+          <div class="results-card purple">
+            <h4>Resultado</h4>
+            <p>Um sistema coerente no lugar de telas avulsas: mesmos tokens, mesma navegação e mesmo comutador de tema nas quatro telas, em desktop, tablet e mobile. O painel deixou de apenas exibir dados e passou a <strong>sustentar a decisão do operador</strong> — mostrando o raciocínio da IA, o custo de desligá-la e o caminho de volta à faixa.</p>
+          </div>
+        </div>
+      </div>
+    </article>
     <article class="project">
       <div class="project-meta">
-        <div class="pnum">03<span>/03</span></div>
+        <div class="pnum">04<span>/04</span></div>
         <div>
           <p class="pclient">Open Flow Labs · 2020—2021</p>
           <h2 class="ptitle">Design para a <span class="serif-it">aquisição</span> de ativos.</h2>
@@ -603,7 +771,7 @@
         <div class="when">2021 — 2023</div>
         <div>
           <h3>UX/UI Designer</h3>
-          <p class="role">Brainiall Inc.</p>
+          <p class="role">Startup de inteligência artificial (confidencial)</p>
           <p>Projeto: Dashboard de Monitoramento Operacional. Clareza hierárquica para exibição de KPIs críticos com feedback em tempo real. Simplifiquei a visualização através de design modular, mantendo a experiência fluida e intuitiva. Desenvolvi protótipos interativos validados por stakeholders e usuários finais.</p>
         </div>
         <div class="arrow">↗</div>
@@ -735,6 +903,7 @@
       io.observe(el);
     });
   }
+
 </script>
 </body>
 </html>
