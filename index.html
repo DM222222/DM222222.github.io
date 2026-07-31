@@ -161,19 +161,131 @@
   .case-from{display:inline-flex;align-items:center;gap:.45rem;font-family:'Inter Tight',sans-serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lime-deep);background:var(--lime-soft);border-radius:99px;padding:.3rem .8rem;margin-bottom:1rem;font-weight:500}
   .case-from::before{content:"↑";font-size:.9em}
 
-  /* ===== Deck do estudo de caso (26 slides) ===== */
+  /* ===== Deck do estudo de caso ===== */
   .case-deck{margin:0 0 2.5rem}
-  .case-deck-frame{position:relative;width:100%;aspect-ratio:16/10;border:1px solid var(--line);border-radius:clamp(12px,2vw,24px);overflow:hidden;background:var(--paper);box-shadow:0 18px 50px -32px rgba(26,20,38,.35)}
+  .case-deck-frame{
+    position:relative;width:100%;
+    height:clamp(520px, 78vh, 860px);
+    border:1px solid var(--line);border-radius:clamp(12px,2vw,24px);
+    overflow:hidden;background:#14161a;
+    box-shadow:0 18px 50px -32px rgba(26,20,38,.4);
+  }
   .case-deck-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
-  .case-deck-bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.9rem;font-size:.85rem;color:var(--muted)}
+
+  /* Cartaz antes de carregar */
+  .deck-poster{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
+    padding:clamp(1.5rem,4vw,3rem);cursor:pointer;border:0;width:100%;text-align:left;
+    background:#14161a;color:#F4F1EA;font-family:inherit;overflow:hidden}
+  .deck-poster::before{content:"";position:absolute;top:-25%;right:-8%;width:55%;height:150%;
+    background:radial-gradient(ellipse at center,rgba(105,69,141,.5) 0%,transparent 65%);pointer-events:none}
+  .deck-poster::after{content:"";position:absolute;bottom:-35%;left:-5%;width:45%;height:120%;
+    background:radial-gradient(ellipse at center,rgba(198,222,100,.12) 0%,transparent 65%);pointer-events:none}
+  .deck-poster > *{position:relative;z-index:1}
+  .deck-poster .pk{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.5);font-weight:500}
+  .deck-poster .pt{font-size:clamp(1.8rem,4.2vw,3.4rem);font-weight:700;letter-spacing:-.04em;line-height:1.02;max-width:16ch;margin:auto 0}
+  .deck-poster .pt em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--lime)}
+  .deck-poster .pb{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+  .deck-poster .pm{font-size:.85rem;color:rgba(244,241,234,.6)}
+  .deck-poster .pm b{color:#F4F1EA;font-weight:600}
+  .deck-poster .go{display:inline-flex;align-items:center;gap:.7rem;background:var(--lime);color:#14161a;
+    border-radius:99px;padding:.75rem 1.5rem;font-weight:600;font-size:.92rem;transition:all .25s ease;white-space:nowrap}
+  .deck-poster:hover .go{transform:translateX(4px);background:#fff}
+  .deck-poster .go::after{content:"▸";font-size:1.1em}
+
+  .case-deck-bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
+    margin-top:.9rem;font-size:.85rem;color:var(--muted)}
   .case-deck-bar b{color:var(--ink);font-weight:600}
-  .case-deck-bar a{display:inline-flex;align-items:center;gap:.45rem;color:var(--accent);font-weight:500;border:1px solid var(--accent);border-radius:99px;padding:.5rem 1.15rem;transition:all .2s ease;white-space:nowrap}
+  .case-deck-bar a{display:inline-flex;align-items:center;gap:.45rem;color:var(--accent);font-weight:500;
+    border:1px solid var(--accent);border-radius:99px;padding:.5rem 1.15rem;transition:all .2s ease;white-space:nowrap}
   .case-deck-bar a:hover{background:var(--accent);color:var(--lime)}
   .case-deck-bar a::after{content:"↗"}
-  @media (max-width:760px){
-    .case-deck-frame{display:none}
-    .case-deck-bar{flex-direction:column;align-items:flex-start;gap:.9rem;margin-top:0;padding:1.5rem;border:1px solid var(--line);border-radius:18px;background:var(--paper)}
+
+  /* Telas estreitas: o deck nao tem media queries, entao so tela cheia */
+  @media (max-width:820px){
+    .case-deck-frame{height:auto;aspect-ratio:4/3}
+    .deck-poster{cursor:default}
+    .deck-poster .go{display:none}
+    .deck-poster .pb{flex-direction:column;align-items:flex-start;gap:.9rem}
+    .deck-poster .mob{display:inline-flex !important}
   }
+  .deck-poster .mob{display:none;align-items:center;gap:.6rem;background:var(--lime);color:#14161a;
+    border-radius:99px;padding:.7rem 1.35rem;font-weight:600;font-size:.9rem;white-space:nowrap}
+  .deck-poster .mob::after{content:"↗"}
+
+  /* ===== Case Chronus — capa-torre e diagramas nativos ===== */
+  .tower{background:var(--bg-deep);border-radius:clamp(14px,2vw,26px);padding:clamp(1.5rem,4vw,3.5rem);position:relative;overflow:hidden;margin:0 0 1.4rem}
+  .tower::before{content:"";position:absolute;top:-30%;right:-10%;width:60%;height:160%;background:radial-gradient(ellipse at center,rgba(105,69,141,.55) 0%,transparent 65%);pointer-events:none}
+  .tower::after{content:"";position:absolute;bottom:-40%;left:-5%;width:45%;height:120%;background:radial-gradient(ellipse at center,rgba(198,222,100,.14) 0%,transparent 65%);pointer-events:none}
+  .tower-in{position:relative;z-index:1}
+  .tower-top{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;flex-wrap:wrap;margin-bottom:clamp(1.5rem,3vw,2.5rem);padding-bottom:1rem;border-bottom:1px solid var(--line-dark)}
+  .tower-top h3{color:#F4F1EA;font-size:clamp(1.1rem,1.7vw,1.5rem);letter-spacing:-.025em}
+  .tower-top h3 em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--lime);font-weight:400}
+  .tower-top .k{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.45);font-weight:500}
+  .tier{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(1rem,2.5vw,2.2rem);align-items:center;padding:clamp(1.1rem,2.2vw,1.7rem) clamp(1rem,2.5vw,2rem);border-radius:12px;margin-bottom:.7rem;position:relative;transition:transform .3s ease}
+  .tier:last-of-type{margin-bottom:0}
+  .tier:hover{transform:translateX(6px)}
+  .tier-1{background:linear-gradient(100deg,rgba(198,222,100,.16),rgba(198,222,100,.05));border:1px solid rgba(198,222,100,.4);margin-right:0}
+  .tier-2{background:linear-gradient(100deg,rgba(157,133,181,.2),rgba(157,133,181,.05));border:1px solid rgba(157,133,181,.4);margin-right:clamp(0px,4vw,64px)}
+  .tier-3{background:linear-gradient(100deg,rgba(105,69,141,.32),rgba(105,69,141,.08));border:1px solid rgba(105,69,141,.55);margin-right:clamp(0px,8vw,128px)}
+  .tier .lvl{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;white-space:nowrap}
+  .tier-1 .lvl{color:var(--lime)}
+  .tier-2 .lvl{color:var(--bg-purple-soft)}
+  .tier-3 .lvl{color:#C4AEDC}
+  .tier .who{color:#F4F1EA;font-size:clamp(1rem,1.5vw,1.25rem);font-weight:500;letter-spacing:-.015em;margin-bottom:.25rem}
+  .tier .what{color:rgba(244,241,234,.6);font-size:.85rem;line-height:1.5}
+  .tier .cnt{text-align:right;white-space:nowrap}
+  .tier .cnt b{display:block;font-size:clamp(1.5rem,2.4vw,2.1rem);font-weight:600;letter-spacing:-.03em;color:#F4F1EA;line-height:1}
+  .tier .cnt span{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,241,234,.45);font-weight:500}
+  .tower-foot{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-top:clamp(1.5rem,3vw,2.2rem);padding-top:1.1rem;border-top:1px solid var(--line-dark);font-size:.8rem;color:rgba(244,241,234,.55)}
+  .tower-foot b{color:var(--lime);font-weight:600}
+  @media (max-width:700px){
+    .tier{grid-template-columns:1fr auto;gap:.8rem}
+    .tier .lvl{grid-column:1/-1}
+    .tier-2,.tier-3{margin-right:0}
+  }
+
+  /* Jornada em fases */
+  .jrn{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:1.5rem 0 .8rem}
+  .jrn-p{border:1px solid var(--line);border-radius:12px;padding:1rem;background:var(--paper);position:relative}
+  .jrn-p.gap{border-color:var(--accent);background:linear-gradient(180deg,rgba(105,69,141,.07),var(--paper))}
+  .jrn-p .ph{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:.5rem}
+  .jrn-p.gap .ph{color:var(--accent)}
+  .jrn-p .nm{font-size:1rem;font-weight:600;letter-spacing:-.015em;margin-bottom:.5rem}
+  .jrn-p ul{list-style:none;margin:0;padding:0}
+  .jrn-p li{font-size:.8rem;color:var(--ink-2);padding:.28rem 0 .28rem .85rem;position:relative;line-height:1.45;border:0}
+  .jrn-p li::before{content:"";position:absolute;left:0;top:.62rem;width:4px;height:4px;border-radius:50%;background:var(--line)}
+  .jrn-p.gap li::before{background:var(--accent)}
+  .jrn-lg{display:flex;gap:1.4rem;flex-wrap:wrap;font-size:.76rem;color:var(--muted);margin-bottom:1.5rem}
+  .jrn-lg i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:.4rem;vertical-align:-1px}
+  @media (max-width:820px){.jrn{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.jrn{grid-template-columns:1fr}}
+
+  /* Escada de KPIs */
+  .kpi-lad{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:1.5rem 0}
+  .kpi-row{display:grid;grid-template-columns:170px 1fr 54px;gap:1.2rem;align-items:start;padding:1rem 1.2rem;border-bottom:1px solid var(--line);background:var(--paper)}
+  .kpi-row:last-child{border-bottom:0}
+  .kpi-row.hd{background:var(--bg-soft);padding-top:.6rem;padding-bottom:.6rem}
+  .kpi-row.hd span{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .kpi-who{font-weight:600;font-size:.92rem;letter-spacing:-.01em;display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+  .kpi-who i{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;font-style:normal;border-radius:4px;padding:.14rem .4rem}
+  .kpi-who i.e{background:var(--lime-soft);color:var(--lime-deep)}
+  .kpi-who i.t{background:rgba(157,133,181,.22);color:var(--accent)}
+  .kpi-who i.o{background:rgba(105,69,141,.14);color:var(--accent)}
+  .kpi-list{display:flex;flex-wrap:wrap;gap:.35rem}
+  .kpi-list span{font-size:.76rem;color:var(--ink-2);border:1px solid var(--line);border-radius:99px;padding:.2rem .6rem;background:var(--bg)}
+  .kpi-n{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;font-size:1.05rem;color:var(--accent)}
+  @media (max-width:760px){
+    .kpi-row{grid-template-columns:1fr auto;gap:.6rem}
+    .kpi-list{grid-column:1/-1}
+    .kpi-row.hd{display:none}
+  }
+
+  /* Artefatos do processo */
+  .arte{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.2rem}
+  .arte figure{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:.5rem;aspect-ratio:16/10}
+  .arte img{width:100%;height:100%;object-fit:cover;object-position:top left;border-radius:5px}
+  .arte figcaption{font-size:.72rem;color:var(--muted);padding:.5rem .2rem 0;letter-spacing:.02em}
+  @media (max-width:620px){.arte{grid-template-columns:1fr}}
 
   /* Project 01 — Torre */
   .p1-hero{aspect-ratio:16/9;border-radius:clamp(12px,2vw,24px);margin:0 0 1.4rem 0}
@@ -406,11 +518,45 @@
         <div></div>
       </div>
 
-      <figure class="p1-hero"><img src="assets/projects/torre-tela.jpg" alt="Dashboard principal — Torre de Controle" loading="lazy"></figure>
+      <div class="tower">
+        <div class="tower-in">
+          <div class="tower-top">
+            <h3>Uma torre tem andares. <em>A informação também.</em></h3>
+            <span class="k">Arquitetura da informação · modelo SCOR</span>
+          </div>
 
-      <div class="p1-grid">
-        <figure class="contain"><img src="assets/projects/torre-kpis.png" alt="Mapeamento de KPIs da jornada comercial end-to-end" loading="lazy"></figure>
-        <figure class="contain"><img src="assets/projects/torre-niveis.png" alt="Refinamento de informação em três níveis: estratégico, tático e operacional" loading="lazy"></figure>
+          <div class="tier tier-1">
+            <span class="lvl">Estratégico</span>
+            <div>
+              <div class="who">C-Level</div>
+              <div class="what">A saúde do negócio — receita, sazonalidade, distribuição de clientes, score de carteira.</div>
+            </div>
+            <div class="cnt"><b>06</b><span>KPIs</span></div>
+          </div>
+
+          <div class="tier tier-2">
+            <span class="lvl">Tático</span>
+            <div>
+              <div class="who">Diretoria</div>
+              <div class="what">O controle da execução — time-to-cash, previsão de recebimento, ocupação, divergência, NPS.</div>
+            </div>
+            <div class="cnt"><b>06</b><span>KPIs</span></div>
+          </div>
+
+          <div class="tier tier-3">
+            <span class="lvl">Operacional</span>
+            <div>
+              <div class="who">Gerências de Venda, Operação e Financeiro</div>
+              <div class="what">O dia a dia que move o número — funil, taxa de ocupação, SLA, custo por CD, inadimplência.</div>
+            </div>
+            <div class="cnt"><b>11</b><span>KPIs</span></div>
+          </div>
+
+          <div class="tower-foot">
+            <span><b>23 indicadores</b> mapeados e distribuídos por quem decide com eles</span>
+            <span>Cada andar responde a uma pergunta diferente</span>
+          </div>
+        </div>
       </div>
 
       <div class="pbody">
@@ -456,6 +602,66 @@
             </li>
           </ul>
 
+          <h3 style="margin-top:2.5rem">A jornada e as lacunas</h3>
+          <p>Mapeei a jornada comercial de ponta a ponta e marquei onde o dado existia, onde chegava tarde e onde simplesmente não era capturado. As lacunas se concentravam na operação — justamente o trecho que mais gera evento.</p>
+          <div class="jrn">
+            <div class="jrn-p">
+              <div class="ph">Fase 01</div>
+              <div class="nm">Pré-Venda</div>
+              <ul><li>Lead e proposta</li><li>Perfil de cliente</li><li>Dado comercial disponível</li></ul>
+            </div>
+            <div class="jrn-p">
+              <div class="ph">Fase 02</div>
+              <div class="nm">Onboarding</div>
+              <ul><li>Contrato e cadastro</li><li>Setup operacional</li><li>Dado contratual incompleto</li></ul>
+            </div>
+            <div class="jrn-p gap">
+              <div class="ph">Fase 03 · lacuna crítica</div>
+              <div class="nm">Operação</div>
+              <ul><li>Movimentação e ocupação</li><li>Sem fluxo de consumo do dado</li><li>Previsibilidade comprometida</li></ul>
+            </div>
+            <div class="jrn-p">
+              <div class="ph">Fase 04</div>
+              <div class="nm">Pós-Venda</div>
+              <ul><li>Faturamento e recebimento</li><li>Satisfação e renovação</li><li>Leitura retroativa</li></ul>
+            </div>
+          </div>
+          <div class="jrn-lg">
+            <span><i style="background:var(--line)"></i>Dado disponível</span>
+            <span><i style="background:var(--accent)"></i>Lacuna que gerava decisão "no feeling"</span>
+          </div>
+
+          <h3 style="margin-top:2.5rem">Quem decide com o quê</h3>
+          <p>Depois das entrevistas, refinei os indicadores e amarrei cada um ao nível de decisão e à pessoa que o usa. Foi essa matriz que virou a arquitetura da informação do produto.</p>
+          <div class="kpi-lad">
+            <div class="kpi-row hd"><span>Persona</span><span>Indicadores</span><span style="text-align:right">Qtd</span></div>
+            <div class="kpi-row">
+              <div class="kpi-who">C-Level <i class="e">Estratégico</i></div>
+              <div class="kpi-list"><span>Score do cliente</span><span>Faturamento global</span><span>Fluxo de caixa</span><span>Sazonalidade</span><span>Faturamento por CD</span><span>Distribuição de clientes</span></div>
+              <div class="kpi-n">6</div>
+            </div>
+            <div class="kpi-row">
+              <div class="kpi-who">Diretoria <i class="t">Tático</i></div>
+              <div class="kpi-list"><span>Time-to-cash</span><span>Previsão de recebimento</span><span>Sazonalidade de ocupação</span><span>% de divergência</span><span>Previsto × realizado</span><span>NPS · CSAT</span></div>
+              <div class="kpi-n">6</div>
+            </div>
+            <div class="kpi-row">
+              <div class="kpi-who">Gerência de Vendas <i class="o">Operacional</i></div>
+              <div class="kpi-list"><span>Funil de vendas</span><span>Segmentação de clientes</span></div>
+              <div class="kpi-n">2</div>
+            </div>
+            <div class="kpi-row">
+              <div class="kpi-who">Gerência de Operação <i class="o">Operacional</i></div>
+              <div class="kpi-list"><span>Cliente pronto para operar</span><span>Taxa de ocupação</span><span>CMC por CD e cliente</span><span>SLA por CD</span><span>TFA por CD e cliente</span></div>
+              <div class="kpi-n">5</div>
+            </div>
+            <div class="kpi-row">
+              <div class="kpi-who">Gerência Financeira e Legal <i class="o">Operacional</i></div>
+              <div class="kpi-list"><span>Contas a pagar e receber</span><span>Valor por contrato</span><span>% de inadimplência</span><span>Custo operacional por CD</span></div>
+              <div class="kpi-n">4</div>
+            </div>
+          </div>
+
           <p class="quote">"Reduzir decisões no feeling e acelerar respostas a desvios."</p>
 
           <div class="results-card purple">
@@ -464,6 +670,19 @@
           </div>
 
           <a href="https://www.figma.com/make/59cVDrp48nDIqQ04fdjJ7v/Torre-de-Controle?p=f&t=qvo7xxWzDcOIVW48-0&fullscreen=1" target="_blank" rel="noopener" class="cta-link">Ver protótipo no Figma</a>
+
+          <h3 style="margin-top:2.5rem">Artefatos do processo</h3>
+          <p>Os boards originais de mapeamento, do jeito que foram construídos durante o projeto.</p>
+          <div class="arte">
+            <figure>
+              <img src="assets/projects/torre-kpis.png" alt="Board de mapeamento da jornada do cliente e variáveis faltantes" loading="lazy">
+              <figcaption>Jornada do cliente e variáveis faltantes</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/projects/torre-niveis.png" alt="Matriz de KPIs por nível de decisão e representação visual" loading="lazy">
+              <figcaption>Matriz de KPIs por nível e representação visual</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </article>
@@ -608,14 +827,21 @@
       </div>
 
       <div class="case-deck">
-        <div class="case-deck-frame">
-          <iframe src="assets/case-study/painel-mineracao.html"
-                  title="Estudo de caso completo — Painel de Mineração · 26 slides"
-                  loading="lazy" allowfullscreen></iframe>
+        <div class="case-deck-frame" id="deckFrame">
+          <button class="deck-poster" id="deckPoster" type="button"
+                  aria-label="Carregar o estudo de caso completo">
+            <span class="pk">Estudo de caso · 26 slides</span>
+            <span class="pt">Ler a planta<br><em>em um relance</em></span>
+            <span class="pb">
+              <span class="pm"><b>13 achados</b> · 3 temas · 9 telas · auditoria e sistema de interface</span>
+              <span class="go">Abrir o estudo aqui</span>
+              <a class="mob" href="assets/case-study/painel-mineracao.html" target="_blank" rel="noopener">Abrir o estudo</a>
+            </span>
+          </button>
         </div>
         <div class="case-deck-bar">
-          <span><b>26 slides</b> · clique dentro do quadro e use as setas ← → para navegar</span>
-          <a href="assets/case-study/painel-mineracao.html" target="_blank" rel="noopener">Abrir o deck em tela cheia</a>
+          <span>Role dentro do quadro para percorrer os <b>26 slides</b></span>
+          <a href="assets/case-study/painel-mineracao.html" target="_blank" rel="noopener">Abrir em tela cheia</a>
         </div>
       </div>
 
@@ -904,6 +1130,22 @@
     });
   }
 
+
+  // Deck do estudo de caso: carrega sob demanda
+  (function(){
+    var poster=document.getElementById('deckPoster'), frame=document.getElementById('deckFrame');
+    if(!poster||!frame) return;
+    poster.addEventListener('click', function(e){
+      if(e.target.closest('a')) return;            // link mobile segue normal
+      if(window.matchMedia('(max-width:820px)').matches) return;
+      var f=document.createElement('iframe');
+      f.src='assets/case-study/painel-mineracao.html';
+      f.title='Estudo de caso — Painel de Mineração · 26 slides';
+      f.setAttribute('allowfullscreen','');
+      frame.appendChild(f);
+      poster.remove();
+    });
+  })();
 </script>
 </body>
 </html>
