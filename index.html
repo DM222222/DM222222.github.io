@@ -9,7 +9,8 @@
 <link rel="icon" type="image/svg+xml" href="assets/logo-dm.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"></noscript>
 <style>
   :root{
     /* Palette derived from logo: deep purple + chartreuse */
@@ -519,6 +520,8 @@
         <div></div>
       </div>
 
+      <figure class="dark p1-hero"><img src="assets/projects/torre-tela.jpg" alt="Torre de Controle — painel estratégico em produção, comparando duas versões de layout" loading="lazy"></figure>
+
       <div class="tower">
         <div class="tower-in">
           <div class="tower-top">
@@ -693,6 +696,11 @@
           <h2 class="ptitle">Ler a planta em um <span class="serif-it">relance</span>.</h2>
         </div>
         <div></div>
+      </div>
+
+      <div class="p2-row1">
+        <figure class="dark p2-hero"><img src="assets/projects/dashboard-ipad.jpg" alt="Redesenho do painel — versão tablet, tema escuro para sala de controle" loading="lazy"></figure>
+        <figure class="dark p2-side"><img src="assets/projects/dashboard-iphone-2.jpg" alt="Redesenho do painel — versão mobile, tema claro para uso em campo" loading="lazy"></figure>
       </div>
 
       <div class="case-deck">
@@ -1117,7 +1125,7 @@
       io.observe(el);
     });
     // Rede de segurança: se algo não for revelado, mostra assim mesmo.
-    setTimeout(function () { revealed.forEach(show); }, 4000);
+    setTimeout(function () { revealed.forEach(show); }, 1500);
   }
 
 
