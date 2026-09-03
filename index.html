@@ -157,6 +157,7 @@
   .case-bridge{margin-top:1.6rem;padding-top:1.2rem;border-top:1px dashed var(--line);font-family:'Instrument Serif',serif;font-style:italic;font-size:1.15rem;color:var(--ink-2);line-height:1.4}
   .case-bridge a{color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:1px;font-style:normal;font-family:'Inter Tight',sans-serif;font-size:.9rem;font-weight:500;white-space:nowrap;margin-left:.3rem}
   .case-bridge a::after{content:" ↓"}
+  .case-bridge a.up::after{content:" ↑"}
   .case-bridge a:hover{color:var(--ink)}
   .case-from{display:inline-flex;align-items:center;gap:.45rem;font-family:'Inter Tight',sans-serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lime-deep);background:var(--lime-soft);border-radius:99px;padding:.3rem .8rem;margin-bottom:1rem;font-weight:500}
   .case-from::before{content:"↑";font-size:.9em}
@@ -507,212 +508,10 @@
       <span class="index">(02) <strong>Projetos</strong> · Quatro cases</span>
     </div>
 
-    <!-- PROJECT 02 — DASHBOARD BRAINIALL -->
-    <article class="project">
-      <div class="project-meta">
-        <div class="pnum">01<span>/04</span></div>
-        <div>
-          <p class="pclient">Startup de inteligência artificial (confidencial) · 2021—2023 · Parte 1</p>
-          <h2 class="ptitle">Inspect da interface <span class="serif-it">legada</span>.</h2>
-        </div>
-        <div></div>
-      </div>
-
-      <figure class="contain" style="margin-bottom:1.4rem"><img src="assets/projects/dashboard-discovery.jpg" alt="Inspect e discovery da interface legada — pontos de melhoria mapeados" loading="lazy"></figure>
-
-      <div class="pbody">
-        <div class="pcol-side">
-          <h4>O caso</h4>
-          <p class="label">Pequenos pontos,<br>grande impacto</p>
-        </div>
-        <div>
-          <p class="pdesc" style="margin-top:0">
-            A empresa desenvolvia algo ambicioso: inteligência artificial atuando sobre maquinário industrial na camada de automação — SCADA e PLC. Este painel de monitoramento em tempo real, na <strong>indústria de mineração</strong>, era o ponto de contato mais importante entre o cliente e essa tecnologia — onde, ao vivo, se via o que a planta e a IA estavam fazendo. Desenvolvido <strong>desktop first</strong>, priorizando a clareza na apresentação de informações complexas, e depois adaptado para tablet e mobile. O escopo incluiu autenticação (SSO/Login), interface responsiva e uma versão <strong>light mode</strong> para uso em campo — tablet sob luz solar direta e videowall de sala de controle.
-          </p>
-          <div class="ptags">
-            <span class="ptag solid">UX/UI Designer</span>
-            <span class="ptag">Desktop First</span>
-            <span class="ptag">Light &amp; Dark Mode</span>
-            <span class="ptag">Responsivo</span>
-            <span class="ptag">SSO / Login</span>
-            <span class="ptag">Prototype</span>
-            <span class="ptag">UI Components</span>
-          </div>
-
-          <h3 style="margin-top:2.5rem">Responsabilidades</h3>
-          <ul>
-            <li>
-              <strong>Inspect &amp; Discovery</strong>
-              <span>Auditoria da interface existente: usabilidade e leitura de dados.</span>
-            </li>
-            <li>
-              <strong>SSO / Login</strong>
-              <span>Autenticação clara, com recuperação de senha acessível.</span>
-            </li>
-            <li>
-              <strong>UI desktop first, depois mobile</strong>
-              <span>KPIs em tempo real sem sobrecarga cognitiva; adaptação por toque sem perder função.</span>
-            </li>
-          </ul>
-
-          <h3 style="margin-top:2.5rem">Desafios</h3>
-          <ul>
-            <li>
-              <strong>Dados em tempo real</strong>
-              <span>Interface estável sob atualização contínua.</span>
-            </li>
-            <li>
-              <strong>Muitos KPIs, pouca sobrecarga</strong>
-              <span>Volume alto de indicadores, leitura simples.</span>
-            </li>
-            <li>
-              <strong>Base densa</strong>
-              <span>Navegação e agrupamento definidos pela complexidade dos dados.</span>
-            </li>
-          </ul>
-
-          <h3 style="margin-top:2.5rem">Auditoria de interface</h3>
-          <p>Usuário-alvo: <strong>operador de sala de controle</strong>, turno longo. Achados principais:</p>
-          <ul>
-            <li>
-              <strong>Login</strong>
-              <span>Senha antes de e-mail, quebrando o preenchimento automático.</span>
-            </li>
-            <li>
-              <strong>Contraste insuficiente</strong>
-              <span>Crítico para leitura em tablet sob sol direto.</span>
-            </li>
-            <li>
-              <strong>Status só por cor</strong>
-              <span>Falha de acessibilidade para daltonismo.</span>
-            </li>
-            <li>
-              <strong>Sem estados de erro, carregamento ou vazio</strong>
-              <span>Operador sem saber se o dado é atual ou travou.</span>
-            </li>
-            <li>
-              <strong>"TURN OFF AI" sem confirmação</strong>
-              <span>Risco operacional alto para um clique acidental.</span>
-            </li>
-          </ul>
-
-          <p class="quote">"Grande volume de dados, sem sobrecarga visual."</p>
-
-          <h3 style="margin-top:1.5rem">Soluções</h3>
-          <p><strong>Hierarquia clara —</strong> grid e cards modulares; críticos visíveis, secundários sob demanda.</p>
-          <p><strong>Feedback em tempo real —</strong> indicadores sutis sinalizam a atualização contínua.</p>
-          <p><strong>Responsivo —</strong> toque amplo, sem zoom; gráficos em blocos empilháveis.</p>
-          <p><strong>Light mode —</strong> contraste e tipografia ajustados para uso em campo.</p>
-
-          <div class="results-card purple">
-            <h4>Aprendizado-chave</h4>
-            <p>Pensar no <strong>mínimo utilizável</strong>: cada elemento funcional, acessível e relevante — complexidade de dado equilibrada com simplicidade de design.</p>
-          </div>
-
-          <div class="results-card">
-            <h4>Impacto</h4>
-            <p>KPIs mais rápidos de encontrar, navegação sem sobrecarga visual, e uma base mais confiável para o operador decidir em campo.</p>
-          </div>
-
-          <p class="case-bridge">
-            Os achados deste inspect viraram a especificação do redesenho —
-            <a href="#case-redesenho">continua na Parte 2</a>
-          </p>
-        </div>
-      </div>
-    </article>
-
-    <!-- PROJECT 03 — PAINEL DE MINERAÇÃO (REDESENHO) -->
-    <article class="project" id="case-redesenho">
-      <div class="project-meta">
-        <div class="pnum">02<span>/04</span></div>
-        <div>
-          <p class="pclient">Startup de inteligência artificial (confidencial) · Parte 2 — redesenho</p>
-          <h2 class="ptitle">Ler a planta em um <span class="serif-it">relance</span>.</h2>
-        </div>
-        <div></div>
-      </div>
-
-      <div class="case-deck">
-        <div class="case-deck-frame" id="deckFrame">
-          <button class="deck-poster" id="deckPoster" type="button"
-                  aria-label="Carregar o estudo de caso completo">
-            <span class="pk">Estudo de caso completo</span>
-            <span class="pt">Ler a planta<br><em>em um relance</em></span>
-            <span class="pb">
-              <span class="pm">Auditoria e sistema de interface, do inspect ao redesenho</span>
-              <span class="go">Abrir o estudo aqui</span>
-              <a class="mob" href="assets/case-study/painel-mineracao.html" target="_blank" rel="noopener">Abrir o estudo</a>
-            </span>
-          </button>
-        </div>
-        <div class="case-deck-bar">
-          <span>Role dentro do quadro para o estudo completo</span>
-          <a href="assets/case-study/painel-mineracao.html" target="_blank" rel="noopener">Abrir em tela cheia</a>
-        </div>
-      </div>
-
-      <div class="pbody">
-        <div class="pcol-side">
-          <h4>O caso</h4>
-          <p class="label">Um modelo de<br>navegação,<br>quatro tarefas</p>
-        </div>
-        <div>
-          <p class="pdesc" style="margin-top:0">
-<span class="case-from">Continuação do case anterior</span>
-            Auditei uma tela de login e um painel de operação de usina. Depois construí o sistema de interface que faltava. Cada achado da Parte 1 virou decisão de projeto, e quatro telas novas passaram a atender quatro perguntas — <strong>onde está o problema</strong> (Circuits), <strong>o que mudar</strong> (Parameters), <strong>o que aconteceu</strong> (History) e <strong>o que reportar</strong> (Reports).
-          </p>
-          <div class="ptags">
-            <span class="ptag solid">UI Design</span>
-            <span class="ptag">Design System</span>
-            <span class="ptag">Data Viz</span>
-            <span class="ptag">Multi-tema</span>
-            <span class="ptag">Responsivo</span>
-            <span class="ptag">Acessibilidade</span>
-          </div>
-
-          <h3 style="margin-top:2.5rem">Decisões de design</h3>
-          <ul>
-            <li>
-              <strong>A planta como fluxo</strong>
-              <span>A tela segue a ordem física da planta, da esquerda para a direita.</span>
-            </li>
-            <li>
-              <strong>Status nunca só por cor</strong>
-              <span>Ícone e rótulo em cada estado — "▲ AT LIMIT", "✓ IN RANGE".</span>
-            </li>
-            <li>
-              <strong>A IA mostra o raciocínio</strong>
-              <span>Toda sugestão vem com a justificativa e os dados de entrada.</span>
-            </li>
-            <li>
-              <strong>Prova pelo próprio dado</strong>
-              <span>Histórico compara IA ligada e desligada, lado a lado.</span>
-            </li>
-            <li>
-              <strong>Três temas, um sistema de tokens</strong>
-              <span>Light para escritório, <em>sunlight</em> de campo, dark para o videowall.</span>
-            </li>
-          </ul>
-
-          <p class="quote">"Uma tela para cada pergunta que o operador faz."</p>
-
-          <h3 style="margin-top:1.5rem">Do inspect ao redesenho</h3>
-          <p>O redesenho respondeu ponto a ponto à auditoria: login corrigido, contraste elevado, estados especificados, gráficos legíveis, e a ação de desligar a IA passou a exigir confirmação.</p>
-
-          <div class="results-card purple">
-            <h4>Resultado</h4>
-            <p>Um sistema coerente: mesmos tokens, navegação e comutador de tema nas quatro telas. O painel deixou de exibir dado e passou a <strong>sustentar a decisão do operador</strong>.</p>
-          </div>
-        </div>
-      </div>
-    </article>
-
-
     <!-- PROJECT 01 — TORRE -->
     <article class="project">
       <div class="project-meta">
-        <div class="pnum">03<span>/04</span></div>
+        <div class="pnum">01<span>/04</span></div>
         <div>
           <p class="pclient">Chronus Performance AI · 2024—2025</p>
           <h2 class="ptitle">Torre de Controle<span class="serif-it">,</span> dados e <span class="serif-it">IA</span> na logística.</h2>
@@ -881,6 +680,207 @@
               <figcaption>Matriz de KPIs por nível e representação visual</figcaption>
             </figure>
           </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 03 — PAINEL DE MINERAÇÃO (REDESENHO) -->
+    <article class="project" id="case-redesenho">
+      <div class="project-meta">
+        <div class="pnum">02<span>/04</span></div>
+        <div>
+          <p class="pclient">Startup de inteligência artificial (confidencial) · Parte 2 — redesenho</p>
+          <h2 class="ptitle">Ler a planta em um <span class="serif-it">relance</span>.</h2>
+        </div>
+        <div></div>
+      </div>
+
+      <div class="case-deck">
+        <div class="case-deck-frame" id="deckFrame">
+          <button class="deck-poster" id="deckPoster" type="button"
+                  aria-label="Carregar o estudo de caso completo">
+            <span class="pk">Estudo de caso completo</span>
+            <span class="pt">Ler a planta<br><em>em um relance</em></span>
+            <span class="pb">
+              <span class="pm">Auditoria e sistema de interface, do inspect ao redesenho</span>
+              <span class="go">Abrir o estudo aqui</span>
+              <a class="mob" href="assets/case-study/painel-mineracao.html" target="_blank" rel="noopener">Abrir o estudo</a>
+            </span>
+          </button>
+        </div>
+        <div class="case-deck-bar">
+          <span>Role dentro do quadro para o estudo completo</span>
+          <a href="assets/case-study/painel-mineracao.html" target="_blank" rel="noopener">Abrir em tela cheia</a>
+        </div>
+      </div>
+
+      <div class="pbody">
+        <div class="pcol-side">
+          <h4>O caso</h4>
+          <p class="label">Um modelo de<br>navegação,<br>quatro tarefas</p>
+        </div>
+        <div>
+          <p class="pdesc" style="margin-top:0">
+            Auditei uma tela de login e um painel de operação de usina. Depois construí o sistema de interface que faltava. Cada achado da auditoria virou decisão de projeto, e quatro telas novas passaram a atender quatro perguntas — <strong>onde está o problema</strong> (Circuits), <strong>o que mudar</strong> (Parameters), <strong>o que aconteceu</strong> (History) e <strong>o que reportar</strong> (Reports).
+          </p>
+          <div class="ptags">
+            <span class="ptag solid">UI Design</span>
+            <span class="ptag">Design System</span>
+            <span class="ptag">Data Viz</span>
+            <span class="ptag">Multi-tema</span>
+            <span class="ptag">Responsivo</span>
+            <span class="ptag">Acessibilidade</span>
+          </div>
+
+          <h3 style="margin-top:2.5rem">Decisões de design</h3>
+          <ul>
+            <li>
+              <strong>A planta como fluxo</strong>
+              <span>A tela segue a ordem física da planta, da esquerda para a direita.</span>
+            </li>
+            <li>
+              <strong>Status nunca só por cor</strong>
+              <span>Ícone e rótulo em cada estado — "▲ AT LIMIT", "✓ IN RANGE".</span>
+            </li>
+            <li>
+              <strong>A IA mostra o raciocínio</strong>
+              <span>Toda sugestão vem com a justificativa e os dados de entrada.</span>
+            </li>
+            <li>
+              <strong>Prova pelo próprio dado</strong>
+              <span>Histórico compara IA ligada e desligada, lado a lado.</span>
+            </li>
+            <li>
+              <strong>Três temas, um sistema de tokens</strong>
+              <span>Light para escritório, <em>sunlight</em> de campo, dark para o videowall.</span>
+            </li>
+          </ul>
+
+          <p class="quote">"Uma tela para cada pergunta que o operador faz."</p>
+
+          <h3 style="margin-top:1.5rem">Do inspect ao redesenho</h3>
+          <p>O redesenho respondeu ponto a ponto à auditoria: login corrigido, contraste elevado, estados especificados, gráficos legíveis, e a ação de desligar a IA passou a exigir confirmação.</p>
+
+          <div class="results-card purple">
+            <h4>Resultado</h4>
+            <p>Um sistema coerente: mesmos tokens, navegação e comutador de tema nas quatro telas. O painel deixou de exibir dado e passou a <strong>sustentar a decisão do operador</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- PROJECT 02 — DASHBOARD BRAINIALL -->
+    <article class="project">
+      <div class="project-meta">
+        <div class="pnum">03<span>/04</span></div>
+        <div>
+          <p class="pclient">Startup de inteligência artificial (confidencial) · 2021—2023 · Parte 1</p>
+          <h2 class="ptitle">Inspect da interface <span class="serif-it">legada</span>.</h2>
+        </div>
+        <div></div>
+      </div>
+
+      <figure class="contain" style="margin-bottom:1.4rem"><img src="assets/projects/dashboard-discovery.jpg" alt="Inspect e discovery da interface legada — pontos de melhoria mapeados" loading="lazy"></figure>
+
+      <div class="pbody">
+        <div class="pcol-side">
+          <h4>O caso</h4>
+          <p class="label">Pequenos pontos,<br>grande impacto</p>
+        </div>
+        <div>
+          <p class="pdesc" style="margin-top:0">
+            A empresa desenvolvia algo ambicioso: inteligência artificial atuando sobre maquinário industrial na camada de automação — SCADA e PLC. Este painel de monitoramento em tempo real, na <strong>indústria de mineração</strong>, era o ponto de contato mais importante entre o cliente e essa tecnologia — onde, ao vivo, se via o que a planta e a IA estavam fazendo. Desenvolvido <strong>desktop first</strong>, priorizando a clareza na apresentação de informações complexas, e depois adaptado para tablet e mobile. O escopo incluiu autenticação (SSO/Login), interface responsiva e uma versão <strong>light mode</strong> para uso em campo — tablet sob luz solar direta e videowall de sala de controle.
+          </p>
+          <div class="ptags">
+            <span class="ptag solid">UX/UI Designer</span>
+            <span class="ptag">Desktop First</span>
+            <span class="ptag">Light &amp; Dark Mode</span>
+            <span class="ptag">Responsivo</span>
+            <span class="ptag">SSO / Login</span>
+            <span class="ptag">Prototype</span>
+            <span class="ptag">UI Components</span>
+          </div>
+
+          <h3 style="margin-top:2.5rem">Responsabilidades</h3>
+          <ul>
+            <li>
+              <strong>Inspect &amp; Discovery</strong>
+              <span>Auditoria da interface existente: usabilidade e leitura de dados.</span>
+            </li>
+            <li>
+              <strong>SSO / Login</strong>
+              <span>Autenticação clara, com recuperação de senha acessível.</span>
+            </li>
+            <li>
+              <strong>UI desktop first, depois mobile</strong>
+              <span>KPIs em tempo real sem sobrecarga cognitiva; adaptação por toque sem perder função.</span>
+            </li>
+          </ul>
+
+          <h3 style="margin-top:2.5rem">Desafios</h3>
+          <ul>
+            <li>
+              <strong>Dados em tempo real</strong>
+              <span>Interface estável sob atualização contínua.</span>
+            </li>
+            <li>
+              <strong>Muitos KPIs, pouca sobrecarga</strong>
+              <span>Volume alto de indicadores, leitura simples.</span>
+            </li>
+            <li>
+              <strong>Base densa</strong>
+              <span>Navegação e agrupamento definidos pela complexidade dos dados.</span>
+            </li>
+          </ul>
+
+          <h3 style="margin-top:2.5rem">Auditoria de interface</h3>
+          <p>Usuário-alvo: <strong>operador de sala de controle</strong>, turno longo. Achados principais:</p>
+          <ul>
+            <li>
+              <strong>Login</strong>
+              <span>Senha antes de e-mail, quebrando o preenchimento automático.</span>
+            </li>
+            <li>
+              <strong>Contraste insuficiente</strong>
+              <span>Crítico para leitura em tablet sob sol direto.</span>
+            </li>
+            <li>
+              <strong>Status só por cor</strong>
+              <span>Falha de acessibilidade para daltonismo.</span>
+            </li>
+            <li>
+              <strong>Sem estados de erro, carregamento ou vazio</strong>
+              <span>Operador sem saber se o dado é atual ou travou.</span>
+            </li>
+            <li>
+              <strong>"TURN OFF AI" sem confirmação</strong>
+              <span>Risco operacional alto para um clique acidental.</span>
+            </li>
+          </ul>
+
+          <p class="quote">"Grande volume de dados, sem sobrecarga visual."</p>
+
+          <h3 style="margin-top:1.5rem">Soluções</h3>
+          <p><strong>Hierarquia clara —</strong> grid e cards modulares; críticos visíveis, secundários sob demanda.</p>
+          <p><strong>Feedback em tempo real —</strong> indicadores sutis sinalizam a atualização contínua.</p>
+          <p><strong>Responsivo —</strong> toque amplo, sem zoom; gráficos em blocos empilháveis.</p>
+          <p><strong>Light mode —</strong> contraste e tipografia ajustados para uso em campo.</p>
+
+          <div class="results-card purple">
+            <h4>Aprendizado-chave</h4>
+            <p>Pensar no <strong>mínimo utilizável</strong>: cada elemento funcional, acessível e relevante — complexidade de dado equilibrada com simplicidade de design.</p>
+          </div>
+
+          <div class="results-card">
+            <h4>Impacto</h4>
+            <p>KPIs mais rápidos de encontrar, navegação sem sobrecarga visual, e uma base mais confiável para o operador decidir em campo.</p>
+          </div>
+
+          <p class="case-bridge">
+            Os achados deste inspect viraram a especificação do redesenho —
+            <a href="#case-redesenho" class="up">ver o redesenho</a>
+          </p>
         </div>
       </div>
     </article>
