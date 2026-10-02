@@ -1,0 +1,295 @@
+{
+  "_leia_me": "FONTE ÚNICA. Edite só este arquivo e rode: python build/build.py. Tudo (CV, Resume e portfólio) se atualiza a partir daqui.",
+  "pessoal": {
+    "nome": "Danilo Morelli",
+    "cargo_principal": "Product Designer",
+    "email": "danilommorelli@gmail.com",
+    "telefone": "+55 11 98974-9110",
+    "telefone_ats": "(11) 98974-9110",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "pais": "Brasil",
+    "linkedin": "https://www.linkedin.com/in/danilomorelli/",
+    "linkedin_curto": "linkedin.com/in/danilomorelli",
+    "portfolio": "https://dm222222.github.io",
+    "portfolio_curto": "dm222222.github.io",
+    "anos_experiencia": 7
+  },
+  "variantes": {
+    "design": {
+      "rotulo": "Product Designer (CV único)",
+      "cargo": "Product Designer | UX/UI Designer",
+      "resumo": "Product Designer com 7 anos de experiência em produtos digitais B2B, atuando de ponta a ponta: discovery, pesquisa com usuários, definição de MVP e KPIs, arquitetura da informação, prototipação, interface e design system. Conduzo entrevistas do C-level à operação, traduzo o problema de negócio em requisitos e entrego interface validada com usuários e time técnico. Experiência em produtos com inteligência artificial (anomalias, previsões e recomendações com explicabilidade na interface), mercado financeiro, logística e indústria. Formação em Publicidade e Propaganda e vivência em branding, identidade visual e web design. Desenhei a Torre de Controle, hoje em produção em uma operação de cinco centros de distribuição.",
+      "resumo_curto": "Product Designer com 7 anos em produtos digitais B2B: discovery, pesquisa, MVP e KPIs, interface e design system. Experiência em produtos com IA, mercado financeiro, logística e indústria, além de branding e web design. Hoje em produção: a Torre de Controle, com 23 indicadores em três níveis de decisão.",
+      "competencias": [
+        "ux",
+        "produto",
+        "pesquisa",
+        "ia",
+        "dados",
+        "marca",
+        "ferramentas"
+      ]
+    }
+  },
+  "competencias": {
+    "ux": {
+      "titulo": "UX e Design de Interface",
+      "itens": [
+        "UX Design",
+        "UI Design",
+        "Design de Produto",
+        "Design System",
+        "Arquitetura da Informação",
+        "Prototipação",
+        "Wireframe",
+        "Teste de Usabilidade",
+        "Design Responsivo",
+        "Acessibilidade (WCAG)",
+        "Data Visualization",
+        "Design Thinking"
+      ]
+    },
+    "produto": {
+      "titulo": "Produto e Estratégia",
+      "itens": [
+        "Discovery",
+        "Definição de MVP",
+        "Lean Product",
+        "Levantamento de Requisitos",
+        "Jornada do Usuário",
+        "Priorização de Backlog",
+        "Definição de KPIs",
+        "Métricas de Produto",
+        "Gestão de Stakeholders",
+        "Metodologia Ágil",
+        "Modelo SCOR",
+        "Matriz de Esforço x Impacto"
+      ]
+    },
+    "pesquisa": {
+      "titulo": "Pesquisa",
+      "itens": [
+        "Pesquisa com Usuários",
+        "Entrevista em Profundidade",
+        "Pesquisa de Mercado",
+        "Personas",
+        "Benchmark",
+        "Auditoria de Interface",
+        "Pesquisa Qualitativa",
+        "Análise de Concorrência"
+      ]
+    },
+    "ia": {
+      "titulo": "Inteligência Artificial",
+      "itens": [
+        "IA Generativa",
+        "Grandes Modelos de Linguagem (LLM)",
+        "Engenharia de Prompt",
+        "Agentes de IA",
+        "Orquestração de Agentes",
+        "Design de Interface para IA",
+        "Explicabilidade de IA",
+        "Automação de Processos"
+      ]
+    },
+    "dados": {
+      "titulo": "Dados e Operação",
+      "itens": [
+        "Indicadores de Desempenho (KPI)",
+        "Dashboard",
+        "Business Intelligence",
+        "Integração WMS / ERP / CRM",
+        "Monitoramento em Tempo Real",
+        "Análise de Dados"
+      ]
+    },
+    "marca": {
+      "titulo": "Marca e Comunicação",
+      "itens": [
+        "Identidade Visual",
+        "Branding",
+        "Posicionamento de Marca",
+        "Design Gráfico",
+        "Web Design",
+        "Content Design",
+        "SEO",
+        "Design de Apresentações",
+        "Go-to-Market"
+      ]
+    },
+    "ferramentas": {
+      "titulo": "Ferramentas",
+      "itens": [
+        "Figma",
+        "Figma Make",
+        "Claude",
+        "Cursor",
+        "Lovable",
+        "Miro",
+        "Notion",
+        "HTML",
+        "CSS",
+        "Git"
+      ]
+    }
+  },
+  "site_habilidades": [
+    {
+      "nome": "UX/UI Design",
+      "tag": "Core"
+    },
+    {
+      "nome": "Design Thinking",
+      "tag": "Método"
+    },
+    {
+      "nome": "Content Design &amp; SEO",
+      "tag": "Conteúdo"
+    },
+    {
+      "nome": "Market Research",
+      "tag": "Pesquisa"
+    },
+    {
+      "nome": "Problem Solving",
+      "tag": "Estratégia"
+    },
+    {
+      "nome": "Lean Product",
+      "tag": "Produto"
+    }
+  ],
+  "experiencia": [
+    {
+      "cargo": "Consultor Independente em Design de Produto e Marca",
+      "cargo_curto": "Consultor independente",
+      "empresa": "Autônomo",
+      "empresa_site": "",
+      "inicio": "01/2025",
+      "fim": "Atual",
+      "periodo_site": "2025 — Presente",
+      "subtitulo_site": "UX/UI · Branding · Graphic &amp; Web Design",
+      "local": "São Paulo, SP",
+      "resumo_site": "Marca, site e materiais gráficos para empresas de diversos portes. Design system e novo site para a S2LAW, escritório de Direito Digital. E o Mazza Market, projeto próprio que criei do zero — conceito, design e construção de um laboratório de orquestração de agentes para vendas de pequenos produtores.",
+      "bullets": [
+        "Conduzo projetos de UX/UI, identidade visual e web design para empresas de diferentes portes, da definição do problema à entrega.",
+        "Criei o design system e o novo site institucional da S2LAW, escritório de Direito Digital e Inovação.",
+        "Desenvolvi o Mazza Market, projeto próprio de ponta a ponta — conceito, design e construção de um laboratório de orquestração de agentes de IA para vendas de pequenos produtores.",
+        "Entrego identidade visual, aplicação de manual de marca, site e materiais gráficos como pacote integrado."
+      ]
+    },
+    {
+      "cargo": "Product Designer",
+      "cargo_curto": "Product Designer",
+      "empresa": "Chronus Performance AI",
+      "empresa_site": "Chronus Performance AI",
+      "inicio": "01/2024",
+      "fim": "12/2025",
+      "periodo_site": "2024 — 2025",
+      "subtitulo_site": "Chronus Performance AI",
+      "local": "São Paulo, SP",
+      "resumo_site": "Torre de Controle — monitoramento operacional com IA para C-Level, Diretoria e Gerência: anomalias, previsões, recomendações. KPIs mapeados end-to-end, arquitetura baseada no modelo SCOR.",
+      "bullets": [
+        "Projetei a Torre de Controle, produto de monitoramento operacional com inteligência artificial embarcada para detecção de anomalias, previsões e recomendações, hoje em produção no cliente.",
+        "Mapeei 23 indicadores de desempenho end-to-end e os distribuí em três níveis de decisão — estratégico, tático e operacional — usando o modelo SCOR, validado com especialista em excelência operacional e com o diretor de logística.",
+        "Conduzi entrevistas em profundidade in loco com CEO e diretores de Operação, Tecnologia e Comercial para levantar as dores de decisão de cada nível.",
+        "Desenhei a arquitetura da informação, os protótipos e a interface final, integrando dados de WMS, ERP e CRM em visualização de tempo real.",
+        "O produto atende uma operação logística de cinco centros de distribuição, mais de 40 mil m² de armazenagem e cerca de 350 empresas parceiras."
+      ]
+    },
+    {
+      "cargo": "UX/UI Designer",
+      "cargo_curto": "UX/UI Designer",
+      "empresa": "Startup de inteligência artificial (confidencial)",
+      "empresa_site": "Startup de inteligência artificial (confidencial)",
+      "inicio": "01/2021",
+      "fim": "12/2023",
+      "periodo_site": "2021 — 2023",
+      "subtitulo_site": "Startup de inteligência artificial (confidencial)",
+      "local": "São Paulo, SP",
+      "resumo_site": "Dashboard de monitoramento operacional em tempo real. Hierarquia clara para KPIs críticos, design modular, protótipos validados com usuários e time técnico.",
+      "bullets": [
+        "Projetei o dashboard de monitoramento em tempo real de uma plataforma de inteligência artificial aplicada a maquinário industrial nas camadas SCADA e PLC, na indústria de mineração.",
+        "Realizei a auditoria de usabilidade e acessibilidade da interface legada e transformei cada achado em especificação de redesenho.",
+        "Entreguei o sistema de interface completo: design system com tokens, três temas (light, sunlight de campo e dark para videowall), estados de erro, carregamento e vazio, e versões desktop, tablet e mobile.",
+        "Desenhei o fluxo de autenticação SSO e recuperação de senha.",
+        "Validei protótipos com usuários e com o time de engenharia; respondi também pelo design de apresentações e pela aplicação do manual de marca.",
+        "Participei da construção da estratégia de entrada no mercado da empresa."
+      ]
+    },
+    {
+      "cargo": "UX Researcher",
+      "cargo_curto": "UX Researcher",
+      "empresa": "Open Flow Labs",
+      "empresa_site": "Open Flow Labs",
+      "inicio": "01/2020",
+      "fim": "12/2021",
+      "periodo_site": "2020 — 2021",
+      "subtitulo_site": "Open Flow Labs",
+      "local": "São Paulo, SP",
+      "resumo_site": "Produto para aquisição de ativos no mercado financeiro. Fluxos e jornadas mapeados com o Product Owner, hipóteses validadas. MVP hoje ofertado por um fundo de investimento.",
+      "bullets": [
+        "Conduzi a pesquisa de um produto digital de aquisição de ativos para o mercado financeiro, com abordagem centrada no usuário.",
+        "Mapeei a jornada do usuário e os fluxos em parceria com o Product Owner e validei as hipóteses de produto.",
+        "Construí e validei as personas, centradas na figura do originador, agente central na geração de negócio.",
+        "Priorizei o escopo com matriz de esforço x impacto para definir um MVP enxuto.",
+        "O MVP evoluiu para um ecossistema tecnológico, hoje ofertado na carteira de produtos do fundo de investimento que o adquiriu."
+      ]
+    }
+  ],
+  "formacao": [
+    {
+      "curso": "Bacharelado em Publicidade e Propaganda",
+      "instituicao": "Universidade Anhembi Morumbi",
+      "periodo": "2014 — Conclusão prevista para dezembro de 2026",
+      "periodo_site": "Anhembi Morumbi · conclusão prevista dez/2026",
+      "situacao": "Em andamento"
+    }
+  ],
+  "certificacoes": [
+    {
+      "nome": "Grandes Modelos de Linguagem da IA (LLM)",
+      "instituicao": "IPETEC",
+      "periodo": "2025",
+      "detalhe": "Registro 887ebac0-fd27-489b-b607-420293f9221"
+    },
+    {
+      "nome": "Certificação em UX Design",
+      "instituicao": "Digital House",
+      "periodo": "2021",
+      "detalhe": ""
+    }
+  ],
+  "idiomas": [
+    {
+      "idioma": "Português",
+      "nivel": "Nativo"
+    },
+    {
+      "idioma": "Inglês",
+      "nivel": "Intermediário"
+    },
+    {
+      "idioma": "Espanhol",
+      "nivel": "Básico"
+    }
+  ],
+  "projetos_destaque": [
+    {
+      "nome": "Torre de Controle",
+      "contexto": "Chronus Performance AI",
+      "linha": "Monitoramento operacional com IA para logística. 23 indicadores em três níveis de decisão (modelo SCOR). Em produção."
+    },
+    {
+      "nome": "Painel de monitoramento de usina",
+      "contexto": "Startup de IA (confidencial)",
+      "linha": "Auditoria da interface legada e redesenho completo: design system com tokens, três temas e quatro telas de operação."
+    },
+    {
+      "nome": "Aquisição de ativos",
+      "contexto": "Open Flow Labs",
+      "linha": "Pesquisa e definição de MVP para o mercado financeiro. Evoluiu para ecossistema adquirido por um fundo."
+    }
+  ]
+}
