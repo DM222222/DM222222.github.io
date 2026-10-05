@@ -17,7 +17,7 @@
       "link": "cases/torre-de-controle.html",
       "poster": "assets/projects/torre-prototipo-estrategico.jpg",
       "alt": "Painel estratégico da Torre de Controle: faturamento, sazonalidade, score de clientes e fluxo de caixa.",
-      "video": ""
+      "video": "assets/video/torre-de-controle.mp4"
     },
     {
       "n": "02",
@@ -30,7 +30,7 @@
       "link": "cases/painel-de-mineracao.html",
       "poster": "assets/projects/dashboard-discovery.jpg",
       "alt": "Board de inspect da interface legada, com os pontos de melhoria mapeados.",
-      "video": ""
+      "video": "assets/video/painel-de-mineracao.mp4"
     },
     {
       "n": "03",
@@ -42,7 +42,7 @@
       "link": "cases/open-flow-labs.html",
       "poster": "assets/projects/ativos-matriz-2.png",
       "alt": "Matriz de esforço por impacto usada para definir o MVP.",
-      "video": ""
+      "video": "assets/video/open-flow-labs.mp4"
     }
   ],
   "mote": "Cada case diz o passo à frente: o que a solução faz acontecer, não quanto contém. Ver dados/MOTE-DO-PORTFOLIO.md",
