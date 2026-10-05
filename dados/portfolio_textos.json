@@ -30,7 +30,7 @@
       "link": "cases/painel-de-mineracao.html",
       "poster": "assets/projects/dashboard-discovery.jpg",
       "alt": "Board de inspect da interface legada, com os pontos de melhoria mapeados.",
-      "video": "assets/video/painel-de-mineracao.mp4"
+      "video": ""
     },
     {
       "n": "03",
@@ -40,8 +40,8 @@
       "metrica": "MVP que virou ecossistema, hoje na carteira de um fundo",
       "slug": "open-flow-labs",
       "link": "cases/open-flow-labs.html",
-      "poster": "assets/projects/ativos-matriz-2.png",
-      "alt": "Matriz de esforço por impacto usada para definir o MVP.",
+      "poster": "assets/projects/ativos-matriz-1.png",
+      "alt": "Matriz de esforço por impacto das tarefas do usuário.",
       "video": "assets/video/open-flow-labs.mp4"
     }
   ],
