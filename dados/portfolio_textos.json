@@ -1,0 +1,116 @@
+{
+  "_leia_me": "Textos aprovados do novo portfolio (P&B), secao por secao. Fonte de verdade para a implementacao.",
+  "abertura": {
+    "cargo": "Danilo Morelli",
+    "titulo": "Product Designer e publicitário",
+    "paragrafo": "Gosto de resolver bons problemas e de trocar boas ideias. Atuo para que produtos e serviços cumpram seus objetivos, defendendo a tese que me encantou em experiência do usuário um dia: no final, é sobre pessoas.",
+    "linha_pessoal": null
+  },
+  "cases": [
+    {
+      "n": "01",
+      "empresa": "Chronus Performance AI",
+      "etiqueta": "Product Designer",
+      "frase": "Torre de Controle: o dado que já chega com a próxima decisão",
+      "metrica": "Aponta o risco de SLA e recomenda onde redistribuir carga entre os 5 centros · em produção",
+      "slug": "torre-de-controle",
+      "link": "cases/torre-de-controle.html",
+      "poster": "assets/projects/torre-prototipo-estrategico.jpg",
+      "alt": "Painel estratégico da Torre de Controle: faturamento, sazonalidade, score de clientes e fluxo de caixa.",
+      "video": ""
+    },
+    {
+      "n": "02",
+      "empresa": "Startup de IA (confidencial)",
+      "etiqueta": "UX/UI",
+      "frase": "Ler a planta num relance: da auditoria ao dashboard de monitoramento operacional",
+      "metrica": "Auditoria que virou especificação · UI coesa para operação crítica · um sistema, três temas",
+      "nota": "Junta o antigo case 02 (redesenho) e 03 (inspect). Dentro do case: parte 1 inspect, parte 2 redesenho.",
+      "slug": "painel-de-mineracao",
+      "link": "cases/painel-de-mineracao.html",
+      "poster": "assets/projects/dashboard-discovery.jpg",
+      "alt": "Board de inspect da interface legada, com os pontos de melhoria mapeados.",
+      "video": ""
+    },
+    {
+      "n": "03",
+      "empresa": "Open Flow Labs",
+      "etiqueta": "User Research",
+      "frase": "Um MVP enxuto para o mercado financeiro, desenhado a partir de quem origina o negócio.",
+      "metrica": "MVP que virou ecossistema, hoje na carteira de um fundo",
+      "slug": "open-flow-labs",
+      "link": "cases/open-flow-labs.html",
+      "poster": "assets/projects/ativos-matriz-2.png",
+      "alt": "Matriz de esforço por impacto usada para definir o MVP.",
+      "video": ""
+    }
+  ],
+  "mote": "Cada case diz o passo à frente: o que a solução faz acontecer, não quanto contém. Ver dados/MOTE-DO-PORTFOLIO.md",
+  "_arquivado_fora_da_pagina": {
+    "como_eu_trabalho": {
+      "titulo": "Como eu trabalho",
+      "principios": [
+        {
+          "titulo": "Status nunca só por cor",
+          "texto": "Quem opera em turno longo, sob sol ou diante de um videowall, não pode depender de um tom para entender o que está acontecendo. Todo estado leva ícone e rótulo.",
+          "provas": [
+            "\"▲ AT LIMIT\" e \"✓ IN RANGE\" no painel de mineração",
+            "Contraste corrigido para leitura de tablet sob sol direto",
+            "Três temas (light, campo e dark) sobre o mesmo sistema de tokens"
+          ]
+        },
+        {
+          "titulo": "A IA mostra o raciocínio",
+          "texto": "Sugestão sem justificativa é palpite com outra roupa. Toda recomendação traz o porquê e os dados de entrada, e o controle continua com a pessoa.",
+          "provas": [
+            "Histórico que compara IA ligada e desligada, lado a lado",
+            "Desligar a IA passou a exigir confirmação",
+            "Anomalias, previsões e recomendações embarcadas na Torre de Controle"
+          ]
+        },
+        {
+          "titulo": "Dado confiável no lugar do feeling",
+          "texto": "Antes de desenhar a tela, descubro quem decide, com qual pergunta e com qual número. A interface vem depois.",
+          "provas": [
+            "Entrevistas in loco com CEO e diretores de Operação, TI e Comercial",
+            "Modelo SCOR validado com o diretor de logística",
+            "Cada alerta chega com a ação recomendada, como redistribuir carga entre centros"
+          ]
+        }
+      ]
+    }
+  },
+  "secoes_na_pagina": [
+    "abertura",
+    "cases",
+    "trajetoria",
+    "contato"
+  ],
+  "trajetoria_rascunho_aguardando_ok": [
+    {
+      "periodo": "2025 — Presente",
+      "cargo": "Consultor independente",
+      "sub": "UX/UI, Branding e Web Design",
+      "texto": "Marca, site e materiais gráficos para empresas de diversos portes. Criei o design system e o novo site da S2LAW, escritório de Direito Digital, e construo o Mazza Market, meu laboratório de agentes de IA para vendas de pequenos produtores."
+    },
+    {
+      "periodo": "2024 — 2025",
+      "cargo": "Product Designer",
+      "sub": "Chronus Performance AI",
+      "texto": "Desenhei a Torre de Controle: monitoramento operacional com IA que sinaliza o risco e recomenda a ação, do C-level à gerência. Em produção em uma operação de cinco centros de distribuição."
+    },
+    {
+      "periodo": "2021 — 2023",
+      "cargo": "UX/UI Designer",
+      "sub": "Startup de IA (confidencial)",
+      "texto": "Auditei e redesenhei o painel de monitoramento em tempo real de uma plataforma de IA para mineração. Entreguei o sistema de interface: três temas, estados e versões desktop, tablet e mobile."
+    },
+    {
+      "periodo": "2020 — 2021",
+      "cargo": "UX Researcher",
+      "sub": "Open Flow Labs",
+      "texto": "Pesquisa e definição do MVP de um produto de aquisição de ativos para o mercado financeiro. Hoje é um ecossistema na carteira de um fundo."
+    }
+  ],
+  "contato_rascunho_aguardando_ok": "Para vagas, projetos ou uma boa conversa, é só chamar."
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ler a planta num relance — Danilo Morelli</title>
+<meta name="description" content="Case: da auditoria da interface legada ao redesenho de um dashboard de monitoramento operacional para mineração.">
+<link rel="icon" href="../assets/logo-dm.svg" type="image/svg+xml">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body id="top">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<header class="nav">
+  <div class="container">
+    <a class="logo" href="../index.html" aria-label="Danilo Morelli, início"><img src="../assets/logo-dm.svg" alt="" width="34" height="34"></a>
+    <nav aria-label="Principal"><ul>
+      <li><a class="l" href="../index.html#cases">Cases</a></li>
+      <li><a class="l" href="../index.html#trajetoria">Trajetória</a></li>
+      <li><a class="l" href="../index.html#contato">Contato</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<main id="conteudo">
+  <div class="container">
+    <a class="crumb" href="../index.html#cases">← Todos os cases</a>
+
+    <div class="case-top">
+      <p class="eyebrow">02 · Startup de IA (confidencial)</p>
+      <h1>Ler a planta num relance</h1>
+      <p class="sub">Da auditoria da interface legada ao dashboard de monitoramento operacional de uma usina de mineração.</p>
+      <dl class="facts">
+        <div><dt>Papel</dt><dd>UX/UI Designer</dd></div>
+        <div><dt>Período</dt><dd>2021 — 2023</dd></div>
+        <div><dt>Setor</dt><dd>Mineração</dd></div>
+        <div><dt>Entrega</dt><dd>Auditoria e sistema de interface</dd></div>
+      </dl>
+    </div>
+
+    <section class="block" aria-labelledby="contexto">
+      <div class="cols">
+        <h2 id="contexto">O contexto</h2>
+        <div class="prose">
+          <p>A empresa desenvolvia inteligência artificial atuando sobre maquinário industrial. O painel de monitoramento em tempo real era o ponto de contato mais importante entre o cliente e essa tecnologia: onde, ao vivo, se via o que a planta e a IA estavam fazendo.</p>
+          <p>Desktop first, depois tablet e mobile, com uma versão <strong>light</strong> para uso em campo, sob sol direto, e uma para o videowall da sala de controle.</p>
+        </div>
+      </div>
+    </section>
+
+    <figure class="block">
+      <img src="../assets/projects/dashboard-discovery.jpg" alt="Board de inspect da interface legada, com os pontos de melhoria numerados sobre a tela original." width="1207" height="1080" loading="lazy">
+      <figcaption>Parte 1: o inspect da interface legada.</figcaption>
+    </figure>
+
+    <section class="block" aria-labelledby="auditoria">
+      <div class="cols">
+        <h2 id="auditoria">Parte 1 · A auditoria</h2>
+        <div class="prose">
+          <p>Usuário-alvo: o <strong>operador de sala de controle</strong>, em turno longo. Os achados principais:</p>
+          <ul>
+            <li><b>Login</b>A senha vinha antes do e-mail, quebrando o preenchimento automático.</li>
+            <li><b>Contraste insuficiente</b>Crítico para leitura em tablet sob sol direto.</li>
+            <li><b>Status só por cor</b>Falha de acessibilidade para daltonismo.</li>
+            <li><b>Sem estados de erro, carregamento ou vazio</b>O operador não sabia se o dado era atual ou se tinha travado.</li>
+            <li><b>Desligar a IA sem confirmação</b>Risco operacional alto para um clique acidental.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="redesenho">
+      <div class="cols">
+        <h2 id="redesenho">Parte 2 · O redesenho</h2>
+        <div class="prose">
+          <p>Cada achado virou decisão de projeto. Quatro telas passaram a responder quatro perguntas do operador: <strong>onde está o problema</strong> (Circuits), <strong>o que mudar</strong> (Parameters), <strong>o que aconteceu</strong> (History) e <strong>o que reportar</strong> (Reports).</p>
+          <ul>
+            <li><b>A planta como fluxo</b>A tela segue a ordem física da planta, da esquerda para a direita.</li>
+            <li><b>Status nunca só por cor</b>Ícone e rótulo em cada estado, como "▲ AT LIMIT" e "✓ IN RANGE".</li>
+            <li><b>A IA mostra o raciocínio</b>Toda sugestão vem com a justificativa e os dados de entrada. Desligar a IA agora pede confirmação.</li>
+            <li><b>Prova pelo próprio dado</b>O histórico compara IA ligada e desligada, lado a lado.</li>
+            <li><b>Três temas, um sistema de tokens</b>Light para escritório, sunlight para campo e dark para o videowall.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="estudo">
+      <div class="cols">
+        <h2 id="estudo">O estudo completo</h2>
+        <div class="prose">
+          <p>O case inteiro, da auditoria às telas finais, em 26 slides.</p>
+          <p><a class="btn" id="deckBtn" href="../assets/case-study/painel-mineracao.html" target="_blank" rel="noopener">Abrir o estudo<span class="sr-only"> (abre em nova aba)</span></a></p>
+        </div>
+      </div>
+      <div class="deck" id="deckFrame" hidden></div>
+    </section>
+
+    <section class="block" aria-labelledby="resultado">
+      <div class="cols">
+        <h2 id="resultado">O resultado</h2>
+        <div class="prose">
+          <p>Um sistema coerente: mesmos tokens, navegação e comutador de tema nas quatro telas. O painel deixou de exibir dado e passou a <strong>sustentar a decisão do operador</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="next">
+      <a href="open-flow-labs.html"><span class="k">Próximo case</span><span class="t" style="display:block">Um MVP enxuto para o mercado financeiro</span></a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <span>© <span id="yr">2026</span> Danilo Morelli</span>
+    <a href="#top">Voltar ao topo</a>
+  </div>
+</footer>
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+(function(){
+  var btn=document.getElementById('deckBtn'), box=document.getElementById('deckFrame');
+  if(!btn||!box||window.matchMedia('(max-width:820px)').matches) return;
+  btn.addEventListener('click',function(e){
+    e.preventDefault();
+    var f=document.createElement('iframe');
+    f.src=btn.getAttribute('href'); f.title='Estudo de caso: painel de mineração, 26 slides';
+    box.appendChild(f); box.hidden=false; btn.style.display='none'; f.focus();
+  });
+})();
+</script>
+</body>
+</html>

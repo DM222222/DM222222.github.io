@@ -46,13 +46,14 @@ def carregar():
 
 def linha_contato(p, separador=" | "):
     """Linha de contato em texto puro — do jeito que o robo le melhor."""
-    return separador.join([
+    itens = [
         p["email"],
-        p["telefone_ats"],
+        p.get("telefone_ats", ""),
         "%s, %s" % (p["cidade"], p["estado"]),
         p["linkedin_curto"],
         p["portfolio_curto"],
-    ])
+    ]
+    return separador.join(i for i in itens if i)
 
 
 def periodo(exp):

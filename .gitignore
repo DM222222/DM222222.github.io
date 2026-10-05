@@ -1,0 +1,4 @@
+dados/privado.json
+privado/
+__pycache__/
+*.pyc

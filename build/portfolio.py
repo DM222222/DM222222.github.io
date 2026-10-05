@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
-"""Injeta os dados do perfil nas regioes marcadas do index.html.
+"""Injeta os textos aprovados nas regioes marcadas do index.html.
 
 So mexe no que esta entre <!-- SYNC:x --> e <!-- /SYNC:x -->.
-O resto do arquivo (layout, cases, CSS, JS) nao e tocado.
+Fontes: dados/perfil.json (contato, trajetoria) e dados/portfolio_textos.json
+(abertura e cards dos cases). O resto do arquivo nao e tocado.
 """
+import html
+import json
 import os
 import re
 import sys
@@ -11,107 +14,100 @@ import sys
 from comum import RAIZ
 
 INDEX = os.path.join(RAIZ, "index.html")
-AVISO = "<!-- Gerado de dados/perfil.json — não edite à mão -->"
+TEXTOS = os.path.join(RAIZ, "dados", "portfolio_textos.json")
+AVISO = "<!-- Gerado de dados/ — não edite à mão -->"
+e = html.escape
 
 
-def _trocar(html, nome, conteudo):
+def _trocar(doc, nome, conteudo, indent="      "):
     padrao = re.compile(
-        r"(<!--\s*SYNC:%s\s*-->).*?(<!--\s*/SYNC:%s\s*-->)" % (nome, nome),
-        re.DOTALL,
-    )
-    if not padrao.search(html):
+        r"(<!--\s*SYNC:%s\s*-->).*?(<!--\s*/SYNC:%s\s*-->)" % (nome, nome), re.DOTALL)
+    if not padrao.search(doc):
         sys.exit("ERRO: nao achei o marcador SYNC:%s no index.html" % nome)
-    novo = "\\1" + AVISO + "\n" + conteudo + "      \\2"
-    return padrao.sub(lambda m: m.group(1) + AVISO + "\n" + conteudo + "      " + m.group(2), html)
+    return padrao.sub(
+        lambda m: m.group(1) + AVISO + "\n" + conteudo + indent + m.group(2), doc)
+
+
+def _abertura(t):
+    a = t["abertura"]
+    return (
+        '      <p class="eyebrow">%s</p>\n'
+        '      <h1 id="titulo">%s</h1>\n'
+        '      <p class="lead">%s</p>\n' % (e(a["cargo"]), e(a["titulo"]), e(a["paragrafo"]))
+    )
+
+
+def _cases(t):
+    saida = ""
+    for c in t["cases"]:
+        video = botao = ""
+        if c.get("video"):
+            video = ('<video muted loop playsinline preload="metadata" poster="%s" data-src="%s"></video>'
+                     % (e(c["poster"]), e(c["video"])))
+            botao = '\n          <button type="button" class="vctl" aria-label="Pausar v\u00eddeo do case">Pausar</button>'
+        saida += (
+            '      <article class="case">\n'
+            '        <div class="case-cover"%(attr)s>\n'
+            '          <a class="cover-link" href="%(link)s" tabindex="-1" aria-hidden="true">'
+            '<img src="%(poster)s" alt="" loading="lazy" width="1600" height="800">%(video)s</a>%(botao)s\n'
+            '        </div>\n'
+            '        <div class="case-meta">\n'
+            '          <p class="case-who"><b>%(n)s</b>%(empresa)s<br>%(etiqueta)s</p>\n'
+            '          <h3><a href="%(link)s">%(frase)s</a></h3>\n'
+            '          <p class="case-metric">%(metrica)s</p>\n'
+            '        </div>\n'
+            '      </article>\n' % {
+                "link": e(c["link"]), "poster": e(c["poster"]), "video": video, "botao": botao,
+                "attr": ' data-torre' if c.get("interativo") == "torre" else "",
+                "n": e(c["n"]), "empresa": e(c["empresa"]), "etiqueta": e(c["etiqueta"]),
+                "frase": e(c["frase"]), "metrica": e(c["metrica"])}
+        )
+    return saida
 
 
 def _experiencia(d):
-    partes = []
-    for exp in d["experiencia"]:
-        partes.append(
-            '      <div class="tline">\n'
-            '        <div class="when">%s</div>\n'
-            '        <div>\n'
-            '          <h3>%s</h3>\n'
-            '          <p class="role">%s</p>\n'
-            '          <p>%s</p>\n'
-            '        </div>\n'
-            '        <div class="arrow">↗</div>\n'
-            '      </div>\n'
-            % (exp["periodo_site"], exp["cargo_curto"],
-               exp["subtitulo_site"], exp["resumo_site"])
+    saida = ""
+    for x in d["experiencia"]:
+        saida += (
+            '        <div class="tline">\n'
+            '          <div class="when">%s</div>\n'
+            '          <div>\n'
+            '            <h3>%s</h3>\n'
+            '            <p class="role">%s</p>\n'
+            '            <p>%s</p>\n'
+            '          </div>\n'
+            '        </div>\n' % (e(x["periodo_site"]), e(x["cargo_curto"]),
+                                  e(x["subtitulo_site"]), e(x["resumo_site"]))
         )
-    return "\n".join(partes)
-
-
-def _habilidades(d):
-    hab = "".join(
-        '          <li>%s <span class="tag">%s</span></li>\n' % (h["nome"], h["tag"])
-        for h in d["site_habilidades"]
-    )
-
-    form = ""
-    for f in d["formacao"]:
-        form += ('          <li class="block">\n            %s\n'
-                 '            <span class="sub">%s</span>\n          </li>\n'
-                 % (f["curso"], f["periodo_site"]))
-    cert_formacao = [c for c in d["certificacoes"] if c["instituicao"] == "Digital House"]
-    for c in cert_formacao:
-        form += ('          <li class="block">\n            %s\n'
-                 '            <span class="sub">%s · %s</span>\n          </li>\n'
-                 % (c["nome"], c["instituicao"], c["periodo"]))
-
-    idi = "".join(
-        '          <li>%s <span class="tag">%s</span></li>\n' % (i["idioma"], i["nivel"])
-        for i in d["idiomas"]
-    )
-    outras = [c for c in d["certificacoes"] if c["instituicao"] != "Digital House"]
-    for c in outras:
-        sub = c.get("detalhe") or "%s · %s" % (c["instituicao"], c["periodo"])
-        idi += ('          <li class="block">\n            %s — %s\n'
-                '            <span class="sub">%s</span>\n          </li>\n'
-                % (c["instituicao"], c["nome"], sub))
-
-    def card(titulo, n, itens):
-        return ('      <div class="skill-card">\n'
-                '        <h3>%s <span class="num">%02d</span></h3>\n'
-                '        <ul>\n%s        </ul>\n'
-                '      </div>\n' % (titulo, n, itens))
-
-    return (card("Habilidades", len(d["site_habilidades"]), hab)
-            + card("Formação", len(d["formacao"]) + len(cert_formacao), form)
-            + card("Idiomas &amp; Certificações", len(d["idiomas"]) + len(outras), idi))
+    return saida
 
 
 def _contato(d):
     p = d["pessoal"]
-    linhas = [
-        ("mailto:" + p["email"], "E-mail", p["email"], "→", False),
-        (p["linkedin"], "LinkedIn", "/" + p["linkedin_curto"].split("/", 1)[1], "↗", True),
-        ("tel:" + p["telefone"].replace(" ", "").replace("-", ""), "Telefone", p["telefone"], "→", False),
-        ("#top", "Localização", "%s · %s" % (p["cidade"], p["pais"]), "↑", False),
-    ]
-    saida = ""
-    for href, rotulo, valor, seta, externo in linhas:
-        alvo = ' target="_blank" rel="noopener"' if externo else ""
-        saida += ('        <a class="contact-link" href="%s"%s>\n'
-                  '          <div><div class="lbl">%s</div><div class="val">%s</div></div>\n'
-                  '          <span class="arrow">%s</span>\n'
-                  '        </a>\n' % (href, alvo, rotulo, valor, seta))
-    return saida
+    nova = '<span class="sr-only"> (abre em nova aba)</span>'
+    return (
+        '        <a class="contact-link" href="mailto:%s"><span><span class="lbl">E-mail</span>'
+        '<span class="val">%s</span></span></a>\n'
+        '        <a class="contact-link" href="%s" target="_blank" rel="noopener"><span>'
+        '<span class="lbl">LinkedIn</span><span class="val">/%s%s</span></span></a>\n'
+        '        <p class="contact-link"><span><span class="lbl">Localização</span>'
+        '<span class="val">%s · %s</span></span></p>\n'
+        % (e(p["email"]), e(p["email"]), e(p["linkedin"]),
+           e(p["linkedin_curto"].split("/", 1)[1]), nova, e(p["cidade"]), e(p["pais"]))
+    )
 
 
 def sincronizar(d):
+    t = json.load(open(TEXTOS, encoding="utf-8"))
     with open(INDEX, encoding="utf-8") as f:
-        html = f.read()
-    antes = html
-
-    html = _trocar(html, "experiencia", _experiencia(d))
-    html = _trocar(html, "habilidades", _habilidades(d))
-    html = _trocar(html, "contato", _contato(d))
-
-    if html == antes:
+        doc = f.read()
+    antes = doc
+    doc = _trocar(doc, "abertura", _abertura(t), "      ")
+    doc = _trocar(doc, "cases", _cases(t), "      ")
+    doc = _trocar(doc, "experiencia", _experiencia(d), "        ")
+    doc = _trocar(doc, "contato", _contato(d), "        ")
+    if doc == antes:
         return False
     with open(INDEX, "w", encoding="utf-8", newline="\n") as f:
-        f.write(html)
+        f.write(doc)
     return True

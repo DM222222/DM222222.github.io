@@ -1,1093 +1,165 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Danilo Morelli — Product Designer</title>
-<meta name="description" content="Product Designer com sete anos ligando negócio, dado e design — de produto com IA a marca. Entre inteligência artificial, mercado financeiro e indústria." />
-<meta name="theme-color" content="#69458D" />
-<link rel="icon" type="image/svg+xml" href="assets/logo-dm.svg" />
+<meta name="description" content="Danilo Morelli, Product Designer e publicitário. Portfólio com três cases em produto digital, dados e inteligência artificial.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="assets/logo-dm.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"></noscript>
-<style>
-  :root{
-    /* Palette derived from logo: deep purple + chartreuse */
-    --bg:#F4F1EA;            /* warm off-white */
-    --bg-deep:#1A1426;        /* near-black with purple undertone */
-    --bg-purple:#69458D;      /* logo deep purple */
-    --bg-purple-soft:#9D85B5; /* logo light purple */
-    --bg-soft:#EBE6DA;        /* panel */
-    --paper:#FFFFFF;
-    --ink:#1A1426;            /* deep purple-black */
-    --ink-2:#3F344D;
-    --muted:#7A7186;
-    --line:#D6CFC0;
-    --line-dark:rgba(245,239,224,.14);
-    --accent:#69458D;          /* primary accent — logo purple */
-    --accent-light:#9D85B5;
-    --accent-deep:#4A2F66;
-    --lime:#C6DE64;            /* logo chartreuse */
-    --lime-deep:#A9C247;
-    --lime-soft:#EDF2D2;
-    --maxw:1320px;
-    --pad:clamp(1.25rem, 4vw, 3rem);
-  }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter Tight',-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;
-    font-size:16px;
-    line-height:1.55;
-    font-feature-settings:"ss01","cv11";
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
-    overflow-x:hidden;
-  }
-  ::selection{background:var(--lime);color:var(--accent-deep)}
-  img{max-width:100%;display:block;height:auto}
-  a{color:inherit;text-decoration:none}
-
-  /* Typography */
-  .serif-it{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
-  h1,h2,h3,h4{font-family:'Inter Tight',sans-serif;font-weight:600;letter-spacing:-.035em;line-height:.96;color:var(--ink)}
-  h1{font-size:clamp(3.2rem, 11vw, 11rem);font-weight:700;letter-spacing:-.05em}
-  h2{font-size:clamp(2.2rem, 5.5vw, 4.6rem);letter-spacing:-.04em;line-height:.98}
-  h3{font-size:clamp(1.4rem, 2.2vw, 2rem);letter-spacing:-.025em}
-  .eyebrow{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500;display:inline-flex;align-items:center;gap:.5rem}
-  .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px rgba(198,222,100,.25)}
-
-  /* Layout */
-  .container{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
-  section{padding:clamp(4rem, 10vw, 9rem) 0;position:relative}
-
-  /* Nav */
-  nav{
-    position:sticky;top:0;z-index:100;
-    background:color-mix(in oklab, var(--bg) 85%, transparent);
-    backdrop-filter:blur(14px) saturate(140%);
-    -webkit-backdrop-filter:blur(14px) saturate(140%);
-    border-bottom:1px solid var(--line);
-  }
-  nav .container{display:flex;align-items:center;justify-content:space-between;padding-top:.9rem;padding-bottom:.9rem}
-  .brand{font-weight:600;font-size:.95rem;letter-spacing:-.02em;display:inline-flex;align-items:center;gap:.7rem;color:var(--ink)}
-  .brand .logo{width:28px;height:28px;display:inline-block}
-  .nav-links{display:flex;gap:1.6rem;font-size:.86rem;align-items:center}
-  .nav-links a{color:var(--ink-2);transition:color .15s ease;font-weight:500}
-  .nav-links a:hover{color:var(--accent)}
-  .nav-cta{background:var(--ink);color:var(--bg) !important;padding:.55rem 1.1rem;border-radius:99px;font-size:.82rem;font-weight:500;transition:all .2s ease}
-  .nav-cta:hover{background:var(--accent);color:var(--lime) !important;transform:translateY(-1px)}
-  .menu-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ink);padding:.4rem}
-
-  /* HERO */
-  .hero{padding-top:clamp(2rem,6vw,5rem);padding-bottom:clamp(2rem,5vw,4rem);position:relative}
-  .hero-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:clamp(2rem,5vw,4rem);gap:2rem;flex-wrap:wrap}
-  .availability{display:inline-flex;align-items:center;gap:.6rem;font-size:.84rem;color:var(--ink-2);font-weight:500}
-  .availability .blob{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px rgba(198,222,100,.28);animation:pulse 2.4s ease-in-out infinite}
-  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(198,222,100,.28)}50%{box-shadow:0 0 0 8px rgba(198,222,100,.1)}}
-  .hero-title h1{display:flex;flex-direction:column;text-wrap:balance}
-  .hero-title h1 .row{display:flex;align-items:center;gap:clamp(.4rem,1.5vw,1.5rem);flex-wrap:nowrap}
-  .hero-title h1 .serif-it{font-size:.92em;color:var(--accent);font-weight:400;line-height:1}
-  .hero-portrait{display:inline-flex;width:clamp(80px,12vw,170px);aspect-ratio:1/1;border-radius:99px;overflow:hidden;background:var(--accent);vertical-align:middle;flex-shrink:0;position:relative}
-  .hero-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 20%;mix-blend-mode:luminosity;opacity:.92;filter:contrast(1.05)}
-  .hero-portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(105,69,141,.2),transparent 50%,rgba(198,222,100,.2));pointer-events:none}
-  .hero-meta{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem;margin-top:clamp(2.5rem,6vw,5rem);padding-top:2.5rem;border-top:1px solid var(--line);align-items:end}
-  .hero-meta .lede{font-size:clamp(1.1rem,1.6vw,1.45rem);line-height:1.35;color:var(--ink);font-weight:400;max-width:34ch;letter-spacing:-.015em}
-  .hero-meta .lede em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent)}
-  .stat .num{font-size:clamp(1.8rem,2.5vw,2.5rem);font-weight:600;letter-spacing:-.03em;line-height:1;display:block;color:var(--accent)}
-  .stat .lbl{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-top:.6rem;display:block;font-weight:500}
-
-  /* Marquee */
-  .marquee{padding:clamp(1.5rem,3vw,2.5rem) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;background:var(--accent);color:var(--lime)}
-  .marquee-track{display:inline-flex;gap:3rem;animation:scroll 38s linear infinite}
-  .marquee-track span{font-size:clamp(1.4rem,2.6vw,2.2rem);font-weight:500;letter-spacing:-.03em;display:inline-flex;align-items:center;gap:3rem}
-  .marquee-track span::after{content:"●";color:var(--lime);font-size:.55em}
-  .marquee-track .it{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:#F4F1EA}
-  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-  /* SOBRE */
-  .about{padding-top:clamp(4rem,8vw,7rem)}
-  .about-grid{display:grid;grid-template-columns:1fr 1.8fr;gap:clamp(2rem,5vw,5rem);align-items:start}
-  .about p{font-size:clamp(1.1rem,1.5vw,1.35rem);color:var(--ink);max-width:48ch;line-height:1.45;margin-bottom:1.3rem;letter-spacing:-.012em;text-wrap:pretty}
-  .about p:first-child{font-size:clamp(1.45rem,2.2vw,1.95rem);line-height:1.3;font-weight:500;max-width:24ch;letter-spacing:-.025em}
-  .about p .serif-it{color:var(--accent)}
-
-  /* SECTION HEADER */
-  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(3rem,6vw,5rem);padding-bottom:1.6rem;border-bottom:1px solid var(--line)}
-  .sec-head h2{max-width:18ch;text-wrap:balance}
-  .sec-head .index{font-size:.85rem;color:var(--muted);font-weight:500;letter-spacing:-.01em}
-  .sec-head .index strong{color:var(--ink);font-weight:600}
-
-  /* PROJECTS */
-  .projects{padding-top:clamp(4rem,8vw,7rem);padding-bottom:0}
-  .project{position:relative;padding:clamp(4rem,8vw,7rem) 0;border-top:1px solid var(--line)}
-  .project:first-of-type{border-top:none;padding-top:0}
-  .project-meta{display:grid;grid-template-columns:auto 1fr auto;gap:2rem;align-items:start;margin-bottom:2.5rem}
-  .pnum{font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;letter-spacing:-.04em;color:var(--accent);line-height:.9;font-family:'Inter Tight',sans-serif;display:inline-flex;align-items:baseline;gap:.4rem}
-  .pnum span{color:var(--ink);opacity:.18;font-size:.5em}
-  .pclient{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-top:1rem;display:inline-flex;align-items:center;gap:.6rem}
-  .pclient::before{content:"";width:8px;height:1px;background:var(--accent)}
-  .ptitle{margin-top:1.6rem;max-width:18ch;text-wrap:balance}
-  .ptitle .serif-it{color:var(--accent)}
-  .pdesc{margin-top:1.8rem;font-size:clamp(1.05rem,1.4vw,1.25rem);color:var(--ink-2);max-width:54ch;line-height:1.5;letter-spacing:-.012em}
-  .ptags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}
-  .ptag{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line);padding:.4rem .9rem;border-radius:99px;font-weight:500;background:var(--paper)}
-  .ptag.solid{background:var(--accent);color:var(--lime);border-color:var(--accent)}
-
-  /* Image treatments */
-  figure{margin:0;background:var(--bg-soft);overflow:hidden;border-radius:18px;position:relative}
-  figure img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
-  figure:hover img{transform:scale(1.025)}
-  figure.contain{background:var(--paper);padding:clamp(1rem,2.5vw,2.5rem);border:1px solid var(--line)}
-  figure.contain img{object-fit:contain;width:100%;height:100%}
-  figure.dark{background:var(--bg-deep)}
-  figure.purple{background:var(--accent);padding:clamp(1rem,2.5vw,2.5rem)}
-  figure.purple img{object-fit:contain}
-  figure.lime{background:var(--lime-soft)}
-
-  /* Números de abertura do case */
-  .case-stats{display:flex;flex-wrap:wrap;gap:2.2rem;margin:1.8rem 0 0;padding:1.2rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .case-stats div{display:flex;flex-direction:column;gap:.25rem}
-  .case-stats b{font-size:1.9rem;font-weight:600;letter-spacing:-.03em;color:var(--accent);line-height:1}
-  .case-stats span{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500}
-
-  /* Ponte entre as partes do mesmo case */
-  .case-bridge{margin-top:1.6rem;padding-top:1.2rem;border-top:1px dashed var(--line);font-family:'Instrument Serif',serif;font-style:italic;font-size:1.15rem;color:var(--ink-2);line-height:1.4}
-  .case-bridge a{color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:1px;font-style:normal;font-family:'Inter Tight',sans-serif;font-size:.9rem;font-weight:500;white-space:nowrap;margin-left:.3rem}
-  .case-bridge a::after{content:" ↓"}
-  .case-bridge a.up::after{content:" ↑"}
-  .case-bridge a:hover{color:var(--ink)}
-  .case-from{display:inline-flex;align-items:center;gap:.45rem;font-family:'Inter Tight',sans-serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lime-deep);background:var(--lime-soft);border-radius:99px;padding:.3rem .8rem;margin-bottom:1rem;font-weight:500}
-  .case-from::before{content:"↑";font-size:.9em}
-
-  /* ===== Deck do estudo de caso ===== */
-  .case-deck{margin:0 0 2.5rem}
-  .case-deck-frame{
-    position:relative;width:100%;
-    height:clamp(520px, 78vh, 860px);
-    border:1px solid var(--line);border-radius:clamp(12px,2vw,24px);
-    overflow:hidden;background:#14161a;
-    box-shadow:0 18px 50px -32px rgba(26,20,38,.4);
-  }
-  .case-deck-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
-
-  /* Cartaz antes de carregar */
-  .deck-poster{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
-    padding:clamp(1.5rem,4vw,3rem);cursor:pointer;border:0;width:100%;text-align:left;
-    background:#14161a;color:#F4F1EA;font-family:inherit;overflow:hidden}
-  .deck-poster::before{content:"";position:absolute;top:-25%;right:-8%;width:55%;height:150%;
-    background:radial-gradient(ellipse at center,rgba(105,69,141,.5) 0%,transparent 65%);pointer-events:none}
-  .deck-poster::after{content:"";position:absolute;bottom:-35%;left:-5%;width:45%;height:120%;
-    background:radial-gradient(ellipse at center,rgba(198,222,100,.12) 0%,transparent 65%);pointer-events:none}
-  .deck-poster > *{position:relative;z-index:1}
-  .deck-poster .pk{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.5);font-weight:500}
-  .deck-poster .pt{font-size:clamp(1.8rem,4.2vw,3.4rem);font-weight:700;letter-spacing:-.04em;line-height:1.02;max-width:16ch;margin:auto 0}
-  .deck-poster .pt em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--lime)}
-  .deck-poster .pb{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
-  .deck-poster .pm{font-size:.85rem;color:rgba(244,241,234,.6)}
-  .deck-poster .pm b{color:#F4F1EA;font-weight:600}
-  .deck-poster .go{display:inline-flex;align-items:center;gap:.7rem;background:var(--lime);color:#14161a;
-    border-radius:99px;padding:.75rem 1.5rem;font-weight:600;font-size:.92rem;transition:all .25s ease;white-space:nowrap}
-  .deck-poster:hover .go{transform:translateX(4px);background:#fff}
-  .deck-poster .go::after{content:"▸";font-size:1.1em}
-
-  .case-deck-bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
-    margin-top:.9rem;font-size:.85rem;color:var(--muted)}
-  .case-deck-bar b{color:var(--ink);font-weight:600}
-  .case-deck-bar a{display:inline-flex;align-items:center;gap:.45rem;color:var(--accent);font-weight:500;
-    border:1px solid var(--accent);border-radius:99px;padding:.5rem 1.15rem;transition:all .2s ease;white-space:nowrap}
-  .case-deck-bar a:hover{background:var(--accent);color:var(--lime)}
-  .case-deck-bar a::after{content:"↗"}
-
-  /* Telas estreitas: o deck nao tem media queries, entao so tela cheia */
-  @media (max-width:820px){
-    .case-deck-frame{height:auto;aspect-ratio:4/3}
-    .deck-poster{cursor:default}
-    .deck-poster .go{display:none}
-    .deck-poster .pb{flex-direction:column;align-items:flex-start;gap:.9rem}
-    .deck-poster .mob{display:inline-flex !important}
-  }
-  .deck-poster .mob{display:none;align-items:center;gap:.6rem;background:var(--lime);color:#14161a;
-    border-radius:99px;padding:.7rem 1.35rem;font-weight:600;font-size:.9rem;white-space:nowrap}
-  .deck-poster .mob::after{content:"↗"}
-
-  /* ===== Case Chronus — capa-torre e diagramas nativos ===== */
-  .tower{background:var(--bg-deep);border-radius:clamp(14px,2vw,26px);padding:clamp(1.5rem,4vw,3.5rem);position:relative;overflow:hidden;margin:0 0 1.4rem}
-  .tower::before{content:"";position:absolute;top:-30%;right:-10%;width:60%;height:160%;background:radial-gradient(ellipse at center,rgba(105,69,141,.55) 0%,transparent 65%);pointer-events:none}
-  .tower::after{content:"";position:absolute;bottom:-40%;left:-5%;width:45%;height:120%;background:radial-gradient(ellipse at center,rgba(198,222,100,.14) 0%,transparent 65%);pointer-events:none}
-  .tower-in{position:relative;z-index:1}
-  .tower-top{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;flex-wrap:wrap;margin-bottom:clamp(1.5rem,3vw,2.5rem);padding-bottom:1rem;border-bottom:1px solid var(--line-dark)}
-  .tower-top h3{color:#F4F1EA;font-size:clamp(1.1rem,1.7vw,1.5rem);letter-spacing:-.025em}
-  .tower-top h3 em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--lime);font-weight:400}
-  .tower-top .k{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,234,.45);font-weight:500}
-  .tier{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(1rem,2.5vw,2.2rem);align-items:center;padding:clamp(1.1rem,2.2vw,1.7rem) clamp(1rem,2.5vw,2rem);border-radius:12px;margin-bottom:.7rem;position:relative;transition:transform .3s ease}
-  .tier:last-of-type{margin-bottom:0}
-  .tier:hover{transform:translateX(6px)}
-  .tier-1{background:linear-gradient(100deg,rgba(198,222,100,.16),rgba(198,222,100,.05));border:1px solid rgba(198,222,100,.4);margin-right:0}
-  .tier-2{background:linear-gradient(100deg,rgba(157,133,181,.2),rgba(157,133,181,.05));border:1px solid rgba(157,133,181,.4);margin-right:clamp(0px,4vw,64px)}
-  .tier-3{background:linear-gradient(100deg,rgba(105,69,141,.32),rgba(105,69,141,.08));border:1px solid rgba(105,69,141,.55);margin-right:clamp(0px,8vw,128px)}
-  .tier .lvl{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;white-space:nowrap}
-  .tier-1 .lvl{color:var(--lime)}
-  .tier-2 .lvl{color:var(--bg-purple-soft)}
-  .tier-3 .lvl{color:#C4AEDC}
-  .tier .who{color:#F4F1EA;font-size:clamp(1rem,1.5vw,1.25rem);font-weight:500;letter-spacing:-.015em;margin-bottom:.25rem}
-  .tier .what{color:rgba(244,241,234,.6);font-size:.85rem;line-height:1.5}
-  .tier .cnt{text-align:right;white-space:nowrap}
-  .tier .cnt b{display:block;font-size:clamp(1.5rem,2.4vw,2.1rem);font-weight:600;letter-spacing:-.03em;color:#F4F1EA;line-height:1}
-  .tier .cnt span{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,241,234,.45);font-weight:500}
-  .tower-foot{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-top:clamp(1.5rem,3vw,2.2rem);padding-top:1.1rem;border-top:1px solid var(--line-dark);font-size:.8rem;color:rgba(244,241,234,.55)}
-  .tower-foot b{color:var(--lime);font-weight:600}
-  @media (max-width:700px){
-    .tier{grid-template-columns:1fr auto;gap:.8rem}
-    .tier .lvl{grid-column:1/-1}
-    .tier-2,.tier-3{margin-right:0}
-  }
-
-  /* Jornada em fases */
-  .jrn{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin:1.5rem 0 .8rem}
-  .jrn-p{border:1px solid var(--line);border-radius:12px;padding:1rem;background:var(--paper);position:relative}
-  .jrn-p.gap{border-color:var(--accent);background:linear-gradient(180deg,rgba(105,69,141,.07),var(--paper))}
-  .jrn-p .ph{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:.5rem}
-  .jrn-p.gap .ph{color:var(--accent)}
-  .jrn-p .nm{font-size:1rem;font-weight:600;letter-spacing:-.015em;margin-bottom:.5rem}
-  .jrn-p ul{list-style:none;margin:0;padding:0}
-  .jrn-p li{font-size:.8rem;color:var(--ink-2);padding:.28rem 0 .28rem .85rem;position:relative;line-height:1.45;border:0}
-  .jrn-p li::before{content:"";position:absolute;left:0;top:.62rem;width:4px;height:4px;border-radius:50%;background:var(--line)}
-  .jrn-p.gap li::before{background:var(--accent)}
-  .jrn-lg{display:flex;gap:1.4rem;flex-wrap:wrap;font-size:.76rem;color:var(--muted);margin-bottom:1.5rem}
-  .jrn-lg i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:.4rem;vertical-align:-1px}
-  @media (max-width:820px){.jrn{grid-template-columns:1fr 1fr}}
-  @media (max-width:520px){.jrn{grid-template-columns:1fr}}
-
-  /* Escada de KPIs */
-  .kpi-lad{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:1.5rem 0}
-  .kpi-row{display:grid;grid-template-columns:170px 1fr 54px;gap:1.2rem;align-items:start;padding:1rem 1.2rem;border-bottom:1px solid var(--line);background:var(--paper)}
-  .kpi-row:last-child{border-bottom:0}
-  .kpi-row.hd{background:var(--bg-soft);padding-top:.6rem;padding-bottom:.6rem}
-  .kpi-row.hd span{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
-  .kpi-who{font-weight:600;font-size:.92rem;letter-spacing:-.01em;display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
-  .kpi-who i{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;font-style:normal;border-radius:4px;padding:.14rem .4rem}
-  .kpi-who i.e{background:var(--lime-soft);color:var(--lime-deep)}
-  .kpi-who i.t{background:rgba(157,133,181,.22);color:var(--accent)}
-  .kpi-who i.o{background:rgba(105,69,141,.14);color:var(--accent)}
-  .kpi-list{display:flex;flex-wrap:wrap;gap:.35rem}
-  .kpi-list span{font-size:.76rem;color:var(--ink-2);border:1px solid var(--line);border-radius:99px;padding:.2rem .6rem;background:var(--bg)}
-  .kpi-n{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;font-size:1.05rem;color:var(--accent)}
-  @media (max-width:760px){
-    .kpi-row{grid-template-columns:1fr auto;gap:.6rem}
-    .kpi-list{grid-column:1/-1}
-    .kpi-row.hd{display:none}
-  }
-
-  /* Artefatos do processo */
-  .arte{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.2rem}
-  .arte figure{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:.5rem;aspect-ratio:16/10}
-  .arte img{width:100%;height:100%;object-fit:cover;object-position:top left;border-radius:5px}
-  .arte figcaption{font-size:.72rem;color:var(--muted);padding:.5rem .2rem 0;letter-spacing:.02em}
-  @media (max-width:620px){.arte{grid-template-columns:1fr}}
-
-  /* Project 01 — Torre */
-  .p1-hero{aspect-ratio:16/9;border-radius:clamp(12px,2vw,24px);margin:0 0 1.4rem 0}
-  .p1-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
-  .p1-grid figure{aspect-ratio:4/3}
-  .p1-row1{display:grid;grid-template-columns:1.6fr 1fr;gap:1.4rem;margin-bottom:1.4rem}
-  .p1-row1 .p1-hero{margin:0;aspect-ratio:16/11}
-  .p1-row1 .p1-side{aspect-ratio:3/4;border-radius:clamp(12px,2vw,24px)}
-
-  /* Project 02 — Inspect legado */
-  .p2-row1{display:grid;grid-template-columns:1.6fr 1fr;gap:1.4rem;margin-bottom:1.4rem}
-  .p2-row1 .p2-hero{aspect-ratio:16/10}
-  .p2-row1 .p2-side{aspect-ratio:3/4}
-  .p2-row2{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
-  .p2-row2 figure{aspect-ratio:1/1}
-
-  /* Project 03 — Aquisição */
-  .p3-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
-  .p3-grid figure{aspect-ratio:4/3}
-
-  /* Process panel */
-  .pbody{display:grid;grid-template-columns:1fr 1.8fr;gap:clamp(2rem,5vw,5rem);margin-top:clamp(2.5rem,5vw,4rem)}
-  .pbody h4{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:1.6rem}
-  .pbody .pcol-side{position:sticky;top:6rem;align-self:start}
-  .pbody .pcol-side .label{font-size:1.4rem;font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);letter-spacing:-.01em;line-height:1.2}
-  .pbody p{color:var(--ink-2);margin-bottom:1.1rem;max-width:62ch;line-height:1.6;font-size:1.02rem}
-  .pbody p strong{color:var(--ink);font-weight:600}
-  .pbody ul{list-style:none;margin-top:1.2rem;counter-reset:item}
-  .pbody ul li{padding:1.2rem 0 1.2rem 3rem;border-bottom:1px solid var(--line);position:relative}
-  .pbody ul li:last-child{border-bottom:none}
-  .pbody ul li::before{content:counter(item,decimal-leading-zero);counter-increment:item;position:absolute;left:0;top:1.35rem;font-size:.85rem;color:var(--accent);font-weight:600;letter-spacing:.05em;font-variant-numeric:tabular-nums}
-  .pbody ul li strong{display:block;color:var(--ink);font-weight:600;margin-bottom:.4rem;font-size:1.05rem;letter-spacing:-.01em}
-  .pbody ul li span{display:block;color:var(--ink-2);font-size:.96rem;line-height:1.55}
-  .quote{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.25;color:var(--ink);max-width:24ch;border-left:3px solid var(--lime);padding-left:1.6rem;margin:2.5rem 0;letter-spacing:-.015em}
-  .results-card{margin-top:2.5rem;padding:2rem;background:var(--lime-soft);border-radius:18px;border:1px solid var(--lime)}
-  .results-card h4{color:var(--lime-deep);margin-bottom:1rem}
-  .results-card p{color:var(--ink);margin-bottom:0;max-width:none}
-  .results-card.purple{background:var(--accent);border-color:var(--accent-deep);color:#F4F1EA}
-  .results-card.purple h4{color:var(--lime)}
-  .results-card.purple p{color:rgba(244,241,234,.9)}
-  .results-card.purple p strong{color:var(--lime)}
-  .cta-link{display:inline-flex;align-items:center;gap:.6rem;margin-top:2rem;font-size:.88rem;font-weight:500;color:var(--accent);padding:.7rem 1.3rem;border:1px solid var(--accent);border-radius:99px;transition:all .2s ease}
-  .cta-link:hover{background:var(--accent);color:var(--lime);gap:.9rem}
-  .cta-link::after{content:"↗";font-size:1em}
-
-  /* EXP — dark inverted */
-  .experience{background:var(--bg-deep);color:#F4F1EA;border-radius:clamp(20px,3vw,36px);margin:0 clamp(.5rem,2vw,1.5rem);padding-left:clamp(1rem,3vw,3rem);padding-right:clamp(1rem,3vw,3rem);position:relative;overflow:hidden}
-  .experience::before{content:"";position:absolute;top:-200px;right:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(105,69,141,.4) 0%,transparent 60%);pointer-events:none}
-  .experience::after{content:"";position:absolute;bottom:-200px;left:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(198,222,100,.15) 0%,transparent 60%);pointer-events:none}
-  .experience .container{position:relative;z-index:1}
-  .experience h2,.experience h3,.experience h4{color:#F4F1EA}
-  .experience .eyebrow{color:rgba(244,241,234,.6)}
-  .experience .sec-head{border-bottom-color:var(--line-dark)}
-  .experience .sec-head .index{color:rgba(244,241,234,.5)}
-  .experience .sec-head .index strong{color:#F4F1EA}
-  .experience .serif-it{color:var(--lime)}
-  .timeline{display:grid;gap:0}
-  .tline{display:grid;grid-template-columns:130px 1fr auto;gap:clamp(1.5rem,3vw,3rem);padding:2.5rem 0;border-top:1px solid var(--line-dark);transition:all .3s ease}
-  .tline:first-child{border-top:1px solid var(--line-dark)}
-  .tline:hover{padding-left:1rem}
-  .tline:hover .arrow{color:var(--lime);transform:translate(4px,-4px)}
-  .tline .when{color:var(--lime);font-weight:500;font-size:.95rem;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
-  .tline h3{font-size:clamp(1.5rem,2.4vw,2.1rem);letter-spacing:-.025em;margin-bottom:.4rem}
-  .tline .role{color:var(--bg-purple-soft);font-family:'Instrument Serif',serif;font-style:italic;font-size:1.15rem;margin-bottom:1rem}
-  .tline p{color:rgba(244,241,234,.78);font-size:.98rem;max-width:62ch;line-height:1.55}
-  .tline .arrow{font-size:2rem;color:rgba(244,241,234,.25);font-weight:300;transition:all .3s ease}
-
-  /* SKILLS */
-  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2.5vw,2rem)}
-  .skill-card{padding:clamp(1.5rem,2.5vw,2.5rem);border-radius:20px;background:var(--paper);border:1px solid var(--line);transition:all .3s ease}
-  .skill-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 16px 40px -20px rgba(105,69,141,.3)}
-  .skill-card:nth-child(2){background:var(--accent);color:#F4F1EA;border-color:var(--accent)}
-  .skill-card:nth-child(2) h3{color:var(--lime)}
-  .skill-card:nth-child(2) h3 .num{color:rgba(244,241,234,.5)}
-  .skill-card:nth-child(2) li{border-color:var(--line-dark);color:#F4F1EA}
-  .skill-card:nth-child(2) li .tag{color:var(--bg-purple-soft)}
-  .skill-card:nth-child(2) .sub{color:var(--bg-purple-soft)}
-  .skill-card:nth-child(2):hover{transform:translateY(-4px);box-shadow:0 16px 40px -20px rgba(105,69,141,.55)}
-  .skill-card h3{font-size:1.3rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem}
-  .skill-card h3 .num{font-size:.8rem;color:var(--muted);font-weight:500;letter-spacing:.05em}
-  .skill-card ul{list-style:none}
-  .skill-card li{padding:.9rem 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:1rem;color:var(--ink);font-weight:500}
-  .skill-card li:first-child{border-top:none}
-  .skill-card li .tag{color:var(--muted);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
-  .skill-card li.block{flex-direction:column;align-items:flex-start;gap:.3rem}
-  .skill-card li .sub{color:var(--muted);font-size:.85rem;font-weight:400;font-style:italic;font-family:'Instrument Serif',serif}
-
-  /* CONTACT */
-  .contact{background:var(--bg-deep);color:#F4F1EA;border-radius:clamp(20px,3vw,36px);margin:0 clamp(.5rem,2vw,1.5rem) clamp(.5rem,2vw,1.5rem);padding:clamp(3rem,7vw,6rem) clamp(1rem,3vw,3rem);position:relative;overflow:hidden}
-  .contact::before{content:"";position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,var(--accent) 0%,transparent 60%);opacity:.4;pointer-events:none}
-  .contact .container{position:relative;z-index:1}
-  .contact .eyebrow{color:rgba(244,241,234,.6)}
-  .contact-display{font-size:clamp(2.8rem,10vw,10rem);font-weight:700;letter-spacing:-.05em;line-height:.92;color:#F4F1EA;margin:2.5rem 0 3rem;text-wrap:balance}
-  .contact-display .serif-it{color:var(--lime);font-weight:400}
-  .contact-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start;padding-top:3rem;border-top:1px solid var(--line-dark)}
-  .contact-grid p{color:rgba(244,241,234,.78);font-size:1.1rem;max-width:42ch;line-height:1.5}
-  .contact-links{display:grid;gap:0}
-  .contact-link{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;border-bottom:1px solid var(--line-dark);transition:all .2s ease;color:#F4F1EA}
-  .contact-link:first-child{border-top:1px solid var(--line-dark)}
-  .contact-link:hover{color:var(--lime);padding-left:.5rem}
-  .contact-link .lbl{font-size:.74rem;color:rgba(244,241,234,.5);letter-spacing:.18em;text-transform:uppercase;font-weight:500}
-  .contact-link .val{font-size:1.1rem;font-weight:500;letter-spacing:-.015em;margin-top:.2rem}
-  .contact-link .arrow{font-size:1rem;color:rgba(244,241,234,.4)}
-  .contact-link:hover .arrow{color:var(--lime)}
-  .cv-download{display:inline-flex;align-items:center;gap:.6rem;margin-top:2rem;background:var(--lime);color:var(--accent-deep);padding:.95rem 1.7rem;border-radius:99px;font-weight:600;transition:all .2s ease;font-size:.95rem}
-  .cv-download:hover{background:#F4F1EA;color:var(--ink);transform:translateY(-2px)}
-  .cv-download::after{content:"↓";font-size:1.1em}
-  .logo-stamp{position:absolute;right:clamp(1rem,3vw,3rem);bottom:clamp(1rem,3vw,3rem);width:clamp(60px,8vw,100px);height:auto;opacity:.4;pointer-events:none}
-
-  footer{padding:clamp(2rem,4vw,3.5rem) 0;font-size:.82rem;color:var(--muted)}
-  footer .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-  footer .serif-it{color:var(--accent)}
-
-  /* Responsive */
-  @media (max-width: 900px){
-    .hero-meta{grid-template-columns:1fr 1fr;gap:1.5rem}
-    .hero-meta .lede{grid-column:1/-1}
-    .about-grid,.pbody,.contact-grid{grid-template-columns:1fr;gap:2rem}
-    .pbody .pcol-side{position:static}
-    .skills-grid{grid-template-columns:1fr}
-    .p1-grid,.p1-row1,.p2-row1,.p3-grid{grid-template-columns:1fr}
-    .p2-row2{grid-template-columns:1fr 1fr}
-    .project-meta{grid-template-columns:1fr;gap:1rem}
-    .pnum{font-size:3rem}
-    .tline{grid-template-columns:1fr;gap:.6rem;padding:1.5rem 0}
-    .tline .arrow{display:none}
-    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;padding:1.2rem 2rem;gap:1rem;align-items:flex-start}
-    .nav-links.open{display:flex}
-    .menu-toggle{display:block}
-    .hero-portrait{width:80px}
-  }
-</style>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body>
+<body id="top">
+<a class="skip" href="#cases">Pular para os cases</a>
 
-<nav>
+<header class="nav">
   <div class="container">
-    <a href="#top" class="brand">
-      <img src="assets/logo-dm.svg" alt="" class="logo" />
-      Danilo Morelli
-    </a>
-    <button class="menu-toggle" aria-label="Menu" id="menuToggle">☰</button>
-    <div class="nav-links" id="navLinks">
-      <a href="#sobre">Sobre</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#experiencia">Experiência</a>
-      <a href="#habilidades">Repertório</a>
-      <a href="#contato" class="nav-cta">Contato</a>
-    </div>
-  </div>
-</nav>
-
-<header id="top" class="hero">
-  <div class="container">
-    <div class="hero-top">
-      <span class="eyebrow">Portfólio · 2026</span>
-      <span class="availability"><span class="blob"></span>Disponível para novos projetos</span>
-    </div>
-
-    <div class="hero-title">
-      <h1>
-        <span class="row">Danilo</span>
-        <span class="row">
-          <span class="hero-portrait"><img src="assets/profile.jpg" alt="Retrato de Danilo Morelli" loading="eager"></span>
-          Morelli<span class="serif-it">,</span>
-        </span>
-        <span class="row serif-it">Product Designer.</span>
-      </h1>
-    </div>
-
-    <div class="hero-meta">
-      <p class="lede">
-        Sete anos ligando <em>negócio, dado e design</em> — do C-level a quem opera no dia a dia. Entre inteligência artificial, mercado financeiro e indústria.
-      </p>
-      <div class="stat">
-        <span class="num">7+</span>
-        <span class="lbl">Anos de prática</span>
-      </div>
-      <div class="stat">
-        <span class="num">12+</span>
-        <span class="lbl">Projetos entregues</span>
-      </div>
-      <div class="stat">
-        <span class="num">SP</span>
-        <span class="lbl">São Paulo · BR</span>
-      </div>
-    </div>
+    <a class="logo" href="#top" aria-label="Danilo Morelli, início"><img src="assets/logo-dm.svg" alt="" width="34" height="34"></a>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a class="l" href="#cases">Cases</a></li>
+        <li><a class="l" href="#trajetoria">Trajetória</a></li>
+        <li><a class="l" href="#contato">Contato</a></li>
+        <li><a class="l" href="assets/cv/CV_Danilo_Morelli.pdf" target="_blank" rel="noopener">CV (PDF)<span class="sr-only"> abre em nova aba</span></a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
-<!-- Marquee in brand purple -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>UX Design</span><span class="it">research</span><span>UI Systems</span><span class="it">prototype</span><span>Product Strategy</span><span class="it">discovery</span><span>Branding</span><span class="it">data viz</span>
-    <span>UX Design</span><span class="it">research</span><span>UI Systems</span><span class="it">prototype</span><span>Product Strategy</span><span class="it">discovery</span><span>Branding</span><span class="it">data viz</span>
-  </div>
-</div>
-
-<section id="sobre" class="about">
-  <div class="container">
-    <div class="sec-head">
-      <h2>Bom design é <span class="serif-it">conversa</span> contínua.</h2>
-      <span class="index">(01) <strong>Sobre</strong></span>
+<main>
+  <section class="hero" aria-labelledby="titulo">
+    <div class="container">
+      <!-- SYNC:abertura --><!-- Gerado de dados/ — não edite à mão -->
+      <p class="eyebrow">Danilo Morelli</p>
+      <h1 id="titulo">Product Designer e publicitário</h1>
+      <p class="lead">Gosto de resolver bons problemas e de trocar boas ideias. Atuo para que produtos e serviços cumpram seus objetivos, defendendo a tese que me encantou em experiência do usuário um dia: no final, é sobre pessoas.</p>
+      <!-- /SYNC:abertura -->
     </div>
-    <div class="about-grid">
-      <p>
-        Acredito que produto bom nasce do encontro entre <span class="serif-it">negócio, tecnologia e pessoas</span>.
-      </p>
-      <div>
-        <p>Sou o Danilo, designer de produto com sete anos de trabalho entre interface, pesquisa e estratégia — em projetos de tecnologia nas áreas de inteligência artificial, mercado financeiro e indústria.</p>
-        <p>Busco produtos que sejam <span class="serif-it">bonitos e funcionem</span>: a estética resolve tanto quanto a lógica, e uma não vem às custas da outra. Meu terreno é o problema complexo — dado espalhado, decisão tomada "no feeling", áreas que não se conversam.</p>
-        <p>Para resolver, preciso entender o negócio de perto, do C-level a quem opera no dia a dia, e traduzir isso em interfaces claras, que a pessoa certa usa para decidir. Hoje trabalho como consultor independente em UX/UI, branding e web design.</p>
+  </section>
+
+  <section id="cases" class="sec" aria-labelledby="h-cases">
+    <div class="container">
+      <div class="sec-head"><h2 id="h-cases">Cases</h2><span class="count">03</span></div>
+      <!-- SYNC:cases --><!-- Gerado de dados/ — não edite à mão -->
+      <article class="case">
+        <div class="case-cover">
+          <a class="cover-link" href="cases/torre-de-controle.html" tabindex="-1" aria-hidden="true"><img src="assets/projects/torre-prototipo-estrategico.jpg" alt="" loading="lazy" width="1600" height="800"></a>
+        </div>
+        <div class="case-meta">
+          <p class="case-who"><b>01</b>Chronus Performance AI<br>Product Designer</p>
+          <h3><a href="cases/torre-de-controle.html">Torre de Controle: o dado que já chega com a próxima decisão</a></h3>
+          <p class="case-metric">Aponta o risco de SLA e recomenda onde redistribuir carga entre os 5 centros · em produção</p>
+        </div>
+      </article>
+      <article class="case">
+        <div class="case-cover">
+          <a class="cover-link" href="cases/painel-de-mineracao.html" tabindex="-1" aria-hidden="true"><img src="assets/projects/dashboard-discovery.jpg" alt="" loading="lazy" width="1600" height="800"></a>
+        </div>
+        <div class="case-meta">
+          <p class="case-who"><b>02</b>Startup de IA (confidencial)<br>UX/UI</p>
+          <h3><a href="cases/painel-de-mineracao.html">Ler a planta num relance: da auditoria ao dashboard de monitoramento operacional</a></h3>
+          <p class="case-metric">Auditoria que virou especificação · UI coesa para operação crítica · um sistema, três temas</p>
+        </div>
+      </article>
+      <article class="case">
+        <div class="case-cover">
+          <a class="cover-link" href="cases/open-flow-labs.html" tabindex="-1" aria-hidden="true"><img src="assets/projects/ativos-matriz-2.png" alt="" loading="lazy" width="1600" height="800"></a>
+        </div>
+        <div class="case-meta">
+          <p class="case-who"><b>03</b>Open Flow Labs<br>User Research</p>
+          <h3><a href="cases/open-flow-labs.html">Um MVP enxuto para o mercado financeiro, desenhado a partir de quem origina o negócio.</a></h3>
+          <p class="case-metric">MVP que virou ecossistema, hoje na carteira de um fundo</p>
+        </div>
+      </article>
+      <!-- /SYNC:cases -->
+    </div>
+  </section>
+
+  <section id="trajetoria" class="sec" aria-labelledby="h-trajetoria">
+    <div class="container">
+      <div class="sec-head"><h2 id="h-trajetoria">Trajetória</h2></div>
+      <div class="timeline">
+        <!-- SYNC:experiencia --><!-- Gerado de dados/ — não edite à mão -->
+        <div class="tline">
+          <div class="when">2025 — Presente</div>
+          <div>
+            <h3>Consultor independente</h3>
+            <p class="role">UX/UI, Branding e Web Design</p>
+            <p>Marca, site e materiais gráficos para empresas de diversos portes. Criei o design system e o novo site da S2LAW, escritório de Direito Digital, e construo o Mazza Market, meu laboratório de agentes de IA para vendas de pequenos produtores.</p>
+          </div>
+        </div>
+        <div class="tline">
+          <div class="when">2024 — 2025</div>
+          <div>
+            <h3>Product Designer</h3>
+            <p class="role">Chronus Performance AI</p>
+            <p>Desenhei a Torre de Controle: monitoramento operacional com IA que sinaliza o risco e recomenda a ação, do C-level à gerência. Em produção em uma operação de cinco centros de distribuição.</p>
+          </div>
+        </div>
+        <div class="tline">
+          <div class="when">2021 — 2023</div>
+          <div>
+            <h3>UX/UI Designer</h3>
+            <p class="role">Startup de IA (confidencial)</p>
+            <p>Auditei e redesenhei o painel de monitoramento em tempo real de uma plataforma de IA para mineração. Entreguei o sistema de interface: três temas, estados e versões desktop, tablet e mobile.</p>
+          </div>
+        </div>
+        <div class="tline">
+          <div class="when">2020 — 2021</div>
+          <div>
+            <h3>UX Researcher</h3>
+            <p class="role">Open Flow Labs</p>
+            <p>Pesquisa e definição do MVP de um produto de aquisição de ativos para o mercado financeiro. Hoje é um ecossistema na carteira de um fundo.</p>
+          </div>
+        </div>
+        <!-- /SYNC:experiencia -->
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="projetos" class="projects">
-  <div class="container">
-    <div class="sec-head">
-      <h2>Casos <span class="serif-it">selecionados</span> em produto, dado &amp; operação.</h2>
-      <span class="index">(02) <strong>Projetos</strong> · Quatro cases</span>
-    </div>
-
-    <!-- PROJECT 01 — TORRE -->
-    <article class="project">
-      <div class="project-meta">
-        <div class="pnum">01<span>/04</span></div>
-        <div>
-          <p class="pclient">Chronus Performance AI · 2024—2025</p>
-          <h2 class="ptitle">Torre de Controle<span class="serif-it">,</span> dados e <span class="serif-it">IA</span> na logística.</h2>
-        </div>
-        <div></div>
-      </div>
-
-      <figure class="dark p1-hero"><img src="assets/projects/torre-tela.jpg" alt="Torre de Controle — painel estratégico em produção, comparando duas versões de layout" loading="lazy"></figure>
-
-      <div class="tower">
-        <div class="tower-in">
-          <div class="tower-top">
-            <h3>Uma torre tem andares. <em>A informação também.</em></h3>
-            <span class="k">Arquitetura da informação · modelo SCOR</span>
-          </div>
-
-          <div class="tier tier-1">
-            <span class="lvl">Estratégico</span>
-            <div>
-              <div class="who">C-Level</div>
-              <div class="what">A saúde do negócio — receita, sazonalidade, distribuição de clientes, score de carteira.</div>
-            </div>
-            <div class="cnt"><b>06</b><span>KPIs</span></div>
-          </div>
-
-          <div class="tier tier-2">
-            <span class="lvl">Tático</span>
-            <div>
-              <div class="who">Diretoria</div>
-              <div class="what">O controle da execução — time-to-cash, previsão de recebimento, ocupação, divergência, NPS.</div>
-            </div>
-            <div class="cnt"><b>06</b><span>KPIs</span></div>
-          </div>
-
-          <div class="tier tier-3">
-            <span class="lvl">Operacional</span>
-            <div>
-              <div class="who">Gerências de Venda, Operação e Financeiro</div>
-              <div class="what">O dia a dia que move o número — funil, taxa de ocupação, SLA, custo por CD, inadimplência.</div>
-            </div>
-            <div class="cnt"><b>11</b><span>KPIs</span></div>
-          </div>
-
-          <div class="tower-foot">
-            <span>Indicadores mapeados e distribuídos por quem decide com eles</span>
-            <span>Cada andar responde a uma pergunta diferente</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="pbody">
-        <div class="pcol-side">
-          <h4>O caso</h4>
-          <p class="label">Processo &amp;<br>descobertas</p>
-        </div>
-        <div>
-          <p class="pdesc" style="margin-top:0">
-            Em parceria com a Chronus Performance AI, desenvolvi um produto de monitoramento operacional para C-Level, Diretoria e Gerência — informação complexa apresentada com clareza, com IA embarcada para anomalias, previsões e recomendações.
-          </p>
-          <div class="ptags">
-            <span class="ptag solid">Product Designer</span>
-            <span class="ptag">MVP</span>
-            <span class="ptag">UI Design</span>
-            <span class="ptag">UX Research</span>
-            <span class="ptag">Prototype</span>
-          </div>
-
-          <p style="margin-top:2.5rem"><strong>Problema —</strong> Dado capturado sem fluxo de consumo definido: previsão fraca, retrabalho, decisão "no feeling".</p>
-          <p><strong>Solução —</strong> Substituir o feeling por uma cultura de dado confiável e atualizado.</p>
-
-          <ul>
-            <li>
-              <strong>Mapeamento de KPIs end-to-end</strong>
-              <span>Jornada comercial completa, pontos críticos e oportunidades de medição.</span>
-            </li>
-            <li>
-              <strong>Modelo SCOR</strong>
-              <span>Estrutura padrão da indústria, descoberta com especialista em excelência operacional e validada com diretor logístico.</span>
-            </li>
-            <li>
-              <strong>Entrevistas in loco</strong>
-              <span>CEO e diretores de Operação, TI e Comercial — dores reais por nível.</span>
-            </li>
-            <li>
-              <strong>KPIs por nível</strong>
-              <span>O que mostrar em cada camada: estratégico, tático, operacional.</span>
-            </li>
-          </ul>
-
-          <p class="quote">"Reduzir decisões no feeling e acelerar respostas a desvios."</p>
-
-          <div class="results-card purple">
-            <h4>Resultados</h4>
-            <p>O produto entrou numa operação de peso — <strong>cinco centros de distribuição</strong>, mais de <strong>40 mil m²</strong> de armazenagem, cerca de <strong>350 empresas</strong> atendidas. Ao organizar 23 indicadores por nível de decisão, o monitoramento virou acionável: o C-level passou a ler a saúde do negócio, a diretoria ganhou controle da execução, e a operação trocou a decisão "no feeling" por dado confiável. O MVP virou produto e hoje está em produção no cliente.</p>
-          </div>
-
-          <a href="https://www.figma.com/make/59cVDrp48nDIqQ04fdjJ7v/Torre-de-Controle?p=f&t=qvo7xxWzDcOIVW48-0&fullscreen=1" target="_blank" rel="noopener" class="cta-link">Ver protótipo no Figma</a>
-
-          <h3 style="margin-top:2.5rem">Artefatos do processo</h3>
-          <p>Os boards originais de mapeamento, do jeito que foram construídos durante o projeto.</p>
-          <div class="arte">
-            <figure>
-              <img src="assets/projects/torre-kpis.png" alt="Board de mapeamento da jornada do cliente e variáveis faltantes" loading="lazy">
-              <figcaption>Jornada do cliente e variáveis faltantes</figcaption>
-            </figure>
-            <figure>
-              <img src="assets/projects/torre-niveis.png" alt="Matriz de KPIs por nível de decisão e representação visual" loading="lazy">
-              <figcaption>Matriz de KPIs por nível e representação visual</figcaption>
-            </figure>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- PROJECT 03 — PAINEL DE MINERAÇÃO (REDESENHO) -->
-    <article class="project" id="case-redesenho">
-      <div class="project-meta">
-        <div class="pnum">02<span>/04</span></div>
-        <div>
-          <p class="pclient">Startup de inteligência artificial (confidencial) · Parte 2 — redesenho</p>
-          <h2 class="ptitle">Ler a planta em um <span class="serif-it">relance</span>.</h2>
-        </div>
-        <div></div>
-      </div>
-
-      <div class="case-deck">
-        <div class="case-deck-frame" id="deckFrame">
-          <button class="deck-poster" id="deckPoster" type="button"
-                  aria-label="Carregar o estudo de caso completo">
-            <span class="pk">Estudo de caso completo</span>
-            <span class="pt">Ler a planta<br><em>em um relance</em></span>
-            <span class="pb">
-              <span class="pm">Auditoria e sistema de interface, do inspect ao redesenho</span>
-              <span class="go">Abrir o estudo aqui</span>
-              <a class="mob" href="assets/case-study/painel-mineracao.html" target="_blank" rel="noopener">Abrir o estudo</a>
-            </span>
-          </button>
-        </div>
-        <div class="case-deck-bar">
-          <span>Role dentro do quadro para o estudo completo</span>
-          <a href="assets/case-study/painel-mineracao.html" target="_blank" rel="noopener">Abrir em tela cheia</a>
-        </div>
-      </div>
-
-      <div class="pbody">
-        <div class="pcol-side">
-          <h4>O caso</h4>
-          <p class="label">Um modelo de<br>navegação,<br>quatro tarefas</p>
-        </div>
-        <div>
-          <p class="pdesc" style="margin-top:0">
-            Auditei uma tela de login e um painel de operação de usina. Depois construí o sistema de interface que faltava. Cada achado da auditoria virou decisão de projeto, e quatro telas novas passaram a atender quatro perguntas — <strong>onde está o problema</strong> (Circuits), <strong>o que mudar</strong> (Parameters), <strong>o que aconteceu</strong> (History) e <strong>o que reportar</strong> (Reports).
-          </p>
-          <div class="ptags">
-            <span class="ptag solid">UI Design</span>
-            <span class="ptag">Design System</span>
-            <span class="ptag">Data Viz</span>
-            <span class="ptag">Multi-tema</span>
-            <span class="ptag">Responsivo</span>
-            <span class="ptag">Acessibilidade</span>
-          </div>
-
-          <h3 style="margin-top:2.5rem">Decisões de design</h3>
-          <ul>
-            <li>
-              <strong>A planta como fluxo</strong>
-              <span>A tela segue a ordem física da planta, da esquerda para a direita.</span>
-            </li>
-            <li>
-              <strong>Status nunca só por cor</strong>
-              <span>Ícone e rótulo em cada estado — "▲ AT LIMIT", "✓ IN RANGE".</span>
-            </li>
-            <li>
-              <strong>A IA mostra o raciocínio</strong>
-              <span>Toda sugestão vem com a justificativa e os dados de entrada.</span>
-            </li>
-            <li>
-              <strong>Prova pelo próprio dado</strong>
-              <span>Histórico compara IA ligada e desligada, lado a lado.</span>
-            </li>
-            <li>
-              <strong>Três temas, um sistema de tokens</strong>
-              <span>Light para escritório, <em>sunlight</em> de campo, dark para o videowall.</span>
-            </li>
-          </ul>
-
-          <p class="quote">"Uma tela para cada pergunta que o operador faz."</p>
-
-          <h3 style="margin-top:1.5rem">Do inspect ao redesenho</h3>
-          <p>O redesenho respondeu ponto a ponto à auditoria: login corrigido, contraste elevado, estados especificados, gráficos legíveis, e a ação de desligar a IA passou a exigir confirmação.</p>
-
-          <div class="results-card purple">
-            <h4>Resultado</h4>
-            <p>Um sistema coerente: mesmos tokens, navegação e comutador de tema nas quatro telas. O painel deixou de exibir dado e passou a <strong>sustentar a decisão do operador</strong>.</p>
-          </div>
-        </div>
-      </div>
-    </article>
-
-
-    <!-- PROJECT 02 — DASHBOARD BRAINIALL -->
-    <article class="project">
-      <div class="project-meta">
-        <div class="pnum">03<span>/04</span></div>
-        <div>
-          <p class="pclient">Startup de inteligência artificial (confidencial) · 2021—2023 · Parte 1</p>
-          <h2 class="ptitle">Inspect da interface <span class="serif-it">legada</span>.</h2>
-        </div>
-        <div></div>
-      </div>
-
-      <figure class="contain" style="margin-bottom:1.4rem"><img src="assets/projects/dashboard-discovery.jpg" alt="Inspect e discovery da interface legada — pontos de melhoria mapeados" loading="lazy"></figure>
-
-      <div class="pbody">
-        <div class="pcol-side">
-          <h4>O caso</h4>
-          <p class="label">Pequenos pontos,<br>grande impacto</p>
-        </div>
-        <div>
-          <p class="pdesc" style="margin-top:0">
-            A empresa desenvolvia algo ambicioso: inteligência artificial atuando sobre maquinário industrial na camada de automação — SCADA e PLC. Este painel de monitoramento em tempo real, na <strong>indústria de mineração</strong>, era o ponto de contato mais importante entre o cliente e essa tecnologia — onde, ao vivo, se via o que a planta e a IA estavam fazendo. Desenvolvido <strong>desktop first</strong>, priorizando a clareza na apresentação de informações complexas, e depois adaptado para tablet e mobile. O escopo incluiu autenticação (SSO/Login), interface responsiva e uma versão <strong>light mode</strong> para uso em campo — tablet sob luz solar direta e videowall de sala de controle.
-          </p>
-          <div class="ptags">
-            <span class="ptag solid">UX/UI Designer</span>
-            <span class="ptag">Desktop First</span>
-            <span class="ptag">Light &amp; Dark Mode</span>
-            <span class="ptag">Responsivo</span>
-            <span class="ptag">SSO / Login</span>
-            <span class="ptag">Prototype</span>
-            <span class="ptag">UI Components</span>
-          </div>
-
-          <h3 style="margin-top:2.5rem">Responsabilidades</h3>
-          <ul>
-            <li>
-              <strong>Inspect &amp; Discovery</strong>
-              <span>Auditoria da interface existente: usabilidade e leitura de dados.</span>
-            </li>
-            <li>
-              <strong>SSO / Login</strong>
-              <span>Autenticação clara, com recuperação de senha acessível.</span>
-            </li>
-            <li>
-              <strong>UI desktop first, depois mobile</strong>
-              <span>KPIs em tempo real sem sobrecarga cognitiva; adaptação por toque sem perder função.</span>
-            </li>
-          </ul>
-
-          <h3 style="margin-top:2.5rem">Desafios</h3>
-          <ul>
-            <li>
-              <strong>Dados em tempo real</strong>
-              <span>Interface estável sob atualização contínua.</span>
-            </li>
-            <li>
-              <strong>Muitos KPIs, pouca sobrecarga</strong>
-              <span>Volume alto de indicadores, leitura simples.</span>
-            </li>
-            <li>
-              <strong>Base densa</strong>
-              <span>Navegação e agrupamento definidos pela complexidade dos dados.</span>
-            </li>
-          </ul>
-
-          <h3 style="margin-top:2.5rem">Auditoria de interface</h3>
-          <p>Usuário-alvo: <strong>operador de sala de controle</strong>, turno longo. Achados principais:</p>
-          <ul>
-            <li>
-              <strong>Login</strong>
-              <span>Senha antes de e-mail, quebrando o preenchimento automático.</span>
-            </li>
-            <li>
-              <strong>Contraste insuficiente</strong>
-              <span>Crítico para leitura em tablet sob sol direto.</span>
-            </li>
-            <li>
-              <strong>Status só por cor</strong>
-              <span>Falha de acessibilidade para daltonismo.</span>
-            </li>
-            <li>
-              <strong>Sem estados de erro, carregamento ou vazio</strong>
-              <span>Operador sem saber se o dado é atual ou travou.</span>
-            </li>
-            <li>
-              <strong>"TURN OFF AI" sem confirmação</strong>
-              <span>Risco operacional alto para um clique acidental.</span>
-            </li>
-          </ul>
-
-          <p class="quote">"Grande volume de dados, sem sobrecarga visual."</p>
-
-          <h3 style="margin-top:1.5rem">Soluções</h3>
-          <p><strong>Hierarquia clara —</strong> grid e cards modulares; críticos visíveis, secundários sob demanda.</p>
-          <p><strong>Feedback em tempo real —</strong> indicadores sutis sinalizam a atualização contínua.</p>
-          <p><strong>Responsivo —</strong> toque amplo, sem zoom; gráficos em blocos empilháveis.</p>
-          <p><strong>Light mode —</strong> contraste e tipografia ajustados para uso em campo.</p>
-
-          <div class="results-card purple">
-            <h4>Aprendizado-chave</h4>
-            <p>Pensar no <strong>mínimo utilizável</strong>: cada elemento funcional, acessível e relevante — complexidade de dado equilibrada com simplicidade de design.</p>
-          </div>
-
-          <div class="results-card">
-            <h4>Impacto</h4>
-            <p>KPIs mais rápidos de encontrar, navegação sem sobrecarga visual, e uma base mais confiável para o operador decidir em campo.</p>
-          </div>
-
-          <p class="case-bridge">
-            Os achados deste inspect viraram a especificação do redesenho —
-            <a href="#case-redesenho" class="up">ver o redesenho</a>
-          </p>
-        </div>
-      </div>
-    </article>
-    <article class="project">
-      <div class="project-meta">
-        <div class="pnum">04<span>/04</span></div>
-        <div>
-          <p class="pclient">Open Flow Labs · 2020—2021</p>
-          <h2 class="ptitle">Design para a <span class="serif-it">aquisição</span> de ativos.</h2>
-        </div>
-        <div></div>
-      </div>
-
-      <div class="p3-grid">
-        <figure class="contain lime"><img src="assets/projects/ativos-atores.png" alt="Mapa de atores envolvidos na jornada" loading="lazy"></figure>
-        <figure class="contain lime"><img src="assets/projects/ativos-personas.png" alt="Agrupamento de personas identificadas" loading="lazy"></figure>
-        <figure class="contain"><img src="assets/projects/ativos-matriz-1.png" alt="Matriz de Esforço x Impacto — primeira versão" loading="lazy"></figure>
-        <figure class="contain"><img src="assets/projects/ativos-matriz-2.png" alt="Matriz de Esforço x Impacto — versão refinada" loading="lazy"></figure>
-      </div>
-
-      <div class="pbody">
-        <div class="pcol-side">
-          <h4>O caso</h4>
-          <p class="label">Centrado no usuário,<br>do MVP ao ecossistema</p>
-        </div>
-        <div>
-          <p class="pdesc" style="margin-top:0">
-            Produto digital focado na aquisição de ativos para o mercado financeiro, desenvolvido por meio de uma abordagem centrada no usuário — partindo de um MVP enxuto para validar hipóteses e desbloquear escala.
-          </p>
-          <div class="ptags">
-            <span class="ptag solid">UX Researcher</span>
-            <span class="ptag">Lean Product</span>
-            <span class="ptag">Personas</span>
-            <span class="ptag">User Journey</span>
-            <span class="ptag">Userflow</span>
-          </div>
-
-          <h3 style="margin-top:2.5rem">Desafios</h3>
-          <p>Nova proposta de desenvolvimento a partir de um MVP enxuto. Personas centradas nos <strong>originadores</strong>, agente central na geração de negócio.</p>
-
-          <h3 style="margin-top:1.5rem">Responsabilidades</h3>
-          <ul>
-            <li>
-              <strong>Jornada do usuário</strong>
-              <span>Mapeamento de fluxos com o Product Owner.</span>
-            </li>
-            <li>
-              <strong>Validação das personas</strong>
-              <span>Análise crítica de hipóteses de produto.</span>
-            </li>
-          </ul>
-
-          <div class="results-card purple">
-            <h4>Resultado</h4>
-            <p>MVP ágil e eficiente desdobrado em <strong>ecossistema tecnológico</strong> — hoje oferecido na carteira de produtos do fundo de investimento que o adquiriu.</p>
-          </div>
-        </div>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<section id="experiencia" class="experience">
-  <div class="container">
-    <div class="sec-head">
-      <h2>Trajetória <span class="serif-it">profissional</span>.</h2>
-      <span class="index">(03) <strong>Experiência</strong></span>
-    </div>
-    <div class="timeline">
-      <!-- SYNC:experiencia --><!-- Gerado de dados/perfil.json — não edite à mão -->
-      <div class="tline">
-        <div class="when">2025 — Presente</div>
-        <div>
-          <h3>Consultor independente</h3>
-          <p class="role">UX/UI · Branding · Graphic &amp; Web Design</p>
-          <p>Marca, site e materiais gráficos para empresas de diversos portes. Design system e novo site para a S2LAW, escritório de Direito Digital. E o Mazza Market, projeto próprio que criei do zero — conceito, design e construção de um laboratório de orquestração de agentes para vendas de pequenos produtores.</p>
-        </div>
-        <div class="arrow">↗</div>
-      </div>
-
-      <div class="tline">
-        <div class="when">2024 — 2025</div>
-        <div>
-          <h3>Product Designer</h3>
-          <p class="role">Chronus Performance AI</p>
-          <p>Torre de Controle — monitoramento operacional com IA para C-Level, Diretoria e Gerência: anomalias, previsões, recomendações. KPIs mapeados end-to-end, arquitetura baseada no modelo SCOR.</p>
-        </div>
-        <div class="arrow">↗</div>
-      </div>
-
-      <div class="tline">
-        <div class="when">2021 — 2023</div>
-        <div>
-          <h3>UX/UI Designer</h3>
-          <p class="role">Startup de inteligência artificial (confidencial)</p>
-          <p>Dashboard de monitoramento operacional em tempo real. Hierarquia clara para KPIs críticos, design modular, protótipos validados com usuários e time técnico.</p>
-        </div>
-        <div class="arrow">↗</div>
-      </div>
-
-      <div class="tline">
-        <div class="when">2020 — 2021</div>
-        <div>
-          <h3>UX Researcher</h3>
-          <p class="role">Open Flow Labs</p>
-          <p>Produto para aquisição de ativos no mercado financeiro. Fluxos e jornadas mapeados com o Product Owner, hipóteses validadas. MVP hoje ofertado por um fundo de investimento.</p>
-        </div>
-        <div class="arrow">↗</div>
-      </div>
-      <!-- /SYNC:experiencia -->
-    </div>
-  </div>
-</section>
-
-<section id="habilidades">
-  <div class="container">
-    <div class="sec-head">
-      <h2>Repertório <span class="serif-it">técnico</span> e formação.</h2>
-      <span class="index">(04) <strong>Habilidades</strong></span>
-    </div>
-
-    <div class="skills-grid">
-      <!-- SYNC:habilidades --><!-- Gerado de dados/perfil.json — não edite à mão -->
-      <div class="skill-card">
-        <h3>Habilidades <span class="num">06</span></h3>
-        <ul>
-          <li>UX/UI Design <span class="tag">Core</span></li>
-          <li>Design Thinking <span class="tag">Método</span></li>
-          <li>Content Design &amp; SEO <span class="tag">Conteúdo</span></li>
-          <li>Market Research <span class="tag">Pesquisa</span></li>
-          <li>Problem Solving <span class="tag">Estratégia</span></li>
-          <li>Lean Product <span class="tag">Produto</span></li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <h3>Formação <span class="num">02</span></h3>
-        <ul>
-          <li class="block">
-            Bacharelado em Publicidade e Propaganda
-            <span class="sub">Anhembi Morumbi · conclusão prevista dez/2026</span>
-          </li>
-          <li class="block">
-            Certificação em UX Design
-            <span class="sub">Digital House · 2021</span>
-          </li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <h3>Idiomas &amp; Certificações <span class="num">04</span></h3>
-        <ul>
-          <li>Português <span class="tag">Nativo</span></li>
-          <li>Inglês <span class="tag">Intermediário</span></li>
-          <li>Espanhol <span class="tag">Básico</span></li>
-          <li class="block">
-            IPETEC — Grandes Modelos de Linguagem da IA (LLM)
-            <span class="sub">Registro 887ebac0-fd27-489b-b607-420293f9221</span>
-          </li>
-        </ul>
-      </div>
-      <!-- /SYNC:habilidades -->
-    </div>
-  </div>
-</section>
-
-<section id="contato" class="contact">
-  <img src="assets/logo-dm.svg" alt="" class="logo-stamp" />
-  <div class="container">
-    <div class="hero-top">
-      <span class="eyebrow">(05) Contato</span>
-      <span class="availability"><span class="blob"></span>Aceitando projetos para 2026</span>
-    </div>
-    <div class="contact-display">
-      Vamos<br>
-      <span class="serif-it">construir</span> algo<br>
-      bom juntos.
-    </div>
-    <div class="contact-grid">
-      <div>
-        <p>Estou disponível para colaborações em produto digital, branding e identidade visual. Conte sobre o desafio — respondo em até dois dias úteis.</p>
-        <a href="assets/cv/CV_Danilo_Morelli.pdf" target="_blank" rel="noopener" class="cv-download">Baixar currículo (PDF)</a>
-      </div>
+  <section id="contato" class="contact" aria-labelledby="h-contato">
+    <div class="container">
+      <p class="eyebrow">Contato</p>
+      <h2 id="h-contato">Para vagas, projetos ou uma boa conversa, é só chamar.</h2>
       <div class="contact-links">
-        <!-- SYNC:contato --><!-- Gerado de dados/perfil.json — não edite à mão -->
-        <a class="contact-link" href="mailto:danilommorelli@gmail.com">
-          <div><div class="lbl">E-mail</div><div class="val">danilommorelli@gmail.com</div></div>
-          <span class="arrow">→</span>
-        </a>
-        <a class="contact-link" href="https://www.linkedin.com/in/danilomorelli/" target="_blank" rel="noopener">
-          <div><div class="lbl">LinkedIn</div><div class="val">/in/danilomorelli</div></div>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="contact-link" href="tel:+5511989749110">
-          <div><div class="lbl">Telefone</div><div class="val">+55 11 98974-9110</div></div>
-          <span class="arrow">→</span>
-        </a>
-        <a class="contact-link" href="#top">
-          <div><div class="lbl">Localização</div><div class="val">São Paulo · Brasil</div></div>
-          <span class="arrow">↑</span>
-        </a>
-      <!-- /SYNC:contato -->
+        <!-- SYNC:contato --><!-- Gerado de dados/ — não edite à mão -->
+        <a class="contact-link" href="mailto:danilommorelli@gmail.com"><span><span class="lbl">E-mail</span><span class="val">danilommorelli@gmail.com</span></span></a>
+        <a class="contact-link" href="https://www.linkedin.com/in/danilomorelli/" target="_blank" rel="noopener"><span><span class="lbl">LinkedIn</span><span class="val">/in/danilomorelli<span class="sr-only"> (abre em nova aba)</span></span></span></a>
+        <p class="contact-link"><span><span class="lbl">Localização</span><span class="val">São Paulo · Brasil</span></span></p>
+        <!-- /SYNC:contato -->
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <footer>
   <div class="container">
-    <span>© <span id="yr"></span> Danilo Morelli</span>
-    <span class="serif-it">Identidade construída com tipografia, roxo e lima.</span>
-    <span>v2.0 · 2026</span>
+    <span>© <span id="yr">2026</span> Danilo Morelli</span>
+    <a href="#top">Voltar ao topo</a>
   </div>
 </footer>
 
 <script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
-  const toggle = document.getElementById('menuToggle');
-  const links = document.getElementById('navLinks');
-  toggle?.addEventListener('click', () => links.classList.toggle('open'));
-  links?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-
-  if ('IntersectionObserver' in window) {
-    var revealed = [];
-    var show = function (el) {
-      el.style.opacity = 1;
-      el.style.transform = 'translateY(0)';
-    };
-    // threshold 0: qualquer pixel visível revela. Com 0.05, blocos mais altos
-    // que a viewport nunca atingiam a razão exigida e ficavam invisíveis.
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { show(e.target); io.unobserve(e.target); }
-      });
-    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('section, .project, figure').forEach(function (el) {
-      el.style.opacity = 0;
-      el.style.transform = 'translateY(12px)';
-      el.style.transition = 'opacity .8s ease, transform .8s ease';
-      revealed.push(el);
-      io.observe(el);
-    });
-    // Rede de segurança: se algo não for revelado, mostra assim mesmo.
-    setTimeout(function () { revealed.forEach(show); }, 1500);
-  }
-
-
-  // Deck do estudo de caso: carrega sob demanda
-  (function(){
-    var poster=document.getElementById('deckPoster'), frame=document.getElementById('deckFrame');
-    if(!poster||!frame) return;
-    poster.addEventListener('click', function(e){
-      if(e.target.closest('a')) return;            // link mobile segue normal
-      if(window.matchMedia('(max-width:820px)').matches) return;
-      var f=document.createElement('iframe');
-      f.src='assets/case-study/painel-mineracao.html';
-      f.title='Estudo de caso — Painel de Mineração · 26 slides';
-      f.setAttribute('allowfullscreen','');
-      frame.appendChild(f);
-      poster.remove();
-    });
-  })();
+(function(){
+  var y=document.getElementById('yr'); if(y) y.textContent=new Date().getFullYear();
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.case-cover video[data-src]').forEach(function(v){
+    var btn=v.closest('.case-cover').querySelector('.vctl');
+    v.src=v.getAttribute('data-src');
+    function sync(){ if(btn){ btn.textContent=v.paused?'Reproduzir':'Pausar'; btn.setAttribute('aria-label',(v.paused?'Reproduzir':'Pausar')+' vídeo do case'); } }
+    if(!reduce){ v.play().catch(function(){}); }
+    v.addEventListener('play',sync); v.addEventListener('pause',sync); sync();
+    if(btn){ btn.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); v.paused?v.play():v.pause(); }); }
+    if('IntersectionObserver' in window && !reduce){
+      new IntersectionObserver(function(en){ en.forEach(function(x){ if(!x.isIntersecting && !v.paused && !v.dataset.manual) v.pause(); else if(x.isIntersecting && v.paused && !v.dataset.manual) v.play().catch(function(){}); }); },{threshold:.25}).observe(v);
+    }
+    if(btn){ btn.addEventListener('click',function(){ v.dataset.manual='1'; }); }
+  });
+})();
 </script>
 </body>
 </html>

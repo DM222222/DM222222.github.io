@@ -37,6 +37,19 @@ def main():
     print("\nResume de uma pagina")
     print("  " + os.path.relpath(resume.gerar(d, PADRAO), comum.RAIZ))
 
+    priv_path = os.path.join(comum.RAIZ, "dados", "privado.json")
+    if os.path.exists(priv_path):
+        import copy, json
+        dp = copy.deepcopy(d)
+        dp["pessoal"].update({k: v for k, v in json.load(open(priv_path, encoding="utf-8")).items() if not k.startswith("_")})
+        pasta = os.path.join(comum.RAIZ, "privado")
+        os.makedirs(pasta, exist_ok=True)
+        print("\nVersao PRIVADA, com telefone (nao vai para o GitHub)")
+        for nome, fn in (("CV_Danilo_Morelli.docx", lambda c: cv_ats.gerar_docx(dp, PADRAO, c)),
+                         ("CV_Danilo_Morelli.pdf", lambda c: cv_ats.gerar_pdf(dp, PADRAO, c)),
+                         ("Resume_Danilo_Morelli.pdf", lambda c: resume.gerar(dp, PADRAO, c))):
+            print("  privado/" + os.path.basename(fn(os.path.join(pasta, nome))))
+
     print("\nPortfolio")
     print("  index.html sincronizado" if portfolio.sincronizar(d)
           else "  index.html ja estava em dia")

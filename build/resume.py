@@ -74,13 +74,14 @@ def gerar(d, chave_variante="design", caminho=None):
     # cabecalho
     s.append(Paragraph(esc(p["nome"]), E["nome"]))
     s.append(Paragraph(esc(v["cargo"]), E["cargo"]))
-    contato = " &nbsp;·&nbsp; ".join([
+    tel = ('<link href="tel:%s" color="#2B2B2B">%s</link>' % (p["telefone"].replace(" ", ""), p["telefone"])) if p.get("telefone") else ""
+    contato = " &nbsp;·&nbsp; ".join(i for i in [
         '<link href="mailto:%s" color="#2B2B2B">%s</link>' % (p["email"], p["email"]),
-        '<link href="tel:%s" color="#2B2B2B">%s</link>' % (p["telefone"].replace(" ", ""), p["telefone"]),
+        tel,
         '<link href="%s" color="#2B2B2B">%s</link>' % (p["linkedin"], p["linkedin_curto"]),
         '<link href="%s" color="#2B2B2B">%s</link>' % (p["portfolio"], p["portfolio_curto"]),
         "%s · %s" % (p["cidade"], p["estado"]),
-    ])
+    ] if i)
     s.append(Paragraph(contato, E["contato"]))
     s.append(regua(ROXO, 1.4, 9, 0))
 
