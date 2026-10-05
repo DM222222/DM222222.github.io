@@ -17,7 +17,7 @@
       "link": "cases/torre-de-controle.html",
       "poster": "assets/projects/torre-prototipo-estrategico.jpg",
       "alt": "Painel estratégico da Torre de Controle: faturamento, sazonalidade, score de clientes e fluxo de caixa.",
-      "video": "assets/video/torre-de-controle.mp4"
+      "video": ""
     },
     {
       "n": "02",
@@ -42,7 +42,7 @@
       "link": "cases/open-flow-labs.html",
       "poster": "assets/projects/ativos-matriz-1.png",
       "alt": "Matriz de esforço por impacto das tarefas do usuário.",
-      "video": "assets/video/open-flow-labs.mp4"
+      "video": ""
     }
   ],
   "mote": "Cada case diz o passo à frente: o que a solução faz acontecer, não quanto contém. Ver dados/MOTE-DO-PORTFOLIO.md",
