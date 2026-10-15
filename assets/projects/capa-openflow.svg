@@ -1,105 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" width="1600" height="800" font-family="Inter Tight, Inter, Segoe UI, Helvetica Neue, Arial, sans-serif" role="img" aria-label="Capa do case">
-<defs><radialGradient id="o-g1" cx="20%" cy="10%" r="90%"><stop offset="0" stop-color="#7B55A0"/><stop offset=".55" stop-color="#5A3A7B"/><stop offset="1" stop-color="#2F1D44"/></radialGradient><radialGradient id="o-g2" cx="88%" cy="90%" r="50%"><stop offset="0" stop-color="#C6DE64" stop-opacity=".25"/><stop offset="1" stop-color="#C6DE64" stop-opacity="0"/></radialGradient><marker id="o-ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1,1 L9,5 L1,9 Z" fill="#fff" fill-opacity=".85"/></marker><filter id="o-bl" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="14"/></filter></defs>
-<rect x="0" y="0" width="1600" height="800" rx="0" fill="url(#o-g1)" />
-<rect x="0" y="0" width="1600" height="800" rx="0" fill="url(#o-g2)" />
-<line x1="0" y1="0" x2="0" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="80" y1="0" x2="80" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="160" y1="0" x2="160" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="240" y1="0" x2="240" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="320" y1="0" x2="320" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="400" y1="0" x2="400" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="480" y1="0" x2="480" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="560" y1="0" x2="560" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="640" y1="0" x2="640" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="720" y1="0" x2="720" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="800" y1="0" x2="800" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="880" y1="0" x2="880" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="960" y1="0" x2="960" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="1040" y1="0" x2="1040" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="1120" y1="0" x2="1120" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="1200" y1="0" x2="1200" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="1280" y1="0" x2="1280" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="1360" y1="0" x2="1360" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="1440" y1="0" x2="1440" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="1520" y1="0" x2="1520" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="1600" y1="0" x2="1600" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="0" y1="0" x2="1600" y2="0" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="0" y1="80" x2="1600" y2="80" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="0" y1="160" x2="1600" y2="160" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="0" y1="240" x2="1600" y2="240" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="0" y1="320" x2="1600" y2="320" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="0" y1="400" x2="1600" y2="400" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="0" y1="480" x2="1600" y2="480" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="0" y1="560" x2="1600" y2="560" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="0" y1="640" x2="1600" y2="640" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="0" y1="720" x2="1600" y2="720" stroke="#fff" stroke-width="1" opacity=".04"/>
-<line x1="0" y1="800" x2="1600" y2="800" stroke="#fff" stroke-width="1" opacity=".04"/>
-<text x="300" y="138" font-size="15" fill="#FFFFFF" font-weight="700" opacity=".75" letter-spacing=".16em">5 PERFIS</text>
-<text x="612" y="138" font-size="15" fill="#FFFFFF" font-weight="700" opacity=".75" letter-spacing=".16em">3 PERSONAS</text>
-<text x="880" y="138" font-size="15" fill="#FFFFFF" font-weight="700" opacity=".75" letter-spacing=".16em">FLUXO DO ECOSSISTEMA</text>
-<path d="M332,220 C410,220 410,420 480,420" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>
-<path d="M332,320 C410,320 410,420 480,420" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>
-<path d="M332,420 C410,420 410,420 480,420" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>
-<path d="M332,520 C410,520 410,420 480,420" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>
-<path d="M332,620 C410,620 410,420 480,420" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>
-<circle cx="310" cy="220" r="24" fill="#FFFFFF"/>
-<text x="310" y="225" font-size="15" fill="#4A2F66" font-weight="700" text-anchor="middle">1</text>
-<circle cx="310" cy="320" r="24" fill="#FFFFFF"/>
-<text x="310" y="325" font-size="15" fill="#4A2F66" font-weight="700" text-anchor="middle">2</text>
-<circle cx="310" cy="420" r="24" fill="#FFFFFF"/>
-<text x="310" y="425" font-size="15" fill="#4A2F66" font-weight="700" text-anchor="middle">3</text>
-<circle cx="310" cy="520" r="24" fill="#FFFFFF"/>
-<text x="310" y="525" font-size="15" fill="#4A2F66" font-weight="700" text-anchor="middle">4</text>
-<circle cx="310" cy="620" r="24" fill="#FFFFFF"/>
-<text x="310" y="625" font-size="15" fill="#4A2F66" font-weight="700" text-anchor="middle">5</text>
-<circle cx="480" cy="420" r="9" fill="#C6DE64"/>
-<path d="M480,420 C540,420 540,270 600,270" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>
-<path d="M480,420 C540,420 540,420 600,420" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>
-<path d="M480,420 C540,420 540,570 600,570" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>
-<circle cx="650" cy="270" r="50" fill="#fff" opacity=".12"/>
-<circle cx="650" cy="270" r="50" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
-<circle cx="650" cy="246" r="0" fill="none"/>
-<circle cx="650" cy="260" r="12" fill="#FFFFFF" opacity=".95"/>
-<path d="M626,298 C626,276 674,276 674,298 Z" fill="#FFFFFF" opacity=".95"/>
-<text x="650" y="344" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle" opacity=".85">Persona 1</text>
-<circle cx="650" cy="420" r="50" fill="#fff" opacity=".12"/>
-<circle cx="650" cy="420" r="50" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
-<circle cx="650" cy="396" r="0" fill="none"/>
-<circle cx="650" cy="410" r="12" fill="#FFFFFF" opacity=".95"/>
-<path d="M626,448 C626,426 674,426 674,448 Z" fill="#FFFFFF" opacity=".95"/>
-<text x="650" y="494" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle" opacity=".85">Persona 2</text>
-<circle cx="650" cy="570" r="50" fill="#fff" opacity=".12"/>
-<circle cx="650" cy="570" r="50" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
-<circle cx="650" cy="546" r="0" fill="none"/>
-<circle cx="650" cy="560" r="12" fill="#FFFFFF" opacity=".95"/>
-<path d="M626,598 C626,576 674,576 674,598 Z" fill="#FFFFFF" opacity=".95"/>
-<text x="650" y="644" font-size="13" fill="#FFFFFF" font-weight="600" text-anchor="middle" opacity=".85">Persona 3</text>
-<path d="M704,270 C770,270 780,190 836,190" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
-<path d="M704,420 C770,420 780,190 836,190" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
-<path d="M704,570 C770,570 780,190 836,190" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
-<g marker-end="url(#o-ar)"></g>
-<rect x="840" y="158" width="440" height="64" rx="32" fill="#C6DE64" />
-<text x="876" y="197" font-size="21" fill="#2B1B3D" font-weight="700">Cadastro de oportunidade</text>
-<rect x="1180" y="176" width="80" height="28" rx="14" fill="#2B1B3D" />
-<text x="1220" y="195" font-size="13" fill="#C6DE64" font-weight="700" text-anchor="middle" letter-spacing=".1em">MVP</text>
-<path d="M1060,224 L1060,256" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
-<path d="M1054,248 L1060,257 L1066,248" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
-<rect x="840" y="262" width="440" height="56" rx="28" fill="#fff" opacity=".12" />
-<rect x="840" y="262" width="440" height="56" rx="28" fill="none" stroke="#FFFFFF" stroke-width="1.6" opacity=".6" />
-<text x="876" y="296" font-size="19" fill="#FFFFFF" font-weight="600">Análise</text>
-<path d="M1060,320 L1060,356" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
-<path d="M1054,348 L1060,357 L1066,348" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
-<rect x="840" y="362" width="440" height="56" rx="28" fill="#fff" opacity=".12" />
-<rect x="840" y="362" width="440" height="56" rx="28" fill="none" stroke="#FFFFFF" stroke-width="1.6" opacity=".6" />
-<text x="876" y="396" font-size="19" fill="#FFFFFF" font-weight="600">Due diligence</text>
-<path d="M1060,420 L1060,456" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
-<path d="M1054,448 L1060,457 L1066,448" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
-<rect x="840" y="462" width="440" height="56" rx="28" fill="#fff" opacity=".12" />
-<rect x="840" y="462" width="440" height="56" rx="28" fill="none" stroke="#FFFFFF" stroke-width="1.6" opacity=".6" />
-<text x="876" y="496" font-size="19" fill="#FFFFFF" font-weight="600">Onboarding</text>
-<path d="M1060,520 L1060,556" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
-<path d="M1054,548 L1060,557 L1066,548" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
-<rect x="840" y="562" width="440" height="56" rx="28" fill="#fff" opacity=".12" />
-<rect x="840" y="562" width="440" height="56" rx="28" fill="none" stroke="#FFFFFF" stroke-width="1.6" opacity=".6" />
-<text x="876" y="596" font-size="19" fill="#FFFFFF" font-weight="600">Liquidação</text>
+<defs><filter id="oc-bl" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="14"/></filter></defs>
+<rect x="0" y="0" width="1600" height="800" rx="0" fill="#1A1426" />
+<rect x="814" y="84" width="480" height="660" rx="6" fill="#000" opacity=".35" />
+<rect x="800" y="70" width="480" height="660" rx="6" fill="#FAFAF7" />
+<text font-family="Helvetica Neue, Helvetica, Arial, sans-serif" x="840" y="136" font-size="15" fill="#8A8A86" font-weight="700" letter-spacing=".26em">PRECATÓRIO</text>
+<line x1="840" y1="154" x2="1240" y2="154" stroke="#0A0A0A" stroke-width="3"/>
+<text font-family="Helvetica Neue, Helvetica, Arial, sans-serif" x="840" y="200" font-size="12" fill="#8A8A86" font-weight="700" letter-spacing=".2em">CREDOR</text>
+<rect x="840" y="212" width="300" height="14" rx="2" fill="#0A0A0A" />
+<text font-family="Helvetica Neue, Helvetica, Arial, sans-serif" x="840" y="252" font-size="12" fill="#8A8A86" font-weight="700" letter-spacing=".2em">DEVEDOR</text>
+<rect x="840" y="264" width="380" height="14" rx="2" fill="#0A0A0A" />
+<text font-family="Helvetica Neue, Helvetica, Arial, sans-serif" x="840" y="304" font-size="12" fill="#8A8A86" font-weight="700" letter-spacing=".2em">VALOR</text>
+<rect x="840" y="316" width="340" height="14" rx="2" fill="#0A0A0A" />
+<text font-family="Helvetica Neue, Helvetica, Arial, sans-serif" x="840" y="356" font-size="12" fill="#8A8A86" font-weight="700" letter-spacing=".2em">VARA</text>
+<rect x="840" y="368" width="200" height="14" rx="2" fill="#0A0A0A" />
+<g transform="translate(1070 480) rotate(-9)" opacity=".92"><rect x="-150" y="-54" width="300" height="108" rx="10" fill="none" stroke="#69458D" stroke-width="7" /><rect x="-140" y="-44" width="280" height="88" rx="6" fill="none" stroke="#69458D" stroke-width="2" /><text font-family="Helvetica Neue, Helvetica, Arial, sans-serif" x="0" y="-6" font-size="30" fill="#69458D" font-weight="700" text-anchor="middle" letter-spacing=".1em">OPORTUNIDADE</text><text font-family="Helvetica Neue, Helvetica, Arial, sans-serif" x="0" y="30" font-size="30" fill="#69458D" font-weight="700" text-anchor="middle" letter-spacing=".1em">CADASTRADA</text></g>
+<circle cx="852" cy="660" r="9" fill="#69458D" stroke="#69458D" stroke-width="2.4"/>
+<line x1="861" y1="660" x2="937" y2="660" stroke="#0A0A0A" stroke-width="1.6" opacity=".4"/>
+<circle cx="946" cy="660" r="9" fill="none" stroke="#0A0A0A" stroke-width="2.4"/>
+<line x1="955" y1="660" x2="1031" y2="660" stroke="#0A0A0A" stroke-width="1.6" opacity=".4"/>
+<circle cx="1040" cy="660" r="9" fill="none" stroke="#0A0A0A" stroke-width="2.4"/>
+<line x1="1049" y1="660" x2="1125" y2="660" stroke="#0A0A0A" stroke-width="1.6" opacity=".4"/>
+<circle cx="1134" cy="660" r="9" fill="none" stroke="#0A0A0A" stroke-width="2.4"/>
+<line x1="1143" y1="660" x2="1219" y2="660" stroke="#0A0A0A" stroke-width="1.6" opacity=".4"/>
+<circle cx="1228" cy="660" r="9" fill="none" stroke="#0A0A0A" stroke-width="2.4"/>
+<text font-family="Helvetica Neue, Helvetica, Arial, sans-serif" x="840" y="696" font-size="11" fill="#5E5E5E" font-weight="600">Cadastro → Análise → Due diligence → Onboarding → Liquidação</text>
+<text font-family="Helvetica Neue, Helvetica, Arial, sans-serif" x="300" y="300" font-size="64" fill="#FFFFFF" font-weight="700" letter-spacing="-.03em">O negócio</text>
+<text font-family="Helvetica Neue, Helvetica, Arial, sans-serif" x="300" y="372" font-size="64" fill="#C6DE64" font-weight="700" letter-spacing="-.03em">começa aqui.</text>
+<line x1="300" y1="414" x2="540" y2="414" stroke="#6A5A80" stroke-width="3"/>
+<text font-family="Helvetica Neue, Helvetica, Arial, sans-serif" x="300" y="456" font-size="22" fill="#CFC6DB" font-weight="500">Um precatório vira</text>
+<text font-family="Helvetica Neue, Helvetica, Arial, sans-serif" x="300" y="486" font-size="22" fill="#CFC6DB" font-weight="500">oportunidade cadastrada.</text>
 </svg>
