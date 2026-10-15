@@ -29,7 +29,7 @@
   </form>
 </div>
 
-<div id="app" hidden>
+<div id="app" class="app" hidden>
   <header class="top">
     <button class="ibtn burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
     <div class="brand"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M8 8l4-5 4 5M6 14l6-6 6 6"/></svg></span><div class="t"><b>Torre de Controle</b></div></div>
@@ -41,13 +41,13 @@
   <div class="shell" id="shell">
     <nav class="side" id="side" aria-label="Principal"></nav>
     <div class="scrim" id="scrim"></div>
-    <main class="main" id="main" tabindex="-1"><div class="wrap" id="view"></div></main>
+    <main class="main" id="main" tabindex="-1"><div id="view" class="pg"></div></main>
+    <div class="chat" id="chat" hidden></div>
   </div>
 </div>
 
 <div id="pop" class="pop" hidden></div>
 <div id="layer"></div>
-<div class="chat" id="chat" hidden></div>
 <div id="toast" role="status" aria-live="polite"></div>
 <p class="sr" id="live" aria-live="polite"></p>
 <script>/*JS*/</script>

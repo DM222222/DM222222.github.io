@@ -17,7 +17,7 @@ let fails = 0; const ok = (c, m) => { console.log((c ? 'ok    ' : 'FALHA ') + m)
   ok(!$('#lu-e').hidden && !$('#lp-e').hidden && $('#login').hidden === false, 'login vazio mostra os dois erros');
   $('#lu').value = 'ana'; $('#lp').value = 'x'; $('#lform').dispatchEvent(new w.Event('submit', { cancelable: true }));
   ok($('#login').hidden && !$('#app').hidden, 'login preenchido entra');
-  ok(/Precisa da sua decisão/.test(txt()) && $$('.dr').length === 3, 'Estratégico abre com 3 decisões');
+  ok($$('.dc').length === 3, 'Estratégico abre com 3 decisões');
   ok($('#bbadge').textContent === '3', 'sino mostra 3');
   const slaAntes = $$('.kpi .v')[2].textContent;
 
@@ -39,21 +39,19 @@ let fails = 0; const ok = (c, m) => { console.log((c ? 'ok    ' : 'FALHA ') + m)
   ok(/Carga transferida/.test($('#toast').textContent), 'avisa por toast');
   d.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
   ok(!$('.dw'), 'Esc fecha o detalhe');
-  ok($$('.dr').length === 2 && $('#bbadge').textContent === '2', 'decisões e sino caem para 2');
+  ok($$('.dc').length === 2 && $('#bbadge').textContent === '2', 'decisões e sino caem para 2');
   ok($$('.kpi .v')[2].textContent !== slaAntes, 'SLA global recalculado (' + slaAntes + ' → ' + $$('.kpi .v')[2].textContent + ')');
   w.__torre.go('operacao');
   ok(/80%/.test(txt()) && /56%/.test(txt()), 'Operação reflete CD 2 em 80% e CD 5 em 56%');
   ok(/94,0%/.test(txt()), 'SLA do CD 2 vai a 94,0%');
 
-  // selects
-  const sel = $('[data-sel="tfa"]'); sel.value = '1'; sel.dispatchEvent(new w.Event('change', { bubbles: true }));
-  ok(/1,4%/.test($$('.card')[3].textContent), 'TFA muda por CD (CD 2 = 1,4%)');
-  const cm = $('[data-sel="cmc"]'); cm.value = '4'; cm.dispatchEvent(new w.Event('change', { bubbles: true }));
-  ok(/12,3/.test(txt()), 'CMC muda por CD (CD 5 = 12,3)');
-
+  // fichas e mapa de calor (sem seletores)
+  ok($$('.fc').length === 5 && /1,4%/.test(txt()), 'Operação: 5 fichas por CD com TFA');
+  ok($$('.hm td.num').length === 15, 'CMC em matriz CD × turno');
+  ok(!!$('.fc [data-alert="a-cd3"]') && !$('.fc [data-alert="a-cd2"]'), 'ficha só oferece alerta aberto');
   // alertas: abas, contagens e estado vazio
   w.__torre.go('alertas');
-  ok(/Abertos \(6\)/.test(txt()) && /Críticos \(0\)/.test(txt()) && /Atenção \(2\)/.test(txt()) && /Informativos \(4\)/.test(txt()) && /Tratados \(1\)/.test(txt()), 'contagens derivadas da lista (6/0/2/4/1)');
+  ok(/Abertos \(6\)/.test(txt()) && /Críticos \(0\)/.test(txt()) && /Atenção \(2\)/.test(txt()) && /Info \(4\)/.test(txt()) && /Tratados \(1\)/.test(txt()), 'contagens derivadas da lista (6/0/2/4/1)');
   click($('[data-tab="crit"]')); ok(/Nenhum alerta crítico/.test(txt()), 'aba Críticos vazia tem estado vazio');
   click($('[data-tab="tratados"]')); ok(/Resolvido/.test(txt()), 'aba Tratados mostra o resolvido');
   click($('[data-alert="a-cd2"]')); click(btn('Desfazer', $('.dw')));
