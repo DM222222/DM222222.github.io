@@ -278,7 +278,8 @@ PROPOSTAS = {
 }
 
 
-# capas escolhidas para a home (python build/capas_propostas.py --aplicar)
+# ATENCAO: as capas em uso na home sao as de build/capas.py (mockups). Este --aplicar
+# so serve se um dia voce voltar a querer as propostas tipograficas (Torre A, Planta C, Open Flow C).
 ESCOLHIDAS = {
     "capa-torre.svg": torre_a,
     "capa-planta.svg": planta_c,
