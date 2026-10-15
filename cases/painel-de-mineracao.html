@@ -86,6 +86,42 @@
       </div>
     </section>
 
+    <section class="block" aria-labelledby="prototipo">
+      <div class="cols">
+        <h2 id="prototipo">O protótipo navegável</h2>
+        <div class="prose">
+          <p>As nove telas e o fluxo completo, do login ao alarme resolvido, num protótipo que você pode usar. Os dados são fictícios e a interface está em inglês, como no produto.</p>
+          <ul>
+            <li><b>Siga o alarme</b>Entre com "Start shift". Na Home, o alarme leva ao circuito, ao parâmetro e ao ajuste que o resolve, e a Home volta limpa.</li>
+            <li><b>Desligue a IA</b>Clique em "AI ACTIVE". A ação pede um motivo e um gesto de segurar, entrega 18 parâmetros ao operador e termina no modo manual.</li>
+            <li><b>Troque de ambiente</b>Claro, Sol e Escuro mudam todas as telas com o mesmo sistema de variáveis.</li>
+          </ul>
+          <p><a class="btn" href="../assets/prototipo/planta.html" target="_blank" rel="noopener">Abrir em tela cheia<span class="sr-only"> (abre em nova aba)</span></a></p>
+        </div>
+      </div>
+      <div class="deck proto" id="protoFrame">
+        <iframe src="../assets/prototipo/planta.html" title="Protótipo navegável do painel de monitoramento, com dados fictícios" loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="sistema">
+      <div class="cols">
+        <h2 id="sistema">O sistema por baixo</h2>
+        <div class="prose">
+          <p>Todas as telas usam o mesmo conjunto de 34 variáveis, em três ambientes de luz: <strong>Claro</strong> para o escritório, <strong>Sol</strong> para o tablet em campo e <strong>Escuro</strong> para o videowall da sala de controle.</p>
+          <p>Para o protótipo, auditei o contraste do próprio sistema. Três pares estavam abaixo do mínimo e foram corrigidos:</p>
+          <ul>
+            <li><b>Texto de apoio no Claro</b>Estava em 4,45:1. Escurecido para passar de 4,5:1.</li>
+            <li><b>Botão no Escuro</b>O texto branco sobre o roxo dava 3,9:1. O roxo ficou mais fundo e subiu para 4,8:1.</li>
+            <li><b>Limite dos campos no Claro</b>Estava em 2,4:1. Subiu para 3,1:1, o mínimo para componentes de interface.</li>
+          </ul>
+          <!-- SYNC:contraste -->
+<table class="tbl"><caption class="sr-only">Contraste dos pares de cor do sistema, por tema</caption><thead><tr><th scope="col">Par</th><th scope="col">Claro</th><th scope="col">Sol</th><th scope="col">Escuro</th></tr></thead><tbody><tr><th scope="row">Texto principal sobre o fundo<span class="min"> (mín. 4,5:1)</span></th><td>16,6:1</td><td>21,0:1</td><td>19,6:1</td></tr><tr><th scope="row">Texto secundário sobre o fundo<span class="min"> (mín. 4,5:1)</span></th><td>5,7:1</td><td>11,8:1</td><td>10,1:1</td></tr><tr><th scope="row">Texto de apoio sobre o fundo<span class="min"> (mín. 4,5:1)</span></th><td>5,1:1</td><td>8,1:1</td><td>6,3:1</td></tr><tr><th scope="row">Texto do botão sobre o destaque<span class="min"> (mín. 4,5:1)</span></th><td>7,0:1</td><td>10,1:1</td><td>4,8:1</td></tr><tr><th scope="row">Link sobre o fundo<span class="min"> (mín. 4,5:1)</span></th><td>6,3:1</td><td>8,4:1</td><td>8,3:1</td></tr><tr><th scope="row">Status OK, texto sobre o seu fundo<span class="min"> (mín. 4,5:1)</span></th><td>6,4:1</td><td>8,4:1</td><td>10,9:1</td></tr><tr><th scope="row">Status de erro, texto sobre o seu fundo<span class="min"> (mín. 4,5:1)</span></th><td>6,6:1</td><td>7,7:1</td><td>7,6:1</td></tr><tr><th scope="row">Limite do campo sobre o fundo<span class="min"> (mín. 3,0:1)</span></th><td>3,1:1</td><td>8,1:1</td><td>19,6:1</td></tr></tbody></table>
+          <!-- /SYNC:contraste -->
+        </div>
+      </div>
+    </section>
+
     <section class="block" aria-labelledby="estudo">
       <div class="cols">
         <h2 id="estudo">O estudo completo</h2>
@@ -131,5 +167,6 @@ document.getElementById('yr').textContent=new Date().getFullYear();
   });
 })();
 </script>
+<style>.proto{margin-top:1.5rem}@media (max-width:820px){.proto{display:none}}</style>
 </body>
 </html>
