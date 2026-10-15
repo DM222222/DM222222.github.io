@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="claro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Torre de Controle — protótipo navegável</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Protótipo navegável da Torre de Controle: monitoramento operacional com IA, com dados fictícios.">
+<link rel="icon" href="../logo-dm.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap">
+<style>/*CSS*/</style>
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<div id="login" class="login">
+  <form class="lcard" id="lform" novalidate aria-labelledby="lh">
+    <div class="brand"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M8 8l4-5 4 5M6 14l6-6 6 6"/></svg></span><div><b>Torre de Controle</b><span>Rede de 5 centros de distribuição</span></div></div>
+    <h1 id="lh">Entrar</h1>
+    <p class="lead">Acompanhe a operação e decida a partir do que a IA recomenda.</p>
+    <div class="f"><label for="lu">Usuário</label><div class="in" id="lu-w"><input id="lu" autocomplete="username" aria-describedby="lu-e"></div><p class="err" id="lu-e" hidden>Informe seu usuário.</p></div>
+    <div class="f"><label for="lp">Senha</label><div class="in" id="lp-w"><input id="lp" type="password" autocomplete="current-password" aria-describedby="lp-e"><button type="button" class="eye" id="eye" aria-pressed="false">Mostrar</button></div><p class="err" id="lp-e" hidden>Informe sua senha.</p></div>
+    <button class="btn pri" type="submit">Entrar</button>
+    <div class="or">ou</div>
+    <button class="btn" type="button" id="demo">Entrar como demonstração</button>
+    <p class="note">Protótipo com dados fictícios. Qualquer usuário e senha funcionam.</p>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <header class="top">
+    <button class="ibtn burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    <div class="brand"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M8 8l4-5 4 5M6 14l6-6 6 6"/></svg></span><div class="t"><b>Torre de Controle</b></div></div>
+    <div class="per" id="per" hidden><div class="seg" role="group" aria-label="Período dos gráficos"></div><small id="perd"></small></div>
+    <button class="btn sm ins-b" id="insb" aria-haspopup="dialog"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg><span>Insights</span></button>
+    <button class="ibtn" id="bell" aria-label="Alertas abertos" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10.3 20a2 2 0 0 0 3.4 0"/></svg><span class="badge" id="bbadge" hidden></span></button>
+    <button class="ibtn" id="avb" aria-label="Conta e preferências" aria-haspopup="true" aria-expanded="false"><span class="mark" style="width:34px;height:34px;border-radius:50%;font-size:.78rem;font-weight:600" aria-hidden="true">GO</span></button>
+  </header>
+  <div class="shell" id="shell">
+    <nav class="side" id="side" aria-label="Principal"></nav>
+    <div class="scrim" id="scrim"></div>
+    <main class="main" id="main" tabindex="-1"><div class="wrap" id="view"></div></main>
+  </div>
+</div>
+
+<div id="pop" class="pop" hidden></div>
+<div id="layer"></div>
+<div class="chat" id="chat" hidden></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<p class="sr" id="live" aria-live="polite"></p>
+<script>/*JS*/</script>
+</body>
+</html>

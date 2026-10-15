@@ -39,10 +39,18 @@
       </dl>
     </div>
 
-    <figure class="block">
-      <img src="../assets/projects/torre-prototipo-estrategico.jpg" alt="Nível estratégico da Torre de Controle: faturamento global e por centro, sazonalidade, score médio de clientes e fluxo de caixa." width="1568" height="666">
-      <figcaption>Nível estratégico, visão do C-Level.</figcaption>
-    </figure>
+    <section class="block" aria-labelledby="prototipo">
+      <div class="cols">
+        <h2 id="prototipo">Experimente</h2>
+        <div class="prose">
+          <p>Uma releitura navegável da Torre, com dados fictícios, já que o produto em produção é confidencial. Entre como demonstração, veja o que pede decisão logo na primeira tela, abra a recomendação da IA para o CD 2 e aplique: os indicadores de todas as telas se atualizam.</p>
+          <p><a class="btn" href="../assets/prototipo/torre.html" target="_blank" rel="noopener">Abrir em tela cheia<span class="sr-only"> (abre em nova aba)</span></a></p>
+        </div>
+      </div>
+      <div class="deck proto" id="protoFrame">
+        <iframe src="../assets/prototipo/torre.html" title="Protótipo navegável da Torre de Controle, com dados fictícios" loading="lazy"></iframe>
+      </div>
+    </section>
 
     <section class="block" aria-labelledby="problema">
       <div class="cols">
@@ -59,16 +67,10 @@
         <h2 id="solucao">A solução</h2>
         <div class="prose">
           <p>Uma torre tem andares, e a informação também. Cada nível responde a uma pergunta diferente: o <strong>Estratégico</strong> lê a saúde do negócio, o <strong>Tático</strong> controla a execução e o <strong>Operacional</strong> acompanha o dia a dia.</p>
-          <p>A IA embarcada vai além de mostrar o número. Ela sinaliza o risco, como um centro operando no limite de SLA, e recomenda a ação, como redistribuir carga entre os centros.</p>
-          <p><a class="btn" href="https://www.figma.com/make/59cVDrp48nDIqQ04fdjJ7v/Torre-de-Controle?p=f&amp;t=qvo7xxWzDcOIVW48-0&amp;fullscreen=1" target="_blank" rel="noopener">Ver protótipo no Figma<span class="sr-only"> (abre em nova aba)</span></a></p>
+          <p>A IA embarcada vai além de mostrar o número. Ela sinaliza o risco, como um centro operando no limite de SLA, e recomenda a ação, como redistribuir carga entre os centros. Cada tela abre pelo que exige decisão, e os gráficos entram como evidência.</p>
         </div>
       </div>
     </section>
-
-    <figure class="block">
-      <img src="../assets/projects/torre-prototipo-alertas.jpg" alt="Central de alertas: avisos de atenção para centros próximos do limite de ocupação e de SLA, com recomendação de redistribuição de carga." width="1568" height="666" loading="lazy">
-      <figcaption>Central de alertas: cada aviso chega com a ação recomendada.</figcaption>
-    </figure>
 
     <section class="block" aria-labelledby="processo">
       <div class="cols">
@@ -120,5 +122,6 @@
   </div>
 </footer>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<style>.proto{margin-top:1.5rem}@media (max-width:820px){.proto{display:none}}</style>
 </body>
 </html>
