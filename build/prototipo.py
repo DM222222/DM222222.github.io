@@ -123,7 +123,6 @@ def injetar_sistema(tokens):
     tabela, falhas = tabela_contraste(tokens)
     m = re.compile(r"(<!--\s*SYNC:contraste\s*-->).*?(<!--\s*/SYNC:contraste\s*-->)", re.S)
     if not m.search(doc):
-        print("aviso: marcador SYNC:contraste nao existe em cases/painel-de-mineracao.html")
         return falhas
     novo = m.sub(lambda x: x.group(1) + "\n" + tabela + "\n          " + x.group(2), doc)
     open(caminho, "w", encoding="utf-8", newline="\n").write(novo)

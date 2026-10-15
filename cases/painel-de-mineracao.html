@@ -35,67 +35,15 @@
         <div><dt>Papel</dt><dd>UX/UI Designer</dd></div>
         <div><dt>Período</dt><dd>2021 — 2023</dd></div>
         <div><dt>Setor</dt><dd>Mineração</dd></div>
-        <div><dt>Entrega</dt><dd>Auditoria e sistema de interface</dd></div>
+        <div><dt>Entrega</dt><dd>Auditoria, sistema de interface e protótipo</dd></div>
       </dl>
     </div>
 
-    <section class="block" aria-labelledby="contexto">
-      <div class="cols">
-        <h2 id="contexto">O contexto</h2>
-        <div class="prose">
-          <p>A empresa desenvolvia inteligência artificial atuando sobre maquinário industrial. O painel de monitoramento em tempo real era o ponto de contato mais importante entre o cliente e essa tecnologia: onde, ao vivo, se via o que a planta e a IA estavam fazendo.</p>
-          <p>Desktop first, depois tablet e mobile, com uma versão <strong>light</strong> para uso em campo, sob sol direto, e uma para o videowall da sala de controle.</p>
-        </div>
-      </div>
-    </section>
-
-    <figure class="block">
-      <img src="../assets/projects/dashboard-discovery.jpg" alt="Board de inspect da interface legada, com os pontos de melhoria numerados sobre a tela original." width="1207" height="1080" loading="lazy">
-      <figcaption>Parte 1: o inspect da interface legada.</figcaption>
-    </figure>
-
-    <section class="block" aria-labelledby="auditoria">
-      <div class="cols">
-        <h2 id="auditoria">Parte 1 · A auditoria</h2>
-        <div class="prose">
-          <p>Usuário-alvo: o <strong>operador de sala de controle</strong>, em turno longo. Os achados principais:</p>
-          <ul>
-            <li><b>Login</b>A senha vinha antes do e-mail, quebrando o preenchimento automático.</li>
-            <li><b>Contraste insuficiente</b>Crítico para leitura em tablet sob sol direto.</li>
-            <li><b>Status só por cor</b>Falha de acessibilidade para daltonismo.</li>
-            <li><b>Sem estados de erro, carregamento ou vazio</b>O operador não sabia se o dado era atual ou se tinha travado.</li>
-            <li><b>Desligar a IA sem confirmação</b>Risco operacional alto para um clique acidental.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="block" aria-labelledby="redesenho">
-      <div class="cols">
-        <h2 id="redesenho">Parte 2 · O redesenho</h2>
-        <div class="prose">
-          <p>Cada achado virou decisão de projeto. Quatro telas passaram a responder quatro perguntas do operador: <strong>onde está o problema</strong> (Circuits), <strong>o que mudar</strong> (Parameters), <strong>o que aconteceu</strong> (History) e <strong>o que reportar</strong> (Reports).</p>
-          <ul>
-            <li><b>A planta como fluxo</b>A tela segue a ordem física da planta, da esquerda para a direita.</li>
-            <li><b>Status nunca só por cor</b>Ícone e rótulo em cada estado, como "▲ AT LIMIT" e "✓ IN RANGE".</li>
-            <li><b>A IA mostra o raciocínio</b>Toda sugestão vem com a justificativa e os dados de entrada. Desligar a IA agora pede confirmação.</li>
-            <li><b>Prova pelo próprio dado</b>O histórico compara IA ligada e desligada, lado a lado.</li>
-            <li><b>Três temas, um sistema de tokens</b>Light para escritório, sunlight para campo e dark para o videowall.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
     <section class="block" aria-labelledby="prototipo">
       <div class="cols">
-        <h2 id="prototipo">O protótipo navegável</h2>
+        <h2 id="prototipo">Experimente</h2>
         <div class="prose">
-          <p>As nove telas e o fluxo completo, do login ao alarme resolvido, num protótipo que você pode usar. Os dados são fictícios e a interface está em inglês, como no produto.</p>
-          <ul>
-            <li><b>Siga o alarme</b>Entre com "Start shift". Na Home, o alarme leva ao circuito, ao parâmetro e ao ajuste que o resolve, e a Home volta limpa.</li>
-            <li><b>Desligue a IA</b>Clique em "AI ACTIVE". A ação pede um motivo e um gesto de segurar, entrega 18 parâmetros ao operador e termina no modo manual.</li>
-            <li><b>Troque de ambiente</b>Claro, Sol e Escuro mudam todas as telas com o mesmo sistema de variáveis.</li>
-          </ul>
+          <p>O resultado é um protótipo navegável, com dados fictícios e interface em inglês, como no produto. Entre com "Start shift", siga o alarme da Home até o ajuste que o resolve, ou desligue a IA e veja o fluxo de confirmação. Os temas Claro, Sol e Escuro ficam na barra do topo.</p>
           <p><a class="btn" href="../assets/prototipo/planta.html" target="_blank" rel="noopener">Abrir em tela cheia<span class="sr-only"> (abre em nova aba)</span></a></p>
         </div>
       </div>
@@ -104,20 +52,81 @@
       </div>
     </section>
 
+    <section class="block" aria-labelledby="tese">
+      <div class="cols">
+        <h2 id="tese">A tese</h2>
+        <div class="prose">
+          <p>O operador de turno não decide com dado. Decide com o que consegue ler no primeiro segundo.</p>
+          <p>A tela original tinha os números certos. Faltava dizer qual deles importa agora, e faltava sobreviver à luz do dia. Corrigi o que era erro de leitura e mantive a identidade do cliente: o mesmo roxo, o mesmo azul, o mesmo vermelho.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="contexto">
+      <div class="cols">
+        <h2 id="contexto">O contexto</h2>
+        <div class="prose">
+          <p>A empresa desenvolvia inteligência artificial atuando sobre maquinário industrial. O painel de monitoramento era o ponto de contato mais importante entre o cliente e essa tecnologia: onde, ao vivo, se via o que a planta e a IA estavam fazendo.</p>
+          <p>A mesma tela vive em três lugares, com luz diferente:</p>
+          <ul>
+            <li><b>Sala de controle</b>Luz baixa, turnos de 12 horas, tela sempre aberta. É onde o tema escuro faz sentido.</li>
+            <li><b>Tablet em campo</b>Sol direto e uma mão livre. Fundo escuro vira espelho.</li>
+            <li><b>Videowall</b>Lido a 4 metros. O número tem que valer de longe.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <figure class="block">
+      <img src="../assets/projects/dashboard-discovery.jpg" alt="Board de inspect da interface legada, com os pontos de melhoria numerados sobre a tela original." width="1207" height="1080" loading="lazy">
+      <figcaption>O inspect da interface legada.</figcaption>
+    </figure>
+
+    <section class="block" aria-labelledby="auditoria">
+      <div class="cols">
+        <h2 id="auditoria">A auditoria</h2>
+        <div class="prose">
+          <p>Usuário-alvo: o <strong>operador de sala de controle</strong>. Auditei a interface legada por quatro lentes e encontrei treze problemas. Quatro custam turno:</p>
+          <ul>
+            <li><b>Legibilidade</b>O botão principal da tela de entrada tinha contraste de 1,2:1. A ação mais importante era invisível.</li>
+            <li><b>Hierarquia</b>Quatro cartões do mesmo tamanho e gráficos sem números nos eixos. Nada dizia o que importava agora.</li>
+            <li><b>Estados</b>Sem estados de erro, vazio ou carregamento. Célula vazia por falta de sinal era igual a célula carregando.</li>
+            <li><b>Segurança da ação</b>Desligar a IA, que controla dezoito parâmetros, era um clique sem confirmação e sem registro do motivo.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="redesenho">
+      <div class="cols">
+        <h2 id="redesenho">O redesenho</h2>
+        <div class="prose">
+          <ul>
+            <li><b>Um número manda, os outros apoiam</b>Cada indicador ganhou unidade, legenda e comparação com a meta.</li>
+            <li><b>Estados desenhados</b>Sem sinal, carregando e erro dizem o que aconteceu, desde quando e o que fazer.</li>
+            <li><b>Status nunca só por cor</b>Ícone e rótulo em cada estado, como "▲ AT LIMIT" e "✓ IN RANGE", legíveis até em escala de cinza.</li>
+            <li><b>Quatro telas para quatro perguntas</b>Circuits (onde está o problema), Parameters (o que eu mudo), History (o que aconteceu) e Reports (o que eu entrego).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="ia">
+      <div class="cols">
+        <h2 id="ia">Desligar a IA, com atrito</h2>
+        <div class="prose">
+          <p>Uma ação que devolve dezoito parâmetros ao operador merece atrito. O fluxo mostra o impacto antes do clique, pede o motivo, exige segurar para confirmar e devolve o controle à vista, um parâmetro por vez. Sem IA, a previsão não exibe número velho: mostra que não existe.</p>
+          <p>A confiança na IA se constrói com o botão de desligar. O operador confia no automático quando sabe como sair dele.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="block" aria-labelledby="sistema">
       <div class="cols">
         <h2 id="sistema">O sistema por baixo</h2>
         <div class="prose">
-          <p>Todas as telas usam o mesmo conjunto de 34 variáveis, em três ambientes de luz: <strong>Claro</strong> para o escritório, <strong>Sol</strong> para o tablet em campo e <strong>Escuro</strong> para o videowall da sala de controle.</p>
-          <p>Para o protótipo, auditei o contraste do próprio sistema. Três pares estavam abaixo do mínimo e foram corrigidos:</p>
-          <ul>
-            <li><b>Texto de apoio no Claro</b>Estava em 4,45:1. Escurecido para passar de 4,5:1.</li>
-            <li><b>Botão no Escuro</b>O texto branco sobre o roxo dava 3,9:1. O roxo ficou mais fundo e subiu para 4,8:1.</li>
-            <li><b>Limite dos campos no Claro</b>Estava em 2,4:1. Subiu para 3,1:1, o mínimo para componentes de interface.</li>
-          </ul>
-          <!-- SYNC:contraste -->
-<table class="tbl"><caption class="sr-only">Contraste dos pares de cor do sistema, por tema</caption><thead><tr><th scope="col">Par</th><th scope="col">Claro</th><th scope="col">Sol</th><th scope="col">Escuro</th></tr></thead><tbody><tr><th scope="row">Texto principal sobre o fundo<span class="min"> (mín. 4,5:1)</span></th><td>16,6:1</td><td>21,0:1</td><td>19,6:1</td></tr><tr><th scope="row">Texto secundário sobre o fundo<span class="min"> (mín. 4,5:1)</span></th><td>5,7:1</td><td>11,8:1</td><td>10,1:1</td></tr><tr><th scope="row">Texto de apoio sobre o fundo<span class="min"> (mín. 4,5:1)</span></th><td>5,1:1</td><td>8,1:1</td><td>6,3:1</td></tr><tr><th scope="row">Texto do botão sobre o destaque<span class="min"> (mín. 4,5:1)</span></th><td>7,0:1</td><td>10,1:1</td><td>4,8:1</td></tr><tr><th scope="row">Link sobre o fundo<span class="min"> (mín. 4,5:1)</span></th><td>6,3:1</td><td>8,4:1</td><td>8,3:1</td></tr><tr><th scope="row">Status OK, texto sobre o seu fundo<span class="min"> (mín. 4,5:1)</span></th><td>6,4:1</td><td>8,4:1</td><td>10,9:1</td></tr><tr><th scope="row">Status de erro, texto sobre o seu fundo<span class="min"> (mín. 4,5:1)</span></th><td>6,6:1</td><td>7,7:1</td><td>7,6:1</td></tr><tr><th scope="row">Limite do campo sobre o fundo<span class="min"> (mín. 3,0:1)</span></th><td>3,1:1</td><td>8,1:1</td><td>19,6:1</td></tr></tbody></table>
-          <!-- /SYNC:contraste -->
+          <p>As telas compartilham um único sistema de variáveis de cor, nos três ambientes de luz: <strong>Claro</strong> para o escritório, <strong>Sol</strong> para o tablet em campo e <strong>Escuro</strong> para o videowall. O Sol não é o claro com mais brilho: tem bordas mais grossas e um roxo mais fechado, para não sumir na luz.</p>
+          <p>O contraste de texto e de componentes foi conferido contra a WCAG 2.1 AA, e os poucos pares abaixo do mínimo foram corrigidos no protótipo.</p>
         </div>
       </div>
     </section>
@@ -126,18 +135,18 @@
       <div class="cols">
         <h2 id="estudo">O estudo completo</h2>
         <div class="prose">
-          <p>O case inteiro, da auditoria às telas finais, em 26 slides.</p>
+          <p>A auditoria, as correções antes e depois e as telas em uso, em 26 slides.</p>
           <p><a class="btn" id="deckBtn" href="../assets/case-study/painel-mineracao.html" target="_blank" rel="noopener">Abrir o estudo<span class="sr-only"> (abre em nova aba)</span></a></p>
         </div>
       </div>
-      <div class="deck" id="deckFrame" hidden></div>
     </section>
 
     <section class="block" aria-labelledby="resultado">
       <div class="cols">
         <h2 id="resultado">O resultado</h2>
         <div class="prose">
-          <p>Um sistema coerente: mesmos tokens, navegação e comutador de tema nas quatro telas. O painel deixou de exibir dado e passou a <strong>sustentar a decisão do operador</strong>.</p>
+          <p>Mantive a marca e troquei a leitura: treze achados corrigidos, três temas para os três ambientes de luz, seis estados desenhados e quatro telas novas para o que vem depois do painel.</p>
+          <p>A medição ainda não aconteceu. O estudo deixa escrita a régua, e ela espera o campo.</p>
         </div>
       </div>
     </section>
@@ -156,16 +165,6 @@
 </footer>
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
-(function(){
-  var btn=document.getElementById('deckBtn'), box=document.getElementById('deckFrame');
-  if(!btn||!box||window.matchMedia('(max-width:820px)').matches) return;
-  btn.addEventListener('click',function(e){
-    e.preventDefault();
-    var f=document.createElement('iframe');
-    f.src=btn.getAttribute('href'); f.title='Estudo de caso: painel de mineração, 26 slides';
-    box.appendChild(f); box.hidden=false; btn.style.display='none'; f.focus();
-  });
-})();
 </script>
 <style>.proto{margin-top:1.5rem}@media (max-width:820px){.proto{display:none}}</style>
 </body>
