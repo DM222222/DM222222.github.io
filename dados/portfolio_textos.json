@@ -15,7 +15,7 @@
       "metrica": "Aponta o risco de SLA e recomenda onde redistribuir carga entre os 5 centros · em produção",
       "slug": "torre-de-controle",
       "link": "cases/torre-de-controle.html",
-      "poster": "assets/projects/torre-prototipo-estrategico.jpg",
+      "poster": "assets/projects/capa-torre.svg",
       "alt": "Painel estratégico da Torre de Controle: faturamento, sazonalidade, score de clientes e fluxo de caixa.",
       "video": ""
     },
@@ -28,7 +28,7 @@
       "nota": "Junta o antigo case 02 (redesenho) e 03 (inspect). Dentro do case: parte 1 inspect, parte 2 redesenho.",
       "slug": "painel-de-mineracao",
       "link": "cases/painel-de-mineracao.html",
-      "poster": "assets/projects/dashboard-discovery.jpg",
+      "poster": "assets/projects/capa-planta.svg",
       "alt": "Board de inspect da interface legada, com os pontos de melhoria mapeados.",
       "video": ""
     },
@@ -40,7 +40,7 @@
       "metrica": "MVP que virou ecossistema, hoje na carteira de um fundo",
       "slug": "open-flow-labs",
       "link": "cases/open-flow-labs.html",
-      "poster": "assets/projects/ativos-matriz-1.png",
+      "poster": "assets/projects/capa-openflow.svg",
       "alt": "Matriz de esforço por impacto das tarefas do usuário.",
       "video": ""
     }
