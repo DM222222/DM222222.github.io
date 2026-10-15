@@ -52,14 +52,14 @@ def _cases(t):
             '<img src="%(poster)s" alt="" loading="lazy" width="1600" height="800">%(video)s</a>%(botao)s\n'
             '        </div>\n'
             '        <div class="case-meta">\n'
-            '          <p class="case-who"><b>%(n)s</b>%(empresa)s<br>%(etiqueta)s</p>\n'
+            '          <p class="case-who"><b>%(n)s</b>%(empresa)s<br>%(etiqueta)s<br><span class="case-date">%(periodo)s</span></p>\n'
             '          <h3><a href="%(link)s">%(frase)s</a></h3>\n'
             '          <p class="case-metric">%(metrica)s</p>\n'
             '        </div>\n'
             '      </article>\n' % {
                 "link": e(c["link"]), "poster": e(c["poster"]), "video": video, "botao": botao,
                 "attr": ' data-torre' if c.get("interativo") == "torre" else "",
-                "n": e(c["n"]), "empresa": e(c["empresa"]), "etiqueta": e(c["etiqueta"]),
+                "n": e(c["n"]), "empresa": e(c["empresa"]), "etiqueta": e(c["etiqueta"]), "periodo": e(c["periodo"]),
                 "frase": e(c["frase"]), "metrica": e(c["metrica"])}
         )
     return saida
