@@ -51,6 +51,18 @@ main{padding:12px 0 40px}
 @media (max-width:720px){.ctl{width:100%}.hint{font-size:.8rem}}
 body[data-theme="escuro"] #stage input,body[data-theme="escuro"] #stage select,body[data-theme="escuro"] #stage .fieldval{color:#0c0c0d!important}
 body[data-theme="escuro"] #stage input::placeholder{color:#5a616b}
+
+/* celular: escala minima legivel + rolagem horizontal */
+.vp.pan{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.rot{display:none}
+@media (max-width:759px){
+.bar{padding:8px 12px;position:static}.ttl{font-size:.82rem}
+.ctl{gap:6px 12px}.tema legend{display:none}.fld{width:100%}.fld select{flex:1}
+.rot{display:block;margin:8px 12px 0;padding:10px 12px;background:#fff;border:1px solid #D0D0D0;border-radius:8px;font-size:.82rem;color:#3A3A3A}
+body[data-theme="escuro"] .rot{background:#15151A;border-color:#2A2A33;color:#B9B9C0}
+main{padding:8px 0 24px}
+.ovc{transform:scale(1)}
+}
 </style>
 </head>
 <body data-theme="claro">
@@ -69,6 +81,7 @@ body[data-theme="escuro"] #stage input::placeholder{color:#5a616b}
 </header>
 <p class="hint">Dica: no login, toque em <b>Start shift</b>. Na Home, o alarme leva ao circuito, ao parâmetro e ao ajuste que o resolve.</p>
 <main>
+  <p class="rot">Painel de sala de controle, pensado para tela larga. No celular, arraste para os lados ou gire o aparelho.</p>
   <div class="vp" id="vp">
     <div class="scaler" id="scaler" lang="en" data-w="1440"><div id="stage" tabindex="-1"></div></div>
   </div>
@@ -531,7 +544,9 @@ body[data-theme="escuro"] #stage input::placeholder{color:#5a616b}
   /* ---------- escala ---------- */
   function fit() {
     var w = parseInt(scaler.getAttribute('data-w') || '1440', 10);
-    var s = Math.min(1, vp.clientWidth / w);
+    var cw = vp.clientWidth, s = Math.min(1, cw / w);
+    var phone = cw < 760; if (phone) s = Math.max(s, 0.62);
+    vp.classList.toggle('pan', phone && w * s > cw + 1);
     scaler.style.transform = 'scale(' + s + ')';
     vp.style.height = Math.ceil(scaler.offsetHeight * s) + 'px';
     scaler.style.marginLeft = Math.max(0, (vp.clientWidth - w * s) / 2 / s) + 'px';

@@ -219,6 +219,7 @@ def main():
 </header>
 <p class="hint">Dica: no login, toque em <b>Start shift</b>. Na Home, o alarme leva ao circuito, ao parâmetro e ao ajuste que o resolve.</p>
 <main>
+  <p class="rot">Painel de sala de controle, pensado para tela larga. No celular, arraste para os lados ou gire o aparelho.</p>
   <div class="vp" id="vp">
     <div class="scaler" id="scaler" lang="en" data-w="1440"><div id="stage" tabindex="-1"></div></div>
   </div>

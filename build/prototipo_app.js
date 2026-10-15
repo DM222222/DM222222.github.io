@@ -82,7 +82,9 @@
   /* ---------- escala ---------- */
   function fit() {
     var w = parseInt(scaler.getAttribute('data-w') || '1440', 10);
-    var s = Math.min(1, vp.clientWidth / w);
+    var cw = vp.clientWidth, s = Math.min(1, cw / w);
+    var phone = cw < 760; if (phone) s = Math.max(s, 0.62);
+    vp.classList.toggle('pan', phone && w * s > cw + 1);
     scaler.style.transform = 'scale(' + s + ')';
     vp.style.height = Math.ceil(scaler.offsetHeight * s) + 'px';
     scaler.style.marginLeft = Math.max(0, (vp.clientWidth - w * s) / 2 / s) + 'px';

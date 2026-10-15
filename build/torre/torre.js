@@ -180,13 +180,15 @@ let cid = 0;
 const st = (c, t) => '<span class="st ' + c + '">' + esc(t) + '</span>';
 const card = o => { const id = 'c' + (++cid); return '<section class="card" style="--s:' + o.s + ';--t:' + (o.t || 60) + '" aria-labelledby="' + id + '"><div class="hd"><div><h2 id="' + id + '">' + esc(o.title) + '</h2>' + (o.sub ? '<p class="cs">' + esc(o.sub) + '</p>' : '') + '</div>' + (o.lg ? lgd(o.lg) : '') + (o.right || '') + '</div><div class="cb">' + o.body + '</div></section>'; };
 const kpi = (s, t, l, v, d, tag, vals, col) => '<div class="kpi" style="--s:' + s + ';--t:' + t + ';--m:30"><div class="kh"><span class="l">' + esc(l) + '</span>' + (tag ? st(tag[0], tag[1]) : '') + '</div><div class="v num">' + v + '</div><div class="d">' + d + '</div>' + (vals ? sl(vals, col) : '') + '</div>';
-const page = (t, sub, rows, inner) => '<div class="ph"><h1 id="h1" tabindex="-1">' + esc(t) + '</h1><p class="sub">' + esc(sub) + '</p></div><div class="dash" style="--rows:' + rows + '">' + inner + '</div>';
+const page = (t, sub, rows, inner, extra) => '<div class="ph"><h1 id="h1" tabindex="-1">' + esc(t) + '</h1><p class="sub">' + esc(sub) + '</p>' + (extra || '') + '</div><div class="dash" style="--rows:' + rows + '">' + inner + '</div>';
 const lgd = l => '<div class="lg">' + l.join('') + '</div>';
 
+/* a tela estratégica mostra só o que é crítico; o resto vive na Central de alertas */
+function restLink() { const r = needAct().filter(a => a.sev !== 'crit').length; return r ? '<button class="btn sm ph-l" data-go="alertas">' + r + (r === 1 ? ' alerta de atenção' : ' alertas de atenção') + ' · Ver todos</button>' : ''; }
 function decisions() {
-  const l = needAct();
-  if (!l.length) return '<div class="dc none" style="--s:60"><b class="tx-ok" style="font-size:1.3rem">✓</b><div><div class="t">Nada exige sua decisão agora</div><div class="r">Os alertas críticos e de atenção foram tratados.</div></div></div>';
-  const sp = l.length === 1 ? 60 : l.length === 2 ? 30 : 20;
+  const l = needAct().filter(a => a.sev === 'crit'), rest = needAct().length - l.length;
+  if (!l.length) return '<div class="dc none" style="--s:60"><b class="tx-ok" style="font-size:1.3rem">✓</b><div><div class="t">' + (rest ? 'Nada crítico exige decisão agora' : 'Nada exige sua decisão agora') + '</div><div class="r">' + (rest ? 'Os alertas de atenção ficam na Central de alertas.' : 'Os alertas críticos e de atenção foram tratados.') + '</div></div></div>';
+  const sp = l.length === 1 ? 60 : 30;
   return l.map(a => '<div class="dc ' + a.sev + '" style="--s:' + sp + ';--t:' + (l.length === 1 ? 60 : 30) + '"><div>' + st(a.sev, SEVI[a.sev] + ' ' + SEVN[a.sev]) + '</div><div class="t">' + esc(a.title) + '</div>' + (a.rec ? '<div class="r"><b>IA recomenda:</b> ' + esc(a.rec.t) + '.</div>' : '') + '<div class="ft"><span>' + a.area + ' · ' + a.when + '</span><button class="btn pri sm" data-alert="' + a.id + '">Ver recomendação</button></div></div>').join('');
 }
 
@@ -198,23 +200,21 @@ function vEstrategico() {
   const saldo = SER.rec.mes.map((v, i) => v - SER.pag.mes[i]);
   return page('Visão estratégica', 'A saúde do negócio nos 5 centros de distribuição.', 'auto auto minmax(0,1fr)',
     decisions() +
-    kpi(12, 30, 'Faturamento, 12 meses', money(FAT12), 'vs. setembro no mês', ['ok', '▲ ' + pct(FAT_DELTA)], SER.fat.mes) +
-    kpi(12, 30, 'Resultado de caixa, 12 meses', '+' + money(REC12 - PAG12), 'Receber ' + money(REC12) + ' · Pagar ' + money(PAG12), null, saldo) +
-    kpi(12, 20, 'SLA global', pct(g), 'meta ' + META_SLA + '%' + (below.length ? ' · ' + below.join(', ') + ' abaixo' : ''), g >= META_SLA ? ['ok', '✓ Na meta'] : ['crit', '▲ Abaixo'], slaSer, g >= META_SLA ? 'var(--accent)' : 'var(--crit)') +
-    kpi(12, 20, 'Inadimplência global', pct(SER.inad.mes[11]), 'meta abaixo de ' + META_INAD + '%', ['ok', '✓ Na meta'], SER.inad.mes) +
-    kpi(12, 20, 'Score médio da carteira', nf(SCORE, 0), CLI + ' clientes ativos · 0 a 100', null, SCOT) +
-    card({ s: 25, t: 60, title: 'Faturamento', sub: PER[p].d + ' · R$ milhões', body: chart('fat', (w, h) => barsLine({ labels: PER[p].L, bars: SER.fat[p], line: SER.prev[p], fmt: v => nf(v, 1), aria: 'Faturamento realizado em R$ milhões e previsto: ' + SER.fat[p].map(v => nf(v, 1)).join(', ') }, w, h)), lg: ['<span><i style="background:var(--c3)"></i>Realizado</span>', '<span><i style="background:var(--accent)"></i>Período atual</span>', '<span><span class="mkl"></span>Previsto</span>'] }) +
-    card({ s: 15, t: 30, title: 'Faturamento por CD', sub: '12 meses · participação', body: hb(CDS.map((c, i) => ({ n: c, w: B.fat[i] / 30 * 100, v: money(B.fat[i]) + ' <span style="color:var(--ink3)">' + pct(B.fat[i] / 80 * 100, 0) + '</span>', c: 'ok', a: c + ': ' + money(B.fat[i]) }))) }) +
-    card({ s: 20, t: 30, title: 'Fluxo de caixa', sub: 'A receber e a pagar · R$ milhões', body: cashChart('cx1', p), lg: CASHLG }));
+    kpi(15, 30, 'Faturamento, 12 meses', money(FAT12), 'vs. setembro no mês', ['ok', '▲ ' + pct(FAT_DELTA)], SER.fat.mes) +
+    kpi(15, 30, 'Resultado de caixa, 12 meses', '+' + money(REC12 - PAG12), 'Receber ' + money(REC12) + ' · Pagar ' + money(PAG12), null, saldo) +
+    kpi(15, 30, 'SLA global', pct(g), 'meta ' + META_SLA + '%' + (below.length ? ' · ' + below.join(', ') + ' abaixo' : ''), g >= META_SLA ? ['ok', '✓ Na meta'] : ['crit', '▲ Abaixo'], slaSer, g >= META_SLA ? 'var(--accent)' : 'var(--crit)') +
+    kpi(15, 30, 'Inadimplência global', pct(SER.inad.mes[11]), 'meta abaixo de ' + META_INAD + '%', ['ok', '✓ Na meta'], SER.inad.mes) +
+    card({ s: 40, t: 60, title: 'Faturamento', sub: PER[p].d + ' · R$ milhões', body: chart('fat', (w, h) => barsLine({ labels: PER[p].L, bars: SER.fat[p], line: SER.prev[p], fmt: v => nf(v, 1), aria: 'Faturamento realizado em R$ milhões e previsto: ' + SER.fat[p].map(v => nf(v, 1)).join(', ') }, w, h)), lg: ['<span><i style="background:var(--c3)"></i>Realizado</span>', '<span><i style="background:var(--accent)"></i>Período atual</span>', '<span><span class="mkl"></span>Previsto</span>'] }) +
+    card({ s: 20, t: 60, title: 'Faturamento por CD', sub: '12 meses · participação', body: hb(CDS.map((c, i) => ({ n: c, w: B.fat[i] / 30 * 100, v: money(B.fat[i]) + ' <span style="color:var(--ink3)">' + pct(B.fat[i] / 80 * 100, 0) + '</span>', c: 'ok', a: c + ': ' + money(B.fat[i]) }))) }) +
+    '', restLink());
 }
 function vTatico() {
   const p = S.per, ttcT = sum(TTC.map(t => t.v)), dv = CDS.map((_, i) => occ(i) - B.prev[i]), ab = dv.map(Math.abs), wi = ab.indexOf(Math.max.apply(null, ab));
   const rp = SER.fat.mes[11] / SER.prev.mes[11] * 100 - 100, lenta = TTC[3].v / ttcT * 100, diff = SER.fat[p].map((v, i) => (v / SER.prev[p][i] - 1) * 100), mx = 15;
   return page('Visão tática', 'O que foi previsto, o que aconteceu e onde a divergência pede ajuste.', 'auto minmax(0,1fr) minmax(0,1fr)',
-    kpi(15, 30, 'Recebe só em até 90 dias', pct(lenta, 0), TTC[3].v + ' de ' + ttcT + ' clientes', ['warn', '▲ Atenção']) +
-    kpi(15, 30, 'Maior divergência de ocupação', (dv[wi] > 0 ? '+' : '−') + nf(Math.abs(dv[wi]), 0) + ' p.p.', CDS[wi] + ' vs. previsto', [ab[wi] > 10 ? 'warn' : 'ok', ab[wi] > 10 ? '▲ Atenção' : '✓ Alinhado']) +
-    kpi(15, 30, 'Faturamento: real ÷ previsto', (rp >= 0 ? '+' : '') + pct(rp), 'outubro · ' + money(SER.fat.mes[11]) + ' vs. ' + money(SER.prev.mes[11]), ['ok', '✓ Acima']) +
-    kpi(15, 30, 'Previsão de recebimento', money(FC.v[0]), 'próximo mês · novembro', null, FC.v) +
+    kpi(20, 30, 'Recebe só em até 90 dias', pct(lenta, 0), TTC[3].v + ' de ' + ttcT + ' clientes', ['warn', '▲ Atenção']) +
+    kpi(20, 30, 'Maior divergência de ocupação', (dv[wi] > 0 ? '+' : '−') + nf(Math.abs(dv[wi]), 0) + ' p.p.', CDS[wi] + ' vs. previsto', [ab[wi] > 10 ? 'warn' : 'ok', ab[wi] > 10 ? '▲ Atenção' : '✓ Alinhado']) +
+    kpi(20, 30, 'Faturamento: real ÷ previsto', (rp >= 0 ? '+' : '') + pct(rp), 'outubro · ' + money(SER.fat.mes[11]) + ' vs. ' + money(SER.prev.mes[11]), ['ok', '✓ Acima']) +
     card({ s: 35, t: 60, title: 'Faturamento: previsto × realizado', sub: PER[p].d + ' · R$ milhões · % = diferença', body: chart('pr', (w, h) => barsLine({ labels: PER[p].L, bars: SER.fat[p], line: SER.prev[p], note: i => (diff[i] >= 0 ? '+' : '') + nf(diff[i], 1) + '%', fmt: v => nf(v, 1), aria: 'Faturamento realizado e previsto em R$ milhões. Diferenças: ' + diff.map(d => nf(d, 1) + '%').join(', ') }, w, h)), lg: ['<span><i style="background:var(--c3)"></i>Realizado</span>', '<span><span class="mkl"></span>Previsto</span>'] }) +
     card({ s: 25, t: 60, title: 'Divergência de ocupação', sub: 'Realizada − prevista · p.p.', body: '<div class="dv">' + CDS.map((c, i) => { const w = Math.min(ab[i] / mx * 50, 50), cl = ab[i] < 3 ? 'ok' : ''; return '<div class="dvr"><b>' + c + '</b><div class="dvt" role="img" aria-label="' + c + ': ' + (dv[i] > 0 ? '+' : '') + nf(dv[i], 0) + ' pontos percentuais"><i class="' + (dv[i] >= 0 ? 'pos' : 'neg') + ' ' + cl + '" style="width:' + w + '%"></i></div><span class="num">' + (dv[i] > 0 ? '+' : dv[i] < 0 ? '−' : '') + nf(Math.abs(dv[i]), 0) + ' p.p. ' + (ab[i] < 3 ? st('ok', '✓') : dv[i] > 0 ? st('warn', '▲') : st('info', '▼')) + '</span></div>'; }).join('') + '</div>' }) +
     card({ s: 25, t: 60, title: 'Prazo de recebimento', sub: 'Clientes por prazo previsto', body: '<div class="big num opt">' + ttcT + ' <span style="font-size:.88rem;font-weight:400;color:var(--ink3)">clientes ativos</span></div><div class="stk" role="img" aria-label="' + TTC.map(t => t.l + ': ' + t.v).join(', ') + '" style="height:18px;border-radius:9px">' + TTC.map((t, i) => '<span style="width:' + t.v / ttcT * 100 + '%;background:' + PAL[i] + '"></span>').join('') + '</div><div class="seg2">' + TTC.map((t, i) => '<div><span><i style="background:' + PAL[i] + '"></i>' + t.l + '</span><b class="num">' + t.v + '</b><span>' + pct(t.v / ttcT * 100, 0) + '</span></div>').join('') + '</div><p class="opt" style="font-size:.84rem">' + st('warn', '▲ Atenção') + ' Metade da carteira só recebe em até 90 dias.</p>' }) +
@@ -223,9 +223,8 @@ function vTatico() {
 function vVendas() {
   const conv = FUNIL.slice(1).map((f, i) => f.v / FUNIL[i].v * 100), worst = conv.indexOf(Math.min.apply(null, conv));
   return page('Operacional · Vendas', 'Do primeiro contato ao cliente ativo: onde o funil mais perde.', 'auto minmax(0,1fr)',
-    kpi(20, 20, 'Conversão geral', pct(FUNIL[3].v / FUNIL[0].v * 100, 0), FUNIL[0].v + ' leads → ' + FUNIL[3].v + ' clientes') +
-    kpi(20, 20, 'Maior perda', pct(100 - conv[worst], 0), FUNIL[worst].l + ' → ' + FUNIL[worst + 1].l, ['warn', '▲ Atenção']) +
-    kpi(20, 20, 'Clientes ativos', String(CLI), '4 segmentos · score médio ' + nf(SCORE, 0)) +
+    kpi(30, 30, 'Conversão geral', pct(FUNIL[3].v / FUNIL[0].v * 100, 0), FUNIL[0].v + ' leads → ' + FUNIL[3].v + ' clientes') +
+    kpi(30, 30, 'Maior perda', pct(100 - conv[worst], 0), FUNIL[worst].l + ' → ' + FUNIL[worst + 1].l, ['warn', '▲ Atenção']) +
     card({ s: 35, t: 60, title: 'Funil de conversão', sub: 'Leads por etapa e % que avança', body: chart('fn', funnelH) }) +
     card({ s: 25, t: 60, title: 'Clientes por segmento', sub: 'Distribuição e score médio', body: donut(SEG.map(s => ({ l: s.n, v: s.cli, t: s.cli + ' · ' + pct(s.cli / CLI * 100, 0), sub: 'score ' + s.score })), String(CLI), 'clientes', 'Clientes por segmento: ' + SEG.map(s => s.n + ' ' + s.cli + ', score ' + s.score).join('; ')) }));
 }
@@ -276,6 +275,9 @@ function renderSide() {
 }
 function renderChrome() {
   renderSide();
+  const nn = needAct().length;
+  $('#mnav').innerHTML = Object.keys(VIEWS).map(k => '<button data-go="' + k + '"' + (S.view === k ? ' aria-current="page"' : '') + '>' + VIEWS[k].t + (k === 'alertas' && nn ? '<span class="cnt" aria-label="' + nn + ' abertos">' + nn + '</span>' : '') + '</button>').join('');
+  const cur = $('#mnav [aria-current]'); if (cur && cur.scrollIntoView) cur.scrollIntoView({ inline: 'center', block: 'nearest' });
   const n = needAct().length, b = $('#bbadge'); b.hidden = !n; b.textContent = n; $('#bell').setAttribute('aria-label', n ? n + ' alertas pedem atenção' : 'Nenhum alerta pede atenção');
   const v = VIEWS[S.view], per = $('#per'); per.hidden = !v.per;
   if (v.per) { $('.seg', per).innerHTML = Object.keys(PER).map(k => '<button data-period="' + k + '" aria-pressed="' + (S.per === k) + '">' + PER[k].n + '</button>').join(''); $('#perd').textContent = PER[S.per].d; }

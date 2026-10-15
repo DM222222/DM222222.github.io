@@ -17,7 +17,10 @@ let fails = 0; const ok = (c, m) => { console.log((c ? 'ok    ' : 'FALHA ') + m)
   ok(!$('#lu-e').hidden && !$('#lp-e').hidden && $('#login').hidden === false, 'login vazio mostra os dois erros');
   $('#lu').value = 'ana'; $('#lp').value = 'x'; $('#lform').dispatchEvent(new w.Event('submit', { cancelable: true }));
   ok($('#login').hidden && !$('#app').hidden, 'login preenchido entra');
-  ok($$('.dc').length === 3, 'Estratégico abre com 3 decisões');
+  ok($$('.dc').length === 1 && $('.dc').classList.contains('crit'), 'Estratégico abre só com a decisão crítica');
+  ok(!!$('.ph-l') && /2 alertas de atenção/.test($('.ph-l').textContent), 'atalho para os 2 alertas de atenção na Central');
+  ok($$('#mnav button').length === 6 && !!$('#mnav [aria-current="page"]'), 'faixa de telas do celular com 6 abas');
+  ok($$('.kpi').length === 4 && !/Fluxo de caixa/.test(txt()), 'Estratégico enxuto: 4 KPIs e sem fluxo de caixa repetido');
   ok($('#bbadge').textContent === '3', 'sino mostra 3');
   const slaAntes = $$('.kpi .v')[2].textContent;
 
@@ -39,7 +42,7 @@ let fails = 0; const ok = (c, m) => { console.log((c ? 'ok    ' : 'FALHA ') + m)
   ok(/Carga transferida/.test($('#toast').textContent), 'avisa por toast');
   d.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
   ok(!$('.dw'), 'Esc fecha o detalhe');
-  ok($$('.dc').length === 2 && $('#bbadge').textContent === '2', 'decisões e sino caem para 2');
+  ok($$('.dc.none').length === 1 && /Nada crítico/.test(txt()) && $('#bbadge').textContent === '2', 'sem crítico: estado vazio e sino cai para 2');
   ok($$('.kpi .v')[2].textContent !== slaAntes, 'SLA global recalculado (' + slaAntes + ' → ' + $$('.kpi .v')[2].textContent + ')');
   w.__torre.go('operacao');
   ok(/80%/.test(txt()) && /56%/.test(txt()), 'Operação reflete CD 2 em 80% e CD 5 em 56%');
