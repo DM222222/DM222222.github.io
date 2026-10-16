@@ -43,8 +43,7 @@ a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.2em}
 .case:last-child{margin-bottom:0}
 .case-cover{position:relative;display:block;aspect-ratio:16/8;background:#111;overflow:hidden;border-radius:2px}
 .case-cover .cover-link{position:absolute;inset:0;display:block}
-.case-cover img,.case-cover video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.02);transition:filter .5s ease,transform .8s ease}
-.case-cover:hover img,.case-cover:hover video,.case-cover:focus-visible img,.case-cover:focus-visible video{filter:none;transform:scale(1.015)}
+.case-cover img,.case-cover video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .vctl{position:absolute;right:.75rem;bottom:.75rem;min-width:44px;min-height:44px;padding:0 1rem;background:rgba(255,255,255,.92);color:var(--ink);border:1px solid var(--ink);font:inherit;font-size:.85rem;cursor:pointer;border-radius:99px}
 .case-meta{display:grid;grid-template-columns:minmax(150px,200px) 1.2fr 1fr;gap:1.25rem clamp(1.25rem,3vw,3rem);padding-top:1.1rem;align-items:start}
 .case-who{font-size:.88rem;color:var(--muted);line-height:1.5}
