@@ -28,21 +28,12 @@ def _trocar(doc, nome, conteudo, indent="      "):
         lambda m: m.group(1) + AVISO + "\n" + conteudo + indent + m.group(2), doc)
 
 
-def _abertura(t, d):
+def _abertura(t):
     a = t["abertura"]
-    p = d["pessoal"]
-    meta = "Baseado em %s, %s \u00b7 %s anos de experi\u00eancia" % (
-        p["cidade"], p["estado"], p["anos_experiencia"])
     return (
-        '      <div class="hero-id">\n'
-        '        <img class="avatar" src="assets/foto-dm.jpg" alt="Foto de %s" width="64" height="64">\n'
-        '        <div>\n'
-        '          <p class="eyebrow">%s</p>\n'
-        '          <p class="hero-meta">%s</p>\n'
-        '        </div>\n'
-        '      </div>\n'
+        '      <p class="eyebrow">%s</p>\n'
         '      <h1 id="titulo">%s</h1>\n'
-        '      <p class="lead">%s</p>\n' % (e(p["nome"]), e(a["cargo"]), e(meta), e(a["titulo"]), e(a["paragrafo"]))
+        '      <p class="lead">%s</p>\n' % (e(a["cargo"]), e(a["titulo"]), e(a["paragrafo"]))
     )
 
 
@@ -111,7 +102,7 @@ def sincronizar(d):
     with open(INDEX, encoding="utf-8") as f:
         doc = f.read()
     antes = doc
-    doc = _trocar(doc, "abertura", _abertura(t, d), "      ")
+    doc = _trocar(doc, "abertura", _abertura(t), "      ")
     doc = _trocar(doc, "cases", _cases(t), "      ")
     doc = _trocar(doc, "experiencia", _experiencia(d), "        ")
     doc = _trocar(doc, "contato", _contato(d), "        ")

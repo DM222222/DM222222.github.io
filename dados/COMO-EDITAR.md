@@ -48,20 +48,6 @@ Se errar, o build não gera nada errado: ele para e diz a linha do problema.
 **Um detalhe:** nos campos que terminam em `_site` (vão direto para o HTML),
 escreva `&amp;` em vez de `&`.
 
-## Trocar o título de um case (caixa de texto)
-
-Abra `ferramentas/editar-titulos.html` no **Chrome ou Edge** (duplo clique),
-clique em *Escolher a pasta do portfólio* e selecione esta pasta. Cada case
-mostra a **frase atual** e uma caixa para a **nova frase**. Digite e clique em
-*Aplicar mudanças*: a troca vai para a página inicial, a página do case e o
-`dados/portfolio_textos.json` de uma vez. Depois é só commitar. Essa pasta fica
-fora do Git (não vai para o site).
-
-## Tempo de experiência
-
-Está em `pessoal` → `anos_experiencia`. Os resumos do CV usam `{anos}` e a
-hero do site lê o mesmo campo: mude o número ali e rode o build.
-
 ## Onde mexer no quê
 
 | Quero mudar | Vá em |

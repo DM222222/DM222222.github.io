@@ -40,13 +40,6 @@ def carregar():
                 sys.exit("ERRO: a variante '%s' aponta para o grupo de competencia "
                          "'%s', que nao existe." % (nome, chave))
 
-    # "{anos}" nos textos vira pessoal.anos_experiencia: muda num lugar so
-    anos = str(d["pessoal"]["anos_experiencia"])
-    for v in d["variantes"].values():
-        for chave in ("resumo", "resumo_curto"):
-            if chave in v:
-                v[chave] = v[chave].replace("{anos}", anos)
-
     os.makedirs(SAIDA_CV, exist_ok=True)
     return d
 
