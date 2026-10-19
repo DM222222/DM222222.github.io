@@ -13,14 +13,14 @@
     "linkedin_curto": "linkedin.com/in/danilomorelli",
     "portfolio": "https://dm222222.github.io",
     "portfolio_curto": "dm222222.github.io",
-    "anos_experiencia": 7
+    "anos_experiencia": 5
   },
   "variantes": {
     "design": {
       "rotulo": "Product Designer (CV único)",
       "cargo": "Product Designer | UX/UI Designer",
-      "resumo": "Product Designer com 7 anos de experiência em produtos digitais B2B, B2C, DTC e B2B2C, atuando de ponta a ponta: discovery, pesquisa com usuários, definição de MVP e KPIs, arquitetura da informação, prototipação, interface e design system. Conduzo entrevistas do C-level à operação, traduzo o problema de negócio em requisitos e entrego interface validada com usuários e time técnico. Experiência em produtos com inteligência artificial (anomalias, previsões e recomendações com explicabilidade na interface), mercado financeiro, logística e indústria. Formação em Publicidade e Propaganda e vivência em branding, identidade visual e web design. Desenhei a Torre de Controle, hoje em produção em uma operação de cinco centros de distribuição.",
-      "resumo_curto": "Product Designer com 7 anos em produtos digitais B2B, B2C, DTC e B2B2C: discovery, pesquisa, MVP e KPIs, interface e design system. Experiência em produtos com IA, mercado financeiro, logística e indústria, além de branding e web design.",
+      "resumo": "Product Designer com {anos} anos de experiência em produtos digitais B2B, B2C, DTC e B2B2C, atuando de ponta a ponta: discovery, pesquisa com usuários, definição de MVP e KPIs, arquitetura da informação, prototipação, interface e design system. Conduzo entrevistas do C-level à operação, traduzo o problema de negócio em requisitos e entrego interface validada com usuários e time técnico. Experiência em produtos com inteligência artificial (anomalias, previsões e recomendações com explicabilidade na interface), mercado financeiro, logística e indústria. Formação em Publicidade e Propaganda e vivência em branding, identidade visual e web design. Desenhei a Torre de Controle, hoje em produção em uma operação de cinco centros de distribuição.",
+      "resumo_curto": "Product Designer com {anos} anos em produtos digitais B2B, B2C, DTC e B2B2C: discovery, pesquisa, MVP e KPIs, interface e design system. Experiência em produtos com IA, mercado financeiro, logística e indústria, além de branding e web design.",
       "competencias": [
         "ux",
         "produto",

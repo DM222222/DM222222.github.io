@@ -28,6 +28,10 @@ a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.2em}
 /* abertura */
 .hero{padding:clamp(3.5rem,10vw,8rem) 0 clamp(3rem,7vw,6rem)}
 .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:1.5rem}
+.hero-id{display:flex;align-items:center;gap:1rem;margin-bottom:clamp(1.5rem,3vw,2.5rem)}
+.hero-id .eyebrow{margin-bottom:.2rem}
+.hero-meta{font-size:.92rem;color:var(--ink-2);line-height:1.4}
+.avatar{width:64px;height:64px;border-radius:50%;object-fit:cover;filter:grayscale(1) contrast(1.03);border:1px solid var(--line);flex:none;background:var(--soft)}
 .hero h1{font-size:clamp(2.8rem,9vw,7.5rem);line-height:.98;letter-spacing:-.045em;font-weight:600;max-width:11ch}
 .hero .lead{margin-top:clamp(2rem,5vw,4rem);margin-left:auto;max-width:34rem;font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.55;color:var(--ink-2)}
 @media (max-width:760px){.hero .lead{margin-left:0}}
