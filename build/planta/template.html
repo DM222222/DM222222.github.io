@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Protótipo navegável — Ler a planta num relance</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../logo-dm.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>/*CSS*/</style>
+</head>
+<body data-theme="claro">
+<a class="skip" href="#app">Pular para o protótipo</a>
+<details class="pbar" id="pbar">
+  <summary><span><b>Protótipo navegável</b> · dados fictícios, interface em inglês como no produto</span><span class="opt">Opções</span></summary>
+  <div class="ctl">
+    <label class="fld">Tela <select id="jump">/*OPTS*/</select></label>
+    <fieldset class="tema"><legend>Tema</legend>
+      <label><input type="radio" name="tema" value="claro" checked> Claro</label>
+      <label><input type="radio" name="tema" value="sol"> Sol</label>
+      <label><input type="radio" name="tema" value="escuro"> Escuro</label>
+    </fieldset>
+    <button type="button" id="reset" class="rst">Reiniciar</button>
+  </div>
+</details>
+<p class="hint">Dica: no login, toque em <b>Start shift</b>. Na Home, o alarme leva ao circuito, ao parâmetro e ao ajuste que o resolve. Funciona em celular, tablet e desktop.</p>
+<div id="app" class="app" lang="en" tabindex="-1"></div>
+<noscript><p class="hint">Este protótipo precisa de JavaScript.</p></noscript>
+<div id="toast" role="status" aria-live="polite"></div>
+<p id="live" class="sr" aria-live="polite"></p>
+<script type="application/json" id="themes">/*THEMES*/</script>
+<script>/*JS*/</script>
+</body>
+</html>

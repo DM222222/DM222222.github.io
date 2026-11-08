@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Gera assets/prototipo/planta.html a partir do deck do case (assets/case-study).
-
-Reaproveita as nove telas e os tres conjuntos de tokens do proprio deck, e
-acrescenta a navegacao. Uso:  python build/prototipo.py
+"""Extrai os tres conjuntos de tokens do deck do case (assets/case-study), grava
+build/planta/themes.json e atualiza a tabela de contraste do case.
+O HTML do prototipo e gerado por build/planta.py. Uso:  python build/prototipo.py
 Requer: beautifulsoup4 + lxml (so para gerar; o resultado e HTML estatico).
 """
 import html as _html
@@ -167,80 +166,13 @@ def main():
     if falhas:
         print("ATENCAO, pares abaixo do minimo:", [(n, t, round(r, 2)) for n, t, r in falhas])
 
-    # largura de projeto de cada tela
-    def largura(frag):
-        m = re.search(r"(?<![a-z-])width:(\d+)px", BeautifulSoup(frag, "lxml").find("div").get("style", ""))
-        return int(m.group(1)) if m else 1440
-
-    templates = []
-    for n, tid in TELAS.items():
-        frag = frames[n]
-        s = converter_nav(frag)
-        templates.append('<template id="t-%s" data-w="%d">%s</template>' % (tid, largura(frag), corpo(s)))
-
-    # fluxo de desligar a IA: tres cartoes
-    f5 = BeautifulSoup(frames[5], "lxml").find("div")
-    cards = [c for c in f5.find_all("div", recursive=False)]
-    if len(cards) != 3:
-        sys.exit("ERRO: esperava 3 cartoes no fluxo, achei %d" % len(cards))
-    for i, c in enumerate(cards, 1):
-        templates.append('<template id="t-flow%d" data-w="420">%s</template>' % (i, str(c)))
-
-    css = open(os.path.join(AQUI, "prototipo_shell.css"), encoding="utf-8").read()
-    js = open(os.path.join(AQUI, "prototipo_app.js"), encoding="utf-8").read()
-    opts = "".join('<option value="%s">%s</option>' % (v, _html.escape(t)) for v, t in ROTULOS)
-
-    doc = """<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Protótipo navegável — Ler a planta num relance</title>
-<meta name="robots" content="noindex">
-<link rel="icon" href="../logo-dm.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<style>%(css)s</style>
-</head>
-<body data-theme="claro">
-<a class="skip" href="#stage">Pular para o protótipo</a>
-<header class="bar">
-  <p class="ttl"><b>Protótipo navegável</b> · dados fictícios, interface em inglês como no produto</p>
-  <div class="ctl">
-    <label class="fld">Tela <select id="jump">%(opts)s</select></label>
-    <fieldset class="tema"><legend>Tema</legend>
-      <label><input type="radio" name="tema" value="claro" checked> Claro</label>
-      <label><input type="radio" name="tema" value="sol"> Sol</label>
-      <label><input type="radio" name="tema" value="escuro"> Escuro</label>
-    </fieldset>
-    <button type="button" id="reset" class="rst">Reiniciar</button>
-  </div>
-</header>
-<p class="hint">Dica: no login, toque em <b>Start shift</b>. Na Home, o alarme leva ao circuito, ao parâmetro e ao ajuste que o resolve.</p>
-<main>
-  <p class="rot">Painel de sala de controle, pensado para tela larga. No celular, arraste para os lados ou gire o aparelho.</p>
-  <div class="vp" id="vp">
-    <div class="scaler" id="scaler" lang="en" data-w="1440"><div id="stage" tabindex="-1"></div></div>
-  </div>
-</main>
-<noscript><p class="hint">Este protótipo precisa de JavaScript.</p></noscript>
-<div id="toast" role="status" aria-live="polite"></div>
-<p id="live" class="sr" aria-live="polite"></p>
-<script type="application/json" id="themes">%(themes)s</script>
-%(templates)s
-<script>%(js)s</script>
-</body>
-</html>
-""" % {"css": css, "opts": opts, "themes": json.dumps(tokens, ensure_ascii=False),
-       "templates": "\n".join(templates), "js": js}
-
-    os.makedirs(os.path.dirname(SAIDA), exist_ok=True)
-    with open(SAIDA, "w", encoding="utf-8", newline="\n") as f:
-        f.write(doc)
-    print("OK:", os.path.relpath(SAIDA, RAIZ), "%d KB" % (len(doc) // 1024),
-          "| telas:", len(TELAS), "+ fluxo de 3 passos | temas:", ", ".join(tokens),
-          "| tokens por tema:", {k: len(v) for k, v in tokens.items()})
+    # O prototipo navegavel agora e montado por build/planta.py (layout fluido).
+    # Aqui so se atualiza a fonte dos tokens e a tabela de contraste do case.
+    destino = os.path.join(AQUI, "planta", "themes.json")
+    os.makedirs(os.path.dirname(destino), exist_ok=True)
+    with open(destino, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(tokens, f, ensure_ascii=False)
+    print("OK: tokens ->", os.path.relpath(destino, RAIZ), "| contraste do case atualizado | temas:", ", ".join(tokens))
 
 
 if __name__ == "__main__":
