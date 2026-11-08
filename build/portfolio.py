@@ -37,6 +37,18 @@ def _abertura(t):
     )
 
 
+def _apoio(t):
+    a = t["como_apoio"]
+    itens = "".join(
+        '        <li><b>%s</b><span>%s</span></li>\n' % (e(i["titulo"]), e(i["texto"]))
+        for i in a["itens"]
+    )
+    return (
+        '      <div class="sec-head"><h2 id="h-apoio">%s</h2></div>\n'
+        '      <ol class="apoio">\n%s      </ol>\n' % (e(a["titulo"]), itens)
+    )
+
+
 def _cases(t):
     saida = ""
     for c in t["cases"]:
@@ -103,7 +115,11 @@ def sincronizar(d):
         doc = f.read()
     antes = doc
     doc = _trocar(doc, "abertura", _abertura(t), "      ")
+    doc = _trocar(doc, "apoio", _apoio(t), "      ")
     doc = _trocar(doc, "cases", _cases(t), "      ")
+    doc = re.sub(
+        r"(<!--\s*SYNC:contato_titulo\s*-->).*?(<!--\s*/SYNC:contato_titulo\s*-->)",
+        lambda m: m.group(1) + e(t["contato_titulo"]) + m.group(2), doc, flags=re.DOTALL)
     doc = _trocar(doc, "experiencia", _experiencia(d), "        ")
     doc = _trocar(doc, "contato", _contato(d), "        ")
     if doc == antes:

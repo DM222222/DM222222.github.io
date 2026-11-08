@@ -1,9 +1,9 @@
 {
   "_leia_me": "Textos aprovados do novo portfolio (P&B), secao por secao. Fonte de verdade para a implementacao.",
   "abertura": {
-    "cargo": "Danilo Morelli",
-    "titulo": "Product Designer e publicitário",
-    "paragrafo": "Gosto de resolver bons problemas e de trocar boas ideias. Atuo para que produtos e serviços cumpram seus objetivos, defendendo a tese que me encantou em experiência do usuário um dia: no final, é sobre pessoas.",
+    "cargo": "Danilo Morelli · Baseado em São Paulo, SP",
+    "titulo": "Product Designer",
+    "paragrafo": "Ajudo times a transformar operações complexas e dados em decisões claras, em produtos com IA, dados e operação crítica.",
     "linha_pessoal": null
   },
   "cases": [
@@ -115,5 +115,26 @@
       "texto": "Pesquisa e definição do MVP de um produto de aquisição de ativos para o mercado financeiro. Hoje é um ecossistema na carteira de um fundo."
     }
   ],
-  "contato_rascunho_aguardando_ok": "Para vagas, projetos ou uma boa conversa, é só chamar."
+  "como_apoio": {
+    "titulo": "Como eu apoio",
+    "itens": [
+      {
+        "titulo": "Entender a decisão",
+        "texto": "Quem decide, com qual pergunta e com que risco, antes de abrir qualquer tela."
+      },
+      {
+        "titulo": "Definir o que medir",
+        "texto": "Os poucos sinais que importam, com dado em que a operação confia."
+      },
+      {
+        "titulo": "Desenhar e validar",
+        "texto": "Protótipo navegável, testado com quem opera, até a recomendação fazer sentido."
+      },
+      {
+        "titulo": "Entregar para operar",
+        "texto": "Especificação, estados e acompanhamento até o produto rodar em produção."
+      }
+    ]
+  },
+  "contato_titulo": "Para falar de produto, dados e design."
 }

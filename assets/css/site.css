@@ -37,6 +37,13 @@ a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.2em}
 .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:clamp(2rem,4vw,3.5rem)}
 .sec-head h2{font-size:clamp(1.4rem,2.4vw,2rem);font-weight:600;letter-spacing:-.03em}
 .sec-head .count{font-size:.9rem;color:var(--muted)}
+.apoio{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0 clamp(1.25rem,3vw,3rem);counter-reset:ap}
+.apoio li{counter-increment:ap;border-top:1px solid var(--line);padding:1.25rem 0 0;display:flex;flex-direction:column;gap:.6rem}
+.apoio li::before{content:"0" counter(ap);font-size:.85rem;color:var(--muted)}
+.apoio b{font-size:1.1rem;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+.apoio span{font-size:.98rem;line-height:1.5;color:var(--ink-2)}
+@media (max-width:980px){.apoio{grid-template-columns:repeat(2,1fr);row-gap:2rem}}
+@media (max-width:560px){.apoio{grid-template-columns:1fr}}
 
 /* cases */
 .case{margin-bottom:clamp(3rem,6vw,5.5rem)}
