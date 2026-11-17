@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1600px;height:800px;overflow:hidden}
+body{background:#F3EFF8;position:relative;font-family:"Inter","Segoe UI",system-ui,sans-serif}
+.dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(105,69,141,.16) 1.3px,transparent 1.8px);background-size:22px 22px}
+.shape{position:absolute;border-radius:50%}
+.f{position:absolute;overflow:hidden;background:#fff;border-radius:12px;box-shadow:0 30px 60px rgba(38,24,60,.18),0 4px 12px rgba(38,24,60,.10),0 0 0 1px rgba(26,20,38,.06);z-index:3}
+.f img{display:block;width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;display:flex;align-items:center;gap:12px;font-size:22px;font-weight:600;color:#1A1426;z-index:9;letter-spacing:-.01em}
+.tag b{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#1A1426;color:#C6DE64;font-size:18px}
+.tag.on-plum{color:#fff}
+svg.thread{position:absolute;inset:0;z-index:2}
+</style></head><body>
+<div class="dots"></div>
+<div class="shape" style="left:20px;top:10px;width:300px;height:300px;background:#C6DE64"></div>
+<div class="shape" style="left:1010px;top:300px;width:640px;height:640px;background:#69458D"></div>
+<div class="shape" style="left:980px;top:-120px;width:420px;height:420px;border:2px solid rgba(105,69,141,.35)"></div>
+<div class="shape" style="left:540px;top:120px;width:120px;height:120px;background:#E2D6EE"></div>
+<svg class="thread" width="1600" height="800" viewBox="0 0 1600 800">
+  <defs><marker id="a" markerWidth="14" markerHeight="14" refX="9" refY="7" orient="auto"><path d="M0 0 L12 7 L0 14 Z" fill="#1A1426"/></marker></defs>
+  <g fill="none" stroke-linecap="round">
+    <path d="M30 560 C30 470 50 430 90 410 L480 240 C620 240 760 180 900 200 C980 210 1020 220 1070 220 L1480 220 C1590 260 1560 360 1400 380 C1200 400 960 330 820 360 L700 500 C760 420 900 380 1000 382" stroke="#1A1426" stroke-width="3.5" marker-end="url(#a)"/>
+    <path d="M36 566 C36 476 56 436 96 416 L486 246 C626 246 766 186 906 206 C986 216 1026 226 1076 226" stroke="#69458D" stroke-width="1.5" opacity=".45"/>
+  </g>
+  <g fill="#C6DE64" stroke="#1A1426" stroke-width="2.5"><circle cx="30" cy="560" r="8"/><circle cx="760" cy="196" r="8"/><circle cx="1540" cy="320" r="8"/></g>
+</svg>
+<div class="f" style="left:70px;top:90px;width:430px;height:306px"><img src="src/ativos-atores.png"></div>
+<div class="f" style="left:1080px;top:52px;width:422px;height:300px"><img src="src/ativos-personas.png"></div>
+<div class="f" style="left:700px;top:400px;width:800px;height:371px;border-radius:8px"><img src="src/fluxo_crop.png"></div>
+<div class="f" style="left:250px;top:372px;width:590px;height:420px;z-index:4"><img src="src/ativos-matriz-1.png"></div>
+<div class="tag" style="left:76px;top:42px"><b>1</b>Usuários</div>
+<div class="tag" style="left:1076px;top:8px"><b>2</b>Personas</div>
+<div class="tag" style="left:48px;top:730px"><b>3</b>Priorização</div>
+<div class="tag on-plum" style="left:1300px;top:356px"><b>4</b>Fluxo do MVP</div>
+</body></html>
