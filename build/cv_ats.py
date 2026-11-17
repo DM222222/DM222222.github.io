@@ -52,7 +52,7 @@ def montar_blocos(d, chave_variante):
     b.append(("secao", "FORMACAO ACADEMICA"))
     for f in d["formacao"]:
         b.append(("cargo_exp", f["curso"]))
-        b.append(("empresa_exp", "%s | %s | %s" % (f["instituicao"], f["periodo"], f["situacao"])))
+        b.append(("empresa_exp", " | ".join(x for x in (f["instituicao"], f["periodo"], f.get("situacao", "")) if x)))
 
     b.append(("secao", "CERTIFICACOES"))
     for c in d["certificacoes"]:

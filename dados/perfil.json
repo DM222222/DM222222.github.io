@@ -240,9 +240,9 @@
     {
       "curso": "Bacharelado em Publicidade e Propaganda",
       "instituicao": "Universidade Anhembi Morumbi",
-      "periodo": "2014 — Conclusão prevista para dezembro de 2026",
-      "periodo_site": "Anhembi Morumbi · conclusão prevista dez/2026",
-      "situacao": "Em andamento"
+      "periodo": "2014 — 2018",
+      "periodo_site": "Anhembi Morumbi · 2018",
+      "situacao": ""
     }
   ],
   "certificacoes": [
@@ -267,10 +267,6 @@
     {
       "idioma": "Inglês",
       "nivel": "Intermediário"
-    },
-    {
-      "idioma": "Espanhol",
-      "nivel": "Básico"
     }
   ],
   "projetos_destaque": [
