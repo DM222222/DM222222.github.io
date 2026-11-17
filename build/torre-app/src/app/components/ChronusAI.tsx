@@ -26,7 +26,7 @@ const getAIResponse = (userMessage: string): string => {
     message.includes("alocar") ||
     (message.includes("demanda") && message.includes("cd"))
   ) {
-    return `📊 **Alocação de demanda por CD**\n\n• **CD 2** está em 99% de ocupação e SLA 81%: risco de estourar no próximo pico.\n• **CD 5** está em 28%: tem folga para receber carga.\n\n**Recomendação:** redirecionar 15 p.p. da carga do CD 2 para o CD 5. Efeito estimado: CD 2 vai a 84% (SLA 93%) e CD 5 a 49%.\n\nVocê pode aplicar na tela Estratégico, em "Aplicar recomendação", e desfazer depois.`;
+    return `📊 **Alocação de demanda por CD**\n\n• **CD 2** está em 99% de ocupação e SLA 81%: risco de estourar no próximo pico.\n• **CD 5** está em 28%: tem folga para receber carga.\n\n**Recomendação:** redirecionar 15 p.p. da carga do CD 2 para o CD 5. Efeito estimado: CD 2 vai a 84% (SLA 93%) e CD 5 a 49%.\n\nRevise e aprove em "Revisar e aprovar", na faixa "Exige decisão". Dá para desfazer depois.`;
   }
 
   // Previsão de faturamento
@@ -35,7 +35,7 @@ const getAIResponse = (userMessage: string): string => {
     message.includes("receita") ||
     message.includes("previsão")
   ) {
-    return `💰 **Previsão de Faturamento**\n\n📈 **Projeção Q4 2024:**\n\n• **Outubro:** R$82M (realizado)\n• **Novembro:** R$85M (projeção)\n• **Dezembro:** R$90M (projeção)\n\n**Total Q4:** R$257M\n\n🎯 **Por CD:**\n• CD 1: R$100M (39%)\n• CD 2: R$80M (31%)\n• CD 3 + CD 4: R$50M (19%)\n• CD 5: R$27M (11%)\n\n✅ Atingiremos 96% da meta anual se mantivermos crescimento de 3-4% ao mês.`;
+    return `💰 **Previsão de Faturamento**\n\n📈 **Próximos meses:**\n\n• **Junho:** R$ 7,3 mi (realizado)\n• **Julho:** R$ 7,5 mi (projeção)\n• **Agosto:** R$ 7,8 mi (projeção)\n• **Setembro:** R$ 8,0 mi (projeção)\n\n**Total do trimestre:** R$ 23,3 mi\n\n🎯 **Últimos 12 meses por CD (R$ 80 mi):**\n• CD 1: R$ 30 mi (37,5%)\n• CD 2: R$ 20 mi (25%)\n• CD 3: R$ 15 mi (19%)\n• CD 4: R$ 10 mi (12,5%)\n• CD 5: R$ 5 mi (6%)\n\n✅ Com crescimento de 3% ao mês, o pico do segundo semestre exige folga de capacidade no CD 2.`;
   }
 
   // Contratos assinados
@@ -44,7 +44,7 @@ const getAIResponse = (userMessage: string): string => {
     message.includes("assinado") ||
     message.includes("pipeline")
   ) {
-    return `📝 **Status de Contratos Assinados**\n\n✅ **Contratos Ativos:** 127 contratos\n\n🔥 **Pipeline Atual:**\n• Em negociação: 23 contratos (R$45M potencial)\n• Aguardando assinatura: 8 contratos (R$12M)\n• Renovações Q4: 15 contratos (R$28M garantido)\n\n📊 **Top 3 Clientes:**\n1. Cliente A - R$18M/ano (14% do faturamento)\n2. Cliente B - R$15M/ano (12% do faturamento)\n3. Cliente C - R$12M/ano (9% do faturamento)\n\n💡 **Insight:** 35% do faturamento concentrado em 3 clientes - Risco de concentração moderado.`;
+    return `📝 **Status de Contratos Assinados**\n\n✅ **Contratos ativos:** 127, de 90 clientes\n\n🔥 **Pipeline atual:**\n• Em negociação: 23 contratos (R$ 6 mi potenciais por ano)\n• Aguardando assinatura: 8 contratos (R$ 2 mi)\n• Renovações no trimestre: 15 contratos (R$ 4 mi)\n\n📊 **Top 3 clientes:**\n1. Cliente A: R$ 9 mi/ano (11% do faturamento)\n2. Cliente B: R$ 7 mi/ano (9%)\n3. Cliente C: R$ 5 mi/ano (6%)\n\n💡 **Insight:** 26% do faturamento está em 3 clientes. Risco de concentração moderado.`;
   }
 
   // Divergência de estoque
@@ -55,7 +55,7 @@ const getAIResponse = (userMessage: string): string => {
     message.includes("inventário") ||
     message.includes("inventario")
   ) {
-    return `📦 **Análise de Divergência de Estoque**\n\n🔍 **Status Atual por CD:**\n\n• **CD 1:** 2.3% divergência (↓0.5% vs semana passada)\n  - 145 itens em análise\n  - Principais causas: Avaria (60%), Erro contagem (40%)\n\n• **CD 2:** 1.8% divergência - DENTRO DA META\n  - 98 itens identificados\n\n• **CD 3:** 3.1% divergência - ATENÇÃO\n  - 187 itens críticos\n  - Ação recomendada: Inventário cíclico urgente\n\n**TFA Global:** 1% (meta: <2%)\n\n✅ **Ação Imediata:** Priorizar auditoria em CD 3 - Risco de R$ 280K em perdas se não corrigido em 48h.`;
+    return `📦 **Análise de Divergência de Estoque**\n\n🔍 **Status Atual por CD:**\n\n• **CD 1:** 2,3% de divergência (↓0,5 p.p. vs. semana passada)\n  - 145 itens em análise\n  - Principais causas: Avaria (60%), Erro contagem (40%)\n\n• **CD 2:** 1,8% de divergência, dentro da meta\n  - 98 itens identificados\n\n• **CD 3:** 3,1% de divergência, atenção\n  - 187 itens críticos\n  - Ação recomendada: Inventário cíclico urgente\n\n**TFA Global:** 1% (meta: <2%)\n\n✅ **Ação Imediata:** Priorizar auditoria em CD 3 - Risco de R$ 280 mil em perdas se não corrigido em 48h.`;
   }
 
   // Resposta genérica inteligente

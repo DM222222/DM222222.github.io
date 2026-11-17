@@ -19,11 +19,19 @@ const CDS_INICIAL: CD[] = [
   { id: "cd5", nome: "CD 5", ocupacao: 28, sla: 98 },
 ];
 
-/** Efeito simulado da recomendação: 15 p.p. de carga saem do CD 2 e vão para o CD 5. */
-const EFEITO: Record<string, Partial<Pick<CD, "ocupacao" | "sla">>> = {
-  cd2: { ocupacao: 84, sla: 93 },
-  cd5: { ocupacao: 49, sla: 96 },
-};
+export type Efeito = Record<string, Partial<Pick<CD, "ocupacao" | "sla">>>;
+
+/** Simula o redirecionamento de `pp` pontos percentuais de carga do CD 2 para o CD de destino. */
+export function simular(pp: number, destino: string): Efeito {
+  const base = CDS_INICIAL.find((c) => c.id === destino)!;
+  return {
+    cd2: { ocupacao: 99 - pp, sla: Math.min(98, 81 + Math.round(pp * 0.8)) },
+    [destino]: { ocupacao: base.ocupacao + Math.round(pp * 1.4), sla: base.sla - Math.round(pp * 0.13) },
+  };
+}
+
+/** Recomendação padrão do Chronus: 15 p.p. do CD 2 para o CD 5. */
+const EFEITO: Efeito = simular(15, "cd5");
 
 export type Gravidade = "critical" | "warning" | "info" | "success";
 
@@ -122,8 +130,12 @@ function montarAlertas(cds: CD[], aplicado: boolean): Alerta[] {
   ];
 }
 
-interface Aplicacao {
+export interface Aplicacao {
   hora: string;
+  pp: number;
+  destino: string;
+  janela: string;
+  responsavel: string;
 }
 
 interface TorreContextValue {
@@ -131,9 +143,9 @@ interface TorreContextValue {
   setSection: (s: Section) => void;
   cds: CD[];
   cdsAntes: CD[];
-  efeito: Record<string, Partial<Pick<CD, "ocupacao" | "sla">>>;
+  efeito: Efeito;
   aplicado: Aplicacao | null;
-  aplicar: () => void;
+  aplicar: (params?: Omit<Aplicacao, "hora">) => void;
   desfazer: () => void;
   alertas: Alerta[];
   /** Alertas que ainda pedem ação (críticos + atenção, não resolvidos). */
@@ -147,16 +159,23 @@ export function TorreProvider({ children, initialSection = "strategic" }: { chil
   const [aplicado, setAplicado] = useState<Aplicacao | null>(null);
 
   const cds = useMemo(
-    () => CDS_INICIAL.map((c) => (aplicado && EFEITO[c.id] ? { ...c, ...EFEITO[c.id] } : c)),
+    () => {
+      const ef = aplicado ? simular(aplicado.pp, aplicado.destino) : {};
+      return CDS_INICIAL.map((c) => (ef[c.id] ? { ...c, ...ef[c.id] } : c));
+    },
     [aplicado],
   );
 
   const alertas = useMemo(() => montarAlertas(cds, !!aplicado), [cds, aplicado]);
   const alertCount = alertas.filter((a) => !a.resolvido && (a.gravidade === "critical" || a.gravidade === "warning")).length;
 
-  const aplicar = useCallback(() => {
+  const aplicar = useCallback((params?: Omit<Aplicacao, "hora">) => {
     const d = new Date();
-    setAplicado({ hora: d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }) });
+    setAplicado({
+      pp: 15, destino: "cd5", janela: "Próximo pico", responsavel: "Coordenação do CD 2",
+      ...params,
+      hora: d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }),
+    });
   }, []);
   const desfazer = useCallback(() => setAplicado(null), []);
 

@@ -1,7 +1,5 @@
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { Badge } from "./ui/badge";
+import { SidePanel } from "./ui/side-panel";
+import { Button } from "./ui/button";
 import { TrendingUp, TrendingDown, AlertTriangle, CheckCircle, Info } from "lucide-react";
 
 interface InsightsModalProps {
@@ -10,107 +8,111 @@ interface InsightsModalProps {
   section?: string;
 }
 
-const strategicInsights = [
+type Tipo = "success" | "warning" | "info";
+interface Insight { title: string; type: Tipo; icon: typeof Info; description: string; recommendation: string; metrics: string[]; decisao?: boolean }
+
+const strategicInsights: Insight[] = [
   {
-    title: "Crescimento Sustentável",
+    title: "Faturamento em alta",
     type: "success",
     icon: TrendingUp,
-    description: "Faturamento global cresceu 24% vs último mês, atingindo R$80M.",
-    recommendation: "Manter estratégia de expansão nos CDs principais que concentram 62,5% do faturamento.",
-    metrics: ["Faturamento: R$80M (+24%)", "Meta Q4: R$320M"],
+    description: "Faturamento cresceu 6% no último mês: R$ 7,3 mi em junho e R$ 80 mi em 12 meses.",
+    recommendation: "Manter a expansão nos CDs 1 e 2, que concentram 62,5% do faturamento.",
+    metrics: ["Junho: R$ 7,3 mi (+6%)", "12 meses: R$ 80 mi"],
   },
   {
-    title: "Sazonalidade Identificada",
+    title: "Sazonalidade identificada",
     type: "info",
     icon: Info,
-    description: "Pico de vendas entre Set-Nov com volumes acima de R$2M mensais.",
-    recommendation: "Preparar capacidade operacional adicional para período sazonal Q3/Q4.",
-    metrics: ["Pico Setembro: R$1.8M", "Pico Outubro: R$2.3M"],
+    description: "O faturamento subiu de R$ 5,8 mi em fevereiro para R$ 7,3 mi em junho.",
+    recommendation: "Preparar capacidade operacional para o pico do segundo semestre.",
+    metrics: ["Fev: R$ 5,8 mi", "Jun: R$ 7,3 mi"],
   },
   {
-    title: "Distribuição de Clientes",
+    title: "Concentração em Logística",
     type: "warning",
     icon: AlertTriangle,
-    description: "Concentração em Logística (60%) pode representar risco de portfólio.",
-    recommendation: "Diversificar base de clientes aumentando participação em Marketplace e Crossdocking.",
+    description: "Logística responde por 60% do faturamento, o que concentra risco no portfólio.",
+    recommendation: "Ampliar a participação de Marketplace e Crossdocking.",
     metrics: ["Logística: 60%", "Crossdocking: 20%", "Marketplace: 15%"],
   },
 ];
 
-const tacticalInsights = [
-  {
-    title: "Time-to-Cash Equilibrado",
-    type: "success",
-    icon: CheckCircle,
-    description: "90 clientes ativos com recebimentos bem distribuídos entre 15-90 dias.",
-    recommendation: "Manter política de crédito atual, sem concentração de risco.",
-    metrics: ["90 dias: 45 clientes", "Volume: R$ 3M"],
-  },
+const tacticalInsights: Insight[] = [
   {
     title: "CD 2 no limite de ocupação",
     type: "warning",
     icon: AlertTriangle,
-    description: "CD 2 está com 99% de ocupação e SLA em 81%, abaixo da meta de 95%.",
-    recommendation: "Redirecionar 15 p.p. da carga para o CD 5 (28% de ocupação). Aplique na tela Estratégico.",
+    description: "CD 2 em 99% de ocupação e SLA em 81%, abaixo da meta de 95%.",
+    recommendation: "Redirecionar 15 p.p. da carga para o CD 5, que está em 28%.",
     metrics: ["CD 2: 99%", "SLA CD 2: 81%", "CD 5: 28%"],
+    decisao: true,
   },
   {
-    title: "Previsão de Recebimento Julho",
+    title: "Pico de recebimento em julho",
     type: "info",
     icon: Info,
-    description: "Pico de recebimento esperado em julho com volumes 40% acima da média.",
-    recommendation: "Ajustar planejamento financeiro e fluxo de caixa para comportar aumento.",
-    metrics: ["Previsão Julho: R$92M", "Média mensal: R$65M"],
-  },
-];
-
-const salesInsights = [
-  {
-    title: "Distribuição de Segmentos",
-    type: "info",
-    icon: Info,
-    description: "Logística representa 60% da base de clientes, seguido por Crossdocking (20%).",
-    recommendation: "Criar campanhas específicas para atrair clientes de Marketplace e outros segmentos.",
-    metrics: ["Total clientes: 90", "Logística: 54 clientes"],
+    description: "Julho deve receber 92 mil volumes, 50% acima da média do semestre.",
+    recommendation: "Reforçar equipes de recebimento nos CDs 1 e 2.",
+    metrics: ["Julho: 92 mil vol.", "Média jan–jun: 61 mil vol."],
   },
   {
-    title: "Conversão do Funil",
-    type: "warning",
-    icon: TrendingDown,
-    description: "Taxa de conversão Lead → Cliente em 3%, abaixo da meta de 8%.",
-    recommendation: "Melhorar qualificação de leads e processo de follow-up nas etapas de Oportunidade e Negociação.",
-    metrics: ["Lead: 70%", "Oportunidade: 20%", "Cliente: 3%"],
-  },
-];
-
-const financeInsights = [
-  {
-    title: "Fluxo de Caixa Positivo",
-    type: "success",
-    icon: TrendingUp,
-    description: "Contas a receber superam contas a pagar em todos os meses do semestre.",
-    recommendation: "Manter gestão conservadora do caixa e considerar investimentos em expansão.",
-    metrics: ["A Receber Jun: R$2.8M", "A Pagar Jun: R$1.1M"],
-  },
-  {
-    title: "Inadimplência Logística Elevada",
-    type: "warning",
-    icon: AlertTriangle,
-    description: "Segmento de Logística concentra maior inadimplência (42% do total).",
-    recommendation: "Revisar política de crédito e implementar gestão proativa de cobranças.",
-    metrics: ["Logística: 42%", "Crossdocking: 11%", "Outros: 47%"],
-  },
-  {
-    title: "Custo Operacional Equilibrado",
+    title: "Time-to-Cash equilibrado",
     type: "success",
     icon: CheckCircle,
-    description: "Custo operacional global de R$2M está dentro do orçamento planejado.",
-    recommendation: "Monitorar eficiência operacional por CD para identificar oportunidades de otimização.",
-    metrics: ["Custo Global: R$2M", "Maior custo: Matriz/Viana/Civit (R$500K cada)"],
+    description: "90 clientes ativos, com metade dos recebimentos em 90 dias.",
+    recommendation: "Manter a política de crédito atual.",
+    metrics: ["15 dias: 5 clientes", "90 dias: 45 clientes"],
   },
 ];
 
-const operationsInsights = [
+const salesInsights: Insight[] = [
+  {
+    title: "Conversão abaixo da meta",
+    type: "warning",
+    icon: TrendingDown,
+    description: "25 de 100 leads viraram clientes: conversão de 25%, abaixo da meta de 30%.",
+    recommendation: "Qualificar melhor os leads e acelerar a etapa de negociação.",
+    metrics: ["Leads: 100", "Propostas: 50", "Clientes: 25"],
+  },
+  {
+    title: "Base concentrada em Logística",
+    type: "info",
+    icon: Info,
+    description: "54 dos 90 clientes ativos são de Logística (60%).",
+    recommendation: "Criar campanhas para Marketplace e Crossdocking.",
+    metrics: ["Clientes: 90", "Logística: 54"],
+  },
+];
+
+const financeInsights: Insight[] = [
+  {
+    title: "Fluxo de caixa positivo",
+    type: "success",
+    icon: TrendingUp,
+    description: "A receber supera a pagar em todos os meses do semestre.",
+    recommendation: "Manter a gestão conservadora do caixa e avaliar investimentos em capacidade.",
+    metrics: ["A receber jun: R$ 7,1 mi", "A pagar jun: R$ 5,6 mi"],
+  },
+  {
+    title: "Inadimplência concentrada em Logística",
+    type: "warning",
+    icon: AlertTriangle,
+    description: "Logística responde por 51% do valor em atraso em junho.",
+    recommendation: "Revisar a política de crédito do segmento e antecipar a cobrança.",
+    metrics: ["Logística: R$ 85 mil", "Total: R$ 168 mil (2,3%)"],
+  },
+  {
+    title: "Custo operacional no orçamento",
+    type: "success",
+    icon: CheckCircle,
+    description: "Custo operacional de R$ 1,8 mi no mês, dentro do planejado.",
+    recommendation: "Acompanhar a eficiência do CD 1, que concentra o maior custo.",
+    metrics: ["Global: R$ 1,8 mi", "CD 1: R$ 800 mil"],
+  },
+];
+
+const operationsInsights: Insight[] = [
   {
     title: "Ocupação desbalanceada entre CDs",
     type: "warning",
@@ -118,198 +120,70 @@ const operationsInsights = [
     description: "CD 2 em 99% enquanto CD 5 está em 28% e CD 4 em 38%.",
     recommendation: "Redistribuir carga do CD 2 para os CDs com folga, começando pelo CD 5.",
     metrics: ["CD 2: 99%", "CD 4: 38%", "CD 5: 28%"],
+    decisao: true,
   },
   {
-    title: "SLA por CD Variável",
-    type: "info",
-    icon: Info,
-    description: "SLA varia entre CDs: CD 5 em 98%, CD 2 em 81%.",
-    recommendation: "Tratar o CD 2 primeiro; os demais estão na faixa da meta (95%) ou perto dela.",
-    metrics: ["Melhor: CD 5 (98%)", "Atenção: CD 2 (81%)"],
-  },
-  {
-    title: "Prontos para Operar",
+    title: "Não prontos acima do esperado",
     type: "warning",
     icon: AlertTriangle,
-    description: "Apenas 62 volumes prontos em 90 dias, com 117 não prontos.",
-    recommendation: "Investigar gargalos no processo de preparação e melhorar gestão de pendências.",
-    metrics: ["Prontos: 62", "Pendentes: 3", "Não Prontos: 117"],
+    description: "57 volumes não prontos nas janelas de 30 e de 90 dias.",
+    recommendation: "Priorizar as pendências de preparação antes do pico.",
+    metrics: ["30 dias: 57 não prontos", "90 dias: 87 prontos"],
+  },
+  {
+    title: "SLA na meta nos demais CDs",
+    type: "info",
+    icon: Info,
+    description: "CDs 1, 4 e 5 acima de 95%; CD 3 em 93%, perto da meta.",
+    recommendation: "Tratar o CD 2 primeiro e acompanhar o CD 3.",
+    metrics: ["CD 5: 98%", "CD 3: 93%", "CD 2: 81%"],
   },
 ];
 
 export function InsightsModal({ open, onOpenChange, section = "strategic" }: InsightsModalProps) {
-  const getInsightsBySection = () => {
-    switch (section) {
-      case "strategic":
-        return strategicInsights;
-      case "tactical":
-        return tacticalInsights;
-      case "sales":
-        return salesInsights;
-      case "finance":
-        return financeInsights;
-      case "operations":
-        return operationsInsights;
-      default:
-        return strategicInsights;
-    }
-  };
-
-  const insights = getInsightsBySection();
-
-  const getIconColor = (type: string) => {
-    switch (type) {
-      case "success":
-        return "text-green-500";
-      case "warning":
-        return "text-yellow-500";
-      case "error":
-        return "text-red-500";
-      default:
-        return "text-blue-500";
-    }
-  };
-
-  const getBadgeVariant = (type: string): "default" | "secondary" | "destructive" | "outline" => {
-    switch (type) {
-      case "success":
-        return "default";
-      case "warning":
-        return "secondary";
-      case "error":
-        return "destructive";
-      default:
-        return "outline";
-    }
-  };
+  const insights =
+    section === "tactical" ? tacticalInsights
+    : section === "sales" ? salesInsights
+    : section === "finance" ? financeInsights
+    : section === "operations" ? operationsInsights
+    : strategicInsights;
+  const ordem: Record<Tipo, number> = { warning: 0, info: 1, success: 2 };
+  const lista = [...insights].sort((x, y) => ordem[x.type] - ordem[y.type]);
+  const cor: Record<Tipo, string> = { success: "var(--st-ok)", warning: "var(--st-warn)", info: "var(--data-text)" };
+  const rotulo: Record<Tipo, string> = { success: "Positivo", warning: "Atenção", info: "Informação" };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle>Insights da Operação</DialogTitle>
-          <DialogDescription>
-            Análises e recomendações baseadas nos KPIs operacionais
-          </DialogDescription>
-        </DialogHeader>
-
-        <Tabs defaultValue="all" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="all">Todos</TabsTrigger>
-            <TabsTrigger value="success">Sucessos</TabsTrigger>
-            <TabsTrigger value="warning">Alertas</TabsTrigger>
-            <TabsTrigger value="info">Informações</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="all" className="mt-4 space-y-4">
-            {insights.map((insight, index) => {
-              const Icon = insight.icon;
-              return (
-                <Card key={index}>
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <div className="flex items-start gap-3">
-                        <Icon className={`h-5 w-5 mt-0.5 ${getIconColor(insight.type)}`} />
-                        <div>
-                          <CardTitle className="text-base">{insight.title}</CardTitle>
-                          <CardDescription className="mt-1">{insight.description}</CardDescription>
-                        </div>
-                      </div>
-                      <Badge variant={getBadgeVariant(insight.type)} className="capitalize">
-                        {insight.type}
-                      </Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      <div>
-                        <p className="text-sm font-medium mb-2">Recomendação:</p>
-                        <p className="text-sm text-muted-foreground">{insight.recommendation}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm font-medium mb-2">Métricas chave:</p>
-                        <div className="flex flex-wrap gap-2">
-                          {insight.metrics.map((metric, idx) => (
-                            <Badge key={idx} variant="outline" className="text-xs">
-                              {metric}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </TabsContent>
-
-          <TabsContent value="success" className="mt-4 space-y-4">
-            {insights.filter(i => i.type === "success").map((insight, index) => {
-              const Icon = insight.icon;
-              return (
-                <Card key={index}>
-                  <CardHeader>
-                    <div className="flex items-start gap-3">
-                      <Icon className={`h-5 w-5 mt-0.5 ${getIconColor(insight.type)}`} />
-                      <div>
-                        <CardTitle className="text-base">{insight.title}</CardTitle>
-                        <CardDescription className="mt-1">{insight.description}</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">{insight.recommendation}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </TabsContent>
-
-          <TabsContent value="warning" className="mt-4 space-y-4">
-            {insights.filter(i => i.type === "warning").map((insight, index) => {
-              const Icon = insight.icon;
-              return (
-                <Card key={index}>
-                  <CardHeader>
-                    <div className="flex items-start gap-3">
-                      <Icon className={`h-5 w-5 mt-0.5 ${getIconColor(insight.type)}`} />
-                      <div>
-                        <CardTitle className="text-base">{insight.title}</CardTitle>
-                        <CardDescription className="mt-1">{insight.description}</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">{insight.recommendation}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </TabsContent>
-
-          <TabsContent value="info" className="mt-4 space-y-4">
-            {insights.filter(i => i.type === "info").map((insight, index) => {
-              const Icon = insight.icon;
-              return (
-                <Card key={index}>
-                  <CardHeader>
-                    <div className="flex items-start gap-3">
-                      <Icon className={`h-5 w-5 mt-0.5 ${getIconColor(insight.type)}`} />
-                      <div>
-                        <CardTitle className="text-base">{insight.title}</CardTitle>
-                        <CardDescription className="mt-1">{insight.description}</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">{insight.recommendation}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </TabsContent>
-        </Tabs>
-      </DialogContent>
-    </Dialog>
+    <SidePanel
+      open={open}
+      onOpenChange={onOpenChange}
+      title="Insights da Operação"
+      description="Leituras do Chronus sobre os indicadores desta tela."
+      footer={<Button variant="ghost" onClick={() => onOpenChange(false)}>Fechar</Button>}
+    >
+      {lista.map((insight) => {
+        const Icon = insight.icon;
+        return (
+          <article key={insight.title} className="rounded-lg border border-border p-4 space-y-3">
+            <div className="flex items-start gap-3">
+              <Icon className="h-5 w-5 mt-0.5 flex-shrink-0" style={{ color: cor[insight.type] }} aria-hidden />
+              <div className="min-w-0">
+                <p className="text-xs font-semibold" style={{ color: cor[insight.type] }}>{rotulo[insight.type]}</p>
+                <h3 className="text-sm font-semibold">{insight.title}</h3>
+                <p className="text-sm text-muted-foreground mt-1">{insight.description}</p>
+              </div>
+            </div>
+            <p className="text-sm"><span className="font-medium">Recomendação: </span>{insight.recommendation}</p>
+            <div className="flex flex-wrap gap-1.5">
+              {insight.metrics.map((m) => (
+                <span key={m} className="text-xs rounded-md bg-secondary px-2 py-0.5 tabular-nums">{m}</span>
+              ))}
+            </div>
+            {insight.decisao && (
+              <p className="text-xs text-muted-foreground">Esta recomendação está na faixa “Exige decisão”, no topo da tela.</p>
+            )}
+          </article>
+        );
+      })}
+    </SidePanel>
   );
 }
