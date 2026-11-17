@@ -1,10 +1,11 @@
 {
   "_leia_me": "Textos aprovados do novo portfolio (P&B), secao por secao. Fonte de verdade para a implementacao.",
   "abertura": {
-    "cargo": "Danilo Morelli · Baseado em São Paulo, SP",
+    "cargo": "Product Designer · Baseado em São Paulo, SP",
     "titulo": "Product Designer",
     "paragrafo": "Ajudo times a transformar operações complexas e dados em decisões claras, em produtos com IA, dados e operação crítica.",
-    "linha_pessoal": null
+    "linha_pessoal": null,
+    "nome": "Danilo Morelli"
   },
   "cases": [
     {

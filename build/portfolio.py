@@ -33,7 +33,7 @@ def _abertura(t):
     return (
         '      <p class="eyebrow">%s</p>\n'
         '      <h1 id="titulo">%s</h1>\n'
-        '      <p class="lead">%s</p>\n' % (e(a["cargo"]), e(a["titulo"]), e(a["paragrafo"]))
+        '      <p class="lead">%s</p>\n' % (e(a["cargo"]), e(a.get("nome", a["titulo"])), e(a["paragrafo"]))
     )
 
 
