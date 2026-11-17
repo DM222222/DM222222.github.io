@@ -70,7 +70,7 @@ export function FinanceDashboardResponsive({ onOpenInsights }: FinanceDashboardR
           <h2 className="dashboard-title">Operacional - Financeiro</h2>
           <p className="dashboard-subtitle text-muted-foreground">Gestão financeira e custos</p>
         </div>
-        <Button className="gap-2 w-full md:w-auto" onClick={onOpenInsights}>
+        <Button variant="outline" size="sm" className="gap-2 w-full md:w-auto" onClick={onOpenInsights}>
           <Sparkles className="h-4 w-4" />
           Insights da Operação
         </Button>

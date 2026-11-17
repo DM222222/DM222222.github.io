@@ -120,14 +120,14 @@ export function LineSeriesChart({
     <EChart
       deps={[data, xKey, series, legend]}
       build={(tk) => ({
-        animationDuration: 900,
+        animationDuration: 500,
         animationEasing: "cubicOut",
         grid: { left: 4, right: 14, top: 14, bottom: legend ? 34 : 6, containLabel: true },
         tooltip: { ...tooltipBase(tk), trigger: "axis", axisPointer: { type: "line", lineStyle: { color: tk.muted, type: "dashed" } }, formatter: tipFormatter(tk, yFormat) },
         legend: legend ? legendBase(tk, true) : { show: false },
         xAxis: { type: "category", boundaryGap: false, data: data.map((d) => d[xKey]), ...axisBase(tk) },
         yAxis: {
-          type: "value", ...axisBase(tk),
+          type: "value", splitNumber: 4, ...axisBase(tk),
           axisLabel: { ...axisBase(tk).axisLabel, formatter: yFormat ? (v: number) => yFormat(v) : undefined },
           splitLine: { lineStyle: { color: tk.grid, type: "dashed" } },
         },
@@ -141,12 +141,9 @@ export function LineSeriesChart({
             symbolSize: 7,
             showSymbol: false,
             data: data.map((d) => d[s.key]),
-            lineStyle: { width: 3, color: c, type: s.dashed ? [7, 5] : "solid" },
+            lineStyle: { width: 2.5, color: c, type: s.dashed ? [7, 5] : "solid" },
             itemStyle: { color: c, borderColor: tk.card, borderWidth: 2 },
-            emphasis: { focus: "series", scale: 1.5, lineStyle: { width: 4 } },
-            areaStyle: s.dashed || series.length > 2
-              ? undefined
-              : { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: c + "55" }, { offset: 1, color: c + "00" }]) },
+            emphasis: { disabled: true },
           };
         }),
       })}
@@ -165,15 +162,14 @@ export function BarSeriesChart({
     <EChart
       deps={[data, xKey, series, stacked, legend, yMax, yTicks]}
       build={(tk) => ({
-        animationDuration: 800,
+        animationDuration: 500,
         animationEasing: "cubicOut",
-        animationDelay: (i: number) => i * 60,
         grid: { left: 4, right: 10, top: 14, bottom: legend ? 34 : 6, containLabel: true },
-        tooltip: { ...tooltipBase(tk), trigger: "axis", axisPointer: { type: "shadow", shadowStyle: { color: tk.dark ? "rgba(255,255,255,.06)" : "rgba(13,65,125,.06)" } }, formatter: tipFormatter(tk, yFormat) },
+        tooltip: { ...tooltipBase(tk), trigger: "axis", axisPointer: { type: "shadow", shadowStyle: { color: tk.dark ? "rgba(255,255,255,.04)" : "rgba(13,65,125,.04)" } }, formatter: tipFormatter(tk, yFormat) },
         legend: legend ? legendBase(tk) : { show: false },
         xAxis: { type: "category", data: data.map((d) => d[xKey]), ...axisBase(tk) },
         yAxis: {
-          type: "value", max: yMax, interval: yTicks, ...axisBase(tk),
+          type: "value", max: yMax, interval: yTicks, splitNumber: 4, ...axisBase(tk),
           axisLabel: { ...axisBase(tk).axisLabel, formatter: yFormat ? (v: number) => yFormat(v) : undefined },
           splitLine: { lineStyle: { color: tk.grid, type: "dashed" } },
         },
@@ -189,11 +185,11 @@ export function BarSeriesChart({
             data: data.map((d) => d[s.key]),
             itemStyle: {
               color: c,
-              borderRadius: stacked ? (last ? [8, 8, 0, 0] : 0) : [8, 8, 0, 0],
+              borderRadius: stacked ? (last ? [4, 4, 0, 0] : 0) : [4, 4, 0, 0],
               borderColor: stacked ? tk.card : undefined,
               borderWidth: stacked ? 1 : 0,
             },
-            emphasis: { focus: "series", itemStyle: { shadowBlur: 14, shadowColor: c + "88" } },
+            emphasis: { disabled: true },
           };
         }),
       })}
@@ -223,9 +219,8 @@ export function DonutChart({ data, suffix = "%", radius = ["52%", "84%"] }: { da
             itemStyle: { borderRadius: 8, borderColor: tk.card, borderWidth: 2 },
             label: { show: false, position: "center", fontFamily: "inherit" },
             emphasis: {
-              scaleSize: 7,
+              scaleSize: 3,
               label: { show: true, fontSize: 18, fontWeight: 700, color: tk.text, formatter: `{c}${suffix}\n{b}`, lineHeight: 22 },
-              itemStyle: { shadowBlur: 16, shadowColor: "rgba(0,0,0,.25)" },
             },
             labelLine: { show: false },
             data: data.map((d) => ({ name: d.name, value: d.value, itemStyle: { color: cssColor(d.color) } })),

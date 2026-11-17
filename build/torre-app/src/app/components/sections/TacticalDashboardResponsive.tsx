@@ -75,29 +75,29 @@ export function TacticalDashboardResponsive({ onOpenInsights }: TacticalDashboar
   const [selectedCD, setSelectedCD] = useState("cd1");
 
   return (
-    <div className="h-full flex flex-col p-4 md:p-6 lg:px-10 lg:py-4">
+    <div className="h-full flex flex-col p-4 md:p-6 lg:px-10 lg:py-4 lg:h-[max(800px,calc(100dvh-89px))]">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4 lg:mb-5">
         <div>
           <h2 className="dashboard-title">Nível Tático</h2>
           <p className="dashboard-subtitle text-muted-foreground">Monitoramento gerencial e operacional</p>
         </div>
-        <Button className="gap-2 w-full md:w-auto" onClick={onOpenInsights}>
+        <Button variant="outline" size="sm" className="gap-2 w-full md:w-auto" onClick={onOpenInsights}>
           <Sparkles className="h-4 w-4" />
           Insights da Operação
         </Button>
       </div>
 
-      <div className="mb-4 lg:mb-6">
+      <div className="mb-4">
         <DecisionCard compact />
       </div>
 
       {/* CSS Grid Layout - ALTURA FIXA 320px em Desktop */}
-      <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-6 auto-rows-max lg:auto-rows-[minmax(320px,auto)]">
+      <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-6 auto-rows-max lg:grid-rows-2 lg:auto-rows-auto lg:min-h-0">
         
         {/* Row 1: Time-to-Cash + Previsão de Recebimento */}
         {/* Time-to-Cash - Card P (4 cols) */}
-        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[300px] lg:h-full">
+        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[280px] lg:min-h-0 lg:h-full">
           <CardHeader className="flex-none pb-2">
             <CardTitle className="card-title">Time-to-Cash</CardTitle>
             <p className="card-subtitle text-muted-foreground">Quantidade de clientes com recebimento previsto</p>
@@ -105,8 +105,8 @@ export function TacticalDashboardResponsive({ onOpenInsights }: TacticalDashboar
           <CardContent className="flex-1 overflow-hidden py-2">
             <div className="flex flex-col items-center gap-2 h-full justify-center">
               <div className="flex items-center justify-center">
-                <div className="relative w-28 h-28">
-                  <svg className="w-full h-full transform -rotate-90">
+                <div className="relative w-28 h-28 lg:w-24 lg:h-24">
+                  <svg viewBox="0 0 112 112" className="w-full h-full transform -rotate-90">
                     {timeToCashData.map((item, index) => {
                       const total = timeToCashData.reduce((sum, d) => sum + d.clientes, 0);
                       const percentage = item.clientes / total;
@@ -158,7 +158,7 @@ export function TacticalDashboardResponsive({ onOpenInsights }: TacticalDashboar
         </Card>
 
         {/* Previsão de Recebimento - Card M (8 cols) */}
-        <Card className="md:col-span-1 lg:col-span-8 flex flex-col min-h-[300px] lg:h-full">
+        <Card className="md:col-span-1 lg:col-span-8 flex flex-col min-h-[280px] lg:min-h-0 lg:h-full">
           <CardHeader className="flex-none pb-2">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
               <div>
@@ -180,7 +180,7 @@ export function TacticalDashboardResponsive({ onOpenInsights }: TacticalDashboar
 
         {/* Row 2: Divergência + Performance de Faturamento */}
         {/* Divergência - Card P (4 cols) */}
-        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[280px] lg:h-full">
+        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[280px] lg:min-h-0 lg:h-full">
           <CardHeader className="flex-none pb-2">
             <div className="flex flex-col gap-2">
               <CardTitle className="card-title">Divergência</CardTitle>
@@ -200,8 +200,8 @@ export function TacticalDashboardResponsive({ onOpenInsights }: TacticalDashboar
             </div>
           </CardHeader>
           <CardContent className="flex-1 flex items-center justify-center overflow-hidden">
-            <div className="relative w-32 h-32">
-              <svg className="w-full h-full transform -rotate-90">
+            <div className="relative w-32 h-32 lg:w-28 lg:h-28">
+              <svg viewBox="0 0 128 128" className="w-full h-full transform -rotate-90">
                 <circle cx="64" cy="64" r="52" stroke="#f1f3f7" className="dark:stroke-gray-700" strokeWidth="10" fill="none" />
                 <circle
                   cx="64"
@@ -222,7 +222,7 @@ export function TacticalDashboardResponsive({ onOpenInsights }: TacticalDashboar
         </Card>
 
         {/* Performance de Faturamento - Card M (8 cols) */}
-        <Card className="md:col-span-1 lg:col-span-8 flex flex-col min-h-[300px] lg:h-full">
+        <Card className="md:col-span-1 lg:col-span-8 flex flex-col min-h-[280px] lg:min-h-0 lg:h-full">
           <CardHeader className="flex-none pb-2">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
               <div>

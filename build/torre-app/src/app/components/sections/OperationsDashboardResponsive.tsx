@@ -42,8 +42,8 @@ function GaugeChart({ percentage, label, estado }: { percentage: number; label: 
 
   return (
     <div className="flex flex-col items-center gap-1" role="img" aria-label={`${label}: ${percentage}%, ${rotulo}`}>
-      <div className="relative w-20 h-20">
-        <svg className="w-full h-full transform -rotate-90" aria-hidden>
+      <div className="relative w-20 h-20 lg:w-16 lg:h-16">
+        <svg viewBox="0 0 80 80" className="w-full h-full transform -rotate-90" aria-hidden>
           <circle cx="40" cy="40" r={radius} stroke="#F1F3F7" className="dark:stroke-gray-700" strokeWidth="8" fill="none" />
           <circle
             cx="40"
@@ -59,7 +59,7 @@ function GaugeChart({ percentage, label, estado }: { percentage: number; label: 
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-base font-semibold tabular-nums">{percentage}%</span>
+          <span className="text-base lg:text-sm font-semibold tabular-nums">{percentage}%</span>
         </div>
       </div>
       <p className="text-xs font-medium text-center">{label}</p>
@@ -95,29 +95,29 @@ export function OperationsDashboardResponsive({ onOpenInsights }: OperationsDash
   };
 
   return (
-    <div className="h-full flex flex-col p-4 md:p-6 lg:px-10 lg:py-4">
+    <div className="h-full flex flex-col p-4 md:p-6 lg:px-10 lg:py-4 lg:h-[max(800px,calc(100dvh-89px))]">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4 lg:mb-5">
         <div>
           <h2 className="dashboard-title">Operacional - Operação</h2>
           <p className="dashboard-subtitle text-muted-foreground">Performance operacional e SLA</p>
         </div>
-        <Button className="gap-2 w-full md:w-auto" onClick={onOpenInsights}>
+        <Button variant="outline" size="sm" className="gap-2 w-full md:w-auto" onClick={onOpenInsights}>
           <Sparkles className="h-4 w-4" />
           Insights da Operação
         </Button>
       </div>
 
-      <div className="mb-4 lg:mb-6">
+      <div className="mb-4">
         <DecisionCard compact />
       </div>
 
       {/* CSS Grid Layout - ALTURA FIXA 320px em Desktop */}
-      <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-6 auto-rows-max lg:auto-rows-[minmax(320px,auto)]">
+      <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-6 auto-rows-max lg:grid-rows-2 lg:auto-rows-auto lg:min-h-0">
         
         {/* Row 1: Taxa Ocupação + CMC + SLA */}
         {/* Taxa de Ocupação - Card P (4 cols) */}
-        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[280px] lg:h-full">
+        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[280px] lg:min-h-0 lg:h-full">
           <CardHeader className="flex-none pb-1">
             <div>
               <CardTitle className="card-title">Taxa de Ocupação</CardTitle>
@@ -139,7 +139,7 @@ export function OperationsDashboardResponsive({ onOpenInsights }: OperationsDash
         </Card>
 
         {/* CMC - Card P (4 cols) */}
-        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[280px] lg:h-full">
+        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[280px] lg:min-h-0 lg:h-full">
           <CardHeader className="flex-none pb-1">
             <div className="flex flex-col gap-2">
               <div>
@@ -179,7 +179,7 @@ export function OperationsDashboardResponsive({ onOpenInsights }: OperationsDash
         </Card>
 
         {/* SLA por CD - Card P (4 cols) */}
-        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[280px] lg:h-full">
+        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[280px] lg:min-h-0 lg:h-full">
           <CardHeader className="flex-none pb-1">
             <div>
               <CardTitle className="card-title">SLA</CardTitle>
@@ -202,7 +202,7 @@ export function OperationsDashboardResponsive({ onOpenInsights }: OperationsDash
 
         {/* Row 2: TFA + Prontos para Operar */}
         {/* TFA - Card P (4 cols) */}
-        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[280px] lg:h-full">
+        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[280px] lg:min-h-0 lg:h-full">
           <CardHeader className="flex-none pb-1">
             <div className="flex flex-col gap-2">
               <div className="flex justify-between items-start gap-2">
@@ -234,26 +234,26 @@ export function OperationsDashboardResponsive({ onOpenInsights }: OperationsDash
         </Card>
 
         {/* Prontos para Operar - Card M (8 cols) */}
-        <Card className="md:col-span-1 lg:col-span-8 flex flex-col min-h-[280px] lg:h-full">
+        <Card className="md:col-span-1 lg:col-span-8 flex flex-col min-h-[280px] lg:min-h-0 lg:h-full">
           <CardHeader className="flex-none pb-2">
             <CardTitle className="card-title">Prontos para Operar</CardTitle>
             <p className="card-subtitle text-muted-foreground">Volumes por janela de prazo</p>
           </CardHeader>
           <CardContent className="flex-1 pt-2 flex flex-col gap-2 overflow-hidden">
-            <div className="flex-1 min-h-[180px]">
+            <div className="flex-1 min-h-[160px]">
               <BarSeriesChart data={prontosData} xKey="periodo" series={[{ key: "prontos", name: "Prontos", color: "var(--fill-ok)" }, { key: "pendente", name: "Pendente", color: "var(--fill-warn)" }, { key: "naoProntos", name: "Não prontos", color: "var(--fill-crit)" }]} stacked legend={false} yFormat={fmtQtd("vol.")} />
             </div>
             
             <div className="flex-none flex flex-wrap gap-2 justify-center">
-              <div className="bg-[#f8faff] dark:bg-gray-800 flex items-center gap-1.5 px-2 py-1 rounded-lg border border-[#f1f3f7] dark:border-gray-700">
+              <div className="bg-[#f8faff] dark:bg-gray-800 flex items-center gap-1.5 px-2 py-0.5 rounded-lg border border-[#f1f3f7] dark:border-gray-700">
                 <div className="w-2.5 h-2.5 rounded-full bg-[color:var(--fill-ok)]" />
                 <span className="text-xs">Prontos</span>
               </div>
-              <div className="bg-[#f8faff] dark:bg-gray-800 flex items-center gap-1.5 px-2 py-1 rounded-lg border border-[#f1f3f7] dark:border-gray-700">
+              <div className="bg-[#f8faff] dark:bg-gray-800 flex items-center gap-1.5 px-2 py-0.5 rounded-lg border border-[#f1f3f7] dark:border-gray-700">
                 <div className="w-2.5 h-2.5 rounded-full bg-[color:var(--fill-warn)]" />
                 <span className="text-xs">Pendente</span>
               </div>
-              <div className="bg-[#f8faff] dark:bg-gray-800 flex items-center gap-1.5 px-2 py-1 rounded-lg border border-[#f1f3f7] dark:border-gray-700">
+              <div className="bg-[#f8faff] dark:bg-gray-800 flex items-center gap-1.5 px-2 py-0.5 rounded-lg border border-[#f1f3f7] dark:border-gray-700">
                 <div className="w-2.5 h-2.5 rounded-full bg-[color:var(--fill-crit)]" />
                 <span className="text-xs">Não prontos</span>
               </div>

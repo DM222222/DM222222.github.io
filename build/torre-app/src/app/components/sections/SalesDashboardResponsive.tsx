@@ -45,7 +45,7 @@ export function SalesDashboardResponsive({ onOpenInsights }: SalesDashboardRespo
           <h2 className="dashboard-title">Operacional - Vendas</h2>
           <p className="dashboard-subtitle text-muted-foreground">Monitoramento do funil e conversão</p>
         </div>
-        <Button className="gap-2 w-full md:w-auto" onClick={onOpenInsights}>
+        <Button variant="outline" size="sm" className="gap-2 w-full md:w-auto" onClick={onOpenInsights}>
           <Sparkles className="h-4 w-4" />
           Insights da Operação
         </Button>

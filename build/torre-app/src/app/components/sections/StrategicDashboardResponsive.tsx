@@ -71,29 +71,29 @@ interface StrategicDashboardResponsiveProps {
 
 export function StrategicDashboardResponsive({ onOpenInsights }: StrategicDashboardResponsiveProps) {
   return (
-    <div className="h-full flex flex-col p-4 md:p-6 lg:px-10 lg:py-4">
+    <div className="h-full flex flex-col p-4 md:p-6 lg:px-10 lg:py-4 lg:h-[max(800px,calc(100dvh-89px))]">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4 lg:mb-5">
         <div>
           <h2 className="dashboard-title">Nível Estratégico</h2>
           <p className="dashboard-subtitle text-muted-foreground">Visão executiva para C-Level</p>
         </div>
-        <Button className="gap-2 w-full md:w-auto" onClick={onOpenInsights}>
+        <Button variant="outline" size="sm" className="gap-2 w-full md:w-auto" onClick={onOpenInsights}>
           <Sparkles className="h-4 w-4" />
           Insights da Operação
         </Button>
       </div>
 
-      <div className="mb-4 lg:mb-6">
+      <div className="mb-4">
         <DecisionCard />
       </div>
 
       {/* Evidência: gráficos de apoio à decisão */}
-      <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-6 auto-rows-max lg:auto-rows-[minmax(320px,auto)]">
+      <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-6 auto-rows-max lg:grid-rows-2 lg:auto-rows-auto lg:min-h-0">
         
         {/* Row 1: Faturamento + Sazonalidade */}
         {/* Faturamento Global - Card P (4 cols) */}
-        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[300px] lg:h-full">
+        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[280px] lg:min-h-0 lg:h-full">
           <CardHeader className="flex-none pb-1">
             <CardTitle className="card-title">Faturamento</CardTitle>
             <p className="card-subtitle text-muted-foreground">Últimos 12 meses, global e por CD</p>
@@ -106,7 +106,7 @@ export function StrategicDashboardResponsive({ onOpenInsights }: StrategicDashbo
             
             <div className="flex-1 space-y-1 flex flex-col justify-center">
               {faturamentoData.map((item) => (
-                <div key={item.name} className="flex justify-between items-center py-1 border-b border-gray-100 dark:border-gray-800 last:border-0">
+                <div key={item.name} className="flex justify-between items-center py-1 lg:py-0 border-b border-gray-100 dark:border-gray-800 last:border-0">
                   <span className="text-sm font-medium text-[#090924] dark:text-gray-100">{item.name}</span>
                   <span className="text-sm font-bold text-[color:var(--data-text)]">R$ {item.value} mi</span>
                 </div>
@@ -116,7 +116,7 @@ export function StrategicDashboardResponsive({ onOpenInsights }: StrategicDashbo
         </Card>
 
         {/* Sazonalidade - Card M (8 cols) */}
-        <Card className="md:col-span-1 lg:col-span-8 flex flex-col min-h-[300px] lg:h-full">
+        <Card className="md:col-span-1 lg:col-span-8 flex flex-col min-h-[280px] lg:min-h-0 lg:h-full">
           <CardHeader className="flex-none pb-2">
             <div className="flex flex-col gap-2">
               <div>
@@ -139,7 +139,7 @@ export function StrategicDashboardResponsive({ onOpenInsights }: StrategicDashbo
 
         {/* Row 2: Score Médio + Fluxo de Caixa */}
         {/* Score Médio - Card P (4 cols) */}
-        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[300px] lg:h-full">
+        <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[280px] lg:min-h-0 lg:h-full">
           <CardHeader className="flex-none pb-2">
             <CardTitle className="card-title">Score Médio</CardTitle>
             <p className="card-subtitle text-muted-foreground">Satisfação de 0 a 10, por categoria de clientes</p>
@@ -147,8 +147,8 @@ export function StrategicDashboardResponsive({ onOpenInsights }: StrategicDashbo
           <CardContent className="flex-1 overflow-hidden">
             <div className="flex flex-col items-center gap-3 h-full justify-center">
               <div className="flex flex-col items-center justify-center">
-                <div className="relative w-28 h-28">
-                  <svg className="w-full h-full transform -rotate-90">
+                <div className="relative w-28 h-28 lg:w-24 lg:h-24">
+                  <svg viewBox="0 0 112 112" className="w-full h-full transform -rotate-90">
                     <circle cx="56" cy="56" r="48" stroke="#f1f3f7" className="dark:stroke-gray-700" strokeWidth="11" fill="none" />
                     <circle cx="56" cy="56" r="48" stroke="var(--ramp-1)" strokeWidth="11" fill="none"
                       strokeDasharray={`${2 * Math.PI * 48 * 0.76} ${2 * Math.PI * 48}`} strokeLinecap="round" />
@@ -176,7 +176,7 @@ export function StrategicDashboardResponsive({ onOpenInsights }: StrategicDashbo
         </Card>
 
         {/* Fluxo de Caixa - Card M (8 cols) */}
-        <Card className="md:col-span-1 lg:col-span-8 flex flex-col min-h-[300px] lg:h-full">
+        <Card className="md:col-span-1 lg:col-span-8 flex flex-col min-h-[280px] lg:min-h-0 lg:h-full">
           <CardHeader className="flex-none pb-2">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
               <div>
