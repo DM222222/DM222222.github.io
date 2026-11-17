@@ -33,7 +33,7 @@ def _abertura(t):
     papel = a.get("papel")
     mid = ""
     if papel:
-        mid = '      <p class="papel"><span>%s</span><span>%s</span></p>\n' % (e(papel[0]), e(papel[1]))
+        mid = '      <p class="papel">%s</p>\n' % "".join("<span>%s</span>" % e(x) for x in papel)
     return (
         '      <p class="eyebrow">%s</p>\n'
         '      <h1 id="titulo">%s</h1>\n' % (e(a["cargo"]), e(a.get("nome", a["titulo"])))

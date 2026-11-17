@@ -2,7 +2,7 @@
   "_leia_me": "Textos aprovados do novo portfolio (P&B), secao por secao. Fonte de verdade para a implementacao.",
   "abertura": {
     "cargo": "Baseado em São Paulo, SP",
-    "papel": ["UX & UI", "Product Designer"],
+    "papel": ["Product Designer", "UX", "UI"],
     "titulo": "Product Designer",
     "paragrafo": "Ajudo times a transformar operações complexas e dados em decisões claras, em produtos com IA, dados e operação crítica.",
     "linha_pessoal": null,
