@@ -1,7 +1,8 @@
 {
   "_leia_me": "Textos aprovados do novo portfolio (P&B), secao por secao. Fonte de verdade para a implementacao.",
   "abertura": {
-    "cargo": "Product Designer · Baseado em São Paulo, SP",
+    "cargo": "Baseado em São Paulo, SP",
+    "papel": ["UX & UI", "Product Designer"],
     "titulo": "Product Designer",
     "paragrafo": "Ajudo times a transformar operações complexas e dados em decisões claras, em produtos com IA, dados e operação crítica.",
     "linha_pessoal": null,
@@ -44,7 +45,7 @@
       "metrica": "MVP que virou ecossistema, hoje na carteira de um fundo",
       "slug": "open-flow-labs",
       "link": "cases/open-flow-labs.html",
-      "poster": "assets/projects/capa-openflow.webp?v=20261117c",
+      "poster": "assets/projects/capa-openflow.webp?v=20261117d",
       "alt": "Artefatos de pesquisa do Open Flow Labs em sequência: refinamento de personas, usuários, resultado e a matriz de esforço por impacto.",
       "video": ""
     }
@@ -121,19 +122,19 @@
     "itens": [
       {
         "titulo": "Entender a decisão",
-        "texto": "Quem decide, com qual pergunta e com que risco, antes de abrir qualquer tela."
+        "texto": "Eu descubro quem decide, qual pergunta importa e quanto custa errar."
       },
       {
         "titulo": "Definir o que medir",
-        "texto": "Os poucos sinais que importam, com dado em que a operação confia."
+        "texto": "Dois ou três sinais que mudam decisão. O resto descarto, sem dó."
       },
       {
         "titulo": "Desenhar e validar",
-        "texto": "Protótipo navegável, testado com quem opera, até a recomendação fazer sentido."
+        "texto": "Protótipo clicável, testado com quem opera, até a recomendação sair do \"no feeling\"."
       },
       {
         "titulo": "Entregar para operar",
-        "texto": "Especificação, estados e acompanhamento até o produto rodar em produção."
+        "texto": "Escrevo a especificação e fico até rodar com gente de verdade."
       }
     ]
   },

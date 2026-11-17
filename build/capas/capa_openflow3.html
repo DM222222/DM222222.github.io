@@ -1,0 +1,40 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1600px;height:800px;overflow:hidden}
+body{background:#F4F1F8;position:relative;font-family:"Inter","Segoe UI",system-ui,sans-serif}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(105,69,141,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(105,69,141,.05) 1px,transparent 1px);background-size:48px 48px}
+.glow{position:absolute;inset:0;background:radial-gradient(42% 52% at 60% 44%,rgba(105,69,141,.16),transparent 70%),radial-gradient(28% 40% at 10% 92%,rgba(198,222,100,.24),transparent 70%)}
+.c{position:absolute;overflow:hidden;background:#fff;border-radius:16px;box-shadow:0 24px 50px rgba(38,24,60,.16),0 3px 10px rgba(38,24,60,.10),0 0 0 1px rgba(26,20,38,.07)}
+.c img{display:block;width:100%;height:100%;object-fit:cover}
+.far{filter:blur(4px);opacity:.5}
+.sharp{z-index:5}
+svg.flow{position:absolute;left:0;top:0;z-index:3;filter:blur(1.6px);opacity:.8}
+</style></head><body>
+<div class="grid"></div><div class="glow"></div>
+<div class="c far" style="left:70px;top:60px;width:500px;height:355px"><img src="src/ativos-personas.png" style="object-position:50% 22%"></div>
+<div class="c far" style="left:1060px;top:60px;width:480px;height:340px"><img src="src/ativos-atores.png" style="object-position:50% 30%"></div>
+<svg class="flow" width="1600" height="800" viewBox="0 0 1600 800">
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto"><path d="M0 0 L8 5 L0 10 Z" fill="#69458D"/></marker></defs>
+  <g fill="none" stroke="#69458D" stroke-width="2.6" stroke-linecap="round" opacity=".7">
+    <path d="M310 415 V470" stroke-dasharray="9 7" marker-end="url(#a)"/>
+    <path d="M540 610 C585 610 585 600 616 600" marker-end="url(#a)"/>
+    <path d="M1390 650 C1430 650 1440 690 1480 690" stroke-dasharray="9 7" marker-end="url(#a)"/>
+    <path d="M160 270 C200 240 230 300 270 260" stroke-dasharray="4 8"/>
+    <path d="M1200 760 C1260 720 1320 780 1400 740" stroke-dasharray="4 8"/>
+  </g>
+  <g fill="#C6DE64"><circle cx="310" cy="415" r="10"/><circle cx="540" cy="610" r="10"/><circle cx="1480" cy="690" r="13"/></g>
+  <g fill="#fff" fill-opacity=".7" stroke="#69458D" stroke-width="2.2" stroke-opacity=".6">
+    <rect x="1010" y="730" width="150" height="46" rx="12"/>
+    <rect x="1230" y="730" width="150" height="46" rx="12"/>
+    <rect x="1500" y="600" width="0" height="0" rx="8"/>
+  </g>
+  <path d="M1160 753 H1230" stroke="#69458D" stroke-width="2.6" stroke-dasharray="9 7" fill="none" marker-end="url(#a)" opacity=".7"/>
+  <path d="M1480 690 C1490 710 1480 730 1380 753 H1010" stroke="#69458D" stroke-width="2.4" stroke-dasharray="9 7" fill="none" opacity=".6"/>
+  <path d="M1040 740 V720" stroke="none"/>
+  <rect x="520" y="60" width="54" height="54" transform="rotate(45 547 87)" fill="#fff" fill-opacity=".7" stroke="#69458D" stroke-width="2.4" stroke-opacity=".6"/>
+  <path d="M547 114 V168" stroke="#69458D" stroke-width="2.4" stroke-dasharray="9 7" fill="none" marker-end="url(#a)" opacity=".7"/>
+  <rect x="1195" y="112" width="20" height="20" transform="rotate(45 1205 122)" fill="none" stroke="#69458D" stroke-width="2.4" opacity=".7"/>
+</svg>
+<div class="c sharp" style="left:110px;top:470px;width:430px;height:279px"><img src="src/c_prob.png"></div>
+<div class="c sharp" style="left:620px;top:170px;width:760px;height:518px"><img src="src/c_matriz.png"></div>
+</body></html>
