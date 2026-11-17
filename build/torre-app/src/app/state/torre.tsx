@@ -85,8 +85,8 @@ function montarAlertas(cds: CD[], aplicado: boolean): Alerta[] {
     },
     {
       id: "fat",
-      titulo: "Faturamento cresceu 24% no último mês",
-      descricao: "Faturamento global em R$ 80M. A tendência pede capacidade para o pico sazonal.",
+      titulo: "Faturamento cresceu 6% no último mês",
+      descricao: "R$ 7,3 mi em junho, R$ 80 mi nos últimos 12 meses. A tendência pede capacidade para o pico sazonal.",
       gravidade: "success",
       quando: "Há 15 minutos",
       categoria: "Financeiro",
@@ -95,7 +95,7 @@ function montarAlertas(cds: CD[], aplicado: boolean): Alerta[] {
     {
       id: "custo",
       titulo: "Custo operacional dentro do orçamento",
-      descricao: "Custos globais de R$ 2M, conforme planejado.",
+      descricao: "Custo operacional de R$ 1,8 mi no mês, conforme planejado.",
       gravidade: "success",
       quando: "Há 3 horas",
       categoria: "Financeiro",
@@ -104,7 +104,7 @@ function montarAlertas(cds: CD[], aplicado: boolean): Alerta[] {
     {
       id: "inadimplencia",
       titulo: "Inadimplência em nível aceitável",
-      descricao: "Taxa em 2,3%, dentro da meta de menos de 3%.",
+      descricao: "R$ 168 mil em atraso em junho, 2,3% do faturamento. Meta: abaixo de 3%.",
       gravidade: "info",
       quando: "Há 4 horas",
       categoria: "Financeiro",

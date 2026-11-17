@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { BarSeriesChart, LineSeriesChart } from "../charts";
+import { BarSeriesChart, LineSeriesChart, fmtMi, fmtMilQtd } from "../charts";
 import { TrendingUp } from "lucide-react";
 import { Button } from "../ui/button";
 import { Sparkles } from "lucide-react";
@@ -16,13 +16,13 @@ const timeToCashData = [
 ];
 
 const previsaoRecebimentoData = [
-  { id: "jan", mes: "JAN", cd1: 15, cd2: 10, cd3: 8, cd4: 5, cd5: 7 },
-  { id: "fev", mes: "FEV", cd1: 18, cd2: 12, cd3: 10, cd4: 7, cd5: 9 },
-  { id: "mar", mes: "MAR", cd1: 16, cd2: 14, cd3: 9, cd4: 6, cd5: 8 },
-  { id: "abr", mes: "ABR", cd1: 20, cd2: 15, cd3: 11, cd4: 8, cd5: 10 },
-  { id: "mai", mes: "MAI", cd1: 22, cd2: 17, cd3: 12, cd4: 9, cd5: 11 },
-  { id: "jun", mes: "JUN", cd1: 24, cd2: 19, cd3: 13, cd4: 10, cd5: 12 },
-  { id: "jul", mes: "JUL", cd1: 28, cd2: 23, cd3: 15, cd4: 12, cd5: 14 },
+  { id: "jan", mes: "Jan", cd1: 15, cd2: 10, cd3: 8, cd4: 5, cd5: 7 },
+  { id: "fev", mes: "Fev", cd1: 18, cd2: 12, cd3: 10, cd4: 7, cd5: 9 },
+  { id: "mar", mes: "Mar", cd1: 16, cd2: 14, cd3: 9, cd4: 6, cd5: 8 },
+  { id: "abr", mes: "Abr", cd1: 20, cd2: 15, cd3: 11, cd4: 8, cd5: 10 },
+  { id: "mai", mes: "Mai", cd1: 22, cd2: 17, cd3: 12, cd4: 9, cd5: 11 },
+  { id: "jun", mes: "Jun", cd1: 24, cd2: 19, cd3: 13, cd4: 10, cd5: 12 },
+  { id: "jul", mes: "Jul", cd1: 28, cd2: 23, cd3: 15, cd4: 12, cd5: 14 },
 ];
 
 const faturamentoClienteData = [
@@ -137,7 +137,7 @@ export function TacticalDashboardResponsive({ onOpenInsights }: TacticalDashboar
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span className="text-3xl font-bold">90</span>
-                    <span className="text-xs text-muted-foreground">clientes ativos</span>
+                    <span className="text-xs text-muted-foreground">clientes</span>
                   </div>
                 </div>
               </div>
@@ -163,7 +163,7 @@ export function TacticalDashboardResponsive({ onOpenInsights }: TacticalDashboar
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
               <div>
                 <CardTitle className="card-title">Previsão de Recebimento (HUB)</CardTitle>
-                <p className="card-subtitle text-muted-foreground">Volumes</p>
+                <p className="card-subtitle text-muted-foreground">Volumes previstos por CD, em milhares</p>
               </div>
               <Tabs defaultValue="mes">
                 <TabsList className="grid w-full grid-cols-2">
@@ -174,7 +174,7 @@ export function TacticalDashboardResponsive({ onOpenInsights }: TacticalDashboar
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-2 overflow-hidden">
-            <LineSeriesChart data={previsaoRecebimentoData} xKey="mes" series={[{ key: "cd1", name: "CD 1", color: "#0D417D" }, { key: "cd2", name: "CD 2", color: "var(--ramp-1)" }, { key: "cd3", name: "CD 3", color: "var(--ramp-2)" }, { key: "cd4", name: "CD 4", color: "var(--ramp-3)" }, { key: "cd5", name: "CD 5", color: "var(--ramp-4)" }]} />
+            <LineSeriesChart data={previsaoRecebimentoData} xKey="mes" series={[{ key: "cd1", name: "CD 1", color: "var(--ramp-1)" }, { key: "cd2", name: "CD 2", color: "var(--ramp-2)" }, { key: "cd3", name: "CD 3", color: "var(--ramp-3)" }, { key: "cd4", name: "CD 4", color: "var(--ramp-4)" }, { key: "cd5", name: "CD 5", color: "var(--fill-ok)", dashed: true }]} yFormat={fmtMilQtd("vol.")} />
           </CardContent>
         </Card>
 
@@ -225,7 +225,10 @@ export function TacticalDashboardResponsive({ onOpenInsights }: TacticalDashboar
         <Card className="md:col-span-1 lg:col-span-8 flex flex-col min-h-[300px] lg:h-full">
           <CardHeader className="flex-none pb-2">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-              <CardTitle className="card-title">Performance de Faturamento por Cliente</CardTitle>
+              <div>
+                <CardTitle className="card-title">Performance de Faturamento por Cliente</CardTitle>
+                <p className="card-subtitle text-muted-foreground">Previsto x realizado, em R$ milhões</p>
+              </div>
               <Tabs defaultValue="mes">
                 <TabsList className="grid w-full grid-cols-2">
                   <TabsTrigger value="semana" className="text-xs">Semana</TabsTrigger>
@@ -235,7 +238,7 @@ export function TacticalDashboardResponsive({ onOpenInsights }: TacticalDashboar
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-2 overflow-hidden">
-            <BarSeriesChart data={faturamentoClienteData} xKey="mes" series={[{ key: "previsto", name: "Previsto", color: "var(--ramp-3)" }, { key: "realizado", name: "Realizado", color: "var(--ramp-1)" }]} />
+            <BarSeriesChart data={faturamentoClienteData} xKey="mes" series={[{ key: "previsto", name: "Previsto", color: "var(--ramp-3)" }, { key: "realizado", name: "Realizado", color: "var(--ramp-1)" }]} yFormat={fmtMi} />
           </CardContent>
         </Card>
       </div>

@@ -83,12 +83,12 @@ const axisBase = (tk: Tk) => ({
 const dot = (c: string) =>
   `<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${c};margin-right:8px"></span>`;
 
-const legendBase = (tk: Tk) => ({
+const legendBase = (tk: Tk, line = false) => ({
   bottom: 0,
-  itemWidth: 12,
-  itemHeight: 8,
-  itemGap: 14,
-  icon: "roundRect",
+  itemWidth: line ? 28 : 12,
+  itemHeight: line ? 10 : 8,
+  itemGap: 18,
+  ...(line ? {} : { icon: "roundRect" }),
   textStyle: { color: tk.text, fontSize: 12, fontFamily: "inherit" },
   inactiveColor: tk.muted,
 });
@@ -113,7 +113,9 @@ function tipFormatter(tk: Tk, fmt?: (v: number) => string) {
 }
 
 /* ---------- linhas ---------- */
-export function LineSeriesChart({ data, xKey, series, legend = true }: { data: Row[]; xKey: string; series: Serie[]; legend?: boolean }) {
+export function LineSeriesChart({
+  data, xKey, series, legend = true, yFormat,
+}: { data: Row[]; xKey: string; series: Serie[]; legend?: boolean; yFormat?: (v: number) => string }) {
   return (
     <EChart
       deps={[data, xKey, series, legend]}
@@ -121,10 +123,14 @@ export function LineSeriesChart({ data, xKey, series, legend = true }: { data: R
         animationDuration: 900,
         animationEasing: "cubicOut",
         grid: { left: 4, right: 14, top: 14, bottom: legend ? 34 : 6, containLabel: true },
-        tooltip: { ...tooltipBase(tk), trigger: "axis", axisPointer: { type: "line", lineStyle: { color: tk.muted, type: "dashed" } }, formatter: tipFormatter(tk) },
-        legend: legend ? legendBase(tk) : { show: false },
+        tooltip: { ...tooltipBase(tk), trigger: "axis", axisPointer: { type: "line", lineStyle: { color: tk.muted, type: "dashed" } }, formatter: tipFormatter(tk, yFormat) },
+        legend: legend ? legendBase(tk, true) : { show: false },
         xAxis: { type: "category", boundaryGap: false, data: data.map((d) => d[xKey]), ...axisBase(tk) },
-        yAxis: { type: "value", ...axisBase(tk), splitLine: { lineStyle: { color: tk.grid, type: "dashed" } } },
+        yAxis: {
+          type: "value", ...axisBase(tk),
+          axisLabel: { ...axisBase(tk).axisLabel, formatter: yFormat ? (v: number) => yFormat(v) : undefined },
+          splitLine: { lineStyle: { color: tk.grid, type: "dashed" } },
+        },
         series: series.map((s) => {
           const c = cssColor(s.color);
           return {
@@ -229,3 +235,10 @@ export function DonutChart({ data, suffix = "%", radius = ["52%", "84%"] }: { da
     />
   );
 }
+
+/* ---------- formatos pt-BR ---------- */
+const nf = (v: number, d = 1) => v.toLocaleString("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d });
+export const fmtMi = (v: number) => `R$ ${nf(v)} mi`;
+export const fmtMil = (v: number) => `R$ ${nf(v, 0)} mil`;
+export const fmtQtd = (unidade: string) => (v: number) => `${nf(v, 0)} ${unidade}`;
+export const fmtMilQtd = (unidade: string) => (v: number) => `${nf(v, 0)} mil ${unidade}`;

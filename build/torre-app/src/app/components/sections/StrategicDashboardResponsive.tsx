@@ -1,17 +1,18 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { BarSeriesChart, LineSeriesChart } from "../charts";
+import { BarSeriesChart, LineSeriesChart, fmtMi } from "../charts";
 import { Button } from "../ui/button";
 import { Sparkles, TrendingUp } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 import { DecisionCard } from "../DecisionCard";
 
+// R$ milhões por mês (ritmo coerente com R$ 80 mi no ano)
 const sazonalidadeData = [
-  { id: "jan", mes: "Jan", valor: 2.3 },
-  { id: "fev", mes: "Fev", valor: 2.1 },
-  { id: "mar", mes: "Mar", valor: 2.5 },
-  { id: "abr", mes: "Abr", valor: 2.4 },
-  { id: "mai", mes: "Mai", valor: 2.6 },
-  { id: "jun", mes: "Jun", valor: 2.8 },
+  { id: "jan", mes: "Jan", valor: 6.1 },
+  { id: "fev", mes: "Fev", valor: 5.8 },
+  { id: "mar", mes: "Mar", valor: 6.6 },
+  { id: "abr", mes: "Abr", valor: 6.4 },
+  { id: "mai", mes: "Mai", valor: 6.9 },
+  { id: "jun", mes: "Jun", valor: 7.3 },
 ];
 
 const faturamentoData = [
@@ -22,6 +23,13 @@ const faturamentoData = [
   { id: "cd5", name: "CD 5", value: 5 },
 ];
 
+const scoreData = [
+  { id: "logistica", name: "Logística", score: "8,1", color: "var(--ramp-1)" },
+  { id: "crossdocking", name: "Crossdocking", score: "7,4", color: "var(--ramp-2)" },
+  { id: "marketplace", name: "Marketplace", score: "6,9", color: "var(--ramp-3)" },
+  { id: "outros", name: "Outros", score: "6,2", color: "var(--ramp-4)" },
+];
+
 const segmentosData = [
   { id: "logistica", name: "Logística", value: 60, color: "var(--ramp-1)" },
   { id: "crossdocking", name: "Crossdocking", value: 20, color: "var(--ramp-2)" },
@@ -29,13 +37,14 @@ const segmentosData = [
   { id: "outros", name: "Outros", value: 5, color: "var(--ramp-4)" },
 ];
 
+// R$ milhões por mês. A receber acompanha o faturamento (Sazonalidade); a pagar inclui o custo operacional.
 const fluxoCaixaData = [
-  { id: "jan", mes: "Jan", pagar: 120, receber: 180 },
-  { id: "fev", mes: "Fev", pagar: 135, receber: 165 },
-  { id: "mar", mes: "Mar", pagar: 140, receber: 190 },
-  { id: "abr", mes: "Abr", pagar: 130, receber: 200 },
-  { id: "mai", mes: "Mai", pagar: 125, receber: 195 },
-  { id: "jun", mes: "Jun", pagar: 145, receber: 210 },
+  { id: "jan", mes: "Jan", pagar: 4.9, receber: 5.9 },
+  { id: "fev", mes: "Fev", pagar: 5.2, receber: 5.7 },
+  { id: "mar", mes: "Mar", pagar: 5.4, receber: 6.4 },
+  { id: "abr", mes: "Abr", pagar: 5.1, receber: 6.3 },
+  { id: "mai", mes: "Mai", pagar: 5.3, receber: 6.7 },
+  { id: "jun", mes: "Jun", pagar: 5.6, receber: 7.1 },
 ];
 
 // Tooltip customizado
@@ -87,19 +96,19 @@ export function StrategicDashboardResponsive({ onOpenInsights }: StrategicDashbo
         <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[300px] lg:h-full">
           <CardHeader className="flex-none pb-1">
             <CardTitle className="card-title">Faturamento</CardTitle>
-            <p className="card-subtitle text-muted-foreground">Faturamento Global e por CD</p>
+            <p className="card-subtitle text-muted-foreground">Últimos 12 meses, global e por CD</p>
           </CardHeader>
           <CardContent className="flex-1 flex flex-col space-y-1 overflow-hidden pt-2">
             <div className="flex-none bg-[#f8faff] dark:bg-gray-800 p-1.5 rounded-lg">
               <div className="text-xs text-muted-foreground">Global</div>
-              <div className="text-3xl font-bold text-[color:var(--data-text)] leading-tight">R$80M</div>
+              <div className="text-3xl font-bold text-[color:var(--data-text)] leading-tight">R$ 80 mi</div>
             </div>
             
             <div className="flex-1 space-y-1 flex flex-col justify-center">
               {faturamentoData.map((item) => (
                 <div key={item.name} className="flex justify-between items-center py-1 border-b border-gray-100 dark:border-gray-800 last:border-0">
                   <span className="text-sm font-medium text-[#090924] dark:text-gray-100">{item.name}</span>
-                  <span className="text-sm font-bold text-[color:var(--data-text)]">R$ {item.value}M</span>
+                  <span className="text-sm font-bold text-[color:var(--data-text)]">R$ {item.value} mi</span>
                 </div>
               ))}
             </div>
@@ -110,7 +119,10 @@ export function StrategicDashboardResponsive({ onOpenInsights }: StrategicDashbo
         <Card className="md:col-span-1 lg:col-span-8 flex flex-col min-h-[300px] lg:h-full">
           <CardHeader className="flex-none pb-2">
             <div className="flex flex-col gap-2">
-              <CardTitle className="card-title">Sazonalidade de Faturamento</CardTitle>
+              <div>
+                <CardTitle className="card-title">Sazonalidade de Faturamento</CardTitle>
+                <p className="card-subtitle text-muted-foreground">Faturamento mensal, em R$ milhões</p>
+              </div>
               <Tabs defaultValue="mes" className="w-full">
                 <TabsList className="grid w-full grid-cols-3">
                   <TabsTrigger value="semana" className="text-xs">Semana</TabsTrigger>
@@ -121,7 +133,7 @@ export function StrategicDashboardResponsive({ onOpenInsights }: StrategicDashbo
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-2 overflow-hidden">
-            <BarSeriesChart data={sazonalidadeData} xKey="mes" series={[{ key: "valor", name: "Faturamento (M)", color: "var(--ramp-1)" }]} legend={false} yMax={3} yTicks={1} yFormat={(v) => `${v}M`} />
+            <BarSeriesChart data={sazonalidadeData} xKey="mes" series={[{ key: "valor", name: "Faturamento", color: "var(--ramp-1)" }]} legend={false} yMax={8} yTicks={2} yFormat={fmtMi} />
           </CardContent>
         </Card>
 
@@ -130,41 +142,32 @@ export function StrategicDashboardResponsive({ onOpenInsights }: StrategicDashbo
         <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[300px] lg:h-full">
           <CardHeader className="flex-none pb-2">
             <CardTitle className="card-title">Score Médio</CardTitle>
-            <p className="card-subtitle text-muted-foreground">por categoria de clientes</p>
+            <p className="card-subtitle text-muted-foreground">Satisfação de 0 a 10, por categoria de clientes</p>
           </CardHeader>
           <CardContent className="flex-1 overflow-hidden">
             <div className="flex flex-col items-center gap-3 h-full justify-center">
               <div className="flex flex-col items-center justify-center">
                 <div className="relative w-28 h-28">
                   <svg className="w-full h-full transform -rotate-90">
-                    <circle key="base" cx="56" cy="56" r="48" stroke="#f1f3f7" className="dark:stroke-gray-700" strokeWidth="11" fill="none" />
-                    <circle key="logistica" cx="56" cy="56" r="48" stroke="var(--ramp-1)" strokeWidth="11" fill="none"
-                      strokeDasharray={`${2 * Math.PI * 48 * 0.60} ${2 * Math.PI * 48}`} strokeLinecap="round" />
-                    <circle key="crossdocking" cx="56" cy="56" r="48" stroke="var(--ramp-2)" strokeWidth="11" fill="none"
-                      strokeDasharray={`${2 * Math.PI * 48 * 0.20} ${2 * Math.PI * 48}`}
-                      strokeDashoffset={`-${2 * Math.PI * 48 * 0.60}`} strokeLinecap="round" />
-                    <circle key="marketplace" cx="56" cy="56" r="48" stroke="var(--ramp-3)" strokeWidth="11" fill="none"
-                      strokeDasharray={`${2 * Math.PI * 48 * 0.15} ${2 * Math.PI * 48}`}
-                      strokeDashoffset={`-${2 * Math.PI * 48 * 0.80}`} strokeLinecap="round" />
-                    <circle key="outros" cx="56" cy="56" r="48" stroke="var(--ramp-4)" strokeWidth="11" fill="none"
-                      strokeDasharray={`${2 * Math.PI * 48 * 0.05} ${2 * Math.PI * 48}`}
-                      strokeDashoffset={`-${2 * Math.PI * 48 * 0.95}`} strokeLinecap="round" />
+                    <circle cx="56" cy="56" r="48" stroke="#f1f3f7" className="dark:stroke-gray-700" strokeWidth="11" fill="none" />
+                    <circle cx="56" cy="56" r="48" stroke="var(--ramp-1)" strokeWidth="11" fill="none"
+                      strokeDasharray={`${2 * Math.PI * 48 * 0.76} ${2 * Math.PI * 48}`} strokeLinecap="round" />
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-3xl font-bold">90</span>
-                    <span className="text-xs text-muted-foreground">clientes ativos</span>
+                    <span className="text-3xl font-bold">7,6</span>
+                    <span className="text-xs text-muted-foreground">de 10</span>
                   </div>
                 </div>
               </div>
               
               <div className="w-full space-y-1.5">
-                {segmentosData.map((item) => (
+                {scoreData.map((item) => (
                   <div key={item.name} className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />
                       <span className="text-xs">{item.name}</span>
                     </div>
-                    <span className="text-xs font-semibold">{item.value}%</span>
+                    <span className="text-xs font-semibold">{item.score}</span>
                   </div>
                 ))}
               </div>
@@ -178,7 +181,7 @@ export function StrategicDashboardResponsive({ onOpenInsights }: StrategicDashbo
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
               <div>
                 <CardTitle className="card-title">Fluxo de Caixa</CardTitle>
-                <p className="card-subtitle text-muted-foreground">Contas a pagar e receber</p>
+                <p className="card-subtitle text-muted-foreground">Contas a pagar e a receber, em R$ milhões</p>
               </div>
               <Tabs defaultValue="mes">
                 <TabsList className="grid w-full grid-cols-4">
@@ -191,7 +194,7 @@ export function StrategicDashboardResponsive({ onOpenInsights }: StrategicDashbo
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-2 overflow-hidden">
-            <LineSeriesChart data={fluxoCaixaData} xKey="mes" series={[{ key: "pagar", name: "A pagar", color: "var(--ramp-1)" }, { key: "receber", name: "Receber", color: "var(--series-2)", dashed: true }]} />
+            <LineSeriesChart data={fluxoCaixaData} xKey="mes" series={[{ key: "receber", name: "A receber", color: "var(--ramp-1)" }, { key: "pagar", name: "A pagar", color: "var(--fill-warn)", dashed: true }]} yFormat={fmtMi} />
           </CardContent>
         </Card>
       </div>

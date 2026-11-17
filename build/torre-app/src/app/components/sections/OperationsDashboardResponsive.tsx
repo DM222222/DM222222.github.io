@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { BarSeriesChart } from "../charts";
+import { BarSeriesChart, fmtQtd } from "../charts";
 import { Button } from "../ui/button";
 import { Sparkles } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
@@ -237,10 +237,11 @@ export function OperationsDashboardResponsive({ onOpenInsights }: OperationsDash
         <Card className="md:col-span-1 lg:col-span-8 flex flex-col min-h-[280px] lg:h-full">
           <CardHeader className="flex-none pb-2">
             <CardTitle className="card-title">Prontos para Operar</CardTitle>
+            <p className="card-subtitle text-muted-foreground">Volumes por janela de prazo</p>
           </CardHeader>
           <CardContent className="flex-1 pt-2 flex flex-col gap-2 overflow-hidden">
             <div className="flex-1 min-h-[180px]">
-              <BarSeriesChart data={prontosData} xKey="periodo" series={[{ key: "prontos", name: "Prontos", color: "var(--fill-ok)" }, { key: "pendente", name: "Pendente", color: "var(--fill-warn)" }, { key: "naoProntos", name: "Não Prontos", color: "var(--fill-crit)" }]} stacked legend={false} />
+              <BarSeriesChart data={prontosData} xKey="periodo" series={[{ key: "prontos", name: "Prontos", color: "var(--fill-ok)" }, { key: "pendente", name: "Pendente", color: "var(--fill-warn)" }, { key: "naoProntos", name: "Não prontos", color: "var(--fill-crit)" }]} stacked legend={false} yFormat={fmtQtd("vol.")} />
             </div>
             
             <div className="flex-none flex flex-wrap gap-2 justify-center">
@@ -254,7 +255,7 @@ export function OperationsDashboardResponsive({ onOpenInsights }: OperationsDash
               </div>
               <div className="bg-[#f8faff] dark:bg-gray-800 flex items-center gap-1.5 px-2 py-1 rounded-lg border border-[#f1f3f7] dark:border-gray-700">
                 <div className="w-2.5 h-2.5 rounded-full bg-[color:var(--fill-crit)]" />
-                <span className="text-xs">Não Pronto</span>
+                <span className="text-xs">Não prontos</span>
               </div>
             </div>
           </CardContent>

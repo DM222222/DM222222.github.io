@@ -1,16 +1,17 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { BarSeriesChart, DonutChart, LineSeriesChart } from "../charts";
+import { BarSeriesChart, DonutChart, LineSeriesChart, fmtMi, fmtMil } from "../charts";
 import { Button } from "../ui/button";
 import { Sparkles } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 
+// R$ milhões por mês. A receber acompanha o faturamento (Sazonalidade); a pagar inclui o custo operacional.
 const fluxoCaixaData = [
-  { id: "jan", mes: "Jan", pagar: 120, receber: 180 },
-  { id: "fev", mes: "Fev", pagar: 135, receber: 165 },
-  { id: "mar", mes: "Mar", pagar: 140, receber: 190 },
-  { id: "abr", mes: "Abr", pagar: 130, receber: 200 },
-  { id: "mai", mes: "Mai", pagar: 125, receber: 195 },
-  { id: "jun", mes: "Jun", pagar: 145, receber: 210 },
+  { id: "jan", mes: "Jan", pagar: 4.9, receber: 5.9 },
+  { id: "fev", mes: "Fev", pagar: 5.2, receber: 5.7 },
+  { id: "mar", mes: "Mar", pagar: 5.4, receber: 6.4 },
+  { id: "abr", mes: "Abr", pagar: 5.1, receber: 6.3 },
+  { id: "mai", mes: "Mai", pagar: 5.3, receber: 6.7 },
+  { id: "jun", mes: "Jun", pagar: 5.6, receber: 7.1 },
 ];
 
 const segmentosData = [
@@ -20,13 +21,14 @@ const segmentosData = [
   { id: "outros", name: "Outros", value: 5, color: "var(--ramp-4)" },
 ];
 
+// R$ mil em atraso por segmento. Jun: R$ 168 mil sobre R$ 7,3 mi faturados = 2,3%.
 const inadimplenciaData = [
-  { id: "jan", mes: "Jan", logistica: 5, crossdocking: 3, marketplace: 2, outros: 1 },
-  { id: "fev", mes: "Fev", logistica: 7, crossdocking: 4, marketplace: 3, outros: 2 },
-  { id: "mar", mes: "Mar", logistica: 6, crossdocking: 3, marketplace: 2, outros: 1 },
-  { id: "abr", mes: "Abr", logistica: 8, crossdocking: 5, marketplace: 3, outros: 2 },
-  { id: "mai", mes: "Mai", logistica: 9, crossdocking: 6, marketplace: 4, outros: 2 },
-  { id: "jun", mes: "Jun", logistica: 7, crossdocking: 4, marketplace: 3, outros: 1 },
+  { id: "jan", mes: "Jan", logistica: 70, crossdocking: 35, marketplace: 25, outros: 10 },
+  { id: "fev", mes: "Fev", logistica: 85, crossdocking: 40, marketplace: 30, outros: 15 },
+  { id: "mar", mes: "Mar", logistica: 75, crossdocking: 35, marketplace: 25, outros: 10 },
+  { id: "abr", mes: "Abr", logistica: 95, crossdocking: 45, marketplace: 30, outros: 15 },
+  { id: "mai", mes: "Mai", logistica: 105, crossdocking: 55, marketplace: 35, outros: 15 },
+  { id: "jun", mes: "Jun", logistica: 85, crossdocking: 40, marketplace: 30, outros: 13 },
 ];
 
 const custoOperacionalData = [
@@ -84,7 +86,7 @@ export function FinanceDashboardResponsive({ onOpenInsights }: FinanceDashboardR
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
               <div>
                 <CardTitle className="card-title">Fluxo de Caixa</CardTitle>
-                <p className="card-subtitle text-muted-foreground">Contas a pagar e receber</p>
+                <p className="card-subtitle text-muted-foreground">Contas a pagar e a receber, em R$ milhões</p>
               </div>
               <Tabs defaultValue="mes">
                 <TabsList className="grid w-full grid-cols-4">
@@ -97,7 +99,7 @@ export function FinanceDashboardResponsive({ onOpenInsights }: FinanceDashboardR
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-2 overflow-hidden">
-            <LineSeriesChart data={fluxoCaixaData} xKey="mes" series={[{ key: "pagar", name: "A pagar", color: "var(--ramp-1)" }, { key: "receber", name: "Receber", color: "var(--series-2)", dashed: true }]} />
+            <LineSeriesChart data={fluxoCaixaData} xKey="mes" series={[{ key: "receber", name: "A receber", color: "var(--ramp-1)" }, { key: "pagar", name: "A pagar", color: "var(--fill-warn)", dashed: true }]} yFormat={fmtMi} />
           </CardContent>
         </Card>
 
@@ -135,7 +137,10 @@ export function FinanceDashboardResponsive({ onOpenInsights }: FinanceDashboardR
         <Card className="md:col-span-1 lg:col-span-8 flex flex-col min-h-[300px] lg:h-full">
           <CardHeader className="flex-none pb-2">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-              <CardTitle className="card-title">Inadimplência Global</CardTitle>
+              <div>
+                <CardTitle className="card-title">Inadimplência Global</CardTitle>
+                <p className="card-subtitle text-muted-foreground">Valor em atraso por segmento, em R$ mil</p>
+              </div>
               <Tabs defaultValue="mes">
                 <TabsList className="grid w-full grid-cols-2">
                   <TabsTrigger value="semana" className="text-xs">Semana</TabsTrigger>
@@ -145,7 +150,7 @@ export function FinanceDashboardResponsive({ onOpenInsights }: FinanceDashboardR
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-2 overflow-hidden">
-            <BarSeriesChart data={inadimplenciaData} xKey="mes" series={[{ key: "logistica", name: "Logística", color: "var(--ramp-1)" }, { key: "crossdocking", name: "Crossdocking", color: "var(--ramp-3)" }, { key: "marketplace", name: "Marketplace", color: "var(--ramp-2)" }, { key: "outros", name: "Outros", color: "var(--ramp-4)" }]} stacked />
+            <BarSeriesChart data={inadimplenciaData} xKey="mes" series={[{ key: "logistica", name: "Logística", color: "var(--ramp-1)" }, { key: "crossdocking", name: "Crossdocking", color: "var(--ramp-2)" }, { key: "marketplace", name: "Marketplace", color: "var(--ramp-3)" }, { key: "outros", name: "Outros", color: "var(--ramp-4)" }]} stacked yFormat={fmtMil} />
           </CardContent>
         </Card>
 
@@ -153,19 +158,20 @@ export function FinanceDashboardResponsive({ onOpenInsights }: FinanceDashboardR
         <Card className="md:col-span-1 lg:col-span-4 flex flex-col min-h-[300px] lg:h-full">
           <CardHeader className="flex-none pb-1">
             <CardTitle className="card-title text-sm">Custo Operacional Global e por CD</CardTitle>
+            <p className="card-subtitle text-muted-foreground">Mensal</p>
           </CardHeader>
           <CardContent className="flex-1 overflow-hidden pt-2">
             <div className="h-full flex flex-col justify-center space-y-2">
               <div className="flex-none bg-[#f8faff] dark:bg-gray-800 p-2 rounded-lg">
                 <div className="text-xs text-muted-foreground mb-0.5">Global</div>
-                <div className="text-3xl font-bold text-[color:var(--data-text)]">R$ 1.8M</div>
+                <div className="text-3xl font-bold text-[color:var(--data-text)]">R$ 1,8 mi</div>
               </div>
               
               <div className="flex-1 space-y-1.5 overflow-auto">
                 {custoOperacionalData.map((item) => (
                   <div key={item.cd} className="flex items-center justify-between pb-1 border-b border-gray-100 dark:border-gray-800 last:border-0">
                     <span className="text-xs font-medium text-muted-foreground">{item.cd}</span>
-                    <span className="text-xs font-bold text-[#090924] dark:text-gray-100">R$ {item.valor}K</span>
+                    <span className="text-xs font-bold text-[#090924] dark:text-gray-100">R$ {item.valor} mil</span>
                   </div>
                 ))}
               </div>
