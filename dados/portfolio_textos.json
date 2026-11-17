@@ -16,7 +16,7 @@
       "metrica": "Aponta o risco de SLA e recomenda onde redistribuir carga entre os 5 centros · em produção",
       "slug": "torre-de-controle",
       "link": "cases/torre-de-controle.html",
-      "poster": "assets/projects/capa-torre.webp",
+      "poster": "assets/projects/capa-torre.webp?v=20261117",
       "alt": "Torre de Controle em notebook e celular: alerta \"Exige decisão\" com a recomendação da IA e o efeito estimado nos centros de distribuição.",
       "video": ""
     },
@@ -30,7 +30,7 @@
       "nota": "Junta o antigo case 02 (redesenho) e 03 (inspect). Dentro do case: parte 1 inspect, parte 2 redesenho.",
       "slug": "painel-de-mineracao",
       "link": "cases/painel-de-mineracao.html",
-      "poster": "assets/projects/capa-planta.webp",
+      "poster": "assets/projects/capa-planta.webp?v=20261117",
       "alt": "Painel de monitoramento de planta em modo escuro, no notebook e no celular, com o alarme na Home e o painel de ajuste de setpoint.",
       "video": ""
     },
@@ -43,7 +43,7 @@
       "metrica": "MVP que virou ecossistema, hoje na carteira de um fundo",
       "slug": "open-flow-labs",
       "link": "cases/open-flow-labs.html",
-      "poster": "assets/projects/capa-openflow.webp",
+      "poster": "assets/projects/capa-openflow.webp?v=20261117",
       "alt": "Artefatos de pesquisa do Open Flow Labs em sequência: refinamento de personas, usuários, resultado e a matriz de esforço por impacto.",
       "video": ""
     }
