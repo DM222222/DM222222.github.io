@@ -150,15 +150,10 @@ figcaption{font-size:.88rem;color:var(--muted);margin-top:.6rem}
 @media (min-width:900px){.hero-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr)}}
 .hero-text{min-width:0}
 .hero .lead{margin-left:0;max-width:34rem}
-.hero-figure{margin:0;position:relative;width:100%;max-width:440px;justify-self:end;aspect-ratio:3/4;isolation:isolate;animation:heroPhoto 1.6s cubic-bezier(.2,.7,.2,1) .15s both}
-.hf-disc{position:absolute;left:6%;width:88%;bottom:4%;aspect-ratio:1;border-radius:50%;background:var(--cta-lime);z-index:-1}
-.hf-ring{position:absolute;left:-8%;top:4%;width:72%;aspect-ratio:1;border-radius:50%;border:1.5px dashed rgba(244,241,234,.38);z-index:-2;animation:hfSpin 80s linear infinite}
-.hf-dots{position:absolute;right:-6%;top:12%;width:36%;aspect-ratio:1;border-radius:50%;background-image:radial-gradient(circle,rgba(198,222,100,.85) 2px,transparent 2.6px);background-size:12px 12px;z-index:-2}
-.hf-orb{position:absolute;left:2%;bottom:30%;width:9%;aspect-ratio:1;border-radius:50%;background:#9D85B5;z-index:2}
-.hero-figure img{position:absolute;left:0;bottom:0;width:100%;height:auto;display:block;border:0;border-radius:0;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 62.4%,transparent 62.5%),radial-gradient(ellipse 44% 33.56% at 50% 62.4%,#000 99.3%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 62.4%,transparent 62.5%),radial-gradient(ellipse 44% 33.56% at 50% 62.4%,#000 99.3%,transparent 100%)}
-@keyframes hfSpin{to{transform:rotate(360deg)}}
-@media (max-width:899px){.hero-figure{justify-self:center;max-width:340px}}
-@keyframes heroPhoto{from{opacity:0;transform:translateY(22px) scale(.97);filter:blur(12px)}to{opacity:1;transform:none;filter:none}}
+.hero-figure{margin:0;position:relative;width:100%;max-width:360px;justify-self:end;isolation:isolate}
+.hero-figure::before{content:"";position:absolute;left:50%;top:40%;width:120%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(157,133,181,.30),rgba(105,69,141,.10) 60%,transparent);z-index:-1;pointer-events:none}
+.hero-figure img{display:block;width:100%;height:auto;border:0;border-radius:0;-webkit-mask-image:linear-gradient(180deg,#000 76%,transparent 100%);mask-image:linear-gradient(180deg,#000 76%,transparent 100%)}
+@media (max-width:899px){.hero-figure{justify-self:center;max-width:280px}}
 .hero-text>*{animation:heroRise .9s cubic-bezier(.2,.7,.2,1) both}
 .hero-text>.eyebrow{animation-delay:.05s}
 .hero-text>h1{animation-delay:.15s}
