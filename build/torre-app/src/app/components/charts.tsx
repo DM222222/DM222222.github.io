@@ -66,7 +66,11 @@ const tooltipBase = (tk: Tk) => ({
   borderColor: tk.tipBorder,
   borderWidth: 1,
   padding: [10, 12],
-  extraCssText: "border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.22);",
+  appendToBody: true,
+  confine: true,
+  position: (pt: number[], _p: unknown, _d: unknown, _r: unknown, size: { contentSize: number[] }) => [pt[0] - size.contentSize[0] / 2, pt[1] - size.contentSize[1] - 16],
+  transitionDuration: 0.15,
+  extraCssText: "border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.22);z-index:99999;pointer-events:none;",
   textStyle: { color: tk.text, fontSize: 12, fontFamily: "inherit" },
 });
 
