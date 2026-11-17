@@ -32,12 +32,10 @@ a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.2em}
 .hero::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(60% 80% at 82% 30%,rgba(105,69,141,.55),transparent 70%),radial-gradient(40% 50% at 8% 100%,rgba(198,222,100,.10),transparent 70%)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(245,239,224,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(245,239,224,.05) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:linear-gradient(180deg,#000 30%,transparent);mask-image:linear-gradient(180deg,#000 30%,transparent)}
 .eyebrow{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:1.5rem}
-.hero-photo{position:absolute;z-index:-1;right:-3vw;top:50%;transform:translateY(-50%);height:min(118%,780px);width:auto;opacity:.2;pointer-events:none;-webkit-mask-image:radial-gradient(70% 70% at 62% 45%,#000 35%,transparent 80%);mask-image:radial-gradient(70% 70% at 62% 45%,#000 35%,transparent 80%)}
 .hero .eyebrow{color:var(--cta-lime);display:flex;align-items:center;gap:.7rem}
 .hero .eyebrow::before{content:"";width:2.2rem;height:1px;background:var(--cta-lime)}
-.hero h1{font-size:clamp(3.6rem,11vw,9.2rem);line-height:.96;letter-spacing:-.05em;font-weight:600;max-width:9ch;color:#fff}
+.hero h1{font-size:clamp(3.2rem,8.4vw,7.2rem);line-height:.96;letter-spacing:-.05em;font-weight:600;max-width:9ch;color:#fff}
 .hero .lead{margin-top:clamp(2rem,5vw,4rem);margin-left:0;max-width:34rem;font-size:clamp(1.1rem,1.6vw,1.35rem);line-height:1.55;color:rgba(244,241,234,.86)}
-@media (min-width:1000px){.hero .lead{margin-left:auto;margin-right:0}}
 @media (max-width:760px){}
 .hero :focus-visible{outline-color:var(--cta-lime)}
 
@@ -145,4 +143,13 @@ figcaption{font-size:.88rem;color:var(--muted);margin-top:.6rem}
 .tbl .min{color:var(--muted)}
 @media (max-width:640px){.tbl{font-size:.8rem}.tbl .min{display:none}}
 
-@media (max-width:760px){.hero-photo{height:78%;right:-18vw;opacity:.14}}
+@media (max-width:760px){}
+
+/* Hero: texto + retrato, padrão de card do DESIGN.md (raio clamp(12px,2vw,24px)) */
+.hero-grid{display:grid;gap:clamp(2.5rem,5vw,4.5rem);align-items:center}
+@media (min-width:900px){.hero-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr)}}
+.hero-text{min-width:0}
+.hero .lead{margin-left:0;max-width:34rem}
+.hero-figure{margin:0;position:relative;width:100%;max-width:420px;justify-self:end;aspect-ratio:3/4;border-radius:clamp(12px,2vw,24px);overflow:hidden;border:1px solid rgba(244,241,234,.16);background:#120d1c;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.hero-figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
+@media (max-width:899px){.hero-figure{justify-self:start;max-width:360px}}
