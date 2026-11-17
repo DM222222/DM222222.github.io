@@ -1,20 +1,20 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
+import { DonutChart } from "../charts";
 import { Button } from "../ui/button";
 import { Sparkles } from "lucide-react";
 
 const funilData = [
-  { id: "oportunidade", name: "Oportunidade", label: "100 leads", color: "#2388FF" },
-  { id: "negociacao", name: "Negociação", label: "75 em negociação", color: "#4E9FFF" },
-  { id: "proposta", name: "Proposta", label: "50 propostas", color: "#8DC1FF" },
-  { id: "cliente", name: "Cliente", label: "25 clientes", color: "#C3DDFF" },
+  { id: "oportunidade", name: "Oportunidade", label: "100 leads", color: "var(--ramp-1)" },
+  { id: "negociacao", name: "Negociação", label: "75 em negociação", color: "var(--ramp-2)" },
+  { id: "proposta", name: "Proposta", label: "50 propostas", color: "var(--ramp-3)" },
+  { id: "cliente", name: "Cliente", label: "25 clientes", color: "var(--ramp-4)" },
 ];
 
 const segmentosData = [
-  { id: "logistica", name: "Logística", value: 60, color: "#2388FF" },
-  { id: "crossdocking", name: "Crossdocking", value: 20, color: "#4E9FFF" },
-  { id: "marketplace", name: "Marketplace", value: 15, color: "#8DC1FF" },
-  { id: "outros", name: "Outros", value: 5, color: "#C3DDFF" },
+  { id: "logistica", name: "Logística", value: 60, color: "var(--ramp-1)" },
+  { id: "crossdocking", name: "Crossdocking", value: 20, color: "var(--ramp-2)" },
+  { id: "marketplace", name: "Marketplace", value: 15, color: "var(--ramp-3)" },
+  { id: "outros", name: "Outros", value: 5, color: "var(--ramp-4)" },
 ];
 
 // Tooltip customizado com melhor legibilidade
@@ -88,24 +88,7 @@ export function SalesDashboardResponsive({ onOpenInsights }: SalesDashboardRespo
           <CardContent className="flex-1 overflow-hidden">
             <div className="h-full flex flex-col gap-4 py-2">
               <div className="flex-1 flex items-center justify-center min-h-[180px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={segmentosData}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={45}
-                      outerRadius={75}
-                      paddingAngle={5}
-                      dataKey="value"
-                    >
-                      {segmentosData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <Tooltip content={<CustomTooltip />} />
-                  </PieChart>
-                </ResponsiveContainer>
+                <DonutChart data={segmentosData} />
               </div>
               
               <div className="flex-none space-y-2">

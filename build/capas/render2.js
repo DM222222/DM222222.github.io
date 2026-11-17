@@ -1,0 +1,1 @@
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const c=await b.newContext({viewport:{width:1600,height:800},deviceScaleFactor:1.5});const p=await c.newPage();await p.goto('file:///tmp/claude-0/capas/capa_'+process.argv[2]+'.html');await p.waitForTimeout(500);await p.screenshot({path:'out_'+process.argv[2]+'.png'});await b.close()})();

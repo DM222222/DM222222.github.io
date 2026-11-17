@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { BarSeriesChart, DonutChart, LineSeriesChart } from "../charts";
 import { Button } from "../ui/button";
 import { Sparkles } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
@@ -14,10 +14,10 @@ const fluxoCaixaData = [
 ];
 
 const segmentosData = [
-  { id: "logistica", name: "Logística", value: 60, color: "#2388FF" },
-  { id: "crossdocking", name: "Crossdocking", value: 20, color: "#4E9FFF" },
-  { id: "marketplace", name: "Marketplace", value: 15, color: "#8DC1FF" },
-  { id: "outros", name: "Outros", value: 5, color: "#C3DDFF" },
+  { id: "logistica", name: "Logística", value: 60, color: "var(--ramp-1)" },
+  { id: "crossdocking", name: "Crossdocking", value: 20, color: "var(--ramp-2)" },
+  { id: "marketplace", name: "Marketplace", value: 15, color: "var(--ramp-3)" },
+  { id: "outros", name: "Outros", value: 5, color: "var(--ramp-4)" },
 ];
 
 const inadimplenciaData = [
@@ -97,32 +97,7 @@ export function FinanceDashboardResponsive({ onOpenInsights }: FinanceDashboardR
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-2 overflow-hidden">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={fluxoCaixaData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#E1E4ED" className="dark:stroke-gray-700" />
-                <XAxis dataKey="mes" stroke="#6d758f" className="dark:stroke-gray-400" tick={{ fontSize: 11 }} />
-                <YAxis stroke="#6d758f" className="dark:stroke-gray-400" tick={{ fontSize: 11 }} />
-                <Tooltip content={<CustomTooltip />} />
-                <Legend wrapperStyle={{ fontSize: '12px' }} formatter={(v: string) => <span style={{ color: 'var(--foreground)' }}>{v}</span>} />
-                <Line 
-                  type="monotone" 
-                  dataKey="pagar" 
-                  stroke="#2388FF" 
-                  strokeWidth={3} 
-                  name="A pagar" 
-                  dot={{ fill: "#2388FF", r: 4 }}
-                />
-                <Line 
-                  type="monotone" 
-                  dataKey="receber" 
-                  stroke="var(--series-2)" 
-                  strokeDasharray="6 4"
-                  strokeWidth={3} 
-                  name="Receber" 
-                  dot={{ fill: "var(--series-2)", r: 4 }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
+            <LineSeriesChart data={fluxoCaixaData} xKey="mes" series={[{ key: "pagar", name: "A pagar", color: "var(--ramp-1)" }, { key: "receber", name: "Receber", color: "var(--series-2)", dashed: true }]} />
           </CardContent>
         </Card>
 
@@ -134,24 +109,7 @@ export function FinanceDashboardResponsive({ onOpenInsights }: FinanceDashboardR
           <CardContent className="flex-1 overflow-hidden pt-2">
             <div className="h-full flex flex-col gap-2">
               <div className="flex-1 flex items-center justify-center min-h-[120px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={segmentosData}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={30}
-                      outerRadius={55}
-                      paddingAngle={5}
-                      dataKey="value"
-                    >
-                      {segmentosData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
-                      ))}
-                    </Pie>
-                    <Tooltip content={<CustomTooltip />} />
-                  </PieChart>
-                </ResponsiveContainer>
+                <DonutChart data={segmentosData} />
               </div>
               
               <div className="flex-none space-y-1">
@@ -187,18 +145,7 @@ export function FinanceDashboardResponsive({ onOpenInsights }: FinanceDashboardR
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-2 overflow-hidden">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={inadimplenciaData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#E1E4ED" className="dark:stroke-gray-700" />
-                <XAxis dataKey="mes" stroke="#6d758f" className="dark:stroke-gray-400" tick={{ fontSize: 10 }} />
-                <Tooltip content={<CustomTooltip />} />
-                <Legend wrapperStyle={{ fontSize: '12px' }} formatter={(v: string) => <span style={{ color: 'var(--foreground)' }}>{v}</span>} />
-                <Bar dataKey="logistica" stackId="a" fill="#2388FF" name="Logística" radius={[0, 0, 0, 0]} id="bar-logistica" />
-                <Bar dataKey="crossdocking" stackId="a" fill="#8DC1FF" name="Crossdocking" radius={[0, 0, 0, 0]} id="bar-crossdocking" />
-                <Bar dataKey="marketplace" stackId="a" fill="#4E9FFF" name="Marketplace" radius={[0, 0, 0, 0]} id="bar-marketplace" />
-                <Bar dataKey="outros" stackId="a" fill="#C3DDFF" name="Outros" radius={[8, 8, 0, 0]} id="bar-outros" />
-              </BarChart>
-            </ResponsiveContainer>
+            <BarSeriesChart data={inadimplenciaData} xKey="mes" series={[{ key: "logistica", name: "Logística", color: "var(--ramp-1)" }, { key: "crossdocking", name: "Crossdocking", color: "var(--ramp-3)" }, { key: "marketplace", name: "Marketplace", color: "var(--ramp-2)" }, { key: "outros", name: "Outros", color: "var(--ramp-4)" }]} stacked />
           </CardContent>
         </Card>
 

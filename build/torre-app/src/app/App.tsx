@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { TorreProvider, useTorre, type Section, type UserLevel } from "./state/torre";
 import { Login } from "./components/Login";
 import { SplashScreen } from "./components/SplashScreen";
 import { DashboardHeader } from "./components/DashboardHeader";
 import { ChronusAI } from "./components/ChronusAI";
 import { InsightsModal } from "./components/InsightsModal";
-import { StrategicDashboard } from "./components/sections/StrategicDashboard";
-import { TacticalDashboard } from "./components/sections/TacticalDashboard";
-import { SalesDashboard } from "./components/sections/SalesDashboard";
-import { FinanceDashboard } from "./components/sections/FinanceDashboard";
-import { OperationsDashboard } from "./components/sections/OperationsDashboard";
-import { AlertsDashboard } from "./components/sections/AlertsDashboard";
+const StrategicDashboard = lazy(() => import("./components/sections/StrategicDashboard").then(m => ({ default: m.StrategicDashboard })));
+const TacticalDashboard = lazy(() => import("./components/sections/TacticalDashboard").then(m => ({ default: m.TacticalDashboard })));
+const SalesDashboard = lazy(() => import("./components/sections/SalesDashboard").then(m => ({ default: m.SalesDashboard })));
+const FinanceDashboard = lazy(() => import("./components/sections/FinanceDashboard").then(m => ({ default: m.FinanceDashboard })));
+const OperationsDashboard = lazy(() => import("./components/sections/OperationsDashboard").then(m => ({ default: m.OperationsDashboard })));
+const AlertsDashboard = lazy(() => import("./components/sections/AlertsDashboard").then(m => ({ default: m.AlertsDashboard })));
 import { 
   BarChart3, 
   Target, 
@@ -263,7 +263,7 @@ function Shell({ nivel }: { nivel: UserLevel }) {
           )}
         >
           <div className="container max-w-7xl mx-auto">
-            {renderContent()}
+            <Suspense fallback={<div className="p-6 text-sm text-muted-foreground" role="status">Carregando…</div>}>{renderContent()}</Suspense>
           </div>
         </main>
 

@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { BarSeriesChart, LineSeriesChart } from "../charts";
 import { Button } from "../ui/button";
 import { Sparkles, TrendingUp } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
@@ -23,10 +23,10 @@ const faturamentoData = [
 ];
 
 const segmentosData = [
-  { id: "logistica", name: "Logística", value: 60, color: "#2388FF" },
-  { id: "crossdocking", name: "Crossdocking", value: 20, color: "#4E9FFF" },
-  { id: "marketplace", name: "Marketplace", value: 15, color: "#8DC1FF" },
-  { id: "outros", name: "Outros", value: 5, color: "#C3DDFF" },
+  { id: "logistica", name: "Logística", value: 60, color: "var(--ramp-1)" },
+  { id: "crossdocking", name: "Crossdocking", value: 20, color: "var(--ramp-2)" },
+  { id: "marketplace", name: "Marketplace", value: 15, color: "var(--ramp-3)" },
+  { id: "outros", name: "Outros", value: 5, color: "var(--ramp-4)" },
 ];
 
 const fluxoCaixaData = [
@@ -121,22 +121,7 @@ export function StrategicDashboardResponsive({ onOpenInsights }: StrategicDashbo
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-2 overflow-hidden">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={sazonalidadeData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#E1E4ED" className="dark:stroke-gray-700" />
-                <XAxis dataKey="mes" stroke="#6d758f" className="dark:stroke-gray-400" tick={{ fontSize: 11 }} />
-                <YAxis 
-                  stroke="#6d758f"
-                  className="dark:stroke-gray-400"
-                  ticks={[0, 1, 2, 3]}
-                  tickFormatter={(value) => `${value}M`}
-                  domain={[0, 3]}
-                  tick={{ fontSize: 11 }}
-                />
-                <Tooltip content={<CustomTooltip />} />
-                <Bar dataKey="valor" fill="#2388FF" radius={[8, 8, 0, 0]} name="Faturamento (M)" id="bar-faturamento" />
-              </BarChart>
-            </ResponsiveContainer>
+            <BarSeriesChart data={sazonalidadeData} xKey="mes" series={[{ key: "valor", name: "Faturamento (M)", color: "var(--ramp-1)" }]} legend={false} yMax={3} yTicks={1} yFormat={(v) => `${v}M`} />
           </CardContent>
         </Card>
 
@@ -153,15 +138,15 @@ export function StrategicDashboardResponsive({ onOpenInsights }: StrategicDashbo
                 <div className="relative w-28 h-28">
                   <svg className="w-full h-full transform -rotate-90">
                     <circle key="base" cx="56" cy="56" r="48" stroke="#f1f3f7" className="dark:stroke-gray-700" strokeWidth="11" fill="none" />
-                    <circle key="logistica" cx="56" cy="56" r="48" stroke="#2388FF" strokeWidth="11" fill="none"
+                    <circle key="logistica" cx="56" cy="56" r="48" stroke="var(--ramp-1)" strokeWidth="11" fill="none"
                       strokeDasharray={`${2 * Math.PI * 48 * 0.60} ${2 * Math.PI * 48}`} strokeLinecap="round" />
-                    <circle key="crossdocking" cx="56" cy="56" r="48" stroke="#4E9FFF" strokeWidth="11" fill="none"
+                    <circle key="crossdocking" cx="56" cy="56" r="48" stroke="var(--ramp-2)" strokeWidth="11" fill="none"
                       strokeDasharray={`${2 * Math.PI * 48 * 0.20} ${2 * Math.PI * 48}`}
                       strokeDashoffset={`-${2 * Math.PI * 48 * 0.60}`} strokeLinecap="round" />
-                    <circle key="marketplace" cx="56" cy="56" r="48" stroke="#8DC1FF" strokeWidth="11" fill="none"
+                    <circle key="marketplace" cx="56" cy="56" r="48" stroke="var(--ramp-3)" strokeWidth="11" fill="none"
                       strokeDasharray={`${2 * Math.PI * 48 * 0.15} ${2 * Math.PI * 48}`}
                       strokeDashoffset={`-${2 * Math.PI * 48 * 0.80}`} strokeLinecap="round" />
-                    <circle key="outros" cx="56" cy="56" r="48" stroke="#C3DDFF" strokeWidth="11" fill="none"
+                    <circle key="outros" cx="56" cy="56" r="48" stroke="var(--ramp-4)" strokeWidth="11" fill="none"
                       strokeDasharray={`${2 * Math.PI * 48 * 0.05} ${2 * Math.PI * 48}`}
                       strokeDashoffset={`-${2 * Math.PI * 48 * 0.95}`} strokeLinecap="round" />
                   </svg>
@@ -206,34 +191,7 @@ export function StrategicDashboardResponsive({ onOpenInsights }: StrategicDashbo
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-2 overflow-hidden">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={fluxoCaixaData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#E1E4ED" className="dark:stroke-gray-700" />
-                <XAxis dataKey="mes" stroke="#6d758f" className="dark:stroke-gray-400" tick={{ fontSize: 11 }} />
-                <YAxis stroke="#6d758f" className="dark:stroke-gray-400" tick={{ fontSize: 11 }} />
-                <Tooltip content={<CustomTooltip />} />
-                <Legend wrapperStyle={{ fontSize: '12px' }} formatter={(v: string) => <span style={{ color: 'var(--foreground)' }}>{v}</span>} />
-                <Line 
-                  type="monotone" 
-                  dataKey="pagar" 
-                  stroke="#2388FF" 
-                  strokeWidth={3} 
-                  name="A pagar" 
-                  dot={{ fill: "#2388FF", r: 4 }}
-                  id="line-pagar"
-                />
-                <Line 
-                  type="monotone" 
-                  dataKey="receber" 
-                  stroke="var(--series-2)" 
-                  strokeDasharray="6 4"
-                  strokeWidth={3} 
-                  name="Receber" 
-                  dot={{ fill: "var(--series-2)", r: 4 }}
-                  id="line-receber"
-                />
-              </LineChart>
-            </ResponsiveContainer>
+            <LineSeriesChart data={fluxoCaixaData} xKey="mes" series={[{ key: "pagar", name: "A pagar", color: "var(--ramp-1)" }, { key: "receber", name: "Receber", color: "var(--series-2)", dashed: true }]} />
           </CardContent>
         </Card>
       </div>

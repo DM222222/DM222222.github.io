@@ -38,6 +38,10 @@
   --st-idle: #1558C0;
   --data-text: #1558C0;
   --series-2: #0D417D;
+  --ramp-1: #0D417D;
+  --ramp-2: #1558C0;
+  --ramp-3: #2F7DE1;
+  --ramp-4: #5F9BE8;
   --fill-ok: #1F8A7A;
   --fill-warn: #C98A1B;
   --fill-crit: #E4626F;
@@ -91,6 +95,10 @@
   --st-idle: #6FB0FF;
   --data-text: #6FB0FF;
   --series-2: #8DC1FF;
+  --ramp-1: #2388FF;
+  --ramp-2: #4E9FFF;
+  --ramp-3: #8DC1FF;
+  --ramp-4: #C3DDFF;
   --fill-ok: #A4F4E7;
   --fill-warn: #F4C790;
   --fill-crit: #E4626F;

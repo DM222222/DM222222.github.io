@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from "recharts";
+import { BarSeriesChart, LineSeriesChart } from "../charts";
 import { TrendingUp } from "lucide-react";
 import { Button } from "../ui/button";
 import { Sparkles } from "lucide-react";
@@ -9,10 +9,10 @@ import { useState } from "react";
 import { DecisionCard } from "../DecisionCard";
 
 const timeToCashData = [
-  { id: "15d", periodo: "15 dias", clientes: 5, color: "#2388FF" },
-  { id: "30d", periodo: "30 dias", clientes: 10, color: "#4E9FFF" },
-  { id: "60d", periodo: "60 dias", clientes: 30, color: "#8DC1FF" },
-  { id: "90d", periodo: "90 dias", clientes: 45, color: "#C3DDFF" },
+  { id: "15d", periodo: "15 dias", clientes: 5, color: "var(--ramp-1)" },
+  { id: "30d", periodo: "30 dias", clientes: 10, color: "var(--ramp-2)" },
+  { id: "60d", periodo: "60 dias", clientes: 30, color: "var(--ramp-3)" },
+  { id: "90d", periodo: "90 dias", clientes: 45, color: "var(--ramp-4)" },
 ];
 
 const previsaoRecebimentoData = [
@@ -43,10 +43,10 @@ const faturamentoClienteData = [
 // Cores em escala de azul para cada CD
 const cdColors: { [key: string]: string } = {
   "CD 3": "#0D417D",
-  "CD 4": "#2388FF",
-  "CD 5": "#4E9FFF",
-  "CD 1": "#8DC1FF",
-  "CD 2": "#C3DDFF",
+  "CD 4": "var(--ramp-1)",
+  "CD 5": "var(--ramp-2)",
+  "CD 1": "var(--ramp-3)",
+  "CD 2": "var(--ramp-4)",
 };
 
 // Tooltip customizado com melhor legibilidade
@@ -174,20 +174,7 @@ export function TacticalDashboardResponsive({ onOpenInsights }: TacticalDashboar
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-2 overflow-hidden">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={previsaoRecebimentoData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#E1E4ED" className="dark:stroke-gray-700" />
-                <XAxis dataKey="mes" stroke="#6d758f" className="dark:stroke-gray-400" tick={{ fontSize: 11 }} />
-                <YAxis stroke="#6d758f" className="dark:stroke-gray-400" tick={{ fontSize: 11 }} />
-                <Tooltip content={<CustomTooltip />} />
-                <Legend wrapperStyle={{ fontSize: '12px' }} formatter={(v: string) => <span style={{ color: 'var(--foreground)' }}>{v}</span>} />
-                <Line type="monotone" dataKey="cd1" stroke="#0D417D" strokeWidth={2} name="CD 1" dot={{ r: 3 }} id="line-cd1" />
-                <Line type="monotone" dataKey="cd2" stroke="#2388FF" strokeWidth={2} name="CD 2" dot={{ r: 3 }} id="line-cd2" />
-                <Line type="monotone" dataKey="cd3" stroke="#4E9FFF" strokeWidth={2} name="CD 3" dot={{ r: 3 }} id="line-cd3" />
-                <Line type="monotone" dataKey="cd4" stroke="#8DC1FF" strokeWidth={2} name="CD 4" dot={{ r: 3 }} id="line-cd4" />
-                <Line type="monotone" dataKey="cd5" stroke="#C3DDFF" strokeWidth={2} name="CD 5" dot={{ r: 3 }} id="line-cd5" />
-              </LineChart>
-            </ResponsiveContainer>
+            <LineSeriesChart data={previsaoRecebimentoData} xKey="mes" series={[{ key: "cd1", name: "CD 1", color: "#0D417D" }, { key: "cd2", name: "CD 2", color: "var(--ramp-1)" }, { key: "cd3", name: "CD 3", color: "var(--ramp-2)" }, { key: "cd4", name: "CD 4", color: "var(--ramp-3)" }, { key: "cd5", name: "CD 5", color: "var(--ramp-4)" }]} />
           </CardContent>
         </Card>
 
@@ -220,7 +207,7 @@ export function TacticalDashboardResponsive({ onOpenInsights }: TacticalDashboar
                   cx="64"
                   cy="64"
                   r="52"
-                  stroke="#2388FF"
+                  stroke="var(--ramp-1)"
                   strokeWidth="10"
                   fill="none"
                   strokeDasharray={`${2 * Math.PI * 52 * 0.18} ${2 * Math.PI * 52}`}
@@ -248,17 +235,7 @@ export function TacticalDashboardResponsive({ onOpenInsights }: TacticalDashboar
             </div>
           </CardHeader>
           <CardContent className="flex-1 pt-2 overflow-hidden">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={faturamentoClienteData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#E1E4ED" className="dark:stroke-gray-700" />
-                <XAxis dataKey="mes" stroke="#6d758f" className="dark:stroke-gray-400" tick={{ fontSize: 11 }} />
-                <YAxis stroke="#6d758f" className="dark:stroke-gray-400" tick={{ fontSize: 11 }} />
-                <Tooltip content={<CustomTooltip />} />
-                <Legend wrapperStyle={{ fontSize: '12px' }} formatter={(v: string) => <span style={{ color: 'var(--foreground)' }}>{v}</span>} />
-                <Bar dataKey="previsto" fill="#8DC1FF" name="Previsto" radius={[8, 8, 0, 0]} id="bar-previsto" />
-                <Bar dataKey="realizado" fill="#2388FF" name="Realizado" radius={[8, 8, 0, 0]} id="bar-realizado" />
-              </BarChart>
-            </ResponsiveContainer>
+            <BarSeriesChart data={faturamentoClienteData} xKey="mes" series={[{ key: "previsto", name: "Previsto", color: "var(--ramp-3)" }, { key: "realizado", name: "Realizado", color: "var(--ramp-1)" }]} />
           </CardContent>
         </Card>
       </div>

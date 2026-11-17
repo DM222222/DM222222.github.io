@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { BarSeriesChart } from "../charts";
 import { Button } from "../ui/button";
 import { Sparkles } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
@@ -240,17 +240,7 @@ export function OperationsDashboardResponsive({ onOpenInsights }: OperationsDash
           </CardHeader>
           <CardContent className="flex-1 pt-2 flex flex-col gap-2 overflow-hidden">
             <div className="flex-1 min-h-[180px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={prontosData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#E1E4ED" className="dark:stroke-gray-700" />
-                  <XAxis dataKey="periodo" stroke="#6d758f" className="dark:stroke-gray-400" tick={{ fontSize: 11 }} />
-                  <YAxis stroke="#6d758f" className="dark:stroke-gray-400" tick={{ fontSize: 11 }} />
-                  <Tooltip content={<CustomTooltip />} />
-                  <Bar dataKey="prontos" stackId="a" fill="var(--fill-ok)" name="Prontos" radius={[0, 0, 0, 0]} id="bar-prontos" />
-                  <Bar dataKey="pendente" stackId="a" fill="var(--fill-warn)" name="Pendente" radius={[0, 0, 0, 0]} id="bar-pendente" />
-                  <Bar dataKey="naoProntos" stackId="a" fill="var(--fill-crit)" name="Não Prontos" radius={[8, 8, 0, 0]} id="bar-naoProntos" />
-                </BarChart>
-              </ResponsiveContainer>
+              <BarSeriesChart data={prontosData} xKey="periodo" series={[{ key: "prontos", name: "Prontos", color: "var(--fill-ok)" }, { key: "pendente", name: "Pendente", color: "var(--fill-warn)" }, { key: "naoProntos", name: "Não Prontos", color: "var(--fill-crit)" }]} stacked legend={false} />
             </div>
             
             <div className="flex-none flex flex-wrap gap-2 justify-center">
