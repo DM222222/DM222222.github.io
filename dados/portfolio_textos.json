@@ -2,9 +2,9 @@
   "_leia_me": "Textos aprovados do novo portfolio (P&B), secao por secao. Fonte de verdade para a implementacao.",
   "abertura": {
     "cargo": "Baseado em São Paulo, SP",
-    "papel": ["Product Designer", "UX", "UI"],
+    "papel": "Product Designer com foco em UX e UI.",
     "titulo": "Product Designer",
-    "paragrafo": "Ajudo times a transformar operações complexas e dados em decisões claras, em produtos com IA, dados e operação crítica.",
+    "paragrafo": "Ajudo times a transformar operações complexas e dados em decisões claras, em produtos com IA e operação crítica.",
     "linha_pessoal": null,
     "nome": "Danilo Morelli"
   },
@@ -121,20 +121,20 @@
     "titulo": "Como eu apoio",
     "itens": [
       {
-        "titulo": "Entender a decisão",
-        "texto": "Eu descubro quem decide, qual pergunta importa e quanto custa errar."
+        "titulo": "Pesquisa até a decisão",
+        "texto": "Entrevisto do C-Level ao operador de turno para descobrir qual decisão o produto precisa sustentar."
       },
       {
-        "titulo": "Definir o que medir",
-        "texto": "Dois ou três sinais que mudam decisão. O resto fica de fora."
+        "titulo": "Escopo que cabe no MVP",
+        "texto": "Organizo os KPIs por nível de decisão e priorizo por esforço e impacto, para o MVP nascer enxuto e virar produto."
       },
       {
-        "titulo": "Desenhar e validar",
-        "texto": "Protótipo clicável, testado com quem opera, até a recomendação sair do \"no feeling\"."
+        "titulo": "Leitura no primeiro segundo",
+        "texto": "Desenho hierarquia, estados de erro e sem sinal, e status que não dependem só de cor, conferidos contra a WCAG."
       },
       {
-        "titulo": "Entregar para operar",
-        "texto": "Escrevo a especificação e fico até rodar com gente de verdade."
+        "titulo": "IA com controle humano",
+        "texto": "Toda recomendação mostra o efeito antes da ação, pede aprovação e tem caminho de volta. Assim a equipe confia no automático."
       }
     ]
   },

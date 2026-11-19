@@ -31,14 +31,11 @@ def _trocar(doc, nome, conteudo, indent="      "):
 def _abertura(t):
     a = t["abertura"]
     papel = a.get("papel")
-    mid = ""
-    if papel:
-        mid = '      <p class="papel">%s</p>\n' % "".join("<span>%s</span>" % e(x) for x in papel)
+    lead = ("<strong>%s</strong> " % e(papel) if papel else "") + e(a["paragrafo"])
     return (
         '      <p class="eyebrow">%s</p>\n'
-        '      <h1 id="titulo">%s</h1>\n' % (e(a["cargo"]), e(a.get("nome", a["titulo"])))
-        + mid
-        + '      <p class="lead">%s</p>\n' % e(a["paragrafo"])
+        '      <h1 id="titulo">%s</h1>\n'
+        '      <p class="lead">%s</p>\n' % (e(a["cargo"]), e(a.get("nome", a["titulo"])), lead)
     )
 
 
